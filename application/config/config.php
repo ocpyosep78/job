@@ -18,15 +18,11 @@
 $PortAddress = ($_SERVER['SERVER_PORT'] != 80) ? ':8666' : '';
 
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
-	$config['base_url']		= 'http://localhost'.$PortAddress.'/shop/trunk';
+	$config['base_url']		= 'http://localhost'.$PortAddress.'/job/trunk';
 	$config['base_path']	= realpath(dirname(__FILE__) . '/../..');
-	
-	$config['indocrm_api']	= 'http://localhost'.$PortAddress.'/indocrm/trunk/index.php/api/';
 } else if ($_SERVER['SERVER_NAME'] == 'olshop.simetri.in') {
 	$config['base_url']		= 'http://olshop.simetri.in';
 	$config['base_path']    = realpath(dirname(__FILE__) . '/../..');
-	
-	$config['indocrm_api']	= 'http://www.indocrm.com/index.php/api/';
 } else {
 	echo 'Please set up config.';
 	exit;
