@@ -64,7 +64,9 @@ var mp3Pl = {
             "animationLoop": true,
             "slideshow" : false
         });
-
+		
+		
+		/*
         new jPlayerPlaylist({
             jPlayer: "#jplayer_1",
             cssSelectorAncestor: "#jplayer_container"
@@ -86,7 +88,7 @@ var mp3Pl = {
             swfPath: "mp3js",
             supplied: "mp3"
         });
-
+		
         jQuery('#main .jp-jplayer').each(function(index) {
             var i = index+1;
 
@@ -124,6 +126,7 @@ var mp3Pl = {
                 cssSelectorAncestor:"#jp_container_"+i
             });
         });
+		/*	*/
 
 
         jQuery('#daily-event').flexslider({
