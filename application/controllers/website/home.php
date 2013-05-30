@@ -6,12 +6,50 @@ class home extends CI_Controller {
     }
     
     function index() {
-		$store_name = get_store();
+		$segments = $this->uri->segments;
 		
-		if (empty($store_name)) {
-			$this->load->view( 'website/home' );
-		} else {
-			$this->load->view( 'website/store/theme/calisto/home' );
+		// page
+		if (isset($segments[1]) && !empty($segments[1])) {
+			if (in_array($segments[1], array('blog', 'blog_detail', 'event', 'event_detail', 'company', 'listing', 'listing_detail', 'login'))) {
+				$this->$segments[1]();
+			}
 		}
+		
+		// index
+		else {
+			$this->load->view( 'website/home' );
+		};
     }
+	
+	function blog() {
+		$this->load->view( 'website/blog' );
+	}
+	
+	function blog_detail() {
+		$this->load->view( 'website/blog_detail' );
+	}
+	
+	function event() {
+		$this->load->view( 'website/event' );
+	}
+	
+	function event_detail() {
+		$this->load->view( 'website/event_detail' );
+	}
+	
+	function company() {
+		$this->load->view( 'website/company' );
+	}
+	
+	function listing() {
+		$this->load->view( 'website/listing' );
+	}
+	
+	function listing_detail() {
+		$this->load->view( 'website/listing_detail' );
+	}
+	
+	function login() {
+		$this->load->view( 'website/login' );
+	}
 }

@@ -1,0 +1,141 @@
+source : http://www.duniadb.com/duniakarir/
+notifikasi pakai : http://www.eakroko.de/flat/components-elements.html (Sticky Notification)
+
+----------------------------------------------------------------------------------------
+Admin Pencari Kerja
+----------------------------------------------------------------------------------------
+Common :
+- Layout : http://www.eakroko.de/flat/layouts-fixed.html
+
+Resume :
+- http://www.duniadb.com/duniakarir/1%20-%20MY%20RESUME.png
+- ada note last update
+- status resume : siap melamar lowongan / belum lengkap
+- resume ada 2 : upload / entry form
+- upload foto dengan watermark
+
+Profile :
+- http://duniadb.com/duniakarir/my%20resume%20-%20profile.png
+
+Info Tambahan
+- http://duniadb.com/duniakarir/jika%20di%20tekan%20tombol%20apply%20oleh%20member.png
+
+Melamar Kerja
+- http://www.duniadb.com/duniakarir/2%20-%20MY%20JOBS%20APPLYED.png
+- hanya menampilkan perusahaan yang dia lamar
+
+Master Surat Lamaran
+- http://www.duniadb.com/duniakarir/4%20-%20SURAT%20LAMARAN%20SAYA.png
+- Diketik manual dengan tinymce editor (title & content & last update)
+- fitur download PDF
+
+Kirim Lamaran
+- http://www.duniadb.com/duniakarir/3%20-%20SEND%20CV.png
+- Bisa kirim dengan data yang ada di Master Surat Lamaran
+
+Setting
+- http://www.duniadb.com/duniakarir/5%20-%20SETTING.png
+
+----------------------------------------------------------------------------------------
+Admin Perusahaan
+----------------------------------------------------------------------------------------
+Common :
+- Layout : http://www.eakroko.de/flat/
+
+Create Page
+- http://www.duniadb.com/duniakarir/perusahaan/Create%20Page.png
+- Form dengan entry (judul & content)
+
+Create Lowongan
+- http://www.duniadb.com/duniakarir/perusahaan/Create%20jobs%20position.png
+- Nanti di approve oleh admin
+- Type pekerjaan bisa lebih dari satu, nanti bisa contoh seperti di : "Multiple values" http://www.eakroko.de/flat/forms-extended.html
+- Lokasi Kerja Bisa dari luar negeri, maka kotanya berupa entry text box
+
+Download Data Pelamar
+- http://www.duniadb.com/duniakarir/perusahaan/Download.png
+- Plan To Interview => langsung insert recordnya ke daftar yang akan di interview
+- Kirim Berita Penolakan
+- Download Table dalam format PDF
+- Table seperti di http://www.eakroko.de/flat/tables-dynamic.html (pdf, csv, dll)
+
+View Slide
+- http://www.duniadb.com/duniakarir/perusahaan/slide%20page.png
+- dibagi untuk tiap2 job position
+- resize photo
+
+Find Resume
+- http://www.duniadb.com/duniakarir/perusahaan/Find%20resume.png
+
+Profile Perusahaan
+- http://www.duniadb.com/duniakarir/perusahaan/Profile.png
+- Backgroundnya mengikuti (abaikan desain)
+- klo bisa tambahkan mam dari google
+
+Membership
+- http://www.duniadb.com/duniakarir/perusahaan/membership.png
+
+----------------------------------------------------------------------------------------
+Admin Perusahaan
+----------------------------------------------------------------------------------------
+Common
+- Ada moderator dan Administrator
+- Layout : http://www.eakroko.de/flat/
+
+----------------------------------------------------------------------------------------
+Website
+----------------------------------------------------------------------------------------
+Index
+- http://www.duniadb.com/duniakarir/v2/indexs.html
+
+Article
+- CRUD Article
+- ditampilkan 1 article terbaru
+
+Blog
+- http://www.duniadb.com/duniakarir/v2/blog.html
+- ini halaman artikel yang dibuat oleh admin
+- hapus comment & rating
+- 1 page berisi 9 item
+- tiap2 category memiliki tag => Desainer / Apps / Mattew
+
+Blog Detail
+- http://www.duniadb.com/duniakarir/v2/blog-article.html
+- comment & rating tidak perlu
+
+Listing Lowongan
+- http://www.duniadb.com/duniakarir/v2/listing.html
+- Region : Seperti : http://www.klikbay.com/Fashion+dan+Gaya
+
+Login Page
+- http://www.duniadb.com/duniakarir/v2/login.html
+- lost password
+- login perusahaan & login pencari kerja terpisah
+
+Advance Search
+- http://www.duniadb.com/duniakarir/v2/asearch.png
+
+Event
+- http://www.duniadb.com/duniakarir/v2/events.html
+
+Event Detail
+- http://www.duniadb.com/duniakarir/v2/events-article.html
+- "00:00:00" biarkan dulu
+
+Company Profile
+- http://www.duniadb.com/duniakarir/v2/Company-Profile.html
+- kalo tidak ada lowongan tampikan "saat ini tidak ada lowongan yang tersedia"
+- Lihat Peta => untuk menunjukan lokasi perusahaan di google map
+- Fitur laporkan perusahaan, mirip seperti di : http://www.duniadb.com/user/ridwan
+
+Detail Lowongan
+- http://siva-id.jobstreet.com/_ads/id/jobs/2013/5/default/40/852662.htm?fr=J&amp;src=27
+- link : duniakarir.com/PT-Telkom-indonesia/posisi
+
+Subscribe
+- Ada 4 Jenis (Kategori, Sub Kategori, Event, Perusahaan)
+- Email support html
+
+
+
+

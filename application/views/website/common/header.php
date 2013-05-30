@@ -8,7 +8,7 @@
 					<figure><i class='logo-replacement'></i></figure>
 				</a>
 			</div>
-			<div class='span7'>
+			<div class='span7-header'>
 				<nav>
 					<ul>
 						<li class='active'><a href='index.html' title='Home'> Home </a> </li>
@@ -17,7 +17,7 @@
 					</ul>
 				</nav>
 			</div>
-			<div class='span3 search-container'>
+			<div class='span3-header search-container'>
 				<form action="" method="get" accept-charset="utf-8" class='search-form'>
 					<input type="text" name="search" placeholder="Search" />
 					<input type='submit' name='submit' value='Search' />
