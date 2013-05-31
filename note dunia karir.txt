@@ -82,6 +82,9 @@ Common
 - Ada moderator dan Administrator
 - Layout : http://www.eakroko.de/flat/
 
+Article
+- Mirip denga dunia db
+
 ----------------------------------------------------------------------------------------
 Website
 ----------------------------------------------------------------------------------------
