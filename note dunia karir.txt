@@ -17,9 +17,6 @@ Resume :
 Profile :
 - http://duniadb.com/duniakarir/my%20resume%20-%20profile.png
 
-Info Tambahan
-- http://duniadb.com/duniakarir/jika%20di%20tekan%20tombol%20apply%20oleh%20member.png
-
 Melamar Kerja
 - http://www.duniadb.com/duniakarir/2%20-%20MY%20JOBS%20APPLYED.png
 - hanya menampilkan perusahaan yang dia lamar
@@ -35,6 +32,9 @@ Kirim Lamaran
 
 Setting
 - http://www.duniadb.com/duniakarir/5%20-%20SETTING.png
+
+Info Tambahan
+- http://duniadb.com/duniakarir/jika%20di%20tekan%20tombol%20apply%20oleh%20member.png
 
 ----------------------------------------------------------------------------------------
 Admin Perusahaan

@@ -59,6 +59,10 @@
 	}
 
 	function moneyRandom(){
+		if ($(".stats .icon-money").length == 0) {
+			return;
+		}
+		
 		var $el = $(".stats .icon-money").parent().find(".details .big");
 		var current = parseFloat($el.html().replace("$","").replace(",",".")),
 		randomOperation = (Math.random() * 10),

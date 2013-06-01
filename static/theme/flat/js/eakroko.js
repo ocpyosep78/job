@@ -423,16 +423,18 @@ $(document).ready(function() {
 					"buttonText": "Change columns <i class='icon-angle-down'></i>"
 				};
 			}
-			if($(this).hasClass('dataTable-tools')){
-				if($(this).hasClass("dataTable-colvis")){
-					opt.sDom= 'TC<"clear">lfrtip';
+			if ($(this).hasClass('dataTable-tools')) {
+				if ($(this).hasClass("dataTable-colvis")){
+					opt.sDom = 'TC<"clear">lfrtip';
 				} else {
-					opt.sDom= 'T<"clear">lfrtip';
+					opt.sDom = 'T<"clear">lfrtip';
 				}
 				opt.oTableTools = {
-					"sSwfPath": "js/plugins/datatable/swf/copy_csv_xls_pdf.swf"
+					"sSwfPath": web.host + 'static/theme/flat/js/plugins/datatable/swf/copy_csv_xls_pdf.swf'
 				};
 			}
+			
+			
 			if($(this).hasClass("dataTable-scroller")){
 				opt.sScrollY = "300px";
 				opt.bDeferRender = true;

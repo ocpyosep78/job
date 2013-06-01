@@ -319,3 +319,4 @@ div.DTTT_collection a.DTTT_button {
 	line-height: 20px;
 }
 
+.dataTables_processing { background-color: white; border: 1px solid #DDDDDD; color: #999999; font-size: 14px; height: 30px; left: 50%; margin-left: -125px; margin-top: -15px; padding: 14px 0 2px; position: absolute; text-align: center; top: 50%; width: 250px; }
