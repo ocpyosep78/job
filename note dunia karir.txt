@@ -141,4 +141,14 @@ Subscribe
 
 
 
+----------------------------------------------------------------------------------------
+Note Kesulitan
+----------------------------------------------------------------------------------------
 
+Contoh tanggal belum ada
+Struktur database belum ada
+login
+slider
+contoh model & controller yang ada transaksi
+Validasi
+ajak request
