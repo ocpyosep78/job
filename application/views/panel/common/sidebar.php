@@ -42,6 +42,7 @@
 			<a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Administrator</span></a>
 		</div>
 		<ul class="subnav-menu">
+			<li><a href="<?php echo base_url('editor/login'); ?>">Login</a></li>
 			<li><a href="<?php echo base_url('editor/home'); ?>">Dashboard</a></li>
 			<li><a href="<?php echo base_url('editor/article'); ?>">Article</a></li>
 			<li><a href="<?php echo base_url('editor/event'); ?>">Event</a></li>
