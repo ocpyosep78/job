@@ -41,13 +41,6 @@ if ( ! function_exists('site_url'))
 {
 	function site_url($uri = '')
 	{
-		$store_name = get_store();
-		
-		$_SERVER['domain_code'] = (isset($_SERVER['domain_code'])) ? $_SERVER['domain_code'] : 1;		// read index.php for more info
-		if ($_SERVER['domain_code'] == 1) {
-			$base_url = base_url($store_name);
-		}
-		
 		if (!empty($uri)) {
 			$base_url .= '/'.$uri;
 		}
