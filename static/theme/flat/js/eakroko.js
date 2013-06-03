@@ -172,7 +172,7 @@ $(document).ready(function() {
 
 	// datepicker
 	if($('.datepick').length > 0){
-		$('.datepick').datepicker();
+		$('.datepick').datepicker({ format: DATE_FORMAT });
 	}
 	// timepicker
 	if($('.timepick').length > 0){
