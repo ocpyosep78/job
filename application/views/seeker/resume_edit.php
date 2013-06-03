@@ -24,9 +24,9 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label for="first_name" class="control-label">Tanggal</label>
+					<label for="first_name1" class="control-label">Tanggal</label>
 					<div class="controls">
-						<input type="text" name="first_name" id="first_name" class="input-xlarge datepick" />
+						<input type="text" name="first_name1" id="first_name1" class="input-xlarge datepick" />
 						<span class="help-block">Maximum 20 characters</span>
 					</div>
 				</div>

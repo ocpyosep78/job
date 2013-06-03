@@ -14,74 +14,36 @@
 							<div class="box-content">
 								<form action="#" method="POST" class='form-horizontal'>
 									<div class="control-group">
-										<label for="textfield" class="control-label">Text input</label>
-										<div class="controls">
-											<input type="text" name="textfield" id="textfield" class="input-xlarge">
-											<span class="help-block">This is just a supporting text</span>
-										</div>
-									</div>
-									<div class="control-group">
-										<label for="password" class="control-label">Password</label>
-										<div class="controls">
-											<input type="password" name="password" id="password" placeholder="*********" class="input-xlarge">
-											<span class="help-block">Minimum length: 9, only numeric</span>
-										</div>
-									</div>
-									<div class="control-group">
-										<label for="file" class="control-label">File-input</label>
-										<div class="controls">
-											<input type="file" name="file" id="file" class="input-block-level">
-											<span class="help-block">Only .jpg (Max Size: 100MB)</span>
-										</div>
-									</div>
-									<div class="control-group">
-										<label for="select" class="control-label">Select</label>
-										<div class="controls">
-											<select name="select" id="select" class='input-large'>
-												<option value="1">Option-1</option>
-												<option value="2">Option-2</option>
-												<option value="3">Option-3</option>
-												<option value="4">Option-4</option>
-												<option value="5">Option-5</option>
-												<option value="6">Option-6</option>
-												<option value="7">Option-7</option>
-												<option value="8">Option-8</option>
-												<option value="9">Option-9</option>
-											</select>
-										</div>
-									</div>
-									<div class="control-group">
-										<label class="control-label">Checkboxes</label>
-										<div class="controls">
-											<label class='checkbox'>
-												<input type="checkbox" name="checkbox"> Lorem ipsum eiusmod
-											</label>
-											<label class='checkbox'>
-												<input type="checkbox" name="checkbox"> ipsum eiusmod
-											</label>
-											<label class='checkbox'>
-												<input type="checkbox" name="checkbox"> Eiusmod lorem ipsum
-											</label>
-										</div>
-									</div>
-									<div class="control-group">
-										<label class="control-label">Radios</label>
+										<label class="control-label">Show my profile to public</label>
 										<div class="controls">
 											<label class='radio'>
-												<input type="radio" name="radio"> Lorem
+												<input type="radio" name="show_my_profile_to_public"> Yes
 											</label>
 											<label class='radio'>
-												<input type="radio" name="radio"> Ipsum
-											</label>
-											<label class='radio'>
-												<input type="radio" name="radio"> Eiusmod
+												<input type="radio" name="show_my_profile_to_public"> No
 											</label>
 										</div>
 									</div>
 									<div class="control-group">
-										<label for="textarea" class="control-label">Textarea</label>
+										<label class="control-label">Berhenti berlangganan Subscribe jobs</label>
 										<div class="controls">
-											<textarea name="textarea" id="textarea" class="input-block-level">Lorem ipsum mollit minim fugiat tempor dolore sit officia ut dolore. </textarea>
+											<label class='radio'>
+												<input type="radio" name="berhenti_berlangganan_subscribe_jobs"> Yes
+											</label>
+											<label class='radio'>
+												<input type="radio" name="berhenti_berlangganan_subscribe_jobs"> No
+											</label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Sekarang saya telah bekerja</label>
+										<div class="controls">
+											<label class='radio'>
+												<input type="radio" name="sekarang_saya_telah_bekerja"> Yes
+											</label>
+											<label class='radio'>
+												<input type="radio" name="sekarang_saya_telah_bekerja"> No
+											</label>
 										</div>
 									</div>
 									<div class="form-actions">

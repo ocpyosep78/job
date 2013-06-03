@@ -14,74 +14,53 @@
 							<div class="box-content">
 								<form action="#" method="POST" class='form-horizontal'>
 									<div class="control-group">
-										<label for="textfield" class="control-label">Text input</label>
+										<label for="to" class="control-label">To</label>
 										<div class="controls">
-											<input type="text" name="textfield" id="textfield" class="input-xlarge">
-											<span class="help-block">This is just a supporting text</span>
+											<input type="text" name="to" id="to" class="input-xlarge">
 										</div>
 									</div>
 									<div class="control-group">
-										<label for="password" class="control-label">Password</label>
+										<label for="title/subject" class="control-label">Title / Subject</label>
 										<div class="controls">
-											<input type="password" name="password" id="password" placeholder="*********" class="input-xlarge">
-											<span class="help-block">Minimum length: 9, only numeric</span>
+											<input type="text" name="title/subject" id="title/subject" class="input-xlarge">
 										</div>
 									</div>
 									<div class="control-group">
-										<label for="file" class="control-label">File-input</label>
+										<label for="nama_perusahaan" class="control-label">Nama Perusahaan</label>
 										<div class="controls">
-											<input type="file" name="file" id="file" class="input-block-level">
-											<span class="help-block">Only .jpg (Max Size: 100MB)</span>
+											<input type="text" name="nama_perusahaan" id="nama_perusahaan" class="input-xlarge">
 										</div>
 									</div>
 									<div class="control-group">
-										<label for="select" class="control-label">Select</label>
+										<label for="nama_perusahaan" class="control-label">Cover Letter</label>
+									</div>
+									<div class="control-group">
 										<div class="controls">
-											<select name="select" id="select" class='input-large'>
-												<option value="1">Option-1</option>
-												<option value="2">Option-2</option>
-												<option value="3">Option-3</option>
-												<option value="4">Option-4</option>
-												<option value="5">Option-5</option>
-												<option value="6">Option-6</option>
-												<option value="7">Option-7</option>
-												<option value="8">Option-8</option>
-												<option value="9">Option-9</option>
-											</select>
+											<label for="nama_perusahaan" class="control-label">Yang kan di kirim : (attachment)</label>
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label">Checkboxes</label>
 										<div class="controls">
 											<label class='checkbox'>
-												<input type="checkbox" name="checkbox"> Lorem ipsum eiusmod
+												<input type="checkbox" name="resume"> Resume
 											</label>
 											<label class='checkbox'>
-												<input type="checkbox" name="checkbox"> ipsum eiusmod
+												<input type="checkbox" name="foto_saya"> Foto Saya
 											</label>
 											<label class='checkbox'>
-												<input type="checkbox" name="checkbox"> Eiusmod lorem ipsum
+												<input type="checkbox" name="pilih_surat_lamaran">
+													<select name="select" id="select" class='input-large'>
+														<option value="1">Option-1</option>
+														<option value="2">Option-2</option>
+														<option value="3">Option-3</option>
+														<option value="4">Option-4</option>
+														<option value="5">Option-5</option>
+														<option value="6">Option-6</option>
+														<option value="7">Option-7</option>
+														<option value="8">Option-8</option>
+														<option value="9">Option-9</option>
+													</select>
 											</label>
-										</div>
-									</div>
-									<div class="control-group">
-										<label class="control-label">Radios</label>
-										<div class="controls">
-											<label class='radio'>
-												<input type="radio" name="radio"> Lorem
-											</label>
-											<label class='radio'>
-												<input type="radio" name="radio"> Ipsum
-											</label>
-											<label class='radio'>
-												<input type="radio" name="radio"> Eiusmod
-											</label>
-										</div>
-									</div>
-									<div class="control-group">
-										<label for="textarea" class="control-label">Textarea</label>
-										<div class="controls">
-											<textarea name="textarea" id="textarea" class="input-block-level">Lorem ipsum mollit minim fugiat tempor dolore sit officia ut dolore. </textarea>
 										</div>
 									</div>
 									<div class="form-actions">

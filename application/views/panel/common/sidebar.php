@@ -21,6 +21,7 @@
 			<li><a href="<?php echo base_url('seeker/lamaran'); ?>">Surat Lamaran</a></li>
 			<li><a href="<?php echo base_url('seeker/sent'); ?>">Kirim Lamaran</a></li>
 			<li><a href="<?php echo base_url('seeker/setting'); ?>">Setting</a></li>
+			<li><a href="<?php echo base_url('seeker/info_tambahan'); ?>">Info Tambahan</a></li>
 		</ul>
 	</div>
 	<div class="subnav">
