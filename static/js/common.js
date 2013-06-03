@@ -442,6 +442,12 @@ var Func = {
 				p.callback(data);
 			}
 		} });
+	},
+	show_notice: function(p) {
+		p.title = (p.title == null) ? 'Message' : p.title;
+		p.text = (p.text == null) ? '-' : p.text;
+		
+		$.gritter.add({ title: p.title, text: p.text, sticky: true, time: 3000 });
 	}
 }
 
