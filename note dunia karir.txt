@@ -153,3 +153,20 @@ ajak request => done
 Struktur database belum ada
 
 login
+
+SENT / KIRIM LAMARAN
+- Editor world belum ada
+- Combobox surat lamaran belum bisa dibuka
+- Form yang diterima perusahaan belum
+
+SETTING
+- Selesai
+
+SLIDE BAR (VIEW)
+- Tambahan "Info Tambahan"
+
+INFO TAMBAHAN
+- Copy dari Edit Resume, Header masih "Edit Resume"
+
+Contoh Combo box
+Table Kelamin belum ada
