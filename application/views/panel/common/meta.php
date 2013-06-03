@@ -9,6 +9,7 @@
 	<title>FLAT - Blank Page</title>
 	<link rel="shortcut icon" href="<?php echo base_url('static/theme/flat/img/favicon.ico'); ?>" />
 	<link rel="apple-touch-icon-precomposed" href="<?php echo base_url('static/theme/flat/img/apple-touch-icon-precomposed.png'); ?>" />
+	<link rel="stylesheet" href="<?php echo base_url('static/css/flexslider.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/bootstrap.min.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/bootstrap-responsive.min.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/plugins/datepicker/datepicker.css'); ?>">
@@ -19,9 +20,10 @@
 	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/plugins/gritter/jquery.gritter.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/style.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/themes.css'); ?>">
-
+	
 	<script>var web = { host: '<?php echo base_url(); ?>' };</script>
 	<script src="<?php echo base_url('static/theme/flat/js/jquery.min.js'); ?>"></script>
+	<script src="<?php echo base_url('static/js/jquery.flexslider.js'); ?>"></script>
 	<script src="<?php echo base_url('static/theme/flat/js/plugins/nicescroll/jquery.nicescroll.min.js'); ?>"></script>
 	<script src="<?php echo base_url('static/theme/flat/js/plugins/imagesLoaded/jquery.imagesloaded.min.js'); ?>"></script>
 	<script src="<?php echo base_url('static/theme/flat/js/plugins/jquery-ui/jquery.ui.core.min.js'); ?>"></script>

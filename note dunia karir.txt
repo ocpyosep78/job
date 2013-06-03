@@ -145,10 +145,11 @@ Subscribe
 Note Kesulitan			
 ----------------------------------------------------------------------------------------
 
-Contoh tanggal belum ada
+Contoh tanggal belum ada => done
+slider => done
+contoh model & controller yang ada transaksi => done
+Validasi => done
+ajak request => done
 Struktur database belum ada
+
 login
-slider
-contoh model & controller yang ada transaksi
-Validasi
-ajak request
