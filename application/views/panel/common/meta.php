@@ -1,3 +1,6 @@
+<?php
+	$title = (!empty($title)) ? $title : 'FLAT - Blank Page';
+?>
 <!doctype html>
 <html>
 <head>
@@ -6,7 +9,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	
-	<title>FLAT - Blank Page</title>
+	<title><?php echo $title; ?></title>
 	<link rel="shortcut icon" href="<?php echo base_url('static/theme/flat/img/favicon.ico'); ?>" />
 	<link rel="apple-touch-icon-precomposed" href="<?php echo base_url('static/theme/flat/img/apple-touch-icon-precomposed.png'); ?>" />
 	<link rel="stylesheet" href="<?php echo base_url('static/css/flexslider.css'); ?>">

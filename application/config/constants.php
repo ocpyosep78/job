@@ -15,8 +15,12 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 define('SHA_SECRET',							'raHa5!4');
+define('NEGARA_INDONESIA_ID',					99);
 
-define('RESUME',								'resume');
+define('KELAMIN',								'kelamin');
+define('MARITAL',								'marital');
+define('PROPINSI',								'propinsi');
+define('SEEKER',								'seeker');
 
 
 /* End of file constants.php */

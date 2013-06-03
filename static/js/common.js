@@ -448,6 +448,13 @@ var Func = {
 		p.text = (p.text == null) ? '-' : p.text;
 		
 		$.gritter.add({ title: p.title, text: p.text, sticky: true, time: 3000 });
+	},
+	
+	get_seeker: function() {
+		var seeker_temp = $('.cnt-seeker').text();
+		eval('var seeker = ' + seeker_temp);
+		
+		return seeker;
 	}
 }
 

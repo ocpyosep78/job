@@ -18,9 +18,14 @@ class resume extends CI_Controller {
 		
 		$result = array();
 		if ($action == 'update') {
-			$result = $this->Resume_model->update($_POST);
+			$result = $this->Seeker_model->update($_POST);
 		} else if ($action == 'delete') {
-			$result = $this->Resume_model->delete($_POST);
+			$result = $this->Seeker_model->delete($_POST);
+		}
+		
+		if (!empty($_POST['update_seesion'])) {
+			$seeker = $this->Seeker_model->get_by_id(array( 'id' => $_POST['id'] ));
+			$this->Seeker_model->set_session($seeker);
 		}
 		
 		echo json_encode($result);
