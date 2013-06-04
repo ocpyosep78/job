@@ -151,8 +151,14 @@ contoh model & controller yang ada transaksi => done
 Validasi => done
 ajak request => done
 Struktur database belum ada
-
 login
+
+EDIT RESUME
+- provinsi 	belum masuk ke database
+- kota		belum masuk ke database
+- gender	belum masuk ke database
+- tgl lahir	belum masuk ke database
+- status	belum masuk ke database
 
 SENT / KIRIM LAMARAN
 - Editor world belum ada
@@ -170,3 +176,13 @@ INFO TAMBAHAN
 
 Contoh Combo box
 Table Kelamin belum ada
+
+CREATE PAGE
+- Selesai
+
+ADD JOBS POSITION / VACANCY
+- kurang editor HTML 2x
+- Posisi cek box seharusnya di samping combobox pengalaman
+
+PROFIL PERUSaHAAN
+- Textbox Zide Code terlalu panjang

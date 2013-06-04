@@ -56,16 +56,16 @@
 					</select></div>
 				</div>
 				<div class="control-group">
-					<label for="home_phone_number" class="control-label">Home Phone Number</label>
+					<label for="phone" class="control-label">Home Phone Number</label>
 					<div class="controls">
-						<input type="text" name="home_phone_number" id="home_phone_number" class="input-xlarge">
+						<input type="text" name="phone" id="phone" class="input-xlarge">
 						<span class="help-block">example: +62 21 5678910</span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label for="mobile_number" class="control-label">Mobile Number</label>
+					<label for="hp" class="control-label">Mobile Number</label>
 					<div class="controls">
-						<input type="text" name="mobile_number" id="mobile_number" class="input-xlarge">
+						<input type="text" name="hp" id="hp" class="input-xlarge">
 						<span class="help-block">example: +62 21 5678910</span>
 					</div>
 				</div>
@@ -91,14 +91,14 @@
 					<label for="kebangsaan" class="control-label">Citizenship</label>
 					<div class="controls">
 						<input type="text" name="kebangsaan" id="kebangsaan" class="input-xlarge">
-						<span class="help-block">Enter you citizenship / Masukkan kewarganegaraan anda</span>
+						<span class="help-block">Enter you kebangsaan / Masukkan kewarganegaraan anda</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label for="agama" class="control-label">Religion</label>
 					<div class="controls">
 						<input type="text" name="agama" id="agama" class="input-xlarge">
-						<span class="help-block">Enter you citizenship / Masukkan kewarganegaraan anda</span>
+						<span class="help-block">Enter you religion / Masukkan agama anda</span>
 					</div>
 				</div>
 				<div class="control-group">
@@ -146,8 +146,21 @@
 		var seeker = Func.get_seeker();
 		$('[name="id"]').val(seeker.id);
 		$('[name="first_name"]').val(seeker.first_name);
+		$('[name="last_name"]').val(seeker.last_name);
+		$('[name="address"]').val(seeker.address);
+		$('[name="propinsi"]').val(seeker.propinsi);
+		$('[name="kota"]').val(seeker.kota);
+		$('[name="phone"]').val(seeker.phone);
 		$('[name="hp"]').val(seeker.hp);
+		$('[name="gender"]').val(seeker.gender);
+		$('[name="tempat_lahir"]').val(seeker.tempat_lahir);
+		$('[name="tgl_lahir "]').val(seeker.tgl_lahir );
+		$('[name="kebangsaan"]').val(seeker.kebangsaan);
+		$('[name="agama"]').val(seeker.agama);
+		$('[name="marital_status"]').val(seeker.marital_status);
 		$('[name="ibu_kandung"]').val(seeker.ibu_kandung);
+		$('[name="facebook"]').val(seeker.facebook);
+		$('[name="twitter"]').val(seeker.twitter);
 		// lanjutin disini
 		
 		$('#form-resume').submit(function() {

@@ -14,30 +14,15 @@
 							<div class="box-content">
 								<form action="#" method="POST" class='form-horizontal'>
 									<div class="control-group">
-										<label for="textfield" class="control-label">Text input</label>
+										<label for="penulis" class="control-label">Penulis</label>
 										<div class="controls">
-											<input type="text" name="textfield" id="textfield" class="input-xlarge">
-											<span class="help-block">This is just a supporting text</span>
+											<label for="penulis2" class="control-label">Penulis2</label>
 										</div>
 									</div>
 									<div class="control-group">
-										<label for="password" class="control-label">Password</label>
+										<label for="kategori" class="control-label">Kategori</label>
 										<div class="controls">
-											<input type="password" name="password" id="password" placeholder="*********" class="input-xlarge">
-											<span class="help-block">Minimum length: 9, only numeric</span>
-										</div>
-									</div>
-									<div class="control-group">
-										<label for="file" class="control-label">File-input</label>
-										<div class="controls">
-											<input type="file" name="file" id="file" class="input-block-level">
-											<span class="help-block">Only .jpg (Max Size: 100MB)</span>
-										</div>
-									</div>
-									<div class="control-group">
-										<label for="select" class="control-label">Select</label>
-										<div class="controls">
-											<select name="select" id="select" class='input-large'>
+											<select name="kategori" id="kategori" class='input-large'>
 												<option value="1">Option-1</option>
 												<option value="2">Option-2</option>
 												<option value="3">Option-3</option>
@@ -51,37 +36,208 @@
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label">Checkboxes</label>
+										<label for="sub_kategori" class="control-label">Sub Kategori</label>
+										<div class="controls">
+											<select name="sub_kategori" id="sub_kategori" class='input-large'>
+												<option value="1">Option-1</option>
+												<option value="2">Option-2</option>
+												<option value="3">Option-3</option>
+												<option value="4">Option-4</option>
+												<option value="5">Option-5</option>
+												<option value="6">Option-6</option>
+												<option value="7">Option-7</option>
+												<option value="8">Option-8</option>
+												<option value="9">Option-9</option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="status" class="control-label">Status</label>
+										<div class="controls">
+											<select name="status" id="status" class='input-large'>
+												<option value="1">Option-1</option>
+												<option value="2">Option-2</option>
+												<option value="3">Option-3</option>
+												<option value="4">Option-4</option>
+												<option value="5">Option-5</option>
+												<option value="6">Option-6</option>
+												<option value="7">Option-7</option>
+												<option value="8">Option-8</option>
+												<option value="9">Option-9</option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="position" class="control-label">Position</label>
+										<div class="controls">
+											<input type="text" name="position" id="position" class="input-xlarge" data-rule-required="true" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="url_artikel" class="control-label">URL Artikel</label>
+										<div class="controls">
+											<input type="text" name="url_artikel" id="url_artikel" class="input-xlarge" data-rule-required="true" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="link_artikel" class="control-label">Link Artikel</label>
+										<div class="controls">
+											<input type="text" name="link_artikel" id="link_artikel" class="input-xlarge" data-rule-required="true" /> Exp: Post-34938723423
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="short_desc" class="control-label">Short Desc</label>
+										<div class="controls">
+											
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="detail" class="control-label">Detail</label>
+										<div class="controls">
+											
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="opsi_1" class="control-label">Opsi 1</label>
+										<div class="controls">
+											<input type="text" name="opsi_1" id="opsi_1" class="input-xlarge" data-rule-required="true" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="opsi_2" class="control-label">Opsi 2</label>
+										<div class="controls">
+											<input type="text" name="opsi_2" id="opsi_2" class="input-xlarge" data-rule-required="true" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="lokasi_kerja" class="control-label">Lokasi Kerja</label>
+										<div class="controls">
+											<select name="lokasi_kerja" id="lokasi_kerja" class='input-large'>
+												<option value="1">Option-1</option>
+												<option value="2">Option-2</option>
+												<option value="3">Option-3</option>
+												<option value="4">Option-4</option>
+												<option value="5">Option-5</option>
+												<option value="6">Option-6</option>
+												<option value="7">Option-7</option>
+												<option value="8">Option-8</option>
+												<option value="9">Option-9</option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="kota" class="control-label">Kota</label>
+										<div class="controls">
+											<select name="kota" id="kota" class='input-large'>
+												<option value="1">Option-1</option>
+												<option value="2">Option-2</option>
+												<option value="3">Option-3</option>
+												<option value="4">Option-4</option>
+												<option value="5">Option-5</option>
+												<option value="6">Option-6</option>
+												<option value="7">Option-7</option>
+												<option value="8">Option-8</option>
+												<option value="9">Option-9</option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="pendidikan" class="control-label">Pendidikan</label>
+										<div class="controls">
+											<select name="pendidikan" id="pendidikan" class='input-large'>
+												<option value="1">Option-1</option>
+												<option value="2">Option-2</option>
+												<option value="3">Option-3</option>
+												<option value="4">Option-4</option>
+												<option value="5">Option-5</option>
+												<option value="6">Option-6</option>
+												<option value="7">Option-7</option>
+												<option value="8">Option-8</option>
+												<option value="9">Option-9</option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="tipe_pekerjaan" class="control-label">Tipe Pekerjaan</label>
+										<div class="controls">
+											<select name="tipe_pekerjaan" id="tipe_pekerjaan" class='input-large'>
+												<option value="1">Option-1</option>
+												<option value="2">Option-2</option>
+												<option value="3">Option-3</option>
+												<option value="4">Option-4</option>
+												<option value="5">Option-5</option>
+												<option value="6">Option-6</option>
+												<option value="7">Option-7</option>
+												<option value="8">Option-8</option>
+												<option value="9">Option-9</option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="pengalaman" class="control-label">Pengalaman</label>
+										<div class="controls">
+											<select name="pengalaman" id="pengalaman" class='input-large'>
+												<option value="1">Option-1</option>
+												<option value="2">Option-2</option>
+												<option value="3">Option-3</option>
+												<option value="4">Option-4</option>
+												<option value="5">Option-5</option>
+												<option value="6">Option-6</option>
+												<option value="7">Option-7</option>
+												<option value="8">Option-8</option>
+												<option value="9">Option-9</option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
 										<div class="controls">
 											<label class='checkbox'>
-												<input type="checkbox" name="checkbox"> Lorem ipsum eiusmod
+												<input type="checkbox" name="penuh_waktu/kontrak"> Penuh waktu/kontrak
 											</label>
 											<label class='checkbox'>
-												<input type="checkbox" name="checkbox"> ipsum eiusmod
+												<input type="checkbox" name="paruh_waktu/temporer"> Paruh waktu/temporer
 											</label>
 											<label class='checkbox'>
-												<input type="checkbox" name="checkbox"> Eiusmod lorem ipsum
+												<input type="checkbox" name="magang"> Magang
 											</label>
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label">Radios</label>
+										<label for="gaji_yang_ditawarkan" class="control-label">Gaji yang ditawarkan</label>
 										<div class="controls">
-											<label class='radio'>
-												<input type="radio" name="radio"> Lorem
-											</label>
-											<label class='radio'>
-												<input type="radio" name="radio"> Ipsum
-											</label>
-											<label class='radio'>
-												<input type="radio" name="radio"> Eiusmod
-											</label>
+											<input type="text" name="gaji_yang_ditawarkan" id="gaji_yang_ditawarkan" class="input-xlarge" data-rule-required="true" />
 										</div>
 									</div>
 									<div class="control-group">
-										<label for="textarea" class="control-label">Textarea</label>
+										<label for="date_publish" class="control-label">Date Publish</label>
 										<div class="controls">
-											<textarea name="textarea" id="textarea" class="input-block-level">Lorem ipsum mollit minim fugiat tempor dolore sit officia ut dolore. </textarea>
+											<input type="text" name="date_publish" id="date_publish" class="input-xlarge" data-rule-required="true" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label for="closed_date" class="control-label">Closed Date</label>
+										<div class="controls">
+											<input type="text" name="closed_date" id="closed_date" class="input-xlarge" data-rule-required="true" />
+										</div>
+									</div>
+									
+									<div class="box box-color box-bordered teal">
+										<div class="box-title">
+											<h3><i class="icon-file"></i> Set Email Penerima</h3>
+										</div>
+										<div class="box-content">
+											<div class="control-group">
+												<label for="email_apply" class="control-label">Email Apply</label>
+												<div class="controls">
+													<input type="text" name="email_apply" id="email_apply" class="input-xlarge">
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="email_quick_applay" class="control-label">Email Quick Applay</label>
+												<div class="controls">
+													<input type="text" name="email_quick_applay" id="email_quick_applay" class="input-xlarge">
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="form-actions">

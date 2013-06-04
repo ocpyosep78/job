@@ -13,75 +13,169 @@
 							
 							<div class="box-content">
 								<form action="#" method="POST" class='form-horizontal'>
-									<div class="control-group">
-										<label for="textfield" class="control-label">Text input</label>
-										<div class="controls">
-											<input type="text" name="textfield" id="textfield" class="input-xlarge">
-											<span class="help-block">This is just a supporting text</span>
+									<div class="box box-color box-bordered teal">
+										<div class="box-title">
+											<h3><i class="icon-file"></i> Company Login Details</h3>
+										</div>
+										<div class="box-content">
+											<div class="control-group">
+												<label for="email_address" class="control-label">Email Address</label>
+												<div class="controls">
+													<input type="text" name="email_address" id="email_address" class="input-xlarge">
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="retype_email_address" class="control-label">Retype Email Address</label>
+												<div class="controls">
+													<input type="text" name="retype_email_address" id="retype_email_address" class="input-xlarge">
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="password" class="control-label">Password</label>
+												<div class="controls">
+													<input type="password" name="password" id="password" placeholder="*********" class="input-xlarge">
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="retype_your_password" class="control-label">Retype your Password</label>
+												<div class="controls">
+													<input type="password" name="retype_your_password" id="retype_your_password" placeholder="*********" class="input-xlarge">
+												</div>
+											</div>
 										</div>
 									</div>
-									<div class="control-group">
-										<label for="password" class="control-label">Password</label>
-										<div class="controls">
-											<input type="password" name="password" id="password" placeholder="*********" class="input-xlarge">
-											<span class="help-block">Minimum length: 9, only numeric</span>
+									<div class="box box-color box-bordered teal">
+										<div class="box-title">
+											<h3><i class="icon-file"></i> Company Information</h3>
+										</div>
+										<div class="box-content">
+											<div class="control-group">
+												<label for="company_name" class="control-label">Company Name</label>
+												<div class="controls">
+													<input type="text" name="company_name" id="company_name" class="input-xlarge">
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="company_description" class="control-label">Company Description</label>
+												<div class="controls">
+													<textarea name="company_description" id="company_description" class="input-block-level"></textarea>
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="company_address" class="control-label">Company Address</label>
+												<div class="controls">
+													<textarea name="company_address" id="company_address" class="input-block-level"></textarea>
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="industry" class="control-label">Industry</label>
+												<div class="controls">
+													<select name="industry" id="industry" class='input-large'>
+														<option value="1">Option-1</option>
+														<option value="2">Option-2</option>
+														<option value="3">Option-3</option>
+														<option value="4">Option-4</option>
+														<option value="5">Option-5</option>
+														<option value="6">Option-6</option>
+														<option value="7">Option-7</option>
+														<option value="8">Option-8</option>
+														<option value="9">Option-9</option>
+													</select>
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="location" class="control-label">Location</label>
+												<div class="controls">
+													<select name="location" id="location" class='input-large'>
+														<option value="1">Option-1</option>
+														<option value="2">Option-2</option>
+														<option value="3">Option-3</option>
+														<option value="4">Option-4</option>
+														<option value="5">Option-5</option>
+														<option value="6">Option-6</option>
+														<option value="7">Option-7</option>
+														<option value="8">Option-8</option>
+														<option value="9">Option-9</option>
+													</select>
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="city" class="control-label">City</label>
+												<div class="controls">
+													<select name="city" id="city" class='input-large'>
+														<option value="1">Option-1</option>
+														<option value="2">Option-2</option>
+														<option value="3">Option-3</option>
+														<option value="4">Option-4</option>
+														<option value="5">Option-5</option>
+														<option value="6">Option-6</option>
+														<option value="7">Option-7</option>
+														<option value="8">Option-8</option>
+														<option value="9">Option-9</option>
+													</select>
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="zip_code" class="control-label">Zip Code</label>
+												<div class="controls">
+													<input type="text" name="zip_code" id="zip_code" class="input-xlarge">
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="phone_number" class="control-label">Phone Number</label>
+												<div class="controls">
+													<input type="text" name="phone_number" id="phone_number" class="input-xlarge" value="+62">
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="fax_number" class="control-label">Fax Number</label>
+												<div class="controls">
+													<input type="text" name="fax_number" id="fax_number" class="input-xlarge" value="+62">
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="company_website" class="control-label">Company Website</label>
+												<div class="controls">
+													<input type="text" name="company_website" id="company_website" class="input-xlarge" value="http://">
+												</div>
+											</div>
 										</div>
 									</div>
-									<div class="control-group">
-										<label for="file" class="control-label">File-input</label>
-										<div class="controls">
-											<input type="file" name="file" id="file" class="input-block-level">
-											<span class="help-block">Only .jpg (Max Size: 100MB)</span>
+									<div class="box box-color box-bordered teal">
+										<div class="box-title">
+											<h3><i class="icon-file"></i> Contact Person</h3>
 										</div>
-									</div>
-									<div class="control-group">
-										<label for="select" class="control-label">Select</label>
-										<div class="controls">
-											<select name="select" id="select" class='input-large'>
-												<option value="1">Option-1</option>
-												<option value="2">Option-2</option>
-												<option value="3">Option-3</option>
-												<option value="4">Option-4</option>
-												<option value="5">Option-5</option>
-												<option value="6">Option-6</option>
-												<option value="7">Option-7</option>
-												<option value="8">Option-8</option>
-												<option value="9">Option-9</option>
-											</select>
-										</div>
-									</div>
-									<div class="control-group">
-										<label class="control-label">Checkboxes</label>
-										<div class="controls">
-											<label class='checkbox'>
-												<input type="checkbox" name="checkbox"> Lorem ipsum eiusmod
-											</label>
-											<label class='checkbox'>
-												<input type="checkbox" name="checkbox"> ipsum eiusmod
-											</label>
-											<label class='checkbox'>
-												<input type="checkbox" name="checkbox"> Eiusmod lorem ipsum
-											</label>
-										</div>
-									</div>
-									<div class="control-group">
-										<label class="control-label">Radios</label>
-										<div class="controls">
-											<label class='radio'>
-												<input type="radio" name="radio"> Lorem
-											</label>
-											<label class='radio'>
-												<input type="radio" name="radio"> Ipsum
-											</label>
-											<label class='radio'>
-												<input type="radio" name="radio"> Eiusmod
-											</label>
-										</div>
-									</div>
-									<div class="control-group">
-										<label for="textarea" class="control-label">Textarea</label>
-										<div class="controls">
-											<textarea name="textarea" id="textarea" class="input-block-level">Lorem ipsum mollit minim fugiat tempor dolore sit officia ut dolore. </textarea>
+										<div class="box-content">
+											<div class="control-group">
+												<label for="contact_name" class="control-label">Contact Name</label>
+												<div class="controls">
+													<input type="text" name="contact_name" id="contact_name" class="input-xlarge">
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="mobile_number" class="control-label">Mobile Number</label>
+												<div class="controls">
+													<input type="text" name="mobile_number" id="mobile_number" class="input-xlarge">
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="email" class="control-label">Email</label>
+												<div class="controls">
+													<input type="text" name="email" id="email" class="input-xlarge">
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="logo_perusahaan" class="control-label">Logo Perusahaan</label>
+												<div class="controls">
+													<input type="file" name="logo_perusahaan" id="logo_perusahaan" class="input-block-level">
+												</div>
+											</div>
+											<div class="control-group">
+												<label for="banner_perusahaan" class="control-label">Banner Perusahaan</label>
+												<div class="controls">
+													<input type="file" name="banner_perusahaan" id="banner_perusahaan" class="input-block-level">
+												</div>
+											</div>
 										</div>
 									</div>
 									<div class="form-actions">
