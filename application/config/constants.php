@@ -17,6 +17,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 define('SHA_SECRET',							'raHa5!4');
 define('NEGARA_INDONESIA_ID',					99);
 
+define('COMPANY',								'company');
 define('KELAMIN',								'kelamin');
 define('MARITAL',								'marital');
 define('PROPINSI',								'propinsi');

@@ -163,6 +163,7 @@ Validasi => done
 ajak request => done
 Struktur database belum ada => done
 login => ongoing
+grid
 
 EDIT RESUME
 - provinsi 	belum masuk ke database

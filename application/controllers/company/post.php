@@ -1,5 +1,5 @@
 <?php
-class post extends CI_Controller {
+class post extends COMPANY_Controller {
     function __construct() {
         parent::__construct();
     }
