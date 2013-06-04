@@ -1,5 +1,5 @@
 <?php
-class lamaran extends CI_Controller {
+class lamaran extends SEEKER_Controller {
     function __construct() {
         parent::__construct();
     }

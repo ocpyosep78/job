@@ -1,5 +1,5 @@
 <?php
-class sent extends CI_Controller {
+class sent extends SEEKER_Controller {
     function __construct() {
         parent::__construct();
     }

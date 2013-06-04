@@ -118,7 +118,7 @@
 											<div class="control-group">
 												<label for="zip_code" class="control-label">Zip Code</label>
 												<div class="controls">
-													<input type="text" name="zip_code" id="zip_code" class="input-xlarge">
+													<input type="text" name="zip_code" id="zip_code" class="input-xlarge" placeholder="52148" >
 												</div>
 											</div>
 											<div class="control-group">

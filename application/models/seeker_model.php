@@ -34,6 +34,8 @@ class Seeker_model extends CI_Model {
        
         if (isset($param['id'])) {
             $select_query  = "SELECT * FROM ".SEEKER." WHERE id = '".$param['id']."' LIMIT 1";
+        } else if (isset($param['email'])) {
+            $select_query  = "SELECT * FROM ".SEEKER." WHERE email = '".$param['email']."' LIMIT 1";
         }
        
         $select_result = mysql_query($select_query) or die(mysql_error());
@@ -101,7 +103,7 @@ class Seeker_model extends CI_Model {
 		$is_login = $this->is_login();
 		
 		if (! $is_login) {
-			header("Location: ".site_url('panel'));
+			header("Location: ".base_url('login'));
 			exit;
 		}
 	}
@@ -119,9 +121,6 @@ class Seeker_model extends CI_Model {
 	
 	function get_session() {
 		$seeker = (isset($_SESSION['seeker'])) ? $_SESSION['seeker'] : array();
-		
-		// temporary
-		$seeker['id'] = 1;
 		
 		return $seeker;
 	}

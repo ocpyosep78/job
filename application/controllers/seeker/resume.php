@@ -1,5 +1,5 @@
 <?php
-class resume extends CI_Controller {
+class resume extends SEEKER_Controller {
     function __construct() {
         parent::__construct();
     }

@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/css/flexslider.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/css/jquery.countdown.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/css/font.css'); ?>">
+	<script type="text/javascript">var web = { host: '<?php echo base_url(); ?>' };</script>
 	<script type="text/javascript" src="<?php echo base_url('static/js/jquery-1.8.2.min.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('static/js/main.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('static/js/jquery.flexslider.js'); ?>"></script>
@@ -17,4 +18,5 @@
 	<script type="text/javascript" src="<?php echo base_url('static/js/jquery.placeholder.min.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('static/js/bootstrap.calendar.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('static/js/jquery.countdown.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('static/js/common.js'); ?>"></script>
 </head>

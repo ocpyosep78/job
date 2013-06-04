@@ -141,47 +141,47 @@
 			</form>
 		</div>
 	</div></div></div></div></div>
-	
-	<script>
-		var seeker = Func.get_seeker();
-		$('[name="id"]').val(seeker.id);
-		$('[name="first_name"]').val(seeker.first_name);
-		$('[name="last_name"]').val(seeker.last_name);
-		$('[name="address"]').val(seeker.address);
-		$('[name="propinsi_id"]').val(seeker.propinsi_id);
-		$('[name="kota_id"]').val(seeker.kota_id);
-		$('[name="phone"]').val(seeker.phone);
-		$('[name="hp"]').val(seeker.hp);
-		$('[name="kelamin_id"]').val(seeker.kelamin_id);
-		$('[name="tempat_lahir"]').val(seeker.tempat_lahir);
-		$('[name="tgl_lahir"]').val(Func.SwapDate(seeker.tgl_lahir));
-		$('[name="kebangsaan"]').val(seeker.kebangsaan);
-		$('[name="agama"]').val(seeker.agama);
-		$('[name="marital_id"]').val(seeker.marital_id);
-		$('[name="ibu_kandung"]').val(seeker.ibu_kandung);
-		$('[name="facebook"]').val(seeker.facebook);
-		$('[name="twitter"]').val(seeker.twitter);
-		// lanjutin disini
-		
-		$('#form-resume').submit(function() {
-			if (! $('#form-resume').valid()) {
-				return false;
-			}
-			
-			var param = Site.Form.GetValue('form-resume');
-			param.action = 'update';
-			param.tgl_lahir = Func.SwapDate(param.tgl_lahir);
-			param.update_seesion = 1;
-			
-			Func.ajax({ url: web.host + 'seeker/resume/action', param: param, callback: function(result) {
-				if (result.status == 1) {
-					Func.show_notice({ text: result.message });
-				}
-			} });
-			
-			return false;
-		});
-	</script>
 </div>
+
+<script>
+	var seeker = Func.get_seeker();
+	$('[name="id"]').val(seeker.id);
+	$('[name="first_name"]').val(seeker.first_name);
+	$('[name="last_name"]').val(seeker.last_name);
+	$('[name="address"]').val(seeker.address);
+	$('[name="propinsi_id"]').val(seeker.propinsi_id);
+	$('[name="kota_id"]').val(seeker.kota_id);
+	$('[name="phone"]').val(seeker.phone);
+	$('[name="hp"]').val(seeker.hp);
+	$('[name="kelamin_id"]').val(seeker.kelamin_id);
+	$('[name="tempat_lahir"]').val(seeker.tempat_lahir);
+	$('[name="tgl_lahir"]').val(Func.SwapDate(seeker.tgl_lahir));
+	$('[name="kebangsaan"]').val(seeker.kebangsaan);
+	$('[name="agama"]').val(seeker.agama);
+	$('[name="marital_id"]').val(seeker.marital_id);
+	$('[name="ibu_kandung"]').val(seeker.ibu_kandung);
+	$('[name="facebook"]').val(seeker.facebook);
+	$('[name="twitter"]').val(seeker.twitter);
+	// lanjutin disini
+	
+	$('#form-resume').submit(function() {
+		if (! $('#form-resume').valid()) {
+			return false;
+		}
+		
+		var param = Site.Form.GetValue('form-resume');
+		param.action = 'update';
+		param.tgl_lahir = Func.SwapDate(param.tgl_lahir);
+		param.update_seesion = 1;
+		
+		Func.ajax({ url: web.host + 'seeker/resume/action', param: param, callback: function(result) {
+			if (result.status == 1) {
+				Func.show_notice({ text: result.message });
+			}
+		} });
+		
+		return false;
+	});
+</script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-class setting extends CI_Controller {
+class setting extends SEEKER_Controller {
     function __construct() {
         parent::__construct();
     }

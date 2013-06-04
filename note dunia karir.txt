@@ -142,6 +142,17 @@ Subscribe
 
 
 ----------------------------------------------------------------------------------------
+HOLD
+----------------------------------------------------------------------------------------
+
+SLIDE BAR (VIEW)
+- Tambahan "Info Tambahan"
+
+INFO TAMBAHAN
+- Copy dari Edit Resume, Header masih "Edit Resume"
+
+
+----------------------------------------------------------------------------------------
 Note Kesulitan			
 ----------------------------------------------------------------------------------------
 
@@ -150,8 +161,8 @@ slider => done
 contoh model & controller yang ada transaksi => done
 Validasi => done
 ajak request => done
-Struktur database belum ada
-login
+Struktur database belum ada => done
+login => ongoing
 
 EDIT RESUME
 - provinsi 	belum masuk ke database
@@ -161,21 +172,12 @@ EDIT RESUME
 - status	belum masuk ke database
 
 SENT / KIRIM LAMARAN
-- Editor world belum ada
-- Combobox surat lamaran belum bisa dibuka
-- Form yang diterima perusahaan belum
+- HTML Editor belum ada
+- Combobox surat lamaran belum bisa dibuka => contoh Resume Edit
+- Form yang diterima perusahaan belum => langsung kirim memakai email
 
 SETTING
-- Selesai
-
-SLIDE BAR (VIEW)
-- Tambahan "Info Tambahan"
-
-INFO TAMBAHAN
-- Copy dari Edit Resume, Header masih "Edit Resume"
-
-Contoh Combo box
-Table Kelamin belum ada
+- CRUD
 
 CREATE PAGE
 - Selesai
@@ -185,4 +187,9 @@ ADD JOBS POSITION / VACANCY
 - Posisi cek box seharusnya di samping combobox pengalaman
 
 PROFIL PERUSaHAAN
-- Textbox Zide Code terlalu panjang
+- Textbox Zide Code terlalu panjang => .input-mini{width:60px}.input-small{width:90px}.input-medium{width:150px}.input-large{width:210px}.input-xlarge
+
+
+her0satr@yahoo.com
+qwertyui
+

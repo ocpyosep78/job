@@ -1,5 +1,5 @@
 <?php
-class info_tambahan extends CI_Controller {
+class info_tambahan extends SEEKER_Controller {
     function __construct() {
         parent::__construct();
     }
