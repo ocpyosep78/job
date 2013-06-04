@@ -18,22 +18,37 @@
 						</div>
 					</div>
 				</div>
-				<div class='span9 news blog-article no-margin'>
-				 <h2>mr. Lorem ipsum sit dolor</h2>
-
-<div style="float:none;min-height:600px;">	                      
-di page ini : 
-
-login  <br/>
-Lost Password<br/>
-widget <br/>
-not found page<br/>
-dll<br/></div></div>
-				
-				
-				
-			   dfdsfsdfsdf
-
+				<div class='span9 news blog-article no-margin' style="padding: 0 0 100px 0;">
+					<h2>Login</h2>
+					
+					<div class="cnt-block">
+						<form class="cnt-form">
+							<h1>PENCARI KERJA</h1>
+							<fieldset class="inputs">
+								<input class="user" type="text" placeholder="Username" autofocus required>   
+								<input class="pass" type="password" placeholder="Password" required>
+							</fieldset>
+							<fieldset class="actions">
+								<input type="submit" class="btn-submit" value="Log in">
+								<a href="">Lupa password?</a><a href="">Register</a>
+							</fieldset>
+						</form>
+					</div>
+					<div class="cnt-block">
+						<form class="cnt-form">
+							<h1>PERUSAHAAN</h1>
+							<fieldset class="inputs">
+								<input class="user" type="text" placeholder="Username" autofocus required>   
+								<input class="pass" type="password" placeholder="Password" required>
+							</fieldset>
+							<fieldset class="actions">
+								<input type="submit" class="btn-submit" value="Log in">
+								<a href="">Lupa password?</a><a href="">Register</a>
+							</fieldset>
+						</form>
+					</div>
+					<div class="clear"></div>
+				</div>
 			</div>
 
 		<aside class='span3'>
