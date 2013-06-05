@@ -13,7 +13,7 @@
 	<link rel="shortcut icon" href="<?php echo base_url('static/theme/flat/img/favicon.ico'); ?>" />
 	<link rel="apple-touch-icon-precomposed" href="<?php echo base_url('static/theme/flat/img/apple-touch-icon-precomposed.png'); ?>" />
 	<link rel="stylesheet" href="<?php echo base_url('static/css/flexslider.css'); ?>">
-	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/bootstrap.min.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/bootstrap.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/bootstrap-responsive.min.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/plugins/datepicker/datepicker.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/plugins/jquery-ui/smoothness/jquery-ui.css'); ?>">
@@ -48,6 +48,7 @@
 	<script src="<?php echo base_url('static/theme/flat/js/plugins/datatable/jquery.dataTables.columnFilter.js'); ?>"></script>
 	<script src="<?php echo base_url('static/theme/flat/js/plugins/chosen/chosen.jquery.min.js'); ?>"></script>
 	<script src="<?php echo base_url('static/theme/flat/js/plugins/gritter/jquery.gritter.min.js'); ?>"></script>
+	<script src="<?php echo base_url('static/lib/tinymce/jscripts/tiny_mce/jquery.tinymce.js'); ?>"></script>
 	<script src="<?php echo base_url('static/js/common.js'); ?>"></script>
 	<script src="<?php echo base_url('static/theme/flat/js/eakroko.js'); ?>"></script>
 	<script src="<?php echo base_url('static/theme/flat/js/application.min.js'); ?>"></script>

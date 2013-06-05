@@ -156,13 +156,6 @@ INFO TAMBAHAN
 Note Kesulitan			
 ----------------------------------------------------------------------------------------
 
-Contoh tanggal belum ada => done
-slider => done
-contoh model & controller yang ada transaksi => done
-Validasi => done
-ajak request => done
-Struktur database belum ada => done
-login => ongoing
 grid
 
 EDIT RESUME

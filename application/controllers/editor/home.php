@@ -1,5 +1,5 @@
 <?php
-class home extends CI_Controller {
+class home extends EDITOR_Controller {
     function __construct() {
         parent::__construct();
     }

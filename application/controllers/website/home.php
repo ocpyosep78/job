@@ -59,6 +59,10 @@ class home extends CI_Controller {
 			unset($_POST['action']);
 		}
 		
+		// additional action
+		preg_match('/ajax\/([a-z0-9]+)/i', $_SERVER['REQUEST_URI'], $match);
+		$action = (empty($action) && !empty($match[1])) ? $match[1] : $action;
+		
 		$result = array( 'status' => false );
 		if ($action == 'login_seeker') {
 			$seeker = $this->Seeker_model->get_by_id(array('email' => $_POST['email']));
@@ -77,6 +81,47 @@ class home extends CI_Controller {
 			$this->Seeker_model->set_session($seeker);
 			$result['status'] = true;
 			$result['link'] = base_url('seeker/resume');
+		} else if ($action == 'login_company') {
+			$company = $this->Company_model->get_by_id(array('email' => $_POST['email']));
+			if (count($company) == 0 || empty($_POST['email'])) {
+				$result['message'] = 'user anda tidak ditemukan.';
+				echo json_encode($result);
+				exit;
+			}
+			
+			if (EncriptPassword($_POST['passwd']) != $company['passwd']) {
+				$result['message'] = 'Password tidak sama.';
+				echo json_encode($result);
+				exit;
+			}
+			
+			$this->Company_model->set_session($company);
+			$result['status'] = true;
+			$result['link'] = base_url('company/post');
+		} else if ($action == 'login_editor') {
+			$editor = $this->Editor_model->get_by_id(array('email' => $_POST['email']));
+			if (count($editor) == 0 || empty($_POST['email'])) {
+				$result['message'] = 'user anda tidak ditemukan.';
+				echo json_encode($result);
+				exit;
+			}
+			
+			if (EncriptPassword($_POST['passwd']) != $editor['passwd']) {
+				$result['message'] = 'Password tidak sama.';
+				echo json_encode($result);
+				exit;
+			}
+			
+			$this->Editor_model->set_session($editor);
+			$result['status'] = true;
+			$result['link'] = base_url('editor/home');
+		} else if ($action == 'logout') {
+			$this->Seeker_model->delete_session();
+			$this->Company_model->delete_session();
+			$this->Editor_model->delete_session();
+			
+			header("Location: ".base_url());
+			exit;
 		}
 		
 		echo json_encode($result);

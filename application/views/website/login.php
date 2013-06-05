@@ -12,10 +12,10 @@
 			
 			<div class='span9 news blog-article no-margin' style="padding: 0 0 100px 0;">
 				<h2>Login</h2>
-				<div class="hide center message-login" style="text-align: center; padding: 0 0 15px 0; font-size: 14px; color: #FF0000;">asd</div>
+				<div class="hide center message-login" style="text-align: center; padding: 0 0 15px 0; font-size: 14px; color: #FF0000;"></div>
 				
 				<div class="cnt-block">
-					<form class="cnt-form" id="form-seeker">
+					<form class="cnt-form" id="form-seeker" data-ajaxpost="ajax/seeker">
 						<input type="hidden" name="action" value="login_seeker" />
 						<h1>PENCARI KERJA</h1>
 						<fieldset class="inputs">
@@ -29,7 +29,7 @@
 					</form>
 				</div>
 				<div class="cnt-block">
-					<form class="cnt-form" id="form-company">
+					<form class="cnt-form" id="form-company" data-ajaxpost="ajax/company">
 						<input type="hidden" name="action" value="login_company" />
 						<h1>PERUSAHAAN</h1>
 						<fieldset class="inputs">
@@ -56,10 +56,11 @@
 </section>
 
 <script>
-$('#form-seeker').submit(function() {
+$('#form-seeker, #form-company').submit(function() {
 	$('.message-login').hide();
-	var param = Site.Form.GetValue('form-seeker');
-	Func.ajax({ url: web.host + 'ajax/seeker', param: param, callback: function(result) {
+	var form_id = $(this).attr('id');
+	var param = Site.Form.GetValue(form_id);
+	Func.ajax({ url: web.host + $(this).data('ajaxpost'), param: param, callback: function(result) {
 		if (result.status) {
 			window.location = result.link;
 		} else {

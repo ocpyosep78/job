@@ -66,3 +66,9 @@ html,html .halflings{-webkit-font-smoothing:antialiased !important}@font-face{fo
 #daily-event .cnt-right img { width: 50px; }
 #daily-event .cnt-middle { float: right; width: 50%; text-align: center; }
 #daily-event .cnt-middle img { width: 200px; height: 300px; }
+
+/*	POP UP BIG */
+.modal-big { width: 720px; margin-left: -360px }
+.modal-big form { padding-left: 70px; }
+.modal-bigest { width: 950px; margin-left: -475px }
+.modal-bigest form { padding-left: 70px; }

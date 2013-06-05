@@ -334,15 +334,9 @@
 			<div class="dropdown">
 				<a href="#" class='dropdown-toggle' data-toggle="dropdown">John Doe <img src="<?php echo base_url('static/theme/flat/img/demo/user-avatar.jpg'); ?>" alt=""></a>
 				<ul class="dropdown-menu pull-right">
-					<li>
-						<a href="more-userprofile.html">Edit profile</a>
-					</li>
-					<li>
-						<a href="#">Account settings</a>
-					</li>
-					<li>
-						<a href="more-login.html">Sign out</a>
-					</li>
+					<li><a href="more-userprofile.html">Edit profile</a></li>
+					<li><a href="#">Account settings</a></li>
+					<li><a href="<?php echo base_url('ajax/logout'); ?>">Sign out</a></li>
 				</ul>
 			</div>
 		</div>

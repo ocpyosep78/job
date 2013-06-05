@@ -1,5 +1,5 @@
 <?php
-class event extends CI_Controller {
+class event extends EDITOR_Controller {
     function __construct() {
         parent::__construct();
     }

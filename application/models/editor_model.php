@@ -1,24 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Company_model extends CI_Model {
+class Editor_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array('id', 'kota_id', 'nama', 'phone', 'faximile', 'website', 'address', 'email', 'passwd', 'description', 'kodepos', 'sales', 'contact_name', 'contact_email', 'contact_no', 'logo', 'banner', 'google_map');
+        $this->field = array('id', 'nama', 'email', 'passwd');
     }
 
     function update($param) {
         $result = array();
        
         if (empty($param['id'])) {
-            $insert_query  = GenerateInsertQuery($this->field, $param, COMPANY);
+            $insert_query  = GenerateInsertQuery($this->field, $param, EDITOR);
             $insert_result = mysql_query($insert_query) or die(mysql_error());
            
             $result['id'] = mysql_insert_id();
             $result['status'] = '1';
             $result['message'] = 'Data berhasil disimpan.';
         } else {
-            $update_query  = GenerateUpdateQuery($this->field, $param, COMPANY);
+            $update_query  = GenerateUpdateQuery($this->field, $param, EDITOR);
             $update_result = mysql_query($update_query) or die(mysql_error());
            
             $result['id'] = $param['id'];
@@ -33,9 +33,9 @@ class Company_model extends CI_Model {
         $array = array();
        
         if (isset($param['id'])) {
-            $select_query  = "SELECT * FROM ".COMPANY." WHERE id = '".$param['id']."' LIMIT 1";
+            $select_query  = "SELECT * FROM ".EDITOR." WHERE id = '".$param['id']."' LIMIT 1";
         } else if (isset($param['email'])) {
-            $select_query  = "SELECT * FROM ".COMPANY." WHERE email = '".$param['email']."' LIMIT 1";
+            $select_query  = "SELECT * FROM ".EDITOR." WHERE email = '".$param['email']."' LIMIT 1";
         }
        
         $select_result = mysql_query($select_query) or die(mysql_error());
@@ -50,12 +50,12 @@ class Company_model extends CI_Model {
         $array = array();
 		
 		$string_filter = GetStringFilter($param, @$param['column']);
-		$string_sorting = GetStringSorting($param, @$param['column'], 'nama ASC');
+		$string_sorting = GetStringSorting($param, @$param['column'], 'first_name ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS Company.*
-			FROM ".COMPANY." Company
+			SELECT SQL_CALC_FOUND_ROWS Editor.*
+			FROM ".EDITOR." Editor
 			WHERE 1 $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
@@ -78,7 +78,7 @@ class Company_model extends CI_Model {
     }
 	
     function delete($param) {
-		$delete_query  = "DELETE FROM ".COMPANY." WHERE id = '".$param['id']."' LIMIT 1";
+		$delete_query  = "DELETE FROM ".EDITOR." WHERE id = '".$param['id']."' LIMIT 1";
 		$delete_result = mysql_query($delete_query) or die(mysql_error());
 		
 		$result['status'] = '1';
@@ -97,37 +97,37 @@ class Company_model extends CI_Model {
 		return $row;
 	}
 	
-	/*	Region Company Session */
+	/*	Region Editor Session */
 	
 	function login_required() {
 		$is_login = $this->is_login();
 		
 		if (! $is_login) {
-			header("Location: ".base_url('login'));
+			header("Location: ".base_url('editor/login'));
 			exit;
 		}
 	}
 	
 	function is_login() {
-		$company = $this->get_session();
-		$is_login = (count($company) == 0) ? false : true;
+		$editor = $this->get_session();
+		$is_login = (count($editor) == 0) ? false : true;
 		
 		return $is_login;
 	}
 	
 	function set_session($param) {
-		$_SESSION['company'] = $param;
+		$_SESSION['editor'] = $param;
 	}
 	
 	function get_session() {
-		$company = (isset($_SESSION['company'])) ? $_SESSION['company'] : array();
+		$editor = (isset($_SESSION['editor'])) ? $_SESSION['editor'] : array();
 		
-		return $company;
+		return $editor;
 	}
 	
 	function delete_session() {
-		$_SESSION['company'] = array();
+		$_SESSION['editor'] = array();
 	}
 	
-	/*	End Region Company Session */
+	/*	End Region Editor Session */
 }
