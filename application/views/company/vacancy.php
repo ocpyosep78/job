@@ -1,3 +1,11 @@
+<?php
+	$seeker = $this->Seeker_model->get_session();
+	
+	$array_propinsi = $this->Propinsi_model->get_array(array('nagara_id' => NEGARA_INDONESIA_ID));
+	$array_marital = $this->Marital_model->get_array();
+	$array_jenjang = $this->Jenjang_model->get_array();
+?>
+
 <?php $this->load->view( 'panel/common/meta' ); ?>
 <body>
 <?php $this->load->view( 'panel/common/navigation' ); ?>
@@ -52,20 +60,10 @@
 										</div>
 									</div>
 									<div class="control-group">
-										<label for="status" class="control-label">Status</label>
-										<div class="controls">
-											<select name="status" id="status" class='input-large'>
-												<option value="1">Option-1</option>
-												<option value="2">Option-2</option>
-												<option value="3">Option-3</option>
-												<option value="4">Option-4</option>
-												<option value="5">Option-5</option>
-												<option value="6">Option-6</option>
-												<option value="7">Option-7</option>
-												<option value="8">Option-8</option>
-												<option value="9">Option-9</option>
-											</select>
-										</div>
+										<label for="marital_id" class="control-label">Status</label>
+										<div class="controls"><select name="marital_id" id="marital_id" class='input-xlarge'>
+											<?php echo ShowOption(array( 'Array' => $array_marital, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
+										</select></div>
 									</div>
 									<div class="control-group">
 										<label for="position" class="control-label">Position</label>
@@ -111,19 +109,9 @@
 									</div>
 									<div class="control-group">
 										<label for="lokasi_kerja" class="control-label">Lokasi Kerja</label>
-										<div class="controls">
-											<select name="lokasi_kerja" id="lokasi_kerja" class='input-large'>
-												<option value="1">Option-1</option>
-												<option value="2">Option-2</option>
-												<option value="3">Option-3</option>
-												<option value="4">Option-4</option>
-												<option value="5">Option-5</option>
-												<option value="6">Option-6</option>
-												<option value="7">Option-7</option>
-												<option value="8">Option-8</option>
-												<option value="9">Option-9</option>
-											</select>
-										</div>
+										<div class="controls"><select name="propinsi_id" id="propinsi_id" class='input-xlarge'>
+											<?php echo ShowOption(array( 'Array' => $array_propinsi, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
+										</select></div>
 									</div>
 									<div class="control-group">
 										<label for="kota" class="control-label">Kota</label>
@@ -142,20 +130,10 @@
 										</div>
 									</div>
 									<div class="control-group">
-										<label for="pendidikan" class="control-label">Pendidikan</label>
-										<div class="controls">
-											<select name="pendidikan" id="pendidikan" class='input-large'>
-												<option value="1">Option-1</option>
-												<option value="2">Option-2</option>
-												<option value="3">Option-3</option>
-												<option value="4">Option-4</option>
-												<option value="5">Option-5</option>
-												<option value="6">Option-6</option>
-												<option value="7">Option-7</option>
-												<option value="8">Option-8</option>
-												<option value="9">Option-9</option>
-											</select>
-										</div>
+										<label for="jenjang" class="control-label">Pendidikan</label>
+										<div class="controls"><select name="jenjang" id="jenjang" class='input-xlarge'>
+											<?php echo ShowOption(array( 'Array' => $array_jenjang, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
+										</select></div>
 									</div>
 									<div class="control-group">
 										<label for="tipe_pekerjaan" class="control-label">Tipe Pekerjaan</label>
@@ -217,7 +195,7 @@
 									<div class="control-group">
 										<label for="closed_date" class="control-label">Closed Date</label>
 										<div class="controls">
-											<input type="text" name="closed_date" id="closed_date" class="input-xlarge" data-rule-required="true" />
+											<input type="text" name="closed_date" id="closed_date" class="input-xlarge datepick" />
 										</div>
 									</div>
 									

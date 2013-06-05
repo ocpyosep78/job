@@ -184,13 +184,20 @@ CREATE PAGE
 - Selesai
 
 ADD JOBS POSITION / VACANCY
-- kurang editor HTML 2x
-- Posisi cek box seharusnya di samping combobox pengalaman
+- kurang HTML Editor 2x
+- Combo box closed date sudah diganti datapicker
+- Perbaikan combo box status (marital)
+- Perbaikan combo box lokasi kerja (propinsi)
+- Perbaikan combo box pendidikan
+- MASIH ADA KETERANGAN ERROR
 
-PROFIL PERUSaHAAN
-- Textbox Zide Code terlalu panjang => .input-mini{width:60px}.input-small{width:90px}.input-medium{width:150px}.input-large{width:210px}.input-xlarge
+PROFIL PERUSAHAAN
+- (SELESAI)Textbox Zide Code terlalu panjang => .input-mini{width:60px}.input-small{width:90px}.input-medium{width:150px}.input-large{width:210px}.input-xlarge
+- Penambahan placeholder (phone number, fax number, company website)
+- Perbaikan combo box location (Propinsi)
 
 
 her0satr@yahoo.com
 qwertyui
 
+propinsi_model kehapus

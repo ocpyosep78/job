@@ -1,3 +1,8 @@
+<?php
+	$seeker = $this->Seeker_model->get_session();
+	$array_propinsi = $this->Propinsi_model->get_array(array('nagara_id' => NEGARA_INDONESIA_ID));
+	
+?>
 <?php $this->load->view( 'panel/common/meta' ); ?>
 <body>
 <?php $this->load->view( 'panel/common/navigation' ); ?>
@@ -84,20 +89,10 @@
 												</div>
 											</div>
 											<div class="control-group">
-												<label for="location" class="control-label">Location</label>
-												<div class="controls">
-													<select name="location" id="location" class='input-large'>
-														<option value="1">Option-1</option>
-														<option value="2">Option-2</option>
-														<option value="3">Option-3</option>
-														<option value="4">Option-4</option>
-														<option value="5">Option-5</option>
-														<option value="6">Option-6</option>
-														<option value="7">Option-7</option>
-														<option value="8">Option-8</option>
-														<option value="9">Option-9</option>
-													</select>
-												</div>
+												<label for="propinsi_id" class="control-label">Location</label>
+												<div class="controls"><select name="propinsi_id" id="propinsi_id" class='input-xlarge'>
+												<?php echo ShowOption(array( 'Array' => $array_propinsi, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
+											</select></div>
 											</div>
 											<div class="control-group">
 												<label for="city" class="control-label">City</label>
@@ -118,25 +113,25 @@
 											<div class="control-group">
 												<label for="zip_code" class="control-label">Zip Code</label>
 												<div class="controls">
-													<input type="text" name="zip_code" id="zip_code" class="input-xlarge" placeholder="52148" >
+													<input type="text" name="zip_code" id="zip_code" class="input-mini">
 												</div>
 											</div>
 											<div class="control-group">
 												<label for="phone_number" class="control-label">Phone Number</label>
 												<div class="controls">
-													<input type="text" name="phone_number" id="phone_number" class="input-xlarge" value="+62">
+													<input type="text" name="phone_number" id="phone_number" class="input-xlarge" placeholder="+62">
 												</div>
 											</div>
 											<div class="control-group">
 												<label for="fax_number" class="control-label">Fax Number</label>
 												<div class="controls">
-													<input type="text" name="fax_number" id="fax_number" class="input-xlarge" value="+62">
+													<input type="text" name="fax_number" id="fax_number" class="input-xlarge" placeholder="+62">
 												</div>
 											</div>
 											<div class="control-group">
 												<label for="company_website" class="control-label">Company Website</label>
 												<div class="controls">
-													<input type="text" name="company_website" id="company_website" class="input-xlarge" value="http://">
+													<input type="text" name="company_website" id="company_website" class="input-xlarge" placeholder="http://">
 												</div>
 											</div>
 										</div>
