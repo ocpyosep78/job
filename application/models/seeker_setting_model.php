@@ -4,21 +4,21 @@ class Seeker_Setting_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array('id', 'kelamin_id', 'kota_id', 'marital_id', 'seeker_no', 'first_name', 'last_name', 'email', 'tempat_lahir', 'tgl_lahir', 'address', 'phone', 'hp', 'passwd', 'photo', 'last_login', 'last_update', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu_kandung');
+        $this->field = array('id', 'seeker_id', 'is_public', 'is_subscribe', 'is_work');
     }
 
     function update($param) {
         $result = array();
        
         if (empty($param['id'])) {
-            $insert_query  = GenerateInsertQuery($this->field, $param, SEEKER);
+            $insert_query  = GenerateInsertQuery($this->field, $param, SEEKER_SETTING);
             $insert_result = mysql_query($insert_query) or die(mysql_error());
            
             $result['id'] = mysql_insert_id();
             $result['status'] = '1';
             $result['message'] = 'Data berhasil disimpan.';
         } else {
-            $update_query  = GenerateUpdateQuery($this->field, $param, SEEKER);
+            $update_query  = GenerateUpdateQuery($this->field, $param, SEEKER_SETTING);
             $update_result = mysql_query($update_query) or die(mysql_error());
            
             $result['id'] = $param['id'];
@@ -33,10 +33,10 @@ class Seeker_Setting_model extends CI_Model {
         $array = array();
        
         if (isset($param['id'])) {
-            $select_query  = "SELECT * FROM ".SEEKER." WHERE id = '".$param['id']."' LIMIT 1";
-        } else if (isset($param['email'])) {
-            $select_query  = "SELECT * FROM ".SEEKER." WHERE email = '".$param['email']."' LIMIT 1";
-        }
+            $select_query  = "SELECT * FROM ".SEEKER_SETTING." WHERE id = '".$param['id']."' LIMIT 1";
+        } else if (isset($param['seeker_id'])) {
+            $select_query  = "SELECT * FROM ".SEEKER_SETTING." WHERE seeker_id = '".$param['seeker_id']."' LIMIT 1";
+        } 
        
         $select_result = mysql_query($select_query) or die(mysql_error());
         if (false !== $row = mysql_fetch_assoc($select_result)) {
@@ -50,12 +50,12 @@ class Seeker_Setting_model extends CI_Model {
         $array = array();
 		
 		$string_filter = GetStringFilter($param, @$param['column']);
-		$string_sorting = GetStringSorting($param, @$param['column'], 'first_name ASC');
+		$string_sorting = GetStringSorting($param, @$param['column'], 'is_public ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS Seeker.*
-			FROM ".SEEKER." Seeker
+			SELECT SQL_CALC_FOUND_ROWS SeekerSetting.*
+			FROM ".SEEKER_SETTING." SeekerSetting
 			WHERE 1 $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
@@ -78,7 +78,7 @@ class Seeker_Setting_model extends CI_Model {
     }
 	
     function delete($param) {
-		$delete_query  = "DELETE FROM ".SEEKER." WHERE id = '".$param['id']."' LIMIT 1";
+		$delete_query  = "DELETE FROM ".SEEKER_SETTING." WHERE id = '".$param['id']."' LIMIT 1";
 		$delete_result = mysql_query($delete_query) or die(mysql_error());
 		
 		$result['status'] = '1';

@@ -1,5 +1,6 @@
 <?php
 	$seeker = $this->Seeker_model->get_session();
+	$setting = $this->Seeker_Setting_model->get_by_id(array( 'seeker_id' => $seeker['id'] ));
 ?>
 
 <?php $this->load->view( 'panel/common/meta' ); ?>
@@ -19,9 +20,12 @@
 		<div class="box-content">
 			<div class="hide">
 				<div class="cnt-seeker"><?php echo json_encode($seeker); ?></div>
+				<div class="cnt-setting"><?php echo json_encode($setting); ?></div>
 			</div>
 			
 			<form method="POST" class='form-horizontal' id="form-setting">
+				<input type="hidden" name="id" value="0" />
+				<input type="hidden" name="seeker_id" value="0" />
 				<div class="control-group">
 					<label class="control-label">Show my profile to public</label>
 					<div class="controls">
@@ -32,15 +36,15 @@
 				<div class="control-group">
 					<label class="control-label">Berhenti berlangganan Subscribe jobs</label>
 					<div class="controls">
-						<label class='radio'><input type="radio" name="berhenti_berlangganan_subscribe_jobs"> Yes</label>
-						<label class='radio'><input type="radio" name="berhenti_berlangganan_subscribe_jobs"> No</label>
+						<label class='radio'><input type="radio" name="is_subscribe" value="1"> Yes</label>
+						<label class='radio'><input type="radio" name="is_subscribe" value="0"> No</label>
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">Sekarang saya telah bekerja</label>
 					<div class="controls">
-						<label class='radio'><input type="radio" name="sekarang_saya_telah_bekerja"> Yes</label>
-						<label class='radio'><input type="radio" name="sekarang_saya_telah_bekerja"> No</label>
+						<label class='radio'><input type="radio" name="is_work" value="1"> Yes</label>
+						<label class='radio'><input type="radio" name="is_work" value="0"> No</label>
 					</div>
 				</div>
 				<div class="form-actions">
@@ -52,11 +56,19 @@
 	</div></div></div></div></div>
 </div>
 
-
 <script>
 	var seeker = Func.get_seeker();
-	$('[name="id"]').val(seeker.id);
-	// lanjutin disini
+	$('[name="seeker_id"]').val(seeker.id);
+	
+	// setting
+	var raw_setting = $('.cnt-setting').text();
+	eval('var setting = ' + raw_setting);
+	if (typeof(setting.is_public) != 'undefined') {
+		$('[name="id"]').val(setting.id);
+		$('[name="is_public"][value=' + setting.is_public + ']').attr('checked', 'checked');
+		$('[name="is_subscribe"][value=' + setting.is_subscribe + ']').attr('checked', 'checked');
+		$('[name="is_work"][value=' + setting.is_work + ']').attr('checked', 'checked');
+	}
 	
 	$('#form-setting').submit(function() {
 		if (! $('#form-setting').valid()) {
@@ -65,11 +77,13 @@
 		
 		var param = Site.Form.GetValue('form-setting');
 		param.action = 'update';
-		param.is_public = $('input[name=is_public]:checked').val()
-		console.log(param);
+		param.is_public = $('input[name=is_public]:checked').val();
+		param.is_subscribe = $('input[name=is_subscribe]:checked').val();
+		param.is_work = $('input[name=is_work]:checked').val();
 		
 		Func.ajax({ url: web.host + 'seeker/setting/action', param: param, callback: function(result) {
 			if (result.status == 1) {
+				$('[name="id"]').val(result.id);
 				Func.show_notice({ text: result.message });
 			}
 		} });

@@ -23,6 +23,7 @@ define('KELAMIN',								'kelamin');
 define('MARITAL',								'marital');
 define('PROPINSI',								'propinsi');
 define('SEEKER',								'seeker');
+define('SEEKER_SETTING',						'seeker_setting');
 
 
 /* End of file constants.php */
