@@ -72,3 +72,7 @@ html,html .halflings{-webkit-font-smoothing:antialiased !important}@font-face{fo
 .modal-big form { padding-left: 70px; }
 .modal-bigest { width: 950px; margin-left: -475px }
 .modal-bigest form { padding-left: 70px; }
+
+/*	COMMON FORM */
+.form-textlong .control-label { width: 300px; }
+.form-textlong .controls { margin-left: 300px; }

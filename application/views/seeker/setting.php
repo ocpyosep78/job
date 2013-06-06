@@ -7,11 +7,6 @@
 <body data-layout="fixed">
 <?php $this->load->view( 'panel/common/navigation' ); ?>
 
-<style>
-.control-label { width: 300px !important; }
-.controls { margin-left: 300px !important; }
-</style>
-
 <div class="container-fluid" id="content">
 	<?php $this->load->view( 'panel/common/sidebar' ); ?>
 	<div id="main"><div class="container-fluid"><div class="row-fluid"><div class="span12"><div class="box">
@@ -23,7 +18,7 @@
 				<div class="cnt-setting"><?php echo json_encode($setting); ?></div>
 			</div>
 			
-			<form method="POST" class='form-horizontal' id="form-setting">
+			<form method="POST" class='form-horizontal form-textlong' id="form-setting">
 				<input type="hidden" name="id" value="0" />
 				<input type="hidden" name="seeker_id" value="0" />
 				<div class="control-group">

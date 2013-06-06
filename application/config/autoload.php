@@ -110,7 +110,8 @@ $autoload['language'] = array();
 */
 
 $autoload['model'] = array(
-	'Seeker_model', 'Propinsi_model', 'Kelamin_model', 'Marital_model', 'Seeker_model', 'Seeker_Setting_model', 'Company_model', 'Editor_model', 'Jenjang_model'
+	'Seeker_model', 'Propinsi_model', 'Kelamin_model', 'Marital_model', 'Seeker_model', 'Seeker_Setting_model', 'Company_model', 'Editor_model', 'Jenjang_model',
+	'Surat_Lamaran_model', 'Apply_model'
 );
 
 

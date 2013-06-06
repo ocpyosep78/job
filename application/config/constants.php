@@ -17,13 +17,19 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 define('SHA_SECRET',							'raHa5!4');
 define('NEGARA_INDONESIA_ID',					99);
 
+define('APPLY',									'apply');
+define('APPLY_STATUS',							'apply_status');
 define('COMPANY',								'company');
 define('EDITOR',								'editor');
+define('JENJANG',								'jenjang');
 define('KELAMIN',								'kelamin');
+define('KOTA',									'kota');
 define('MARITAL',								'marital');
 define('PROPINSI',								'propinsi');
 define('SEEKER',								'seeker');
 define('SEEKER_SETTING',						'seeker_setting');
+define('SURAT_LAMARAN',							'surat_lamaran');
+define('VACANCY',								'vacancy');
 
 
 /* End of file constants.php */

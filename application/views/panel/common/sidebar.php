@@ -16,7 +16,7 @@
 		</div>
 		<ul class="subnav-menu">
 			<li><a href="<?php echo base_url('seeker/resume'); ?>">Resume</a></li>
-			<li><a href="<?php echo base_url('seeker/resume/edit'); ?>">Resume Edit</a></li>
+			<!-- <li><a href="<?php echo base_url('seeker/resume/edit'); ?>">Resume Edit</a></li>	-->
 			<li><a href="<?php echo base_url('seeker/apply'); ?>">My Jobs Applied</a></li>
 			<li><a href="<?php echo base_url('seeker/lamaran'); ?>">Surat Lamaran</a></li>
 			<li><a href="<?php echo base_url('seeker/sent'); ?>">Kirim Lamaran</a></li>

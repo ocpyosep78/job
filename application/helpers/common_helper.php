@@ -495,14 +495,14 @@
             $Result = '';
             
             if (isset($param['iSortCol_0'])) {
-                for ( $i=0 ; $i<intval( $param['iSortingCols'] ) ; $i++ ) {
+                for ($i = 0; $i < intval($param['iSortingCols']); $i++) {
                     if ( $param[ 'bSortable_'.intval($param['iSortCol_'.$i]) ] == "true" ) {
-                        $Result .= $Field[ intval( $param['iSortCol_'.$i] )-1 ]." ".mysql_real_escape_string( $param['sSortDir_'.$i] ) .", ";
+                        $Result .= $Field[ intval( $param['iSortCol_'.$i] ) ]." ".mysql_real_escape_string( $param['sSortDir_'.$i] ) .", ";
                     }
                 }
                 
                 $Result = substr_replace( $Result, "", -2 );
-                } else if (isset($param['sort'])) {
+			} else if (isset($param['sort'])) {
                 $ArrayString = json_decode($param['sort']);
                 foreach ($ArrayString as $Array) {
                     $FieldName = (isset($Field[$Array->property])) ? $Field[$Array->property] : $Array->property;
@@ -511,7 +511,7 @@
                     $Result .= (empty($Result)) ? '' : ', ';
                     $Result .= $Query;
                 }
-                } else {
+			} else {
                 $Result = $string_default;
             }
             
@@ -682,37 +682,36 @@
             $param['is_delete'] = (isset($param['is_delete'])) ? $param['is_delete'] : 0;
             $param['is_detail'] = (isset($param['is_detail'])) ? $param['is_detail'] : 0;
             
+			$temp_column = '';
             if ($param['is_edit'] == 1) {
-                $temp[0] = (isset($temp[0])) ? $temp[0] : '';
-                $temp[0] .= '<img class="cursor edit" src="'.base_url('static/img/button_edit.png').'"> ';
-                $temp[0] .= '<img class="cursor delete" src="'.base_url('static/img/button_delete.png').'"> ';
+                $temp_column .= '<img class="button-cursor edit" src="'.base_url('static/img/button_edit.png').'"> ';
+                $temp_column .= '<img class="button-cursor delete" src="'.base_url('static/img/button_delete.png').'"> ';
             }
             if (isset($param['is_edit_only']) && $param['is_edit_only'] == 1) {
-                $temp[0] = (isset($temp[0])) ? $temp[0] : '';
-                $temp[0] .= '<img class="cursor edit" src="'.base_url('static/img/button_edit.png').'"> ';
+                $temp_column .= '<img class="button-cursor edit" src="'.base_url('static/img/button_edit.png').'"> ';
             }
             if ($param['is_delete'] == 1) {
-                $temp[0] = (isset($temp[0])) ? $temp[0] : '';
-                $temp[0] .= '<img class="cursor delete" src="'.base_url('static/img/button_delete.png').'"> ';
+                $temp_column .= '<img class="button-cursor delete" src="'.base_url('static/img/button_delete.png').'"> ';
             }
             if ($param['is_detail'] == 1) {
-                $temp[0] = (isset($temp[0])) ? $temp[0] : '';
-                $temp[0] .= '<img class="cursor detail" src="'.base_url('static/img/details_open.png').'"> ';
+                $temp_column .= '<img class="button-cursor detail" src="'.base_url('static/img/details_open.png').'"> ';
             }
             if (!empty($param['is_custom'])) {
-                $temp[0] = (isset($temp[0])) ? $temp[0] : '';
-                $temp[0] .= $param['is_custom'];
+                $temp_column .= $param['is_custom'];
             }
-            if (!empty($temp[0])) {
-                $temp[0] .= '<span class="hide">'.json_encode($row).'</span>';
+			
+			// populate required data
+			$record = array();
+			foreach ($column as $key) {
+				$record[] = (isset($row[$key])) ? $row[$key] : '';
+			}
+			
+            if (!empty($temp_column)) {
+                $temp_column .= '<span class="hide">'.json_encode($row).'</span>';
+				$record[] = $temp_column;
             }
-            
-            foreach ($column as $key => $value) {
-                $temp[] = @$row[$value];
-            }
-            $temp['extra'] = 'hrmll';
-            
-            return $temp;
+			
+            return $record;
         }
     }
     
@@ -758,86 +757,13 @@
 		}
 	}
 	
-	if (! class_exists('CURL')) {
-		class CURL {
-			var $callback = false;
+	if (! function_exists('save_tinymce')) {
+		function save_tinymce($value) {
+			$result = $value;
+			$result = str_replace("\"", "'", $result);
+			$result = htmlentities($result, ENT_QUOTES);
 
-			function setCallback($func_name) {
-				$this->callback = $func_name;
-			}
-
-			function doRequest($method, $url, $param = array()) {
-				// $vars, $referer_address, 
-				
-				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, $url);
-				curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-				curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookie.txt');
-				curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookie.txt');
-				curl_setopt($ch, CURLOPT_TIMEOUT, 20);
-				
-//				curl_setopt($ch, CURLOPT_REFERER, $referer_address);
-				
-				// post param
-//				if ($method == 'POST') {
-					curl_setopt($ch, CURLOPT_POST, 1);
-					curl_setopt($ch, CURLOPT_POSTFIELDS, $param['param']);
-//				}
-				
-				// http header
-//				if (isset($param['header']) && count($param['header']) > 0) {
-//					curl_setopt($ch, CURLOPT_HEADER, 1);
-					
-					curl_setopt($ch, CURLOPT_HEADER, $param['header']);
-//					curl_setopt($ch, CURLOPT_HTTPHEADER, $param['header']);
-//				}
-				
-/*		
-const CLIENT_ID = ****..*** ;
-const SECRET = ***..***;
-
-$base64EncodedClientID = base64_encode(self::CLIENT_ID . ":" . self::SECRET);
-// $headers = array("Authorization" => "Basic " . $base64EncodedClientId, "Accept" =>"**", "Content-type" => "multipart/form-data");
-$params = array("grant_type"=>"client_credentials");
-$url = "https://api.sandbox.paypal.com/v1/oauth2/token";
-
- $ch = curl_init();
- curl_setopt($ch,CURLOPT_RETURNTRANSFER, 1);
- curl_setopt($ch,CURLOPT_URL, $url);
- curl_setopt($ch,CURLOPT_POST, true);
- curl_setopt($ch,CURLOPT_HEADER, $headers);
- curl_setopt($ch,CURLOPT_POSTFIELDS,$params);
- $response = curl_exec($ch);  
- /*	*/
-				
-				$data = curl_exec($ch);
-				curl_close($ch);
-				
-				if ($data) {
-					if ($this->callback) {
-						$callback = $this->callback;
-						$this->callback = false;
-						return call_user_func($callback, $data);
-					} else {
-						return $data;
-					}
-				} else {
-					if (is_resource($ch))
-						return curl_error($ch);
-					else
-						return false;
-				}
-			}
-
-			function get($url, $referer_address = '', $param = array()) {
-				return $this->doRequest('GET', $url, NULL, $referer_address, $param);
-			}
-
-			function post($url, $param = array()) {
-				return $this->doRequest('POST', $url, $param);
-			}
+			return $result;
 		}
 	}
 ?>

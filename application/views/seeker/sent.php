@@ -16,27 +16,30 @@
 									<div class="control-group">
 										<label for="to" class="control-label">To</label>
 										<div class="controls">
-											<input type="text" name="to" id="to" class="input-xlarge">
+											<input type="text" name="to" id="to" class="input-xxlarge">
 										</div>
 									</div>
 									<div class="control-group">
 										<label for="title/subject" class="control-label">Title / Subject</label>
 										<div class="controls">
-											<input type="text" name="title/subject" id="title/subject" class="input-xlarge">
+											<input type="text" name="title/subject" id="title/subject" class="input-xxlarge">
 										</div>
 									</div>
 									<div class="control-group">
 										<label for="nama_perusahaan" class="control-label">Nama Perusahaan</label>
 										<div class="controls">
-											<input type="text" name="nama_perusahaan" id="nama_perusahaan" class="input-xlarge">
+											<input type="text" name="nama_perusahaan" id="nama_perusahaan" class="input-xxlarge">
 										</div>
 									</div>
 									<div class="control-group">
 										<label for="nama_perusahaan" class="control-label">Cover Letter</label>
-									</div>
-									<div class="control-group">
 										<div class="controls">
-											<label for="nama_perusahaan" class="control-label">Yang kan di kirim : (attachment)</label>
+											<textarea name="content" id="input-content1" class="tinymce span9" style="height: 350px; width: 700px;"></textarea>
+										</div>
+									</div>
+									<div class="control-group" style="margin-bottom: 0px;">
+										<div class="controls">
+											<label for="nama_perusahaan" class="control-label" style="width: 700px;">Yang kan di kirim : (attachment)</label>
 										</div>
 									</div>
 									<div class="control-group">
@@ -64,7 +67,7 @@
 										</div>
 									</div>
 									<div class="form-actions">
-										<button type="submit" class="btn btn-primary">Save changes</button>
+										<button type="submit" class="btn btn-primary">Submit</button>
 										<button type="button" class="btn">Cancel</button>
 									</div>
 								</form>

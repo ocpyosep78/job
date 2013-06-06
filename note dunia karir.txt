@@ -185,7 +185,7 @@ ADD JOBS POSITION / VACANCY
 - MASIH ADA KETERANGAN ERROR
 
 PROFIL PERUSAHAAN
-- (SELESAI)Textbox Zide Code terlalu panjang => .input-mini{width:60px}.input-small{width:90px}.input-medium{width:150px}.input-large{width:210px}.input-xlarge
+- (SELESAI)Textbox Zide Code terlalu panjang => .input-mini{width:60px}.input-small{width:90px}.input-medium{width:150px}.input-large{width:210px}.input-xxlarge
 - Penambahan placeholder (phone number, fax number, company website)
 - Perbaikan combo box location (Propinsi)
 

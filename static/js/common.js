@@ -410,27 +410,6 @@ var Func = {
 		});
 		$(p.Container + ' [rel=twipsy]').blur(function() { $(this).twipsy('hide'); });
 	},
-	confirm_delete: function(p) {
-		bootbox.confirm("Apa anda yakin ?", function(result) {
-			if (! result) {
-				return;
-			}
-			
-			$.ajax({ type: "POST", url: p.url, data: p.data }).done(function( RawResult ) {
-				eval('var result = ' + RawResult);
-				
-				if (p.cnt_mesage != null) {
-					Func.popup_result(p.cnt_mesage, result.message);
-				} else {
-					$('.message').html('<div class="alert alert-info"><a data-dismiss="alert" class="close">&times;</a>' + result.message + '</div>');
-				}
-				
-				if (result.status == 1) {
-					p.grid.load();
-				}
-			});
-		});
-	},
 	ajax: function(p) {
 		p.is_json = (p.is_json == null) ? 1 : p.is_json;
 		
@@ -447,7 +426,69 @@ var Func = {
 		p.title = (p.title == null) ? 'Message' : p.title;
 		p.text = (p.text == null) ? '-' : p.text;
 		
+		$('.gritter-close').click();
 		$.gritter.add({ title: p.title, text: p.text, sticky: true, time: 3000 });
+		
+		// close glitter
+		setTimeout(function() {
+			var id = $('.gritter-item-wrapper').last().attr('id');
+			$('#' + id).find('.gritter-close').click();
+		}, 1000);
+	},
+	confirm_delete: function(p) {
+		bootbox.confirm("Apa anda yakin ?", function(result) {
+			if (! result) {
+				return;
+			}
+
+			$.ajax({ type: "POST", url: p.url, data: p.data }).done(function( RawResult ) {
+				eval('var result = ' + RawResult);
+				Func.show_notice({ text: result.message });
+				
+				if (p.callback != null) {
+					p.callback();
+				}
+			});
+		});
+	},
+	init_datatable: function(p) {
+		var cnt_id = '#' + p.id;
+		
+		$(cnt_id).dataTable( {
+			"aoColumns": p.column,
+			"sAjaxSource": p.source,
+			"bProcessing": true, "bServerSide": true, "sServerMethod": "POST", "sPaginationType": "full_numbers",
+			"oLanguage": {
+				"sSearch": "<span>Search:</span> ",
+				"sInfo": "Showing <span>_START_</span> to <span>_END_</span> of <span>_TOTAL_</span> entries",
+				"sLengthMenu": "_MENU_ <span>entries per page</span>"
+			},
+			"fnDrawCallback": function (oSettings) {
+				if (p.callback != null) {
+					p.callback();
+				}
+			}
+		} );
+		
+		$(cnt_id + '_wrapper input').attr("placeholder", "Search here...");
+		$(cnt_id + '_wrapper select').wrap("<div class='input-mini'></div>").chosen({ disable_search_threshold: 9999999 });
+		
+		// initiate
+		if (p.init != null) {
+			p.init();
+		}
+		
+		var dt = {
+			reload: function() {
+				if ($(cnt_id + '_paginate .paginate_active').length > 0) {
+					$(cnt_id + '_paginate .paginate_active').click();
+				} else {
+					$(cnt_id + '_length select').change();
+				}
+			}
+		}
+		
+		return dt;
 	},
 	
 	get_seeker: function() {
