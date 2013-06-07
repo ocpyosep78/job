@@ -45,13 +45,13 @@
 				</div>
 				<div class="control-group">
 					<label for="propinsi_id" class="control-label">Propinsi</label>
-					<div class="controls"><select name="propinsi_id" id="propinsi_id" class='input-xlarge'>
+					<div class="controls"><select name="propinsi_id" id="propinsi_id" class="input-xlarge">
 						<?php echo ShowOption(array( 'Array' => $array_propinsi, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
 					</select></div>
 				</div>
 				<div class="control-group">
 					<label for="kota_id" class="control-label">Kota</label>
-					<div class="controls"><select name="kota_id" id="kota_id" class='input-xlarge'>
+					<div class="controls"><select name="kota_id" id="kota_id" class="input-xlarge">
 						<?php echo ShowOption(array( 'Array' => array(), 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
 					</select></div>
 				</div>
@@ -162,7 +162,14 @@
 	$('[name="ibu_kandung"]').val(seeker.ibu_kandung);
 	$('[name="facebook"]').val(seeker.facebook);
 	$('[name="twitter"]').val(seeker.twitter);
-	// lanjutin disini
+	
+	// set kota
+	combo.kota({ propinsi_id: seeker.propinsi_id, target: $('[name="kota_id"]'), callback: function() { $('[name="kota_id"]').val(seeker.kota_id); } });
+	
+	// change event
+	$('[name="propinsi_id"]').change(function() {
+		combo.kota({ propinsi_id: $('[name="propinsi_id"]').val(), target: $('[name="kota_id"]') })
+	});
 	
 	$('#form-resume').submit(function() {
 		if (! $('#form-resume').valid()) {

@@ -1,82 +1,72 @@
-<?php $this->load->view( 'panel/common/meta' ); ?>
+<?php
+	$seeker = $this->Seeker_model->get_session();
+	$array_surat_lamaran = $this->Surat_Lamaran_model->get_array(array( 'seeker_id' => $seeker['id'] ));
+?>
+
+<?php $this->load->view( 'panel/common/meta', array( 'title' => 'Kirim Lamaran' ) ); ?>
 <body data-layout="fixed">
 <?php $this->load->view( 'panel/common/navigation' ); ?>
 
 <div class="container-fluid" id="content">
 	<?php $this->load->view( 'panel/common/sidebar' ); ?>
-	<div id="main">
-		<div class="container-fluid">
-			<div class="row-fluid">
-					<div class="span12">
-						<div class="box">
-							<?php $this->load->view( 'panel/common/modul_name', array( 'name' => 'Kirim Lamaran', 'class' => 'icon-edit' ) ); ?>
-							
-							<div class="box-content">
-								<form action="#" method="POST" class='form-horizontal'>
-									<div class="control-group">
-										<label for="to" class="control-label">To</label>
-										<div class="controls">
-											<input type="text" name="to" id="to" class="input-xxlarge">
-										</div>
-									</div>
-									<div class="control-group">
-										<label for="title/subject" class="control-label">Title / Subject</label>
-										<div class="controls">
-											<input type="text" name="title/subject" id="title/subject" class="input-xxlarge">
-										</div>
-									</div>
-									<div class="control-group">
-										<label for="nama_perusahaan" class="control-label">Nama Perusahaan</label>
-										<div class="controls">
-											<input type="text" name="nama_perusahaan" id="nama_perusahaan" class="input-xxlarge">
-										</div>
-									</div>
-									<div class="control-group">
-										<label for="nama_perusahaan" class="control-label">Cover Letter</label>
-										<div class="controls">
-											<textarea name="content" id="input-content1" class="tinymce span9" style="height: 350px; width: 700px;"></textarea>
-										</div>
-									</div>
-									<div class="control-group" style="margin-bottom: 0px;">
-										<div class="controls">
-											<label for="nama_perusahaan" class="control-label" style="width: 700px;">Yang kan di kirim : (attachment)</label>
-										</div>
-									</div>
-									<div class="control-group">
-										<div class="controls">
-											<label class='checkbox'>
-												<input type="checkbox" name="resume"> Resume
-											</label>
-											<label class='checkbox'>
-												<input type="checkbox" name="foto_saya"> Foto Saya
-											</label>
-											<label class='checkbox'>
-												<input type="checkbox" name="pilih_surat_lamaran">
-													<select name="select" id="select" class='input-large'>
-														<option value="1">Option-1</option>
-														<option value="2">Option-2</option>
-														<option value="3">Option-3</option>
-														<option value="4">Option-4</option>
-														<option value="5">Option-5</option>
-														<option value="6">Option-6</option>
-														<option value="7">Option-7</option>
-														<option value="8">Option-8</option>
-														<option value="9">Option-9</option>
-													</select>
-											</label>
-										</div>
-									</div>
-									<div class="form-actions">
-										<button type="submit" class="btn btn-primary">Submit</button>
-										<button type="button" class="btn">Cancel</button>
-									</div>
-								</form>
-							</div>
-						</div>
+	<div id="main"><div class="container-fluid"><div class="row-fluid"><div class="span12"><div class="box">
+		<?php $this->load->view( 'panel/common/modul_name', array( 'name' => 'Kirim Lamaran', 'class' => 'icon-edit' ) ); ?>
+		
+		<div class="box-content">
+			<form class='form-horizontal form-validate' id="form-mail">
+				<div class="control-group">
+					<label for="input-to" class="control-label">To</label>
+					<div class="controls"><input type="text" name="to" id="input-to" class="input-xxlarge" data-rule-required="true" data-rule-email="true" /></div>
+				</div>
+				<div class="control-group">
+					<label for="input-subject" class="control-label">Title / Subject</label>
+					<div class="controls"><input type="text" name="subject" id="input-subject" class="input-xxlarge" data-rule-required="true" /></div>
+				</div>
+				<div class="control-group">
+					<label for="input-company" class="control-label">Nama Perusahaan</label>
+					<div class="controls"><input type="text" name="company" id="input-company" class="input-xxlarge" data-rule-required="true" /></div>
+				</div>
+				<div class="control-group">
+					<label for="nama_perusahaan" class="control-label">Cover Letter</label>
+					<div class="controls"><textarea name="content" id="input-content1" class="tinymce span9" style="height: 350px; width: 700px;"></textarea></div>
+				</div>
+				<div class="control-group" style="margin-bottom: 0px;">
+					<div class="controls"><label for="nama_perusahaan" class="control-label" style="width: 700px;">Yang kan di kirim : (attachment)</label></div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<label class='checkbox'><input type="checkbox" name="with_resume" value="1" /> Resume</label>
+						<label class='checkbox'><input type="checkbox" name="with_photo" value="1" /> Foto Saya</label>
+						<div style="float: left; width: 20px;"><input type="checkbox" name="with_letter" value="1" /></div>
+						<select name="surat_lamaran_id" class='input-large'>
+							<?php echo ShowOption(array( 'Array' => $array_surat_lamaran, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
+						</select>
 					</div>
 				</div>
-				
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">Submit</button>
+					<button type="button" class="btn">Cancel</button>
+				</div>
+			</form>
 		</div>
-	</div></div>
+	</div></div></div></div></div>
+</div>
+<script>
+	$('#form-mail').submit(function() {
+		if (! $('#form-mail').valid()) {
+			return false;
+		}
+		
+		var param = Site.Form.GetValue('form-mail');
+		param.action = 'sent_mail';
+		Func.ajax({ url: web.host + 'seeker/sent/action', param: param, callback: function(result) {
+			if (result.status == 1) {
+				Func.show_notice({ text: result.message });
+			}
+		} });
+		
+		return false;
+	});
+</script>
 </body>
 </html>

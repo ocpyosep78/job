@@ -156,41 +156,15 @@ INFO TAMBAHAN
 Note Kesulitan			
 ----------------------------------------------------------------------------------------
 
-grid
 
-EDIT RESUME
-- provinsi 	belum masuk ke database
-- kota		belum masuk ke database
-- gender	belum masuk ke database
-- tgl lahir	belum masuk ke database
-- status	belum masuk ke database
-
-SENT / KIRIM LAMARAN
-- HTML Editor belum ada
-- Combobox surat lamaran belum bisa dibuka => contoh Resume Edit
-- Form yang diterima perusahaan belum => langsung kirim memakai email
-
-SETTING
-- CRUD
-
-CREATE PAGE
-- Selesai
 
 ADD JOBS POSITION / VACANCY
-- kurang HTML Editor 2x
-- Combo box closed date sudah diganti datapicker
-- Perbaikan combo box status (marital)
-- Perbaikan combo box lokasi kerja (propinsi)
-- Perbaikan combo box pendidikan
 - MASIH ADA KETERANGAN ERROR
 
 PROFIL PERUSAHAAN
-- (SELESAI)Textbox Zide Code terlalu panjang => .input-mini{width:60px}.input-small{width:90px}.input-medium{width:150px}.input-large{width:210px}.input-xxlarge
 - Penambahan placeholder (phone number, fax number, company website)
 - Perbaikan combo box location (Propinsi)
 
 
 her0satr@yahoo.com
 qwertyui
-
-propinsi_model kehapus

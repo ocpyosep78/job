@@ -499,4 +499,22 @@ var Func = {
 	}
 }
 
-
+var combo = {
+	kota: function(p) {
+		p.propinsi_id = (p.propinsi_id == null) ? 0 : p.propinsi_id;
+		
+		var ajax_param = {
+			is_json: 0,
+			url: web.host + 'panel/combo',
+			param: { action: 'kota', propinsi_id: p.propinsi_id },
+			callback: function(option) {
+				p.target.html(option);
+				
+				if (p.callback != null) {
+					p.callback();
+				}
+			}
+		}
+		Func.ajax(ajax_param);
+	}
+}

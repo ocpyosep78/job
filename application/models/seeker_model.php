@@ -4,7 +4,10 @@ class Seeker_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array('id', 'kelamin_id', 'kota_id', 'marital_id', 'seeker_no', 'first_name', 'last_name', 'email', 'tempat_lahir', 'tgl_lahir', 'address', 'phone', 'hp', 'passwd', 'photo', 'last_login', 'last_update', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu_kandung');
+        $this->field = array(
+			'id', 'kelamin_id', 'kota_id', 'marital_id', 'seeker_no', 'first_name', 'last_name', 'email', 'tempat_lahir', 'tgl_lahir', 'address', 'phone', 'hp',
+			'passwd', 'photo', 'last_login', 'last_update', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu_kandung'
+		);
     }
 
     function update($param) {
@@ -33,11 +36,18 @@ class Seeker_model extends CI_Model {
         $array = array();
        
         if (isset($param['id'])) {
-            $select_query  = "SELECT * FROM ".SEEKER." WHERE id = '".$param['id']."' LIMIT 1";
+            $select_query  = "
+				SELECT Seeker.*, Kota.nama kota_nama, Propinsi.id propinsi_id, Propinsi.nama propinsi_nama
+				FROM ".SEEKER." Seeker
+				LEFT JOIN ".KOTA." Kota ON Kota.id = Seeker.kota_id
+				LEFT JOIN ".PROPINSI." Propinsi ON Propinsi.id = Kota.propinsi_id
+				WHERE Seeker.id = '".$param['id']."'
+				LIMIT 1
+			";
         } else if (isset($param['email'])) {
             $select_query  = "SELECT * FROM ".SEEKER." WHERE email = '".$param['email']."' LIMIT 1";
         }
-       
+		
         $select_result = mysql_query($select_query) or die(mysql_error());
         if (false !== $row = mysql_fetch_assoc($select_result)) {
             $array = $this->sync($row);

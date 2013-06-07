@@ -1,6 +1,6 @@
 <?php
 
-class Upload extends CI_Controller {
+class upload extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 	}
@@ -8,4 +8,4 @@ class Upload extends CI_Controller {
 	function upload_single() {
 		$this->load->view( 'panel/common/upload_single');
 	}
-}                                                
+}
