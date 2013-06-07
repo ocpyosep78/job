@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Waktu pembuatan: 04. Juni 2013 jam 15:22
+-- Waktu pembuatan: 07. Juni 2013 jam 09:55
 -- Versi Server: 5.1.41
 -- Versi PHP: 5.3.1
 
@@ -31,14 +31,17 @@ CREATE TABLE IF NOT EXISTS `apply` (
   `vacancy_id` int(10) unsigned DEFAULT NULL,
   `apply_status_id` int(10) unsigned DEFAULT NULL,
   `apply_date` datetime DEFAULT NULL,
+  `is_delete` int(11) NOT NULL,
   `addtional_info` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data untuk tabel `apply`
 --
 
+INSERT INTO `apply` (`id`, `seeker_id`, `vacancy_id`, `apply_status_id`, `apply_date`, `is_delete`, `addtional_info`) VALUES
+(1, 1, 1, 1, '2013-06-06 10:17:28', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -50,12 +53,16 @@ CREATE TABLE IF NOT EXISTS `apply_status` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data untuk tabel `apply_status`
 --
 
+INSERT INTO `apply_status` (`id`, `nama`) VALUES
+(1, 'Open'),
+(2, 'Interview'),
+(3, 'Accepted');
 
 -- --------------------------------------------------------
 
@@ -149,12 +156,14 @@ CREATE TABLE IF NOT EXISTS `company` (
   `banner` varchar(100) DEFAULT NULL,
   `google_map` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data untuk tabel `company`
 --
 
+INSERT INTO `company` (`id`, `kota_id`, `nama`, `phone`, `faximile`, `website`, `address`, `email`, `passwd`, `description`, `kodepos`, `sales`, `contact_name`, `contact_email`, `contact_no`, `logo`, `banner`, `google_map`) VALUES
+(1, NULL, 'PT Maju Terus', NULL, NULL, NULL, NULL, 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -305,12 +314,15 @@ CREATE TABLE IF NOT EXISTS `kategori` (
   `nama` varchar(100) DEFAULT NULL,
   `alias` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data untuk tabel `kategori`
 --
 
+INSERT INTO `kategori` (`id`, `nama`, `alias`) VALUES
+(1, 'Berita', NULL),
+(2, 'Entertainment', NULL);
 
 -- --------------------------------------------------------
 
@@ -6288,14 +6300,14 @@ CREATE TABLE IF NOT EXISTS `seeker` (
   `twitter` varchar(255) DEFAULT NULL,
   `ibu_kandung` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data untuk tabel `seeker`
 --
 
 INSERT INTO `seeker` (`id`, `kelamin_id`, `kota_id`, `marital_id`, `seeker_no`, `first_name`, `last_name`, `email`, `tempat_lahir`, `tgl_lahir`, `address`, `phone`, `hp`, `passwd`, `photo`, `last_login`, `last_update`, `agama`, `kebangsaan`, `facebook`, `twitter`, `ibu_kandung`) VALUES
-(1, 0, 0, 0, NULL, 'dfgdfg', 'aaaa', NULL, 'tempat lahir', '0000-00-00', 'address', '+62 6541 8974 64', '+62 654 86 465', NULL, NULL, NULL, NULL, 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu kandung');
+(1, 2, 1529, 2, NULL, 'dfgdfg', 'aaaa', 'her0satr@yahoo.com', 'tempat lahir', '2013-06-04', 'address', '+62 6541 8974 64', '+62 654 86 465', 'd0cccd72f00289035b8e25ff29100dee', NULL, NULL, NULL, 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu kandung');
 
 -- --------------------------------------------------------
 
@@ -6330,12 +6342,14 @@ CREATE TABLE IF NOT EXISTS `seeker_setting` (
   `is_subscribe` int(10) unsigned DEFAULT NULL,
   `is_work` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data untuk tabel `seeker_setting`
 --
 
+INSERT INTO `seeker_setting` (`id`, `seeker_id`, `is_public`, `is_subscribe`, `is_work`) VALUES
+(1, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -6349,12 +6363,17 @@ CREATE TABLE IF NOT EXISTS `subkategori` (
   `nama` varchar(100) DEFAULT NULL,
   `alias` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data untuk tabel `subkategori`
 --
 
+INSERT INTO `subkategori` (`id`, `kategori_id`, `nama`, `alias`) VALUES
+(1, 1, 'Nasional', 'nasional'),
+(2, 1, 'Daerah', 'daerah'),
+(3, 2, 'Film', 'film'),
+(4, 2, 'Musik', 'musik');
 
 -- --------------------------------------------------------
 
@@ -6404,12 +6423,17 @@ CREATE TABLE IF NOT EXISTS `surat_lamaran` (
   `nama` varchar(100) DEFAULT NULL,
   `content` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data untuk tabel `surat_lamaran`
 --
 
+INSERT INTO `surat_lamaran` (`id`, `seeker_id`, `nama`, `content`) VALUES
+(20, 1, 'Surat 1 111', '<p>asldjasd 222</p>'),
+(11, 1, 'Surat Lamaran 1', '<p>Isi Surat Lamaran 1</p>'),
+(15, 1, '4', '<p>4</p>'),
+(16, 1, '5', '<p>5</p>');
 
 -- --------------------------------------------------------
 
@@ -6437,7 +6461,7 @@ CREATE TABLE IF NOT EXISTS `tag` (
 
 CREATE TABLE IF NOT EXISTS `vacancy` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `campany_id` int(10) unsigned DEFAULT NULL,
+  `company_id` int(10) unsigned DEFAULT NULL,
   `subkategori_id` int(10) unsigned DEFAULT NULL,
   `nama` varchar(255) DEFAULT NULL,
   `position` varchar(255) DEFAULT NULL,
@@ -6457,12 +6481,14 @@ CREATE TABLE IF NOT EXISTS `vacancy` (
   `email_apply` varchar(50) DEFAULT NULL,
   `email_quick` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data untuk tabel `vacancy`
 --
 
+INSERT INTO `vacancy` (`id`, `company_id`, `subkategori_id`, `nama`, `position`, `vacancy_status_id`, `article_link`, `content_short`, `content`, `opsi_1`, `opsi_2`, `kota_id`, `jenjang_id`, `jenis_pekerjaan_id`, `seeker_exp_id`, `gaji`, `publish_date`, `close_date`, `email_apply`, `email_quick`) VALUES
+(1, 1, NULL, 'Lowongan Desainer', 'Web Desainer', NULL, NULL, NULL, NULL, NULL, NULL, 25, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
