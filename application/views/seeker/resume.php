@@ -12,6 +12,10 @@
 		<?php $this->load->view( 'panel/common/modul_name', array( 'name' => 'Resume', 'class' => 'icon-reorder' ) ); ?>
 						
 		<div class="box-content">
+			<div class="hide">
+				<div class="cnt-seeker"><?php echo json_encode($seeker); ?></div>
+			</div>
+			
 			<div class="row-fluid margin-top">
 				<div class="alert alert-info">Status resume: <strong>Siap melamat lowongan</strong></div>
 			</div>
@@ -44,24 +48,24 @@
 				<div class="box-content" style="position: relative;">
 					<form action="#" method="POST" class='form-horizontal'>
 						<div class="control-group">
-							<label for="textfield" class="control-label">Nama</label>
-							<div class="controls"><input type="text" name="nama" class="input-xxlarge" readonly="readonly" /></div>
+							<label for="first_name" class="control-label">Nama</label>
+							<div class="controls"><input type="text" name="first_name" id="first_name" class="input-xxlarge" readonly="readonly" /></div>
 						</div>
 						<div class="control-group">
-							<label for="textfield" class="control-label">Email</label>
-							<div class="controls"><input type="text" name="nama" class="input-xxlarge" readonly="readonly" /></div>
+							<label for="email" class="control-label">Email</label>
+							<div class="controls"><input type="email" name="email" class="input-xxlarge" readonly="readonly" /></div>
 						</div>
 						<div class="control-group">
-							<label for="textfield" class="control-label">Nomor Telepon</label>
-							<div class="controls"><input type="text" name="nama" class="input-xxlarge" readonly="readonly" /></div>
+							<label for="phone" class="control-label">Nomor Telepon</label>
+							<div class="controls"><input type="text" name="phone" id="phone" class="input-xxlarge" readonly="readonly" /></div>
 						</div>
 						<div class="control-group">
-							<label for="textfield" class="control-label">Nomor Ponsel</label>
-							<div class="controls"><input type="text" name="nama" class="input-xxlarge" readonly="readonly" /></div>
+							<label for="hp" class="control-label">Nomor Ponsel</label>
+							<div class="controls"><input type="text" name="hp" id="hp" class="input-xxlarge" readonly="readonly" /></div>
 						</div>
 						<div class="control-group">
-							<label for="textfield" class="control-label">Alamat</label>
-							<div class="controls"><textarea name="nama" readonly="readonly" class="span12"></textarea></div>
+							<label for="address" class="control-label">Alamat</label>
+							<div class="controls"><textarea name="address" id="address" readonly="readonly" class="span12"></textarea></div>
 						</div>
 					</form>
 					
@@ -84,16 +88,16 @@
 				<div class="box-content">
 					<form action="#" method="POST" class='form-horizontal'>
 						<div class="control-group">
-							<label for="textfield" class="control-label">Tanggal Lahir</label>
-							<div class="controls"><input type="text" name="nama" class="input-xxlarge" readonly="readonly" /></div>
+							<label for="tgl_lahir" class="control-label">Tanggal Lahir</label>
+							<div class="controls"><input type="text" name="tgl_lahir" id="tgl_lahir" class="input-xxlarge" readonly="readonly" /></div>
 						</div>
 						<div class="control-group">
-							<label for="textfield" class="control-label">Jenis Kelamin</label>
-							<div class="controls"><input type="text" name="nama" class="input-xxlarge" readonly="readonly" /></div>
+							<label for="kelamin_id" class="control-label">Jenis Kelamin</label>
+							<div class="controls"><input type="text" name="kelamin_id" id="kelamin_id" class="input-xxlarge" readonly="readonly" /></div>
 						</div>
 						<div class="control-group">
-							<label for="textfield" class="control-label">Kebangsaan</label>
-							<div class="controls"><input type="text" name="nama" class="input-xxlarge" readonly="readonly" /></div>
+							<label for="kebangsaan" class="control-label">Kebangsaan</label>
+							<div class="controls"><input type="text" name="kebangsaan" id="kebangsaan" class="input-xxlarge" readonly="readonly" /></div>
 						</div>
 						<!--
 						<div class="control-group">
@@ -208,5 +212,19 @@
 		</div>
 	</div></div></div></div></div>
 </div>
+
+<script>
+	var seeker = Func.get_seeker();
+	$('[name="id"]').val(seeker.id);
+	$('[name="first_name"]').val(seeker.first_name);
+	//$('[name="last_name"]').val(seeker.last_name);
+	//$('[name="email"]').val(seeker.email);
+	$('[name="phone"]').val(seeker.phone);
+	$('[name="hp"]').val(seeker.hp);
+	$('[name="address"]').val(seeker.address);
+	$('[name="tgl_lahir"]').val(Func.SwapDate(seeker.tgl_lahir));
+	$('[name="kelamin_id"]').val(seeker.kelamin_id);
+	$('[name="kebangsaan"]').val(seeker.kebangsaan);
+</script>
 </body>
 </html>
