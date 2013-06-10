@@ -19,9 +19,12 @@ define('NEGARA_INDONESIA_ID',					99);
 
 define('APPLY',									'apply');
 define('APPLY_STATUS',							'apply_status');
+define('ARTICLE',								'article');
+define('ARTICLE_STATUS',						'article_status');
 define('COMPANY',								'company');
 define('EDITOR',								'editor');
 define('JENJANG',								'jenjang');
+define('KATEGORI',								'kategori');
 define('KELAMIN',								'kelamin');
 define('KOTA',									'kota');
 define('MARITAL',								'marital');
