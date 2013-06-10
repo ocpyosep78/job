@@ -1,4 +1,4 @@
-<?php $this->load->view( 'panel/common/meta' ); ?>
+<?php $this->load->view( 'panel/common/meta', array( 'title' => 'Login Editor' ) ); ?>
 <body class='login'>
 <div class="wrapper">
 	<h1><a href="index.html"><img src="<?php echo base_url('static/theme/flat/img/logo-big.png'); ?>" alt="" class='retina-ready' width="59" height="49">FLAT</a></h1>
@@ -38,6 +38,8 @@
 		
 		return false;
 	});
+	
+	$('[name="email"]').focus();
 </script>
 </body>
 </html>

@@ -83,13 +83,15 @@
 						<?php echo ShowOption(array( 'Array' => $array_article_status, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
 					</select></div>
 				</div>
-				<div class="grids">
-					<div class="row-fluid">
-						<div class="span1 form-me-label">Publish Date</div>
-						<div class="span2 form-me-input"><input type="text" name="publish_datepick" id="input-publish_datepick" class="input-medium datepick" /></div>
-						<div class="span2 form-me-input">
-							<div class="bootstrap-timepicker"><input type="text" name="timepicker" id="timepicker" class="input-small timepick"></div>
-						</div>
+				<div class="control-group">
+					<label for="input-publish_datepick" class="control-label">Publish Date</label>
+					<div class="controls">
+						<input type="text" name="timepicker" id="timepicker" class="input-small timepick">
+						<!--
+						<input type="text" name="publish_datepick" id="input-publish_datepick" class="input-medium datepick" />
+						<input type="text" name="publish_timepick" id="input-publish_timepick" class="input-small timepick" />
+						
+						-->
 					</div>
 				</div>
 				<div class="form-actions">
@@ -109,6 +111,7 @@
 </div>
 <script>
 	article_image = function(p) {
+		console.log(p)
 		$('[name="photo"]').val(p.file_name);
 		$('.article-photo').attr('src', p.file_link);
 	}

@@ -179,8 +179,8 @@ $(document).ready(function() {
 		$('.timepick').timepicker({
 			defaultTime: 'current',
 			minuteStep: 1,
-			disableFocus: true,
-			template: 'dropdown'
+			showSeconds: true,
+			showMeridian: false
 		});
 	}
 	// colorpicker

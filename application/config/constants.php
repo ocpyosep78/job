@@ -31,6 +31,7 @@ define('MARITAL',								'marital');
 define('PROPINSI',								'propinsi');
 define('SEEKER',								'seeker');
 define('SEEKER_SETTING',						'seeker_setting');
+define('SUBKATEGORI',							'subkategori');
 define('SURAT_LAMARAN',							'surat_lamaran');
 define('VACANCY',								'vacancy');
 

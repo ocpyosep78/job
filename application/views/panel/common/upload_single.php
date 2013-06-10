@@ -19,7 +19,7 @@
 	</script>
 </head>
 <body>
-	<form method="post" enctype="multipart/form-data">
+	<form method="post" enctype="multipart/form-data" id="form-upload">
 		<input type="hidden" name="callback" value="<?php echo (strlen($file_name) == 0) ? 0 : 1; ?>">
 		<input type="hidden" name="file_name" value="<?php echo $file_name; ?>">
 		<input type="hidden" name="file_link" value="<?php echo $file_link; ?>">
@@ -34,7 +34,9 @@
 	</form>
 	<script type="text/javascript">
 		$('.browse').click(function() { $('[name="document"]').click(); });
-		$('[name="document"]').change(function() { $('[name="Submit"]').click(); });
+		$('[name="document"]').change(function() { $('#form-upload').submit(); });
+		
+		// it will call by parent window
 		var browse = function() { $('[name="document"]').click(); }
 		
 		if ($('[name="callback"]').val() == 1) {

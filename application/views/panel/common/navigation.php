@@ -227,10 +227,10 @@
 		</ul>
 		<div class="user">
 			<ul class="icon-nav">
+						<!--
 				<li class='dropdown'>
 					<a href="#" class='dropdown-toggle' data-toggle="dropdown"><i class="icon-envelope-alt"></i><span class="label label-lightred">4</span></a>
 					<ul class="dropdown-menu pull-right message-ul">
-						<!--
 						<li>
 							<a href="#">
 								<img src="img/demo/user-1.jpg" alt="">
@@ -268,13 +268,11 @@
 								</div>
 							</a>
 						</li>
-						-->
 						<li>
 							<a href="components-messages.html" class='more-messages'>Go to Message center <i class="icon-arrow-right"></i></a>
 						</li>
 					</ul>
 				</li>
-				
 				<li class="dropdown sett">
 					<a href="#" class='dropdown-toggle' data-toggle="dropdown"><i class="icon-cog"></i></a>
 					<ul class="dropdown-menu pull-right theme-settings">
@@ -330,6 +328,7 @@
 				<li>
 					<a href="more-locked.html" class='lock-screen' rel='tooltip' title="Lock screen" data-placement="bottom"><i class="icon-lock"></i></a>
 				</li>
+				-->
 			</ul>
 			<div class="dropdown">
 				<a href="#" class='dropdown-toggle' data-toggle="dropdown">John Doe <img src="<?php echo base_url('static/theme/flat/img/demo/user-avatar.jpg'); ?>" alt=""></a>

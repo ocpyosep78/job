@@ -76,3 +76,6 @@ html,html .halflings{-webkit-font-smoothing:antialiased !important}@font-face{fo
 /*	COMMON FORM */
 .form-textlong .control-label { width: 300px; }
 .form-textlong .controls { margin-left: 300px; }
+.grids .row-fluid .span1:hover, .grids .row-fluid .span2:hover { background: none; }
+.grids .row-fluid .form-me-label { background: none; text-align: left; width: 140px; }
+.grids .row-fluid .form-me-input { background: none; text-align: left; margin-left: 20px; }
