@@ -100,6 +100,11 @@ class Seeker_model extends CI_Model {
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
 		
+		$row['full_name'] = $row['first_name'];
+		if (isset($row['first_name']) && isset($row['last_name'])) {
+			$row['full_name'] = $row['first_name'].' '.$row['last_name'];
+		}
+		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));
 		}

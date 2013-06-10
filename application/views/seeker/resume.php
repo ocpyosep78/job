@@ -1,4 +1,8 @@
-<?php $this->load->view( 'panel/common/meta' ); ?>
+<?php
+	$seeker = $this->Seeker_model->get_session();
+?>
+
+<?php $this->load->view( 'panel/common/meta', array('title' => 'Biodata '.$seeker['full_name']) ); ?>
 <body data-layout="fixed">
 <?php $this->load->view( 'panel/common/navigation' ); ?>
 

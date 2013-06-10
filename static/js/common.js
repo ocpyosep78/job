@@ -496,6 +496,12 @@ var Func = {
 		eval('var seeker = ' + seeker_temp);
 		
 		return seeker;
+	},
+	get_editor: function() {
+		var editor_temp = $('.cnt-editor').text();
+		eval('var editor = ' + editor_temp);
+		
+		return editor;
 	}
 }
 
@@ -504,9 +510,24 @@ var combo = {
 		p.propinsi_id = (p.propinsi_id == null) ? 0 : p.propinsi_id;
 		
 		var ajax_param = {
-			is_json: 0,
-			url: web.host + 'panel/combo',
+			is_json: 0, url: web.host + 'panel/combo',
 			param: { action: 'kota', propinsi_id: p.propinsi_id },
+			callback: function(option) {
+				p.target.html(option);
+				
+				if (p.callback != null) {
+					p.callback();
+				}
+			}
+		}
+		Func.ajax(ajax_param);
+	},
+	subkategori: function(p) {
+		p.kategori_id = (p.kategori_id == null) ? 0 : p.kategori_id;
+		
+		var ajax_param = {
+			is_json: 0, url: web.host + 'panel/combo',
+			param: { action: 'subkategori', kategori_id: p.kategori_id },
 			callback: function(option) {
 				p.target.html(option);
 				

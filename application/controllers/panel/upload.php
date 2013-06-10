@@ -5,7 +5,7 @@ class upload extends CI_Controller {
 		parent::__construct();
 	}
 	
-	function upload_single() {
+	function index() {
 		$this->load->view( 'panel/common/upload_single');
 	}
 }
