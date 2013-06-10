@@ -23,6 +23,7 @@ define('ARTICLE',								'article');
 define('ARTICLE_STATUS',						'article_status');
 define('COMPANY',								'company');
 define('EDITOR',								'editor');
+define('EVENT',									'event');
 define('JENJANG',								'jenjang');
 define('KATEGORI',								'kategori');
 define('KELAMIN',								'kelamin');
@@ -34,6 +35,7 @@ define('SEEKER_SETTING',						'seeker_setting');
 define('SUBKATEGORI',							'subkategori');
 define('SURAT_LAMARAN',							'surat_lamaran');
 define('VACANCY',								'vacancy');
+define('WIDGET',								'widget');
 
 
 /* End of file constants.php */

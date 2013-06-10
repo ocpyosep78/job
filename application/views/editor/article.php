@@ -86,21 +86,23 @@
 				<div class="grids">
 					<div class="row-fluid">
 						<div class="span1 form-me-label">Publish Date</div>
-						<div class="span2 form-me-input"><input type="text" name="publish_datepick" id="input-publish_datepick" class="input-medium datepick" /></div>
+						<div class="span2 form-me-input" style="width: 160px;">
+							<input type="text" name="publish_datepick" id="input-publish_datepick" class="input-medium datepick" data-rule-required="true" />
+						</div>
 						<div class="span2 form-me-input">
-							<div class="bootstrap-timepicker"><input type="text" name="timepicker" id="timepicker" class="input-small timepick"></div>
+							<div class="bootstrap-timepicker"><input type="text" name="publish_timepick" id="timepicker" class="input-small timepick" data-rule-required="true" /></div>
 						</div>
 					</div>
 				</div>
 				<div class="form-actions">
-					<button type="submit" class="btn btn-primary save">Save changes</button>
-					<button type="button" class="btn">Cancel</button>
+					<button type="submit" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn form-close">Cancel</button>
 				</div>
 				
 				<div style="position: absolute; top: 0px; right: 20px;">
 					<div style="width: 200px; text-align: center;">
 						<img class="article-photo" src="<?php echo base_url('static/img/no-images.jpg'); ?>" style="width: 188px; height: 116px;">
-						<div style="padding: 10px 0 0 0;"><button type="button" class="btn btn-success article-browse">Upload Image</button></div>
+						<div style="padding: 10px 0 0 0;"><button type="button" class="btn btn-success article-browse">Browse Image</button></div>
 					</div>
 				</div>
 			</form>
@@ -162,7 +164,16 @@
 						$('#form-article [name="article_desc_2"]').val(record.article_desc_2);
 						$('#form-article [name="article_desc_3"]').val(record.article_desc_3);
 						$('#form-article [name="image_piracy"]').val(record.image_piracy);
-						$('#form-article [name="publish_date"]').val(record.publish_date);
+						
+						var publish_date = Func.get_date_time(record.publish_date, 1);
+						$('#form-article [name="publish_datepick"]').val(publish_date.date);
+						$('#form-article [name="publish_timepick"]').val(publish_date.time);
+						
+						if (record.photo_link != null) {
+							$('.article-photo').attr('src', record.photo_link);
+						} else {
+							$('.article-photo').attr('src', NO_IMAGE);
+						}
 						
 						// set subkategori
 						combo.subkategori({ kategori_id: record.kategori_id, target: $('[name="subkategori_id"]'), callback: function() { $('[name="subkategori_id"]').val(record.subkategori_id); } });
@@ -194,8 +205,10 @@
 		$('.article-browse').click(function() { window.article_photo.browse() });
 		
 		/*	Modal */
-		$('#form-article .form-close').click(function() { page.show_grid() });
-		$('#form-article .form-submit').click(function() { $('#form-article').submit(); });
+		$('#form-article .form-close').click(function() {
+			page.show_grid();
+			$("html, body").animate({ scrollTop: 0 }, "slow");
+		});
 		$('#form-article').submit(function() {
 			if (! $('#form-article').valid()) {
 				return false;
@@ -203,7 +216,7 @@
 			
 			var param = Site.Form.GetValue('form-article');
 			param.action = 'update';
-			param.publish_date = Func.SwapDate(param.publish_date);
+			param.publish_date = Func.SwapDate(param.publish_datepick) + ' ' + param.publish_timepick;
 			
 			Func.ajax({ url: web.host + 'editor/article/action', param: param, callback: function(result) {
 				Func.show_notice({ text: result.message });

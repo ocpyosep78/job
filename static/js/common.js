@@ -1,5 +1,40 @@
 var DATE_FORMAT = 'dd-mm-yyyy';
+var NO_IMAGE = web.host + 'static/img/no-images.jpg';
 // var TIME_FORMAT = 'H:i';
+
+String.prototype.strpad = function str_pad(pad_length, pad_string, pad_type) {
+	var input = this;
+	if (pad_type == undefined) pad_type = STR_PAD_RIGHT;
+	if (pad_string == undefined) pad_string = ' ';
+	
+	switch(pad_type) {
+		case 'STR_PAD_RIGHT':
+				if(input.length > pad_length) return input;
+				fillnum = pad_length - input.length;
+				fillstring = new Array(fillnum + 1).join(pad_string).substr(0, fillnum);
+				return input + fillstring;
+		break;
+		case 'STR_PAD_LEFT':
+				if(input.length > pad_length) return input;
+				fillnum = pad_length - input.length;
+				fillstring = new Array(fillnum + 1).join(pad_string).substr(0, fillnum);
+				return fillstring + input;
+		break;
+		case 'STR_PAD_BOTH':
+				if(input.length > pad_length) return input;
+				fillnum = pad_length - input.length;
+				fillnum_right = Math.ceil(fillnum / 2);
+				fillnum_left = Math.floor(fillnum / 2);
+				fillstring_left = new Array(fillnum_left + 1).join(pad_string).substr(0, fillnum_left);
+				fillstring_right = new Array(fillnum_right + 1).join(pad_string).substr(0, fillnum_right);
+				return fillstring_left + input + fillstring_right;
+		break;
+	}
+}
+function str_pad(input, pad_length, pad_string, pad_type) {
+	input = input.toString();
+	return input.strpad(pad_length, pad_string, pad_type);
+}
 
 var Site = {
     Host: web.host,
@@ -502,6 +537,26 @@ var Func = {
 		eval('var editor = ' + editor_temp);
 		
 		return editor;
+	},
+	get_date_time: function(value, default_value) {
+		if (value == null) {
+			var t = new Date();
+			var month = str_pad(t.getMonth() + 1, 2, '0', 'STR_PAD_LEFT');
+			var tgl = str_pad(t.getDate(), 2, '0', 'STR_PAD_LEFT');
+			var hour = str_pad(t.getHours(), 2, '0', 'STR_PAD_LEFT');
+			var minute = str_pad(t.getMinutes(), 2, '0', 'STR_PAD_LEFT');
+			var second = str_pad(t.getSeconds(), 2, '0', 'STR_PAD_LEFT');
+			
+			var date = (default_value == 1) ? tgl + '-' + month + '-' + t.getFullYear() : '';
+			var time = (default_value == 1) ? hour + ':' + minute + ':' + second : '';
+			return { date: date, time: time };
+		}
+		
+		var array_value = value.split(' ');
+		if (array_value.length == 2) {
+			return { date: Func.SwapDate(array_value[0]), time: array_value[1] };
+			
+		}
 	}
 }
 

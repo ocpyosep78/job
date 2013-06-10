@@ -1,76 +1,30 @@
-<?php $this->load->view( 'panel/common/meta' ); ?>
+<?php
+	$count = array(
+		'article' => $this->Article_model->get_count(array( 'is_new' => 1 )),
+		'event' => $this->Event_model->get_count(array( 'is_new' => 1 )),
+		'seeker' => $this->Event_model->get_count(array( 'is_new' => 1 )),
+		'company' => $this->Company_model->get_count(array( 'is_new' => 1 )),
+	);
+?>
+
+<?php $this->load->view( 'panel/common/meta', array( 'title' => 'Dashboard' ) ); ?>
 <body>
 <?php $this->load->view( 'panel/common/navigation' ); ?>
 
 <div class="container-fluid" id="content">
 	<?php $this->load->view( 'panel/common/sidebar' ); ?>
-	<div id="main">
-		<div class="container-fluid">
-			<div class="page-header">
-				<div class="pull-left">
-					<h1>Fixed layout</h1>
-				</div>
-				<div class="pull-right">
-					<ul class="minitiles">
-						<li class='grey'>
-							<a href="#"><i class="icon-cogs"></i></a>
-						</li>
-						<li class='lightgrey'>
-							<a href="#"><i class="icon-globe"></i></a>
-						</li>
-					</ul>
-					<ul class="stats">
-						<li class='satgreen'>
-							<i class="icon-money"></i>
-							<div class="details">
-								<span class="big">$324,12</span>
-								<span>Balance</span>
-							</div>
-						</li>
-						<li class='lightred'>
-							<i class="icon-calendar"></i>
-							<div class="details">
-								<span class="big">February 22, 2013</span>
-								<span>Wednesday, 13:56</span>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="breadcrumbs">
-				<ul>
-					<li>
-						<a href="more-login.html">Home</a>
-						<i class="icon-angle-right"></i>
-					</li>
-					<li>
-						<a href="layouts-sidebar-hidden.html">Layouts</a>
-						<i class="icon-angle-right"></i>
-					</li>
-					<li>
-						<a href="layouts-fixed.html">Fixed layout</a>
-					</li>
-				</ul>
-				<div class="close-bread">
-					<a href="#"><i class="icon-remove"></i></a>
-				</div>
-			</div>
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="box">
-						<div class="box-title">
-							<h3>
-								<i class="icon-reorder"></i>
-								Basic Widget
-							</h3>
-						</div>
-						<div class="box-content">
-							Content
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div></div>
+	<div id="main"><div class="container-fluid"><div class="row-fluid"><div class="span12"><div class="box">
+		<?php $this->load->view( 'panel/common/modul_name', array( 'name' => 'Dashboard', 'class' => 'icon-reorder' ) ); ?>
+		
+		<div class="box-content"><div class="row-fluid"><div class="span12">
+			<ul class="tiles">
+				<li class="orange long"><a href="<?php echo base_url('editor/article'); ?>"><span><i class="icon-envelope"></i> <?php echo $count['article']; ?></span><span class="name">Article</span></a></li>
+				<li class="brown long"><a href="<?php echo base_url('editor/event'); ?>"><span><i class="icon-glass"></i> <?php echo $count['event']; ?></span><span class="name">Event</span></a></li>
+				<li class="green long"><a href="<?php echo base_url('editor/seeker'); ?>"><span><i class="icon-user"></i> <?php echo $count['seeker']; ?></span><span class="name">Pelamar</span></a></li>
+				<li class="teal long"><a href="<?php echo base_url('editor/company'); ?>"><span><i class="icon-home"></i> <?php echo $count['company']; ?></span><span class="name">Perusahaan</span></a></li>
+			</ul>
+		</div></div></div>
+	</div></div></div></div></div>
+</div>
 </body>
 </html>

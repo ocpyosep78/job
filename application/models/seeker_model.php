@@ -79,7 +79,14 @@ class Seeker_model extends CI_Model {
     }
 
     function get_count($param = array()) {
-		$select_query = "SELECT FOUND_ROWS() TotalRecord";
+		$param['is_new'] = (empty($param['is_new'])) ? 0 : $param['is_new'];
+		
+		if ($param['is_new'] == 1) {
+			$select_query = "SELECT COUNT(*) TotalRecord FROM ".SEEKER."";
+		} else {
+			$select_query = "SELECT FOUND_ROWS() TotalRecord";
+		}
+		
 		$select_result = mysql_query($select_query) or die(mysql_error());
 		$row = mysql_fetch_assoc($select_result);
 		$TotalRecord = $row['TotalRecord'];
