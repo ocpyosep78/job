@@ -155,8 +155,10 @@ INFO TAMBAHAN
 ----------------------------------------------------------------------------------------
 Note Kesulitan			
 ----------------------------------------------------------------------------------------
-
-
+RESUME
+- nama yang tampil cuma nama depan
+- email belum ada 
+- jenis kelamin masih berupa angka
 
 ADD JOBS POSITION / VACANCY
 - MASIH ADA KETERANGAN ERROR
