@@ -1,0 +1,2 @@
+2013-06-08 :
+CREATE TABLE  `job_db`.`article_status` ( `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY , `nama` VARCHAR( 200 ) NOT NULL ) ENGINE = MYISAM ;
