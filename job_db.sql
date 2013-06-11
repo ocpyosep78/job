@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 10, 2013 at 05:34 PM
+-- Generation Time: Jun 11, 2013 at 03:48 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -245,6 +245,27 @@ CREATE TABLE IF NOT EXISTS `company_membership` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `company_post`
+--
+
+CREATE TABLE IF NOT EXISTS `company_post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `company_id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `content` longtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `company_post`
+--
+
+INSERT INTO `company_post` (`id`, `company_id`, `nama`, `content`) VALUES
+(1, 1, '111112223331111 222', '<p>111112223331111 2222</p>');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `editor`
 --
 
@@ -344,7 +365,7 @@ CREATE TABLE IF NOT EXISTS `jenjang` (
 INSERT INTO `jenjang` (`id`, `nama`) VALUES
 (1, 'SMA'),
 (2, 'Sarjana S1'),
-(3, 'Diploma');
+(3, 'Diploma 3');
 
 -- --------------------------------------------------------
 
@@ -382,24 +403,6 @@ CREATE TABLE IF NOT EXISTS `kategori_tag` (
 
 --
 -- Dumping data for table `kategori_tag`
---
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `keahlian`
---
-
-CREATE TABLE IF NOT EXISTS `keahlian` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `seeker_id` int(10) unsigned DEFAULT NULL,
-  `content` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `keahlian`
 --
 
 
@@ -4850,29 +4853,6 @@ CREATE TABLE IF NOT EXISTS `page` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pendidikan`
---
-
-CREATE TABLE IF NOT EXISTS `pendidikan` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `seeker_id` int(10) unsigned DEFAULT NULL,
-  `jenjang_id` int(10) unsigned DEFAULT NULL,
-  `score` float DEFAULT NULL,
-  `bidang_studi` varchar(100) DEFAULT NULL,
-  `jurusan` varchar(100) DEFAULT NULL,
-  `nama_sekolah` varchar(100) DEFAULT NULL,
-  `tgl_lulus` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `pendidikan`
---
-
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `pengalaman`
 --
 
@@ -4880,12 +4860,43 @@ CREATE TABLE IF NOT EXISTS `pengalaman` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `pengalaman`
 --
 
+INSERT INTO `pengalaman` (`id`, `nama`) VALUES
+(1, 'Fresh Granduate'),
+(2, '1 Tahun'),
+(3, '2 Tahun'),
+(4, '3 Tahun'),
+(5, '4 Tahun'),
+(6, '5 Tahun');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `position`
+--
+
+CREATE TABLE IF NOT EXISTS `position` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(200) NOT NULL,
+  KEY `id` (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `position`
+--
+
+INSERT INTO `position` (`id`, `nama`) VALUES
+(1, 'Technician'),
+(2, 'Web Programmer'),
+(3, 'Desainer'),
+(4, 'Arsitek'),
+(5, 'Driver'),
+(6, 'Pilot');
 
 -- --------------------------------------------------------
 
@@ -6298,24 +6309,6 @@ INSERT INTO `propinsi` (`id`, `negara_id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `referensi`
---
-
-CREATE TABLE IF NOT EXISTS `referensi` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `seeker_id` int(10) unsigned DEFAULT NULL,
-  `nama` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `referensi`
---
-
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `seeker`
 --
 
@@ -6350,7 +6343,30 @@ CREATE TABLE IF NOT EXISTS `seeker` (
 --
 
 INSERT INTO `seeker` (`id`, `kelamin_id`, `kota_id`, `marital_id`, `seeker_no`, `first_name`, `last_name`, `email`, `tempat_lahir`, `tgl_lahir`, `address`, `phone`, `hp`, `passwd`, `photo`, `last_login`, `last_update`, `agama`, `kebangsaan`, `facebook`, `twitter`, `ibu_kandung`) VALUES
-(1, 2, 1529, 2, NULL, 'dfgdfg', 'aaaa', 'her0satr@yahoo.com', 'tempat lahir', '2013-06-04', 'address', '+62 6541 8974 64', '+62 654 86 465', 'd0cccd72f00289035b8e25ff29100dee', NULL, NULL, NULL, 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu kandung');
+(1, 2, 1236, 2, NULL, 'dfgdfg', 'aaaa', 'her0satr@yahoo.com', 'tempat lahir', '2013-06-04', 'address', '+62 6541 8974 64', '+62 654 86 465', 'd0cccd72f00289035b8e25ff29100dee', NULL, NULL, NULL, 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu kandung');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seeker_education`
+--
+
+CREATE TABLE IF NOT EXISTS `seeker_education` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `seeker_id` int(10) unsigned DEFAULT NULL,
+  `jenjang_id` int(10) unsigned DEFAULT NULL,
+  `score` float DEFAULT NULL,
+  `bidang_studi` varchar(100) DEFAULT NULL,
+  `jurusan` varchar(100) DEFAULT NULL,
+  `nama_sekolah` varchar(100) DEFAULT NULL,
+  `tgl_lulus` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `seeker_education`
+--
+
 
 -- --------------------------------------------------------
 
@@ -6365,10 +6381,48 @@ CREATE TABLE IF NOT EXISTS `seeker_exp` (
   `date_start` date DEFAULT NULL,
   `date_end` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `seeker_exp`
+--
+
+INSERT INTO `seeker_exp` (`id`, `seeker_id`, `nama`, `date_start`, `date_end`) VALUES
+(1, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seeker_expert`
+--
+
+CREATE TABLE IF NOT EXISTS `seeker_expert` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `seeker_id` int(10) unsigned DEFAULT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `seeker_expert`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seeker_reference`
+--
+
+CREATE TABLE IF NOT EXISTS `seeker_reference` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `seeker_id` int(10) unsigned DEFAULT NULL,
+  `nama` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `seeker_reference`
 --
 
 
@@ -6509,6 +6563,7 @@ CREATE TABLE IF NOT EXISTS `vacancy` (
   `nama` varchar(255) DEFAULT NULL,
   `position` varchar(255) DEFAULT NULL,
   `vacancy_status_id` int(10) unsigned DEFAULT NULL,
+  `article_url` varchar(255) NOT NULL,
   `article_link` varchar(255) DEFAULT NULL,
   `content_short` longtext,
   `content` longtext,
@@ -6517,21 +6572,62 @@ CREATE TABLE IF NOT EXISTS `vacancy` (
   `kota_id` int(10) unsigned DEFAULT NULL,
   `jenjang_id` int(10) unsigned DEFAULT NULL,
   `jenis_pekerjaan_id` int(10) unsigned DEFAULT NULL,
-  `seeker_exp_id` int(10) unsigned DEFAULT NULL,
+  `pengalaman_id` int(10) unsigned DEFAULT NULL,
   `gaji` int(10) unsigned DEFAULT NULL,
   `publish_date` date DEFAULT NULL,
   `close_date` date DEFAULT NULL,
   `email_apply` varchar(50) DEFAULT NULL,
   `email_quick` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `vacancy`
 --
 
-INSERT INTO `vacancy` (`id`, `company_id`, `subkategori_id`, `nama`, `position`, `vacancy_status_id`, `article_link`, `content_short`, `content`, `opsi_1`, `opsi_2`, `kota_id`, `jenjang_id`, `jenis_pekerjaan_id`, `seeker_exp_id`, `gaji`, `publish_date`, `close_date`, `email_apply`, `email_quick`) VALUES
-(1, 1, NULL, 'Lowongan Desainer', 'Web Desainer', NULL, NULL, NULL, NULL, NULL, NULL, 25, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `vacancy` (`id`, `company_id`, `subkategori_id`, `nama`, `position`, `vacancy_status_id`, `article_url`, `article_link`, `content_short`, `content`, `opsi_1`, `opsi_2`, `kota_id`, `jenjang_id`, `jenis_pekerjaan_id`, `pengalaman_id`, `gaji`, `publish_date`, `close_date`, `email_apply`, `email_quick`) VALUES
+(1, 1, 1, 'Lowongan Desainer', 'Arsitek,Driver', 3, 'URL Artikel', 'Link Artikel', '<p>Short Desc</p>', '<p>Detail</p>', 'Opsi 1', 'Opsi 2', 1536, 3, 1, 4, 5000000, '2013-06-12', '2013-06-23', 'mail11@mail.com', 'mail22@mail.com'),
+(3, 1, 4, 'Lowongan Q', 'Desainer', 3, '', '', '', '', '', '', 1655, 0, 0, 0, 0, '2013-06-11', '2013-06-28', '1mail@mail.com', 'mail2@mail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vacancy_status`
+--
+
+CREATE TABLE IF NOT EXISTS `vacancy_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `vacancy_status`
+--
+
+INSERT INTO `vacancy_status` (`id`, `nama`) VALUES
+(1, 'Draft'),
+(2, 'Request Approve'),
+(3, 'Approve');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `widget`
+--
+
+CREATE TABLE IF NOT EXISTS `widget` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(255) NOT NULL,
+  `alias` varchar(255) NOT NULL,
+  `content` longtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `widget`
+--
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

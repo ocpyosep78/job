@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Post_model extends CI_Model {
+class Company_Post_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
@@ -11,14 +11,14 @@ class Post_model extends CI_Model {
         $result = array();
        
         if (empty($param['id'])) {
-            $insert_query  = GenerateInsertQuery($this->field, $param, POST);
+            $insert_query  = GenerateInsertQuery($this->field, $param, COMPANY_POST);
             $insert_result = mysql_query($insert_query) or die(mysql_error());
            
             $result['id'] = mysql_insert_id();
             $result['status'] = '1';
             $result['message'] = 'Data berhasil disimpan.';
         } else {
-            $update_query  = GenerateUpdateQuery($this->field, $param, POST);
+            $update_query  = GenerateUpdateQuery($this->field, $param, COMPANY_POST);
             $update_result = mysql_query($update_query) or die(mysql_error());
            
             $result['id'] = $param['id'];
@@ -33,9 +33,9 @@ class Post_model extends CI_Model {
         $array = array();
        
         if (isset($param['id'])) {
-            $select_query  = "SELECT * FROM ".POST." WHERE id = '".$param['id']."' LIMIT 1";
+            $select_query  = "SELECT * FROM ".COMPANY_POST." WHERE id = '".$param['id']."' LIMIT 1";
         } else if (isset($param['company_id'])) {
-            $select_query  = "SELECT * FROM ".POST." WHERE company_id = '".$param['company_id']."' LIMIT 1";
+            $select_query  = "SELECT * FROM ".COMPANY_POST." WHERE company_id = '".$param['company_id']."' LIMIT 1";
         }
        
         $select_result = mysql_query($select_query) or die(mysql_error());
@@ -54,8 +54,8 @@ class Post_model extends CI_Model {
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS Post.*
-			FROM ".POST." Post
+			SELECT SQL_CALC_FOUND_ROWS CompanyPost.*
+			FROM ".COMPANY_POST." CompanyPost
 			WHERE 1 $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
@@ -78,7 +78,7 @@ class Post_model extends CI_Model {
     }
 	
     function delete($param) {
-		$delete_query  = "DELETE FROM ".POST." WHERE id = '".$param['id']."' LIMIT 1";
+		$delete_query  = "DELETE FROM ".COMPANY_POST." WHERE id = '".$param['id']."' LIMIT 1";
 		$delete_result = mysql_query($delete_query) or die(mysql_error());
 		
 		$result['status'] = '1';

@@ -1,6 +1,6 @@
 <?php
 	$company = $this->Company_model->get_session();
-	$post = $this->Post_model->get_by_id(array( 'company_id' => $company['id'] ));
+	$post = $this->Company_Post_model->get_by_id(array( 'company_id' => $company['id'] ));
 ?>
 
 <?php $this->load->view( 'panel/common/meta', array( 'title' => 'Post' ) ); ?>
