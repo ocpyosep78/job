@@ -1,5 +1,5 @@
 <?php
-class slide extends CI_Controller {
+class slide extends COMPANY_Controller {
     function __construct() {
         parent::__construct();
     }

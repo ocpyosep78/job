@@ -1,5 +1,5 @@
 <?php
-class membership extends CI_Controller {
+class membership extends COMPANY_Controller {
     function __construct() {
         parent::__construct();
     }

@@ -1,5 +1,5 @@
 <?php
-class profile extends CI_Controller {
+class profile extends COMPANY_Controller {
     function __construct() {
         parent::__construct();
     }

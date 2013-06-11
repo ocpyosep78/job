@@ -60,7 +60,7 @@ class Seeker_model extends CI_Model {
         $array = array();
 		
 		// overwrite field name
-		$param['field_replace']['nama'] = 'Seeker.first_name';
+		$param['field_replace']['full_name'] = 'Seeker.first_name';
 		
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'Seeker.first_name ASC');
@@ -68,7 +68,7 @@ class Seeker_model extends CI_Model {
 		
 		$select_query = "
 			SELECT SQL_CALC_FOUND_ROWS Seeker.*, Jenjang.nama jenjang_nama,
-				SeekerSummary.score, SeekerSummary.location, SeekerSummary.experience
+				SeekerSummary.score, SeekerSummary.school, SeekerSummary.experience
 			FROM ".SEEKER." Seeker
 			LEFT JOIN ".SEEKER_SUMMARY." SeekerSummary ON SeekerSummary.seeker_id = Seeker.id
 			LEFT JOIN ".JENJANG." Jenjang ON Jenjang.id = SeekerSummary.jenjang_id

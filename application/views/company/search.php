@@ -13,9 +13,8 @@
 					<th>No Pelamar</th>
 					<th>Nama</th>
 					<th>IPK Terakhir</th>
+					<th>Telepon</th>
 					<th>Email</th>
-					<th>Status</th>
-					<th style="width: 75px;">&nbsp;</th>
 				</tr></thead>
 				<tbody><tr><td class="dataTables_empty">Loading data from server</td></tr></tbody>
 			</table>
@@ -27,7 +26,7 @@
 		var dt = null;
 		var param = {
 			id: 'cnt-search', source: web.host + 'company/search/grid',
-			column: [ { }, { }, { }, { }, { }, { bSortable: false, sClass: "center" } ]
+			column: [ { }, { }, { }, { }, { } ]
 		}
 		dt = Func.init_datatable(param);
 	});

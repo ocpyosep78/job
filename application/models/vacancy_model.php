@@ -73,7 +73,7 @@ class Vacancy_model extends CI_Model {
 		
 		$string_company = (empty($param['company_id'])) ? '' : "AND Vacancy.company_id = '".$param['company_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
-		$string_sorting = GetStringSorting($param, @$param['column'], 'Vacancy.nama ASC');
+		$string_sorting = GetStringSorting($param, @$param['column'], 'Vacancy.close_date DESC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "

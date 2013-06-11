@@ -53,9 +53,10 @@ class Apply_model extends CI_Model {
 		$param['field_replace']['apply_status_name'] = 'ApplyStatus.nama';
 		
 		$string_seeker = (empty($param['seeker_id'])) ? '' : "AND Apply.seeker_id = '".$param['seeker_id']."'";
+		$string_vacancy = (empty($param['vacancy_id'])) ? '' : "AND Apply.vacancy_id = '".$param['vacancy_id']."'";
 		$string_delete = (isset($param['is_delete'])) ? "AND Apply.is_delete = '".$param['is_delete']."'" : '';
 		$string_filter = GetStringFilter($param, @$param['column']);
-		$string_sorting = GetStringSorting($param, @$param['column'], 'nama ASC');
+		$string_sorting = GetStringSorting($param, @$param['column'], 'Vacancy.nama ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
@@ -68,7 +69,42 @@ class Apply_model extends CI_Model {
 			LEFT JOIN ".COMPANY." Company ON Company.id = Vacancy.company_id
 			LEFT JOIN ".KOTA." Kota ON Kota.id = Vacancy.kota_id
 			LEFT JOIN ".PROPINSI." Propinsi ON Propinsi.id = Kota.propinsi_id
-			WHERE 1 $string_seeker $string_delete $string_filter
+			WHERE 1 $string_seeker $string_vacancy $string_delete $string_filter
+			ORDER BY $string_sorting
+			LIMIT $string_limit
+		";
+        $select_result = mysql_query($select_query) or die(mysql_error());
+		while ( $row = mysql_fetch_assoc( $select_result ) ) {
+			$array[] = $this->sync($row, @$param['column']);
+		}
+		
+        return $array;
+    }
+	
+    function get_array_seeker($param = array()) {
+        $array = array();
+		
+		$string_vacancy = (empty($param['vacancy_id'])) ? '' : "AND Apply.vacancy_id = '".$param['vacancy_id']."'";
+		$string_delete = (isset($param['is_delete'])) ? "AND Apply.is_delete = '".$param['is_delete']."'" : '';
+		$string_filter = GetStringFilter($param, @$param['column']);
+		$string_sorting = GetStringSorting($param, @$param['column'], 'Seeker.seeker_no ASC');
+		$string_limit = GetStringLimit($param);
+		
+		//	no_seeker, nama lengkap, usia, index prestasi, jenjang, pendidikan, kota, marital status, tempat kerja terakhir
+		//	score	location	experience
+		
+		$select_query = "
+			SELECT SQL_CALC_FOUND_ROWS Apply.*,
+				Seeker.seeker_no, Seeker.first_name, Seeker.last_name, Seeker.tgl_lahir,
+				SeekerSummary.score, Jenjang.nama jenjang_nama, SeekerSummary.school, Kota.nama kota_nama,
+				Marital.nama marital_nama, SeekerSummary.experience
+			FROM ".APPLY." Apply
+			LEFT JOIN ".SEEKER." Seeker ON Seeker.id = Apply.seeker_id
+			LEFT JOIN ".SEEKER_SUMMARY." SeekerSummary ON SeekerSummary.seeker_id = Seeker.id
+			LEFT JOIN ".JENJANG." Jenjang ON Jenjang.id = SeekerSummary.jenjang_id
+			LEFT JOIN ".KOTA." Kota ON Kota.id = Seeker.kota_id
+			LEFT JOIN ".MARITAL." Marital ON Marital.id = Seeker.marital_id
+			WHERE 1 $string_vacancy $string_delete $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";
@@ -101,6 +137,12 @@ class Apply_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
+		
+		$row['full_name'] = '';
+		$row['usia'] = get_usia(@$row['tgl_lahir']);
+		if (isset($row['first_name']) && isset($row['last_name'])) {
+			$row['full_name'] = $row['first_name'].' '.$row['last_name'];
+		}
 		
 		if (!empty($row['content'])) {
 			$row['content_html'] = save_tinymce($row['content']);

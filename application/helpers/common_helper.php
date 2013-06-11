@@ -772,4 +772,17 @@
 			return $result;
 		}
 	}
+	
+	if (! function_exists('get_usia')) {
+		function get_usia($value) {
+			if (empty($value)) {
+				return 0;
+			}
+			
+			$array = ConvertDateToArray($value);
+			$usia = floor(date("Y") - $array['Year']);
+			
+			return $usia;
+		}
+	}
 ?>
