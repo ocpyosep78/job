@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 11, 2013 at 03:48 PM
+-- Generation Time: Jun 11, 2013 at 04:59 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -6447,6 +6447,29 @@ CREATE TABLE IF NOT EXISTS `seeker_setting` (
 
 INSERT INTO `seeker_setting` (`id`, `seeker_id`, `is_public`, `is_subscribe`, `is_work`) VALUES
 (1, 1, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seeker_summary`
+--
+
+CREATE TABLE IF NOT EXISTS `seeker_summary` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `seeker_id` int(11) NOT NULL,
+  `jenjang_id` int(11) NOT NULL,
+  `score` float NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `experience` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `seeker_summary`
+--
+
+INSERT INTO `seeker_summary` (`id`, `seeker_id`, `jenjang_id`, `score`, `location`, `experience`) VALUES
+(1, 1, 0, 0, '', '');
 
 -- --------------------------------------------------------
 

@@ -43,34 +43,6 @@
 			}
 		}
 		dt = Func.init_datatable(param);
-		
-		return;
-		$('#cnt-apply').dataTable( {
-			"bProcessing": true, "bServerSide": true,
-			"sServerMethod": "POST",
-			"sPaginationType": "full_numbers",
-			"oLanguage":{
-				"sSearch": "<span>Search:</span> ",
-				"sInfo": "Showing <span>_START_</span> to <span>_END_</span> of <span>_TOTAL_</span> entries",
-				"sLengthMenu": "_MENU_ <span>entries per page</span>"
-			},
-			"sAjaxSource": web.host + 'seeker/apply/grid',
-			"aoColumns" : [   
-				{ },
-				{ },
-				{ },
-				{ },
-				{ },
-				{ bSortable: false, sClass: "center" }
-			],
-			"fnDrawCallback": function (oSettings) {
-				$('#cnt-apply .edit').click(function() { console.log('click'); });
-				$('#cnt-apply .delete').click(function() { console.log('delete'); });
-				console.log( 'DataTables has redrawn the table' );
-			}
-		} );
-		$('#cnt-apply_wrapper input').attr("placeholder", "Search here...");
-		$("#cnt-apply_wrapper select").wrap("<div class='input-mini'></div>").chosen({ disable_search_threshold: 9999999 });
 	});
 </script>
 </body>

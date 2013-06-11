@@ -37,6 +37,7 @@ define('PROPINSI',								'propinsi');
 define('SEEKER',								'seeker');
 define('SEEKER_EXP',							'seeker_exp');
 define('SEEKER_SETTING',						'seeker_setting');
+define('SEEKER_SUMMARY',						'seeker_summary');
 define('SUBKATEGORI',							'subkategori');
 define('SURAT_LAMARAN',							'surat_lamaran');
 define('VACANCY',								'vacancy');

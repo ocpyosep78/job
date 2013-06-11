@@ -59,13 +59,19 @@ class Seeker_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
+		// overwrite field name
+		$param['field_replace']['nama'] = 'Seeker.first_name';
+		
 		$string_filter = GetStringFilter($param, @$param['column']);
-		$string_sorting = GetStringSorting($param, @$param['column'], 'first_name ASC');
+		$string_sorting = GetStringSorting($param, @$param['column'], 'Seeker.first_name ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS Seeker.*
+			SELECT SQL_CALC_FOUND_ROWS Seeker.*, Jenjang.nama jenjang_nama,
+				SeekerSummary.score, SeekerSummary.location, SeekerSummary.experience
 			FROM ".SEEKER." Seeker
+			LEFT JOIN ".SEEKER_SUMMARY." SeekerSummary ON SeekerSummary.seeker_id = Seeker.id
+			LEFT JOIN ".JENJANG." Jenjang ON Jenjang.id = SeekerSummary.jenjang_id
 			WHERE 1 $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit

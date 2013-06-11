@@ -497,7 +497,13 @@
             if (isset($param['iSortCol_0'])) {
                 for ($i = 0; $i < intval($param['iSortingCols']); $i++) {
                     if ( $param[ 'bSortable_'.intval($param['iSortCol_'.$i]) ] == "true" ) {
-                        $Result .= $Field[ intval( $param['iSortCol_'.$i] ) ]." ".mysql_real_escape_string( $param['sSortDir_'.$i] ) .", ";
+						$field_name = $Field[ intval( $param['iSortCol_'.$i] ) ];
+						$field_value = $param['sSortDir_'.$i];
+						if (isset($param['field_replace']) && isset($param['field_replace'][$field_name])) {
+							$field_name = $param['field_replace'][$field_name];
+						}
+						
+                        $Result .= $field_name." ".mysql_real_escape_string( $field_value ) .", ";
                     }
                 }
                 
