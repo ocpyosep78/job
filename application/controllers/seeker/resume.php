@@ -23,7 +23,7 @@ class resume extends SEEKER_Controller {
 			$result = $this->Seeker_model->delete($_POST);
 		}
 		
-		if (!empty($_POST['update_seesion'])) {
+		if (!empty($_POST['update_session'])) {
 			$seeker = $this->Seeker_model->get_by_id(array( 'id' => $_POST['id'] ));
 			$this->Seeker_model->set_session($seeker);
 		}

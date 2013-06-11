@@ -7,4 +7,21 @@ class post extends COMPANY_Controller {
     function index() {
 		$this->load->view( 'company/post' );
     }
+	
+	function action() {
+		$action = (isset($_POST['action'])) ? $_POST['action'] : '';
+		unset($_POST['action']);
+		
+		$result = array();
+		if ($action == 'update') {
+			// make sure 1 record for 1 company
+			$company = $this->Company_model->get_session();
+			$post = $this->Post_model->get_by_id(array( 'company_id' => $company['id'] ));
+			$_POST['id'] = @$post['id'];
+			
+			$result = $this->Post_model->update($_POST);
+		}
+		
+		echo json_encode($result);
+	}
 }

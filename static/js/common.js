@@ -532,6 +532,12 @@ var Func = {
 		
 		return seeker;
 	},
+	get_company: function() {
+		var company_temp = $('.cnt-company').text();
+		eval('var company = ' + company_temp);
+		
+		return company;
+	},
 	get_editor: function() {
 		var editor_temp = $('.cnt-editor').text();
 		eval('var editor = ' + editor_temp);

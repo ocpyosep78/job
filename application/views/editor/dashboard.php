@@ -2,7 +2,7 @@
 	$count = array(
 		'article' => $this->Article_model->get_count(array( 'is_new' => 1 )),
 		'event' => $this->Event_model->get_count(array( 'is_new' => 1 )),
-		'seeker' => $this->Event_model->get_count(array( 'is_new' => 1 )),
+		'seeker' => $this->Seeker_model->get_count(array( 'is_new' => 1 )),
 		'company' => $this->Company_model->get_count(array( 'is_new' => 1 )),
 	);
 ?>

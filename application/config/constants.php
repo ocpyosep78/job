@@ -24,17 +24,22 @@ define('ARTICLE_STATUS',						'article_status');
 define('COMPANY',								'company');
 define('EDITOR',								'editor');
 define('EVENT',									'event');
+define('JENIS_PEKERJAAN',						'jenis_pekerjaan');
 define('JENJANG',								'jenjang');
 define('KATEGORI',								'kategori');
 define('KELAMIN',								'kelamin');
 define('KOTA',									'kota');
 define('MARITAL',								'marital');
+define('PENGALAMAN',							'pengalaman');
+define('POST',									'post');
 define('PROPINSI',								'propinsi');
 define('SEEKER',								'seeker');
+define('SEEKER_EXP',							'seeker_exp');
 define('SEEKER_SETTING',						'seeker_setting');
 define('SUBKATEGORI',							'subkategori');
 define('SURAT_LAMARAN',							'surat_lamaran');
 define('VACANCY',								'vacancy');
+define('VACANCY_STATUS',						'vacancy_status');
 define('WIDGET',								'widget');
 
 
