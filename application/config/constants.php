@@ -31,6 +31,7 @@ define('KELAMIN',								'kelamin');
 define('KOTA',									'kota');
 define('MARITAL',								'marital');
 define('PENGALAMAN',							'pengalaman');
+define('POSITION',								'position');
 define('POST',									'post');
 define('PROPINSI',								'propinsi');
 define('SEEKER',								'seeker');

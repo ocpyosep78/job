@@ -22,6 +22,7 @@
 	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/plugins/chosen/chosen.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/plugins/gritter/jquery.gritter.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/plugins/timepicker/bootstrap-timepicker.min.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/plugins/select2/select2.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/style.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('static/theme/flat/css/themes.css'); ?>">
 	
@@ -50,6 +51,7 @@
 	<script src="<?php echo base_url('static/theme/flat/js/plugins/chosen/chosen.jquery.min.js'); ?>"></script>
 	<script src="<?php echo base_url('static/theme/flat/js/plugins/gritter/jquery.gritter.min.js'); ?>"></script>
 	<script src="<?php echo base_url('static/theme/flat/js/plugins/timepicker/bootstrap-timepicker.min.js'); ?>"></script>
+	<script src="<?php echo base_url('static/theme/flat/js/plugins/select2/select2.min.js'); ?>"></script>
 	<script src="<?php echo base_url('static/lib/tinymce/jscripts/tiny_mce/jquery.tinymce.js'); ?>"></script>
 	<script src="<?php echo base_url('static/js/common.js'); ?>"></script>
 	<script src="<?php echo base_url('static/theme/flat/js/eakroko.js'); ?>"></script>

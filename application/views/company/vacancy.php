@@ -2,6 +2,7 @@
 	$company = $this->Company_model->get_session();
 	
 	$array_jenjang = $this->Jenjang_model->get_array();
+	$array_position = $this->Position_model->get_array(array( 'limit' => 250 ));
 	$array_pengalaman = $this->Pengalaman_model->get_array();
 	$array_vacancy_status = $this->Vacancy_Status_model->get_array();
 	$array_jenis_pekerjaan = $this->Jenis_Pekerjaan_model->get_array();
@@ -45,6 +46,10 @@
 					<div class="controls"><label class="control-label" id="cnt-company-name">-</label></div>
 				</div>
 				<div class="control-group">
+					<label for="input-nama" class="control-label">Judul</label>
+					<div class="controls"><input type="text" name="nama" id="input-nama" class="input-xxlarge" /></div>
+				</div>
+				<div class="control-group">
 					<label for="input-kategori_id" class="control-label">Kategori</label>
 					<div class="controls"><select name="kategori_id" id="input-propinsi_id" class="input-xxlarge">
 						<?php echo ShowOption(array( 'Array' => $array_kategori, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
@@ -64,7 +69,9 @@
 				</div>
 				<div class="control-group">
 					<label for="input-position" class="control-label">Position</label>
-					<div class="controls"><input type="text" name="position" id="input-position" class="input-xxlarge" data-rule-required="true" /></div>
+					<div class="controls"><select name="position" class="select2-me input-block-level" style="width: 530px;" multiple="multiple">
+						<?php echo ShowOption(array( 'Array' => $array_position, 'ArrayID' => 'nama', 'ArrayTitle' => 'nama', 'WithEmptySelect' => 0 )); ?>
+					</select></div>
 				</div>
 				<div class="control-group">
 					<label for="input-article_url" class="control-label">URL Artikel</label>
@@ -138,11 +145,11 @@
 					<div class="box-content">
 						<div class="control-group">
 							<label for="input-email_apply" class="control-label">Email Apply</label>
-							<div class="controls"><input type="text" name="email_apply" id="input-email_apply" class="input-xlarge" data-rule-required="true" /></div>
+							<div class="controls"><input type="text" name="email_apply" id="input-email_apply" class="input-xlarge" data-rule-required="true" data-rule-email="true" /></div>
 						</div>
 						<div class="control-group">
 							<label for="input-email_quick" class="control-label">Email Quick Applay</label>
-							<div class="controls"><input type="text" name="email_quick" id="input-email_quick" class="input-xlarge" /></div>
+							<div class="controls"><input type="text" name="email_quick" id="input-email_quick" class="input-xlarge" data-rule-email="true" /></div>
 						</div>
 					</div>
 				</div>
@@ -180,6 +187,8 @@
 					$('#form-vacancy')[0].reset();
 					$('#form-vacancy [name="id"]').val(0);
 					$('#form-vacancy [name="company_id"]').val(company.id);
+					$('#form-vacancy [name="position"]').val([]).select2();
+					$('#cnt-company-name').html(company.nama);
 					
 					page.show_editor();
 				});
@@ -189,21 +198,30 @@
 					var raw_record = $(this).siblings('.hide').text();
 					eval('var temp = ' + raw_record);
 					Func.ajax({ url: web.host + 'company/vacancy/action', param: { action: 'get_by_id', id: temp.id }, callback: function(record) {
+						$('#cnt-company-name').html(record.company_name);
 						$('#form-vacancy [name="id"]').val(record.id);
 						$('#form-vacancy [name="company_id"]').val(record.company_id);
 						$('#form-vacancy [name="kategori_id"]').val(record.kategori_id);
+						$('#form-vacancy [name="propinsi_id"]').val(record.propinsi_id);
 						$('#form-vacancy [name="vacancy_status_id"]').val(record.vacancy_status_id);
+						$('#form-vacancy [name="jenjang_id"]').val(record.jenjang_id);
+						$('#form-vacancy [name="jenis_pekerjaan_id"]').val(record.jenis_pekerjaan_id);
+						$('#form-vacancy [name="pengalaman_id"]').val(record.pengalaman_id);
 						$('#form-vacancy [name="nama"]').val(record.nama);
-						$('#form-vacancy [name="alias"]').val(record.alias);
-						$('#form-vacancy [name="photo"]').val(record.photo);
-						$('#form-vacancy [name="vacancy_url"]').val(record.vacancy_url);
-						$('#form-vacancy [name="vacancy_desc_1"]').val(record.vacancy_desc_1);
-						$('#form-vacancy [name="vacancy_desc_2"]').val(record.vacancy_desc_2);
-						$('#form-vacancy [name="vacancy_desc_3"]').val(record.vacancy_desc_3);
-						$('#form-vacancy [name="image_piracy"]').val(record.image_piracy);
+						$('#form-vacancy [name="position"]').val(record.position.split(',')).select2();
+						$('#form-vacancy [name="article_url"]').val(record.article_url);
+						$('#form-vacancy [name="article_link"]').val(record.article_link);
+						$('#form-vacancy [name="content_short"]').val(record.content_short);
+						$('#form-vacancy [name="content"]').val(record.content);
+						$('#form-vacancy [name="opsi_1"]').val(record.opsi_1);
+						$('#form-vacancy [name="opsi_2"]').val(record.opsi_2);
+						$('#form-vacancy [name="gaji"]').val(record.gaji);
 						$('#form-vacancy [name="publish_date"]').val(Func.SwapDate(record.publish_date));
+						$('#form-vacancy [name="close_date"]').val(Func.SwapDate(record.close_date));
+						$('#form-vacancy [name="email_apply"]').val(record.email_apply);
+						$('#form-vacancy [name="email_quick"]').val(record.email_quick);
 						
-						// set subkategori
+						combo.kota({ propinsi_id: record.propinsi_id, target: $('[name="kota_id"]'), callback: function() { $('[name="kota_id"]').val(record.kota_id); } });
 						combo.subkategori({ kategori_id: record.kategori_id, target: $('[name="subkategori_id"]'), callback: function() { $('[name="subkategori_id"]').val(record.subkategori_id); } });
 					} });
 					page.show_editor();
@@ -226,6 +244,9 @@
 		$('[name="kategori_id"]').change(function() {
 			combo.subkategori({ kategori_id: $('[name="kategori_id"]').val(), target: $('[name="subkategori_id"]') })
 		});
+		$('[name="propinsi_id"]').change(function() {
+			combo.kota({ propinsi_id: $('[name="propinsi_id"]').val(), target: $('[name="kota_id"]') })
+		});
 		
 		/*	Modal */
 		$('#form-vacancy .form-close').click(function() {
@@ -240,6 +261,8 @@
 			var param = Site.Form.GetValue('form-vacancy');
 			param.action = 'update';
 			param.publish_date = Func.SwapDate(param.publish_date);
+			param.close_date = Func.SwapDate(param.close_date);
+			param.position = param.position.join(',');
 			
 			Func.ajax({ url: web.host + 'company/vacancy/action', param: param, callback: function(result) {
 				Func.show_notice({ text: result.message });
