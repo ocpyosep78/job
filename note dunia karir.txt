@@ -58,6 +58,8 @@ Download Data Pelamar
 - Kirim Berita Penolakan
 - Download Table dalam format PDF
 - Table seperti di http://www.eakroko.de/flat/tables-dynamic.html (pdf, csv, dll)
+- Interview => buka modal popup (title & message) => sent email untuk pemberitahuan interview / penolakan
+- Penolakan => status record => apply_status => Rejected
 
 View Slide
 - http://www.duniadb.com/duniakarir/perusahaan/slide%20page.png

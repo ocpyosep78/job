@@ -1,10 +1,18 @@
 <?php
+	preg_match('/download\/index\/([\d]+)/i', $_SERVER['REQUEST_URI'], $match);
+	$vacancy_id = (empty($match[1])) ? 0 : $match[1];
+	
 	$company = $this->Company_model->get_session();
 	$array_vacancy = $this->Vacancy_model->get_array(array( 'company_id' => $company['id'] ));
+	$array_apply_status = array( 'APPLY_STATUS_INTERVIEW' => APPLY_STATUS_INTERVIEW, 'APPLY_STATUS_REJECT' => APPLY_STATUS_REJECT );
 	
 	$array_apply = array();
-	if (!empty($_POST['vacancy_id'])) {
-		$array_apply = $this->Apply_model->get_array_seeker(array( 'vacancy_id' => $_POST['vacancy_id'], 'is_delete' => 0, 'limit' => 1000 ));
+	if (!empty($vacancy_id)) {
+		$param_apply = array(
+			'vacancy_id' => $vacancy_id, 'is_delete' => 0, 'limit' => 1000,
+			'filter' => '[{"type":"numeric","comparison":"not","value":"' . APPLY_STATUS_REJECT . '","field":"Apply.apply_status_id"}]'
+		);
+		$array_apply = $this->Apply_model->get_array_seeker($param_apply);
 	}
 ?>
 
@@ -23,29 +31,53 @@
 		
 		<div class="box-content">
 			<div class="hide">
-				<form method="post" id="form-download">
-					<input type="hidden" name="vacancy_id" value="0" />
-				</form>
+				<div class="cnt-apply"><?php echo json_encode($array_apply_status); ?></div>
 			</div>
 			
 			<div>
 				<div style="float: left; width: 140px; padding: 3px 0 0 0;">Sort by jobs Position :</div>
 				<div style="float: left; width: 200px;">
 					<select class="select-position">
-						<?php echo ShowOption(array( 'Array' => $array_vacancy, 'ArrayID' => 'id', 'ArrayTitle' => 'nama', 'Selected' => @$_POST['vacancy_id'] )); ?>
+						<?php echo ShowOption(array( 'Array' => $array_vacancy, 'ArrayID' => 'id', 'ArrayTitle' => 'nama', 'Selected' => @$vacancy_id )); ?>
 					</select>
 				</div>
 				<?php if (count($array_apply) > 0) { ?>
 				<div style="float: right; width: 200px; text-align: right;">
-					<button class="btn btn-small btn-slide">View Photo In Slide</button>
+					<a href="<?php echo base_url('company/slide/index/'.$vacancy_id); ?>" class="btn btn-small btn-slide">View Photo In Slide</a>
 				</div>
 				<?php } ?>
 				<div class="clear"></div>
 			</div>
 			
+			<div id="modal-message" class="modal modal-bigest hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h3 id="myModalLabel">Form </h3>
+				</div>
+				<form class='form-horizontal form-validate' id="form-apply">
+					<input type="hidden" name="id" value="0" />
+					<input type="hidden" name="apply_status_id" value="0" />
+					
+					<div class="modal-body">
+						<div class="control-group">
+							<label for="input-nama" class="control-label">Judul</label>
+							<div class="controls"><input type="text" name="nama" id="input-nama" class="input-xlarge" data-rule-required="true" maxlength="20" /></div>
+						</div>
+						<div class="control-group">
+							<label for="input-content1" class="control-label">Isi Pesan</label>
+							<div class="controls"><textarea name="content" id="input-content1" class="tinymce span9" style="height: 150px;"></textarea></div>
+						</div>
+					</div>
+				</form>
+				<div class="modal-footer">
+					<button class="btn modal-close" data-dismiss="modal" aria-hidden="true">Close</button>
+					<button class="btn modal-submit btn-primary" data-dismiss="modal">Save changes</button>
+				</div>
+			</div>
+			
 			<?php if (count($array_apply) > 0) { ?>
 			<div class="row-fluid"><div class="span12"><div class="box"><div class="box-content nopadding">
-				<table class="table table-hover table-nomargin dataTable dataTable-tools table-bordered">
+				<table class="grid-apply table table-hover table-nomargin dataTable dataTable-tools table-bordered">
 					<thead><tr>
 						<th>No Pelamar</th>
 						<th>Nama</th>
@@ -70,12 +102,17 @@
 								<td><?php echo $seeker['kota_nama']; ?></td>
 								<td><?php echo $seeker['marital_nama']; ?></td>
 								<td><?php echo $seeker['experience']; ?></td>
-								<td>
-									View | Interview | Reject
+								<td style="min-width: 90px; text-align: center;">
+									<a href="<?php echo base_url('company/download/view/pelamar'); ?>">
+										<img src="<?php echo base_url('static/img/button_view.png'); ?>" class="button-cursor">
+									</a>
 									
-									<img src="http://localhost/job/trunk/static/img/button_edit.png" class="button-cursor edit">
-									<img src="http://localhost/job/trunk/static/img/button_delete.png" class="button-cursor delete">
-									<span class="hide">{"id":"1","vacancy_status_name":"Approve"}</span>
+									<?php if (in_array($seeker['apply_status_id'], array(APPLY_STATUS_EMPTY, APPLY_STATUS_OPEN))) { ?>
+										<img src="<?php echo base_url('static/img/button_interview.png'); ?>" class="button-cursor interview">
+										<img src="<?php echo base_url('static/img/button_remove.png'); ?>" class="button-cursor delete">
+									<?php } ?>
+									
+									<span class="hide"><?php echo json_encode($seeker); ?></span>
 								</td>
 							</tr>
 						<?php } ?>
@@ -83,14 +120,73 @@
 				</table>
 			</div></div></div></div>
 			<?php } ?>
+			
+			<?php if (count($array_apply) == 0 && !empty($vacancy_id)) { ?>
+			<div class="row-fluid margin-top">
+				<div class="alert alert-info">Belum ada pelamar.</div>
+			</div>
+			<?php } ?>
 		</div>
 	</div></div></div></div></div>
 </div>
 <script>
 	$(document).ready(function() {
+		// apply status
+		var raw_apply = $('.cnt-apply').text();
+		eval('var apply = ' + raw_apply);
+		
+		// page variable
+		var row = null;
+		
 		$('.select-position').chosen({ disable_search_threshold: 9999999 }).change(function() {
-			$('[name="vacancy_id"]').val($(this).val());
-			$('#form-download').submit();
+			var link_redirect = web.host + 'company/download/index/' + $(this).val();
+			window.location = link_redirect;
+		});
+		
+		// grid
+		$('.grid-apply .interview').click(function() {
+			row = $(this).parents('tr');
+			
+			$('[name="nama"]').val('Berita Interview');
+			$('[name="apply_status_id"]').val(apply.APPLY_STATUS_INTERVIEW);
+			$('#modal-message').modal();
+		});
+		$('.grid-apply .delete').click(function() {
+			row = $(this).parents('tr');
+			
+			$('[name="nama"]').val('Berita Penolakan');
+			$('[name="apply_status_id"]').val(apply.APPLY_STATUS_REJECT);
+			$('#modal-message').modal();
+		});
+		
+		// form
+		$('#form-apply').submit(function() {
+			if (! $('#form-apply').valid()) {
+				return false;
+			}
+			
+			var param = Site.Form.GetValue('form-apply');
+			param.action = 'update';
+			
+			if (param.apply_status_id == apply.APPLY_STATUS_INTERVIEW) {
+				// interview
+				row.find('.interview').remove();
+				row.find('.delete').remove();
+			} else if (param.apply_status_id == apply.APPLY_STATUS_REJECT) {
+				// rejected
+				row.remove();
+			}
+			
+			// continue here sent email & update row
+			Func.ajax({ url: web.host + 'company/download/action', param: param, callback: function(result) {
+				Func.show_notice({ text: result.message });
+				if (result.status == 1) {
+					dt.reload();
+					$('#modal-message').modal('hide');
+				}
+			} });
+			
+			return false;
 		});
 	});
 </script>

@@ -90,12 +90,9 @@ class Apply_model extends CI_Model {
 		$string_sorting = GetStringSorting($param, @$param['column'], 'Seeker.seeker_no ASC');
 		$string_limit = GetStringLimit($param);
 		
-		//	no_seeker, nama lengkap, usia, index prestasi, jenjang, pendidikan, kota, marital status, tempat kerja terakhir
-		//	score	location	experience
-		
 		$select_query = "
 			SELECT SQL_CALC_FOUND_ROWS Apply.*,
-				Seeker.seeker_no, Seeker.first_name, Seeker.last_name, Seeker.tgl_lahir,
+				Seeker.seeker_no, Seeker.first_name, Seeker.last_name, Seeker.tgl_lahir, Seeker.photo,
 				SeekerSummary.score, Jenjang.nama jenjang_nama, SeekerSummary.school, Kota.nama kota_nama,
 				Marital.nama marital_nama, SeekerSummary.experience
 			FROM ".APPLY." Apply
@@ -142,6 +139,11 @@ class Apply_model extends CI_Model {
 		$row['usia'] = get_usia(@$row['tgl_lahir']);
 		if (isset($row['first_name']) && isset($row['last_name'])) {
 			$row['full_name'] = $row['first_name'].' '.$row['last_name'];
+		}
+		
+		$row['photo_link'] = base_url('static/img/no-images.jpg');
+		if (!empty($row['photo'])) {
+			$row['photo_link'] = base_url('static/upload/'.$row['photo']);
 		}
 		
 		if (!empty($row['content'])) {

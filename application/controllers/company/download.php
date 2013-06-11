@@ -7,4 +7,8 @@ class download extends COMPANY_Controller {
     function index() {
 		$this->load->view( 'company/download' );
     }
+	
+	function view() {
+		echo 'asd';
+	}
 }

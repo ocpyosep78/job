@@ -16,6 +16,10 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 define('SHA_SECRET',							'raHa5!4');
 define('NEGARA_INDONESIA_ID',					99);
+define('APPLY_STATUS_EMPTY',					0);
+define('APPLY_STATUS_OPEN',						1);
+define('APPLY_STATUS_INTERVIEW',				2);
+define('APPLY_STATUS_REJECT',					4);
 
 define('APPLY',									'apply');
 define('APPLY_STATUS',							'apply_status');
