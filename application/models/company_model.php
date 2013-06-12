@@ -4,7 +4,10 @@ class Company_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array('id', 'kota_id', 'nama', 'phone', 'faximile', 'website', 'address', 'email', 'passwd', 'description', 'kodepos', 'sales', 'contact_name', 'contact_email', 'contact_no', 'logo', 'banner', 'google_map');
+        $this->field = array(
+			'id', 'kota_id', 'nama', 'phone', 'faximile', 'website', 'address', 'email', 'passwd', 'description', 'kodepos', 'sales', 'contact_name',
+			'contact_email', 'contact_no', 'logo', 'banner', 'google_map', 'industri_id'
+		);
     }
 
     function update($param) {
@@ -33,9 +36,21 @@ class Company_model extends CI_Model {
         $array = array();
        
         if (isset($param['id'])) {
-            $select_query  = "SELECT * FROM ".COMPANY." WHERE id = '".$param['id']."' LIMIT 1";
+            $select_query  = "
+				SELECT Company.*, Propinsi.id propinsi_id
+				FROM ".COMPANY." Company
+				LEFT JOIN ".KOTA." Kota ON Kota.id = Company.kota_id
+				LEFT JOIN ".PROPINSI." Propinsi ON Propinsi.id = Kota.propinsi_id
+				WHERE Company.id = '".$param['id']."' LIMIT 1
+			";
         } else if (isset($param['email'])) {
-            $select_query  = "SELECT * FROM ".COMPANY." WHERE email = '".$param['email']."' LIMIT 1";
+            $select_query  = "
+				SELECT Company.*, Propinsi.id propinsi_id
+				FROM ".COMPANY." Company
+				LEFT JOIN ".KOTA." Kota ON Kota.id = Company.kota_id
+				LEFT JOIN ".PROPINSI." Propinsi ON Propinsi.id = Kota.propinsi_id
+				WHERE email = '".$param['email']."' LIMIT 1
+			";
         }
        
         $select_result = mysql_query($select_query) or die(mysql_error());

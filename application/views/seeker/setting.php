@@ -3,7 +3,7 @@
 	$setting = $this->Seeker_Setting_model->get_by_id(array( 'seeker_id' => $seeker['id'] ));
 ?>
 
-<?php $this->load->view( 'panel/common/meta' ); ?>
+<?php $this->load->view( 'panel/common/meta', array( 'title' => 'Setting' ) ); ?>
 <body data-layout="fixed">
 <?php $this->load->view( 'panel/common/navigation' ); ?>
 

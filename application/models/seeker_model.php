@@ -37,11 +37,24 @@ class Seeker_model extends CI_Model {
        
         if (isset($param['id'])) {
             $select_query  = "
-				SELECT Seeker.*, Kota.nama kota_nama, Propinsi.id propinsi_id, Propinsi.nama propinsi_nama
+				SELECT Seeker.*, Kota.nama kota_nama, Propinsi.id propinsi_id, Propinsi.nama propinsi_nama,
+					Kelamin.nama kelamin_nama
 				FROM ".SEEKER." Seeker
+				LEFT JOIN ".KELAMIN." Kelamin ON Kelamin.id = Seeker.kelamin_id
 				LEFT JOIN ".KOTA." Kota ON Kota.id = Seeker.kota_id
 				LEFT JOIN ".PROPINSI." Propinsi ON Propinsi.id = Kota.propinsi_id
 				WHERE Seeker.id = '".$param['id']."'
+				LIMIT 1
+			";
+        } else if (isset($param['seeker_no'])) {
+            $select_query  = "
+				SELECT Seeker.*, Kota.nama kota_nama, Propinsi.id propinsi_id, Propinsi.nama propinsi_nama,
+					Kelamin.nama kelamin_nama
+				FROM ".SEEKER." Seeker
+				LEFT JOIN ".KELAMIN." Kelamin ON Kelamin.id = Seeker.kelamin_id
+				LEFT JOIN ".KOTA." Kota ON Kota.id = Seeker.kota_id
+				LEFT JOIN ".PROPINSI." Propinsi ON Propinsi.id = Kota.propinsi_id
+				WHERE Seeker.seeker_no = '".$param['seeker_no']."'
 				LIMIT 1
 			";
         } else if (isset($param['email'])) {

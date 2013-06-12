@@ -103,7 +103,7 @@
 								<td><?php echo $seeker['marital_nama']; ?></td>
 								<td><?php echo $seeker['experience']; ?></td>
 								<td style="min-width: 90px; text-align: center;">
-									<a href="<?php echo base_url('company/download/view/pelamar'); ?>">
+									<a href="<?php echo $seeker['seeker_link']; ?>">
 										<img src="<?php echo base_url('static/img/button_view.png'); ?>" class="button-cursor">
 									</a>
 									
@@ -146,14 +146,20 @@
 		// grid
 		$('.grid-apply .interview').click(function() {
 			row = $(this).parents('tr');
+			var raw_record = row.find('span.hide').text();
+			eval('var record = ' + raw_record);
 			
+			$('[name="id"]').val(record.id);
 			$('[name="nama"]').val('Berita Interview');
 			$('[name="apply_status_id"]').val(apply.APPLY_STATUS_INTERVIEW);
 			$('#modal-message').modal();
 		});
 		$('.grid-apply .delete').click(function() {
 			row = $(this).parents('tr');
+			var raw_record = row.find('span.hide').text();
+			eval('var record = ' + raw_record);
 			
+			$('[name="id"]').val(record.id);
 			$('[name="nama"]').val('Berita Penolakan');
 			$('[name="apply_status_id"]').val(apply.APPLY_STATUS_REJECT);
 			$('#modal-message').modal();
@@ -166,7 +172,7 @@
 			}
 			
 			var param = Site.Form.GetValue('form-apply');
-			param.action = 'update';
+			param.action = 'update_mail';
 			
 			if (param.apply_status_id == apply.APPLY_STATUS_INTERVIEW) {
 				// interview
@@ -177,11 +183,9 @@
 				row.remove();
 			}
 			
-			// continue here sent email & update row
 			Func.ajax({ url: web.host + 'company/download/action', param: param, callback: function(result) {
 				Func.show_notice({ text: result.message });
 				if (result.status == 1) {
-					dt.reload();
 					$('#modal-message').modal('hide');
 				}
 			} });

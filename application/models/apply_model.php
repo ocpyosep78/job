@@ -141,6 +141,10 @@ class Apply_model extends CI_Model {
 			$row['full_name'] = $row['first_name'].' '.$row['last_name'];
 		}
 		
+		if (isset($row['seeker_no'])) {
+			$row['seeker_link'] = base_url('company/download/view/'.$row['seeker_no']);
+		}
+		
 		$row['photo_link'] = base_url('static/img/no-images.jpg');
 		if (!empty($row['photo'])) {
 			$row['photo_link'] = base_url('static/upload/'.$row['photo']);

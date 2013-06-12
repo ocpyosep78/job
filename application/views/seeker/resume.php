@@ -1,5 +1,11 @@
 <?php
-	$seeker = $this->Seeker_model->get_session();
+	if (!empty($seeker_no)) {
+		$seeker = $this->Seeker_model->get_by_id(array( 'seeker_no' => $seeker_no ));
+		$seeker['is_readonly'] = true;
+	} else {
+		$seeker = $this->Seeker_model->get_session();
+		$seeker['is_readonly'] = false;
+	}
 ?>
 
 <?php $this->load->view( 'panel/common/meta', array('title' => 'Biodata '.$seeker['full_name']) ); ?>
@@ -48,20 +54,20 @@
 				<div class="box-content" style="position: relative;">
 					<form action="#" method="POST" class='form-horizontal'>
 						<div class="control-group">
-							<label for="first_name" class="control-label">Nama</label>
-							<div class="controls"><input type="text" name="first_name" id="first_name" class="input-xxlarge" readonly="readonly" /></div>
+							<label for="input-full_name" class="control-label">Nama</label>
+							<div class="controls"><input type="text" name="full_name" id="input-full_name" class="input-xlarge" readonly="readonly" /></div>
 						</div>
 						<div class="control-group">
 							<label for="email" class="control-label">Email</label>
-							<div class="controls"><input type="email" name="email" class="input-xxlarge" readonly="readonly" /></div>
+							<div class="controls"><input type="email" name="email" class="input-xlarge" readonly="readonly" /></div>
 						</div>
 						<div class="control-group">
 							<label for="phone" class="control-label">Nomor Telepon</label>
-							<div class="controls"><input type="text" name="phone" id="phone" class="input-xxlarge" readonly="readonly" /></div>
+							<div class="controls"><input type="text" name="phone" id="phone" class="input-xlarge" readonly="readonly" /></div>
 						</div>
 						<div class="control-group">
 							<label for="hp" class="control-label">Nomor Ponsel</label>
-							<div class="controls"><input type="text" name="hp" id="hp" class="input-xxlarge" readonly="readonly" /></div>
+							<div class="controls"><input type="text" name="hp" id="hp" class="input-xlarge" readonly="readonly" /></div>
 						</div>
 						<div class="control-group">
 							<label for="address" class="control-label">Alamat</label>
@@ -92,8 +98,8 @@
 							<div class="controls"><input type="text" name="tgl_lahir" id="tgl_lahir" class="input-xxlarge" readonly="readonly" /></div>
 						</div>
 						<div class="control-group">
-							<label for="kelamin_id" class="control-label">Jenis Kelamin</label>
-							<div class="controls"><input type="text" name="kelamin_id" id="kelamin_id" class="input-xxlarge" readonly="readonly" /></div>
+							<label for="input-kelamin_nama" class="control-label">Jenis Kelamin</label>
+							<div class="controls"><input type="text" name="kelamin_nama" id="input-kelamin_nama" class="input-xxlarge" readonly="readonly" /></div>
 						</div>
 						<div class="control-group">
 							<label for="kebangsaan" class="control-label">Kebangsaan</label>
@@ -216,15 +222,18 @@
 <script>
 	var seeker = Func.get_seeker();
 	$('[name="id"]').val(seeker.id);
-	$('[name="first_name"]').val(seeker.first_name);
-	//$('[name="last_name"]').val(seeker.last_name);
-	//$('[name="email"]').val(seeker.email);
+	$('[name="full_name"]').val(seeker.full_name);
+	$('[name="email"]').val(seeker.email);
 	$('[name="phone"]').val(seeker.phone);
 	$('[name="hp"]').val(seeker.hp);
 	$('[name="address"]').val(seeker.address);
 	$('[name="tgl_lahir"]').val(Func.SwapDate(seeker.tgl_lahir));
-	$('[name="kelamin_id"]').val(seeker.kelamin_id);
+	$('[name="kelamin_nama"]').val(seeker.kelamin_nama);
 	$('[name="kebangsaan"]').val(seeker.kebangsaan);
+	
+	if (seeker.is_readonly) {
+		$('.actions').remove();
+	}
 </script>
 </body>
 </html>
