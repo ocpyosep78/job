@@ -135,11 +135,7 @@
 			</div>
 			<aside class='span3'>
 				<div class='inner'>
-					<a href='#' title='Download application' class='app-link'>
-						<div class='app-ad'>
-							<h3>Download our app for iphone <br /><strong>for free</strong></h3>
-						</div>
-					</a>
+					<?php $this->load->view( 'website/common/site_banner' ); ?>
 				</div>
 			</aside>
 		</div>

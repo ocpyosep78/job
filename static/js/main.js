@@ -2,56 +2,24 @@ var mp3Pl = {
     init : function() {
         jQuery('.form-submit').click(function(e) {
             e.preventDefault();
-
-            jQuery('#footer-form input[type=text]').click(function(e) {
-                var inputval = jQuery(this).val();
-                if(inputval == 'Please enter a name' || inputval == 'Please enter an e-mail')
-                    jQuery(this).val('');
-            });
-
-            jQuery('#footer-form input[type=email]').click(function(e) {
-                var inputval = jQuery(this).val();
-                if(inputval == 'Please enter an e-mail')
-                    jQuery(this).val('');
-            });
-
-            jQuery('#footer-form textarea').click(function(e) {
-                var inputval = jQuery(this).val();
-                if(inputval == 'Please add a message')
-                    jQuery(this).val('');
-            });
-
-            var name = jQuery("#mp3_name"),
-                email = jQuery("#mp3_email"),
-                message = jQuery("#mp3_message");
-            if(name.val() == '')
-                name.val('Please enter a name');
-            if(email.val() == '')
-                email.val('Please enter an e-mail');
-            if(message.val() == '')
-                message.val('Please add a message');
-            if(name.val() != '' && name.val != 'Please enter a name'
-                && email.val() != '' && email.val() != 'Please enter an e-mail' 
-                && message.val() != '' && message.val() != 'Please add a message')
-            {
-                data_html = "name=" + name.val() + "&email="+ email.val() + "&message=" + message.val() + "&submit=1";
-                jQuery.ajax({
-                    type: 'POST',
-                    url: 'process.php',
-                    data: data_html,
-                    success: function(msg){
-                        
-                        if (msg == 'sent'){
-                            jQuery("#footer-form").fadeOut(400);
-                            jQuery("span#success").html("Message sent!").fadeIn(400);
-                        } else{
-                            jQuery("span#success").html('Mail Error. Please Try Again!'); 
-                            jQuery("span#success").fadeIn(400);
-                        }
-                    }
-                });
-            }
-
+			jQuery("#form-contact .message").html('').show(); 
+			
+			var valid = Site.Form.Validation('form-contact', { Inline: true });
+			if (valid.length > 0) {
+				jQuery("#form-contact .message").html(valid[0]); 
+				jQuery("#form-contact .message").fadeOut(2000);
+				return;
+			}
+			
+			var param = Site.Form.GetValue('form-contact');
+			Func.ajax({ url: web.host + 'ajax', param: param, callback: function(result) {
+				jQuery("#form-contact .message").html(result.message); 
+				jQuery("#form-contact .message").fadeOut(2000);
+				
+				if (result.status) {
+					$('#form-contact')[0].reset()
+				}
+			} });
         });
 
         jQuery('input, textarea').placeholder();

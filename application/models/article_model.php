@@ -25,6 +25,8 @@ class Article_model extends CI_Model {
             $result['status'] = '1';
             $result['message'] = 'Data berhasil diperbaharui.';
         }
+		
+		$this->resize_image($param);
        
         return $result;
     }
@@ -34,7 +36,10 @@ class Article_model extends CI_Model {
 		
         if (isset($param['id'])) {
             $select_query  = "
-				SELECT Article.*, Subkategori.nama subkategori_nama, Kategori.nama kategori_nama, Kategori.id kategori_id
+				SELECT
+					Article.*,
+					Subkategori.nama subkategori_nama, Subkategori.alias subkategori_alias,
+					Kategori.nama kategori_nama, Kategori.alias kategori_alias, Kategori.id kategori_id
 				FROM ".ARTICLE." Article
 				LEFT JOIN ".SUBKATEGORI." Subkategori ON Subkategori.id = Article.subkategori_id
 				LEFT JOIN ".KATEGORI." Kategori ON Kategori.id = Subkategori.kategori_id
@@ -42,7 +47,17 @@ class Article_model extends CI_Model {
 				LIMIT 1
 			";
         } else if (isset($param['alias'])) {
-            $select_query  = "SELECT * FROM ".ARTICLE." WHERE alias = '".$param['alias']."' LIMIT 1";
+            $select_query  = "
+				SELECT
+					Article.*,
+					Subkategori.nama subkategori_nama, Subkategori.alias subkategori_alias,
+					Kategori.nama kategori_nama, Kategori.alias kategori_alias, Kategori.id kategori_id
+				FROM ".ARTICLE."
+				LEFT JOIN ".SUBKATEGORI." Subkategori ON Subkategori.id = Article.subkategori_id
+				LEFT JOIN ".KATEGORI." Kategori ON Kategori.id = Subkategori.kategori_id
+				WHERE Article.alias = '".$param['alias']."'
+				LIMIT 1
+			";
         }
        
         $select_result = mysql_query($select_query) or die(mysql_error());
@@ -61,6 +76,10 @@ class Article_model extends CI_Model {
 		$param['field_replace']['subkategori_nama'] = 'Subkategori.nama';
 		$param['field_replace']['article_status_nama'] = 'ArticleStatus.nama';
 		
+		$string_status = (empty($param['article_status_id'])) ? '' : "AND Article.article_status_id = '".$param['article_status_id']."'";
+		$string_kategori = (empty($param['kategori_id'])) ? '' : "AND Kategori.id = '".$param['kategori_id']."'";
+		$string_subkategori = (empty($param['subkategori_id'])) ? '' : "AND Subkategori.id = '".$param['subkategori_id']."'";
+		$string_publish_date = (empty($param['publish_date'])) ? '' : "AND Article.publish_date <= '".$param['publish_date']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'nama ASC');
 		$string_limit = GetStringLimit($param);
@@ -69,8 +88,9 @@ class Article_model extends CI_Model {
 			SELECT SQL_CALC_FOUND_ROWS Article.*, Subkategori.nama subkategori_nama, ArticleStatus.nama article_status_nama
 			FROM ".ARTICLE." Article
 			LEFT JOIN ".SUBKATEGORI." Subkategori ON Subkategori.id = Article.subkategori_id
+			LEFT JOIN ".KATEGORI." Kategori ON Kategori.id = Subkategori.kategori_id
 			LEFT JOIN ".ARTICLE_STATUS." ArticleStatus ON ArticleStatus.id = Article.article_status_id
-			WHERE 1 $string_filter
+			WHERE 1 $string_status $string_kategori $string_subkategori $string_publish_date $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";
@@ -111,9 +131,18 @@ class Article_model extends CI_Model {
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
 		$row['publish_date'] = ($row['publish_date'] == '0000-00-00 00:00:00') ? null : $row['publish_date'];
+		$row['desc_short'] = GetLengthChar($row['article_desc_1'], 100, '');
+		$row['article_link'] = base_url('blog/'.$row['alias']);
 		
 		if (!empty($row['photo'])) {
 			$row['photo_link'] = base_url('static/upload/'.$row['photo']);
+		}
+		
+		if (!empty($row['kategori_alias'])) {
+			$row['kategori_link'] = base_url('blog/'.$row['kategori_alias']);
+		}
+		if (!empty($row['kategori_alias']) && !empty($row['subkategori_alias'])) {
+			$row['subkategori_link'] = base_url('blog/'.$row['kategori_alias'].'/'.$row['subkategori_alias']);
 		}
 		
 		if (count($column) > 0) {
@@ -121,5 +150,10 @@ class Article_model extends CI_Model {
 		}
 		
 		return $row;
+	}
+	
+	function resize_image($param) {
+		$image_source = $this->config->item('base_path').'/static/upload/'.$param['photo'];
+		ImageResize($image_source, $image_source, 206, 127, 1);
 	}
 }

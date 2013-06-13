@@ -1,7 +1,10 @@
+<?php
+	$title = (empty($title)) ? 'Duniakarir' : $title;
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Duniakarir</title>
+	<title><?php echo $title; ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 	<link rel="icon" type="image/png" href="<?php echo base_url('static/img/favicon.png'); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('static/css/bootstrap.css'); ?>">

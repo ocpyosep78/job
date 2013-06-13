@@ -1,24 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Subkategori_model extends CI_Model {
+class Kategori_Tag_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array('id', 'kategori_id', 'nama', 'alias');
+        $this->field = array('id', 'kategori_id', 'tag_id');
     }
 
     function update($param) {
         $result = array();
        
         if (empty($param['id'])) {
-            $insert_query  = GenerateInsertQuery($this->field, $param, SUBKATEGORI);
+            $insert_query  = GenerateInsertQuery($this->field, $param, KATEGORI_TAG);
             $insert_result = mysql_query($insert_query) or die(mysql_error());
            
             $result['id'] = mysql_insert_id();
             $result['status'] = '1';
             $result['message'] = 'Data berhasil disimpan.';
         } else {
-            $update_query  = GenerateUpdateQuery($this->field, $param, SUBKATEGORI);
+            $update_query  = GenerateUpdateQuery($this->field, $param, KATEGORI_TAG);
             $update_result = mysql_query($update_query) or die(mysql_error());
            
             $result['id'] = $param['id'];
@@ -33,24 +33,8 @@ class Subkategori_model extends CI_Model {
         $array = array();
        
         if (isset($param['id'])) {
-            $select_query  = "
-				SELECT Subkategori.*, Kategori.nama kategori_nama, Kategori.alias kategori_alias
-				FROM ".SUBKATEGORI." Subkategori
-				LEFT JOIN ".KATEGORI." Kategori ON Kategori.id = Subkategori.kategori_id
-				WHERE id = '".$param['id']."'
-				LIMIT 1
-			";
-        } else if (isset($param['alias'])) {
-            $select_query  = "
-				SELECT Subkategori.*, Kategori.nama kategori_nama, Kategori.alias kategori_alias
-				FROM ".SUBKATEGORI." Subkategori
-				LEFT JOIN ".KATEGORI." Kategori ON Kategori.id = Subkategori.kategori_id
-				WHERE Subkategori.alias = '".$param['alias']."'
-				LIMIT 1
-			";
-        } else {
-			return array();
-		}
+            $select_query  = "SELECT * FROM ".KATEGORI_TAG." WHERE id = '".$param['id']."' LIMIT 1";
+        } 
        
         $select_result = mysql_query($select_query) or die(mysql_error());
         if (false !== $row = mysql_fetch_assoc($select_result)) {
@@ -63,16 +47,15 @@ class Subkategori_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
-		$string_kategori = (empty($param['kategori_id'])) ? '' : "AND kategori_id = '".$param['kategori_id']."'";
+		$string_kategori = (empty($param['kategori_id'])) ? '' : "AND KategoriTag.kategori_id = '".$param['kategori_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
-		$string_sorting = GetStringSorting($param, @$param['column'], 'nama ASC');
+		$string_sorting = GetStringSorting($param, @$param['column'], 'tag_id ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS Subkategori.*,
-				Kategori.nama kategori_nama, Kategori.alias kategori_alias
-			FROM ".SUBKATEGORI." Subkategori
-			LEFT JOIN ".KATEGORI." Kategori ON Kategori.id = Subkategori.kategori_id
+			SELECT SQL_CALC_FOUND_ROWS KategoriTag.*, Tag.nama tag_nama, Tag.alias tag_alias
+			FROM ".KATEGORI_TAG." KategoriTag
+			LEFT JOIN ".TAG." Tag ON Tag.id = KategoriTag.tag_id
 			WHERE 1 $string_kategori $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
@@ -95,7 +78,7 @@ class Subkategori_model extends CI_Model {
     }
 	
     function delete($param) {
-		$delete_query  = "DELETE FROM ".SUBKATEGORI." WHERE id = '".$param['id']."' LIMIT 1";
+		$delete_query  = "DELETE FROM ".KATEGORI_TAG." WHERE id = '".$param['id']."' LIMIT 1";
 		$delete_result = mysql_query($delete_query) or die(mysql_error());
 		
 		$result['status'] = '1';
@@ -106,7 +89,6 @@ class Subkategori_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
-		$row['link'] = base_url('blog/'.$row['kategori_alias'].'/'.$row['alias']);
 		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));

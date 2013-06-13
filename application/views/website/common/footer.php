@@ -1,22 +1,16 @@
+<?php
+	$about = $this->Widget_model->get_by_id(array( 'alias' => 'about_dunia_karir' ));
+	$payment = $this->Widget_model->get_by_id(array( 'alias' => 'payment' ));
+?>
 <footer>
 	<div class='container'>
 		<div class='row'>
 			<div class='span9 footer-big'>
-				<div class='span6'>
-					<h1>About Duniakarir.com</h1>
-					<p>Dunia Karir adalah situ penyedia informasi lowongan kerja sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>
-					<p>Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>
-					<a href="#" title='More info' class='btn btn-white'>More info</a>
-				</div>
+				<div class='span6'><?php echo $about['content']; ?></div>
 				<div class='span3'>
 					<h1>Payment Methods</h1>
 					<div class='payment-links'>
-						<a href='#' title='Discover' class='discover'>Discover</a>
-						<a href='#' title='Amex' class='amex'>Amex</a>
-						<a href='#' title='American Express' class='american-express'>American Express</a>
-						<a href='#' title='Visa' class='visa'>Visa</a>
-						<a href='#' title='Pay Pal' class='pay-pal'>Pay Pal</a>
-						<a href='#' title='Master Card' class='master-card'>Master Card</a>
+						<?php echo $payment['content']; ?>
 					</div>
 					<h1>Newsletter</h1>
 					<form action="" method="post" accept-charset="utf-8">
@@ -34,12 +28,13 @@
 			</div>
 			<div class='span3'>
 				<h1>Contact Us</h1>
-				<span id="success"></span>
-				<form id="footer-form" action="" method="post" accept-charset="utf-8">
-					<input id="mp3_name" type='text' name='contact-name' placeholder='Your Name' />
-					<input id="mp3_email" type='email' name='contact-email' placeholder='Your E-Mail' />
-					<textarea id="mp3_message" placeholder='Your Message'></textarea>
-					<input type='submit' name='submit' value='Send' class='form-submit btn btn-white' />
+				<form id="form-contact">
+					<span class="message"></span>
+					<input type="hidden" name="action" value="sent_mail" />
+					<input type="text" name="title" placeholder="Your Name" class="required" alt="Field belum diisi" />
+					<input type="email" name="email" placeholder="Your E-Mail" class="required" alt="Field belum diisi" />
+					<textarea name="message" placeholder="Your Message" class="required" alt="Field belum diisi"></textarea>
+					<input type="submit" name="submit" value="Send" class="form-submit btn btn-white" />
 				</form>
 			</div>
 		</div>

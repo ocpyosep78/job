@@ -34,6 +34,8 @@ class Kategori_model extends CI_Model {
        
         if (isset($param['id'])) {
             $select_query  = "SELECT * FROM ".KATEGORI." WHERE id = '".$param['id']."' LIMIT 1";
+        } else if (isset($param['alias'])) {
+            $select_query  = "SELECT * FROM ".KATEGORI." WHERE alias = '".$param['alias']."' LIMIT 1";
         }
        
         $select_result = mysql_query($select_query) or die(mysql_error());
@@ -87,6 +89,7 @@ class Kategori_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
+		$row['link'] = base_url('blog/'.$row['alias']);
 		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));

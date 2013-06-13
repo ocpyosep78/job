@@ -22,11 +22,17 @@ class home extends CI_Controller {
     }
 	
 	function blog() {
-		$this->load->view( 'website/blog' );
-	}
-	
-	function blog_detail() {
-		$this->load->view( 'website/blog_detail' );
+		preg_match('/blog\/([a-z0-9\_]+)$/i', $_SERVER['REQUEST_URI'], $match);
+		$alias = (empty($match[1])) ? '' : $match[1];
+		
+		// article
+		$article = $this->Article_model->get_by_id(array( 'alias' => $alias ));
+		
+		if (count($article) == 0) {
+			$this->load->view( 'website/blog' );
+		} else {
+			$this->load->view( 'website/blog_detail', array( 'article' => $article ) );
+		}
 	}
 	
 	function event() {
@@ -81,7 +87,8 @@ class home extends CI_Controller {
 			$this->Seeker_model->set_session($seeker);
 			$result['status'] = true;
 			$result['link'] = base_url('seeker/resume');
-		} else if ($action == 'login_company') {
+		}
+		else if ($action == 'login_company') {
 			$company = $this->Company_model->get_by_id(array('email' => $_POST['email']));
 			if (count($company) == 0 || empty($_POST['email'])) {
 				$result['message'] = 'user anda tidak ditemukan.';
@@ -98,7 +105,8 @@ class home extends CI_Controller {
 			$this->Company_model->set_session($company);
 			$result['status'] = true;
 			$result['link'] = base_url('company/post');
-		} else if ($action == 'login_editor') {
+		}
+		else if ($action == 'login_editor') {
 			$editor = $this->Editor_model->get_by_id(array('email' => $_POST['email']));
 			if (count($editor) == 0 || empty($_POST['email'])) {
 				$result['message'] = 'user anda tidak ditemukan.';
@@ -115,13 +123,25 @@ class home extends CI_Controller {
 			$this->Editor_model->set_session($editor);
 			$result['status'] = true;
 			$result['link'] = base_url('editor/home');
-		} else if ($action == 'logout') {
+		}
+		else if ($action == 'logout') {
 			$this->Seeker_model->delete_session();
 			$this->Company_model->delete_session();
 			$this->Editor_model->delete_session();
 			
 			header("Location: ".base_url());
 			exit;
+		}
+		else if ($action == 'sent_mail') {
+			$email_admin = $this->Widget_model->get_by_id(array( 'alias' => 'email_admin' ));
+			$email_admin_clean = html_entity_decode(strip_tags($email_admin['content']));
+			
+			$_POST['to'] = $email_admin_clean;
+			$_POST['message'] = $_POST['message']."<br /><br />From : ".$_POST['email'];
+			sent_mail($_POST);
+			
+			$result['status'] = true;
+			$result['message'] = 'Pesan berhasil dikirim';
 		}
 		
 		echo json_encode($result);

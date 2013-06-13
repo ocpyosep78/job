@@ -663,6 +663,7 @@
     
     if (! function_exists('GetLengthChar')) {
         function GetLengthChar($String, $LengthMax, $Follower = '') {
+			$String = strip_tags($String);
             if (strlen($String) > $LengthMax) {
                 $String = substr($String, 0, $LengthMax);
                 $Stringpos = strrpos($String, ' ');
@@ -741,6 +742,13 @@
 	
 	if (! function_exists('sent_mail')) {
 		function sent_mail($param) {
+			//	$to  = 'Herry <herry@simetri.in>, Asri Kusuma <asri@simetri.web.id>';
+			$headers  = 'MIME-Version: 1.0' . "\r\n";
+			$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+			$headers .= 'From: Dunia Karir <noreply@duniakarir.com>' . "\r\n";
+			@mail($param['to'], $param['title'], $param['message'], $headers);
+			
+			/*
 			$param['subject'] = (isset($param['subject'])) ? $param['subject'] : '';
 			$param['message'] = (isset($param['message'])) ? $param['message'] : '';
 			$param['header'] = (isset($param['header'])) ? $param['header'] : 'From: Karimun Shop <info@simetri.web.id>';
@@ -749,6 +757,7 @@
 			}
 			
 			@mail($param['email'], $param['subject'], $param['message'], $param['header']);
+			/*	*/
 		}
 	}
 	
@@ -792,6 +801,14 @@
 			$usia = floor(date("Y") - $array['Year']);
 			
 			return $usia;
+		}
+	}
+	
+	if (! function_exists('get_page')) {
+		function get_page() {
+			preg_match('/page_(\d+)/i', $_SERVER['REQUEST_URI'], $match);
+			$page = (empty($match[1])) ? 1 : $match[1];
+			return $page;
 		}
 	}
 ?>
