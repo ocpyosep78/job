@@ -10,7 +10,7 @@ class home extends CI_Controller {
 		
 		// page
 		if (isset($segments[1]) && !empty($segments[1])) {
-			if (in_array($segments[1], array('blog', 'blog_detail', 'event', 'event_detail', 'company', 'listing', 'listing_detail', 'login', 'ajax'))) {
+			if (in_array($segments[1], array('blog', 'blog_detail', 'event', 'event_detail', 'company', 'listing', 'listing_detail', 'login', 'registrasi', 'ajax'))) {
 				$this->$segments[1]();
 			}
 		}
@@ -56,6 +56,10 @@ class home extends CI_Controller {
 	}
 	
 	function login() {
+		$this->load->view( 'website/login' );
+	}
+	
+	function registrasi() {
 		$this->load->view( 'website/login' );
 	}
 	

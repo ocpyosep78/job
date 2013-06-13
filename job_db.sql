@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 13, 2013 at 11:14 AM
+-- Generation Time: Jun 13, 2013 at 11:00 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -86,15 +86,16 @@ CREATE TABLE IF NOT EXISTS `article` (
   `image_piracy` varchar(255) DEFAULT NULL,
   `publish_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `article`
 --
 
 INSERT INTO `article` (`id`, `editor_id`, `subkategori_id`, `article_status_id`, `nama`, `alias`, `photo`, `article_url`, `article_desc_1`, `article_desc_2`, `article_desc_3`, `image_piracy`, `publish_date`) VALUES
-(1, 1, 2, 2, '1', '1', '', 'asd', '<p>Description 1</p>', '<p>Description 2</p>', '<p>Description 3</p>', 'asd', '2013-06-12 10:06:27'),
-(2, 1, 1, 2, 'A Night At The Opera', 'a_night_at_the_opera', '2013/06/13/20130613_110614_3921.jpg', '', '<p>Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>', '', '', '', '2013-06-13 00:00:00');
+(1, 1, 2, 2, '1', '1', '2013/06/13/20130613_191014_1325.png', 'asd', '<p>Description 1</p>', '<p>Description 2</p>', '<p>Description 3</p>', 'asd', '2013-06-10 18:10:06'),
+(2, 1, 1, 2, 'A Night At The Opera', 'a_night_at_the_opera', '2013/06/13/20130613_110614_3921.jpg', '', '<p>Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>', '', '', '', '2013-06-11 00:00:00'),
+(3, 1, 2, 2, 'mr. Lorem ipsum sit dolor', 'mr_lorem_ipsum_sit_dolor', '2013/06/13/20130613_213213_7458.jpg', '', '<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>\n<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et</p>', '<p>iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus</p>', '<p>omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum</p>', '', '2013-06-13 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -127,12 +128,15 @@ CREATE TABLE IF NOT EXISTS `article_tag` (
   `article_id` int(10) unsigned DEFAULT NULL,
   `tag_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `article_tag`
 --
 
+INSERT INTO `article_tag` (`id`, `article_id`, `tag_id`) VALUES
+(1, 3, 2),
+(2, 3, 4);
 
 -- --------------------------------------------------------
 
@@ -188,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `company` (
 --
 
 INSERT INTO `company` (`id`, `kota_id`, `industri_id`, `nama`, `phone`, `faximile`, `website`, `address`, `email`, `passwd`, `description`, `kodepos`, `sales`, `contact_name`, `contact_email`, `contact_no`, `logo`, `banner`, `google_map`) VALUES
-(1, 1501, 1, 'PT Maju Terus 33', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(1, 1501, 1, 'PT Maju Terus 33', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
 (2, 1501, 1, 'PT Maju Terus 33', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
 (3, 1501, 1, 'PT Maju Terus 33', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
 (4, 1501, 1, 'PT Maju Terus 33', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
@@ -465,8 +469,8 @@ CREATE TABLE IF NOT EXISTS `kategori` (
 --
 
 INSERT INTO `kategori` (`id`, `nama`, `alias`) VALUES
-(1, 'Berita', NULL),
-(2, 'Entertainment', NULL);
+(1, 'Berita', 'berita'),
+(2, 'Entertainment', 'entertainment');
 
 -- --------------------------------------------------------
 
@@ -479,12 +483,17 @@ CREATE TABLE IF NOT EXISTS `kategori_tag` (
   `kategori_id` int(10) unsigned DEFAULT NULL,
   `tag_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `kategori_tag`
 --
 
+INSERT INTO `kategori_tag` (`id`, `kategori_id`, `tag_id`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -6592,12 +6601,15 @@ CREATE TABLE IF NOT EXISTS `subkategori_tag` (
   `subkategori_id` int(10) DEFAULT NULL,
   `tag_id` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `subkategori_tag`
 --
 
+INSERT INTO `subkategori_tag` (`id`, `subkategori_id`, `tag_id`) VALUES
+(1, 1, 5),
+(2, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -6652,12 +6664,21 @@ CREATE TABLE IF NOT EXISTS `tag` (
   `nama` varchar(100) DEFAULT NULL,
   `alias` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `tag`
 --
 
+INSERT INTO `tag` (`id`, `nama`, `alias`) VALUES
+(1, 'Mathew', 'mathew'),
+(2, 'Love', 'love'),
+(3, 'Hobby', 'hobby'),
+(4, 'Mix', 'mix'),
+(5, 'Music', 'music'),
+(6, 'App', 'app'),
+(7, 'Design', 'design'),
+(8, 'Movie', 'movie');
 
 -- --------------------------------------------------------
 
@@ -6731,12 +6752,16 @@ CREATE TABLE IF NOT EXISTS `widget` (
   `alias` varchar(255) NOT NULL,
   `content` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `widget`
 --
 
+INSERT INTO `widget` (`id`, `nama`, `alias`, `content`) VALUES
+(1, 'About Dunia Karir', 'about_dunia_karir', '<h1>About Duniakarir.com</h1>\n<p>Dunia Karir adalah situ penyedia informasi lowongan kerja sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>\n<p>Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>\n<p><a class="btn btn-white" title="More info" href="#">More info</a></p>'),
+(2, 'Payment', 'payment', '<p><a class="discover" title="Discover" href="#">Discover</a> <a class="amex" title="Amex" href="#">Amex</a> <a class="american-express" title="American Express" href="#">American Express</a> <a class="visa" title="Visa" href="#">Visa</a> <a class="pay-pal" title="Pay Pal" href="#">Pay Pal</a> <a class="master-card" title="Master Card" href="#">Master Card</a></p>'),
+(3, 'Email Admin', 'email_admin', '<p>Herry &lt;herry@simetri.in&gt;</p>');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
