@@ -112,6 +112,10 @@ class Company_model extends CI_Model {
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
 		
+		if (isset($row['logo'])) {
+			$row['logo_link'] = base_url('static/upload/'.$row['logo']);
+		}
+		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));
 		}

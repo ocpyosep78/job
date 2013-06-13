@@ -26,12 +26,9 @@
 				</div>
 				<div class='footer-links'>
 					<ul>
-						<li class='active'><a href='index.html' title='Home'> Home </a> </li>
-						<li><a href='new-albums.html' title='New Albums'>New Albums</a> </li>
-						<li><a href='tracks.html' title='Tracks'>Tracks</a> </li>
-						<li><a href='blog.html' title='Blog'> Blog </a> </li>
-						<li><a href='online-player.html' title='Online Player'>Online Player</a> </li>
-						<li><a href='events.html' title='Events'> Events </a> </li>
+						<li class='active'><a href='<?php echo base_url(); ?>' title='Home'>Home</a></li>
+						<li><a href='<?php echo base_url('blog'); ?>' title='Blog'>Blog</a> </li>
+						<li><a href='<?php echo base_url('event'); ?>' title='Events'>Events</a></li>
 					</ul>
 				</div>
 			</div>

@@ -1,3 +1,23 @@
+<?php
+	$param_company = array(
+		'filter' => '[{"type":"numeric","comparison":"not","value":"","field":"Company.logo"}]',
+		'sort' => '{"is_custom":"1","query":"RAND()"}', 'limit' => 40
+	);
+	$array_company = $this->Company_model->get_array($param_company);
+	
+	$param_vacancy = array(
+		'filter' => '[{"type":"numeric","comparison":"eq","value":"'.VACANCY_STATUS_APPROVE.'","field":"Vacancy.vacancy_status_id"}]',
+		'sort' => '[{"property":"publish_date","direction":"DESC"}]', 'limit' => 15
+	);
+	$array_vacancy = $this->Vacancy_model->get_array($param_vacancy);
+	
+	$param_article = array(
+		'filter' => '[{"type":"numeric","comparison":"eq","value":"'.ARTICLE_PUBLISH.'","field":"Article.article_status_id "}]',
+		'sort' => '[{"property":"publish_date","direction":"DESC"}]', 'limit' => 1
+	);
+	$array_article = $this->Article_model->get_array($param_article);
+?>
+
 <?php $this->load->view( 'website/common/meta' ); ?>
 <?php $this->load->view( 'website/common/header' ); ?>
 
@@ -5,54 +25,9 @@
 	<div class='container'><div class='row'><div class='slider'><ul class='slides'>
 		<li>
 			<div class='span9'>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork01.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork03.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork04.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork05.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork06.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork07.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork11.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork08.png' />
-					</div>
-				</a>
+				<?php $is_text = false; ?>
+				<?php for ($i = 0; $i < 18; $i++) { ?>
+				<?php if ($is_text || ($i % 5) == 0) { ?>
 				<a href="">
 					<div class='artwork'>
 						<div class='glow'></div>
@@ -63,78 +38,15 @@
 						</div>
 					</div>
 				</a>
+				<?php } else { ?>
 				<a href="#">
 					<div class='artwork'>
 						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork02.png' />
+						<img src="<?php echo $array_company[$i]['logo_link']; ?>" />
 					</div>
 				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork09.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork10.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork11.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork12.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork13.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork14.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork15.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork16.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork show-large'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork17.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork show-large'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork12.png' />
-					</div>
-				</a>
-				<a href="#">
-					<div class='artwork show-large hidden-tablet'>
-						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork17.png' />
-					</div>
-				</a>
+				<?php } ?>
+				<?php } ?>
 			</div>
 			<div class='slider-sidebar span3'>
 				<?php $this->load->view( 'website/common/register' ); ?>
@@ -142,121 +54,57 @@
 				<a href="#">
 					<div class='artwork'>
 						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork01.png' />
+						<img src='<?php echo $array_company[18]['logo_link']; ?>' />
 					</div>
 				</a>
 				<a href="#">
 					<div class='artwork'>
 						<div class='glow'></div>
-						<img src='<?php echo base_url(); ?>static/upload/artwork02.png' />
+						<img src='<?php echo $array_company[19]['logo_link']; ?>' />
 					</div>
 				</a>
-
 			</div>
 		</li>
 		<li>
 			<div class='span9'>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork01.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork03.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork04.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork05.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork06.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork07.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork08.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<div class='text'>
-						<span class='artist'>Metallica</span> <br />
-						<span class='song'>The Unforgiven</span> <br />
-						<span class='year'>2001</span>
+				<?php $is_text = false; ?>
+				<?php for ($i = 20; $i < 38; $i++) { ?>
+				<?php if ($is_text || ($i % 4) == 0) { ?>
+				<a href="">
+					<div class='artwork'>
+						<div class='glow'></div>
+						<div class='text'>
+							<span class='artist'>Metallica</span> <br />
+							<span class='song'>The Unforgiven</span> <br />
+							<span class='year'>2001</span>
+						</div>
 					</div>
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork02.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork09.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork10.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork11.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork12.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork13.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork14.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork15.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork16.png' />
-				</div>
-				<div class='artwork'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork17.png' />
-				</div>
-				<div class='artwork show-large'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork17.png' />
-				</div>
-				<div class='artwork show-large'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork17.png' />
-				</div>
-				<div class='artwork show-large hidden-tablet'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork17.png' />
-				</div>
+				</a>
+				<?php } else { ?>
+				<a href="#">
+					<div class='artwork'>
+						<div class='glow'></div>
+						<img src="<?php echo $array_company[$i]['logo_link']; ?>" />
+					</div>
+				</a>
+				<?php } ?>
+				<?php } ?>
 			</div>
 			<div class='slider-sidebar span3'>
 				<?php $this->load->view( 'website/common/register' ); ?>
 
-				<div class='artwork hidden-tablet'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork01.png' />
-				</div>
-				<div class='artwork no-margin hidden-tablet'>
-					<div class='glow'></div>
-					<img src='<?php echo base_url(); ?>static/upload/artwork02.png' />
-				</div>
-
+				<a href="#">
+					<div class='artwork'>
+						<div class='glow'></div>
+						<img src='<?php echo $array_company[38]['logo_link']; ?>' />
+					</div>
+				</a>
+				<a href="#">
+					<div class='artwork'>
+						<div class='glow'></div>
+						<img src='<?php echo $array_company[39]['logo_link']; ?>' />
+					</div>
+				</a>
 			</div>
 		</li>
 	</ul></div></div></div>
@@ -269,20 +117,20 @@
 				<div class='new-items span6 no-margin'>
 					<h1>Lowongan Kerja Terbaru</h1>
 					<hr />
-					
-					<div class="jp-audio custom"><a>J. Lang - In Peace, The Love & Happiness Mix</a></div>
-					<a href="#" class='btn btn-main'>Lihat Semua</a>
+					<?php foreach ($array_vacancy as $key => $vacancy) { ?>
+						<div class="jp-audio custom"><a><?php echo $vacancy['nama']; ?></a></div>
+					<?php } ?>
+					<!-- <a href="#" class='btn btn-main'>Lihat Semua</a>	-->
 				</div>
 				<div class='weekly-features span3'>
 					<h1>Artikel Dunia Kerja </h1>
 					<hr />
 					
-					<figure><img src="<?php echo base_url(); ?>static/upload/big-artwork.jpg" /></figure>
-					<h2><a href="#">A Night At The Opera</a></h2>
-					<h3><a href="#">Queen</a></h3>
-					<p>Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>
-					<span class='price'>$ 15</span>
-					<a href="#" title='Buy' class='btn btn-blue'><i class='shopping-cart'></i> Buy</a>
+					<?php if (count($array_article) > 0) { ?>
+					<figure><img src="<?php echo $array_article[0]['photo_link']; ?>" /></figure>
+					<h2><a href="#"><?php echo $array_article[0]['nama']; ?></a></h2>
+					<p><?php echo $array_article[0]['article_desc_1']; ?></p>
+					<?php } ?>
 				</div>
 			</div>
 			<aside class='span3'>

@@ -20,6 +20,8 @@ define('APPLY_STATUS_EMPTY',					0);
 define('APPLY_STATUS_OPEN',						1);
 define('APPLY_STATUS_INTERVIEW',				2);
 define('APPLY_STATUS_REJECT',					4);
+define('ARTICLE_PUBLISH',						2);
+define('VACANCY_STATUS_APPROVE',				3);
 
 define('APPLY',									'apply');
 define('APPLY_STATUS',							'apply_status');

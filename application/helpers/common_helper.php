@@ -490,7 +490,8 @@
     }
     
     if (! function_exists('GetStringSorting')) {
-        // $Param = array('sort' => '[{"property":"tanggal","direction":"DESC"}]');
+        // $Param = array( 'sort' => '[{"property":"tanggal","direction":"DESC"}]' );
+        // $Param = array( 'sort' => '{"is_custom":"1","query":"RAND()"}' );
         function GetStringSorting($param, $Field = array(), $string_default = '') {
             $Result = '';
             
@@ -508,16 +509,24 @@
                 }
                 
                 $Result = substr_replace( $Result, "", -2 );
-			} else if (isset($param['sort'])) {
+			}
+			else if (isset($param['sort'])) {
                 $ArrayString = json_decode($param['sort']);
-                foreach ($ArrayString as $Array) {
-                    $FieldName = (isset($Field[$Array->property])) ? $Field[$Array->property] : $Array->property;
-                    $Query = $FieldName . ' ' . $Array->direction;
-                    
-                    $Result .= (empty($Result)) ? '' : ', ';
-                    $Result .= $Query;
-                }
-			} else {
+				if (is_array($ArrayString)) {
+					foreach ($ArrayString as $Array) {
+						$FieldName = (isset($Field[$Array->property])) ? $Field[$Array->property] : $Array->property;
+						$Query = $FieldName . ' ' . $Array->direction;
+						
+						$Result .= (empty($Result)) ? '' : ', ';
+						$Result .= $Query;
+					}
+				} else if (is_object($ArrayString)) {
+					if (!empty($ArrayString->is_custom)) {
+						$Result = $ArrayString->query;
+					}
+				}
+			}
+			else {
                 $Result = $string_default;
             }
             

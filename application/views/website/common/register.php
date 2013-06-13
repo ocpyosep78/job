@@ -7,8 +7,8 @@
 		<li>Sell your songs</li>
 	</ul>
 	<div class='actions'>
-		<a href="#" title='Sign in' class='sign-in btn btn-main'>Sign In</a>
-		<a href="#" title='Registration' class='registration btn btn-blue'>Registration</a>
+		<a href="<?php echo base_url('login'); ?>" title='Sign in' class='sign-in btn btn-main'>Sign In</a>
+		<a href="<?php echo base_url('registrasi'); ?>" title='Registration' class='registration btn btn-blue'>Registration</a>
 	</div>
 	<div class='social-links'>
 		<a href="#" title='RSS' class='rss'>RSS</a>
