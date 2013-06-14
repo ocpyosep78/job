@@ -47,6 +47,7 @@ define('POSITION',								'position');
 define('PROPINSI',								'propinsi');
 define('SEEKER',								'seeker');
 define('SEEKER_EXP',							'seeker_exp');
+define('SEEKER_EXPERT',							'seeker_expert');
 define('SEEKER_SETTING',						'seeker_setting');
 define('SEEKER_SUMMARY',						'seeker_summary');
 define('SUBKATEGORI',							'subkategori');

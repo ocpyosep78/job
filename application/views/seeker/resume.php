@@ -12,14 +12,43 @@
 <body data-layout="fixed">
 <?php $this->load->view( 'panel/common/navigation' ); ?>
 
+<style>
+.table-bordered { border: 1px solid #DDDDDD; }
+.box.box-bordered .table { border: 1px solid #DDDDDD; }
+.box.box-bordered .table.table-bordered { border: 1px solid #DDDDDD; }
+</style>
+
 <div class="container-fluid" id="content">
 	<?php $this->load->view( 'panel/common/sidebar' ); ?>
 	<div id="main"><div class="container-fluid"><div class="row-fluid"><div class="span12"><div class="box">
 		<?php $this->load->view( 'panel/common/modul_name', array( 'name' => 'Resume', 'class' => 'icon-reorder' ) ); ?>
-						
+		
 		<div class="box-content">
 			<div class="hide">
 				<div class="cnt-seeker"><?php echo json_encode($seeker); ?></div>
+			</div>
+			
+			<div id="modal-ahli" class="modal modal-bigest hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h3 id="myModalLabel">Form Keahlian / Ketrampilan</h3>
+				</div>
+				<form class='form-horizontal form-validate' id="form-ahli">
+					<input type="hidden" name="id" value="0" />
+					<input type="hidden" name="seeker_id" value="0" />
+					<input type="submit" class="btn-hidden" hidefocus="true" />
+					
+					<div class="modal-body">
+						<div class="control-group">
+							<label for="input-content" class="control-label">Nama Keahlian</label>
+							<div class="controls"><input type="text" name="content" id="input-content" class="input-xlarge" data-rule-required="true" /></div>
+						</div>
+					</div>
+				</form>
+				<div class="modal-footer">
+					<button class="btn modal-close" data-dismiss="modal" aria-hidden="true">Close</button>
+					<button class="btn modal-submit btn-primary" data-dismiss="modal">Save changes</button>
+				</div>
 			</div>
 			
 			<div class="row-fluid margin-top">
@@ -131,11 +160,17 @@
 				<div class="box-title">
 					<h3><i class="icon-file"></i>Keahlian / Ketrampilan</h3>
 					<div class="actions">
-						<a class="btn cursor btn-mini"><i class="icon-edit"></i></a>
+						<a class="btn cursor btn-mini"><i class="icon-edit btn-modal-ahli"></i></a>
 					</div>
 				</div>
 				<div class="box-content">
-					Isinya nanti table
+					<table id="cnt-grid-ahli" class="table table-striped table-bordered">
+						<thead><tr>
+							<th>Nama Surat</th>
+							<th style="width: 75px;">&nbsp;</th>
+						</tr></thead>
+						<tbody><tr><td class="dataTables_empty">Loading data from server</td></tr></tbody>
+					</table>
 				</div>
 			</div>
 			
@@ -216,24 +251,111 @@
 				</div>
 			</div>
 		</div>
+		
+		<div id="modal-lamaran" class="modal modal-bigest hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3 id="myModalLabel">Form Surat Lamaran</h3>
+			</div>
+			<form class='form-horizontal form-validate' id="form-lamaran">
+				<input type="hidden" name="id" value="0" />
+				<input type="hidden" name="seeker_id" value="0" />
+				<div class="modal-body">
+					<div class="control-group">
+						<label for="input-nama" class="control-label">Judul Surat</label>
+						<div class="controls">
+							<input type="text" name="nama" id="input-nama" class="input-xlarge" data-rule-required="true" maxlength="20" />
+						</div>
+					</div>
+					<div class="control-group">
+						<label for="input-content1" class="control-label">Isi Surat</label>
+						<div class="controls">
+							<textarea name="content" id="input-content1" class="tinymce span9" style="height: 350px;"></textarea>
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+				<button class="btn modal-close" data-dismiss="modal" aria-hidden="true">Close</button>
+				<button class="btn modal-submit btn-primary" data-dismiss="modal">Save changes</button>
+			</div>
+		</div>
 	</div></div></div></div></div>
 </div>
-
 <script>
-	var seeker = Func.get_seeker();
-	$('[name="id"]').val(seeker.id);
-	$('[name="full_name"]').val(seeker.full_name);
-	$('[name="email"]').val(seeker.email);
-	$('[name="phone"]').val(seeker.phone);
-	$('[name="hp"]').val(seeker.hp);
-	$('[name="address"]').val(seeker.address);
-	$('[name="tgl_lahir"]').val(Func.SwapDate(seeker.tgl_lahir));
-	$('[name="kelamin_nama"]').val(seeker.kelamin_nama);
-	$('[name="kebangsaan"]').val(seeker.kebangsaan);
-	
-	if (seeker.is_readonly) {
-		$('.actions').remove();
-	}
+	$(document).ready(function() {
+		var seeker = Func.get_seeker();
+		$('[name="id"]').val(seeker.id);
+		$('[name="full_name"]').val(seeker.full_name);
+		$('[name="email"]').val(seeker.email);
+		$('[name="phone"]').val(seeker.phone);
+		$('[name="hp"]').val(seeker.hp);
+		$('[name="address"]').val(seeker.address);
+		$('[name="tgl_lahir"]').val(Func.SwapDate(seeker.tgl_lahir));
+		$('[name="kelamin_nama"]').val(seeker.kelamin_nama);
+		$('[name="kebangsaan"]').val(seeker.kebangsaan);
+		
+		if (seeker.is_readonly) {
+			$('.actions').remove();
+		}
+		
+		/*	Keahlian */
+		var ahli_dt = null;
+		var ahli_param = {
+			id: 'cnt-grid-ahli',
+			source: web.host + 'seeker/resume/grid',
+			column: [ { }, { bSortable: false, sClass: "center" } ],
+			fnServerParams: function ( aoData ) {
+				aoData.push( { "name": "grid_name", "value": "seeker_expert" } );
+			},
+			callback: function() {
+				$('#cnt-grid-ahli .edit').click(function() {
+					var raw_record = $(this).siblings('.hide').text();
+					eval('var record = ' + raw_record);
+					
+					$('#modal-ahli [name="id"]').val(record.id);
+					$('#modal-ahli [name="content"]').val(record.content);
+					$('#modal-ahli').modal();
+				});
+				
+				$('#cnt-grid-ahli .delete').click(function() {
+					var raw_record = $(this).siblings('.hide').text();
+					eval('var record = ' + raw_record);
+					
+					Func.confirm_delete({
+						data: { action: 'delete_seeker_expert', id: record.id },
+						url: web.host + 'seeker/resume/action', callback: function() { ahli_dt.reload(); }
+					});
+				});
+			}
+		}
+		ahli_dt = Func.init_datatable(ahli_param);
+		$('.btn-modal-ahli').click(function() {
+			$('#modal-ahli form')[0].reset()
+			$('#modal-ahli [name="id"]').val(0);
+			$('#modal-ahli [name="seeker_id"]').val(seeker.id);
+			$('#modal-ahli').modal();
+		});
+		$('#modal-ahli .modal-footer .modal-close').click(function() { $('#modal-ahli').modal('hide'); });
+		$('#modal-ahli .modal-footer .modal-submit').click(function() { $('#modal-ahli').find('form').submit(); });
+		$('#modal-ahli form').submit(function() {
+			if (! $('#modal-ahli form').valid()) {
+				return false;
+			}
+			
+			var param = Site.Form.GetValue('modal-ahli form');
+			param.action = 'update_seeker_expert';
+			Func.ajax({ url: web.host + 'seeker/resume/action', param: param, callback: function(result) {
+				Func.show_notice({ text: result.message });
+				if (result.status == 1) {
+					ahli_dt.reload();
+					$('#modal-ahli').modal('hide');
+				}
+			} });
+			
+			return false;
+		});
+	});
 </script>
 </body>
 </html>

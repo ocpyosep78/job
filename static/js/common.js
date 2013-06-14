@@ -489,7 +489,7 @@ var Func = {
 	init_datatable: function(p) {
 		var cnt_id = '#' + p.id;
 		
-		$(cnt_id).dataTable( {
+		var dt_param = {
 			"aoColumns": p.column,
 			"sAjaxSource": p.source,
 			"bProcessing": true, "bServerSide": true, "sServerMethod": "POST", "sPaginationType": "full_numbers",
@@ -503,8 +503,12 @@ var Func = {
 					p.callback();
 				}
 			}
-		} );
+		}
+		if (p.fnServerParams != null) {
+			dt_param.fnServerParams = p.fnServerParams;
+		}
 		
+		$(cnt_id).dataTable(dt_param);
 		$(cnt_id + '_wrapper input').attr("placeholder", "Search here...");
 		$(cnt_id + '_wrapper select').wrap("<div class='input-mini'></div>").chosen({ disable_search_threshold: 9999999 });
 		

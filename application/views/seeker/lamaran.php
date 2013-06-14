@@ -10,7 +10,7 @@
 	<?php $this->load->view( 'panel/common/sidebar' ); ?>
 	<div id="main"><div class="container-fluid"><div class="row-fluid"><div class="span12"><div class="box">
 		<?php $this->load->view( 'panel/common/modul_name', array( 'name' => 'Surat Lamaran', 'class' => 'icon-reorder' ) ); ?>
-						
+		
 		<div class="box-content">
 			<div class="hide">
 				<div class="cnt-seeker"><?php echo json_encode($seeker); ?></div>
