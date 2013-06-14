@@ -26,6 +26,7 @@
 		<div class="box-content">
 			<div class="hide">
 				<div class="cnt-seeker"><?php echo json_encode($seeker); ?></div>
+				<iframe name="iframe_seeker_photo" src="<?php echo base_url('panel/upload?callback=seeker_photo'); ?>"></iframe>
 			</div>
 			
 			<div id="modal-ahli" class="modal modal-bigest hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -73,7 +74,7 @@
 				</div>
 			</div>
 			
-			<div class="box box-color box-bordered teal">
+			<div class="box box-color box-bordered teal" id="cnt-detail">
 				<div class="box-title">
 					<h3><i class="icon-file"></i>Detail Kontak Informasi</h3>
 					<div class="actions">
@@ -107,7 +108,13 @@
 					<div style="position: absolute; top: 10px; right: 10px;">
 						<div style="width: 125px; text-align: center;">
 							<img src="<?php echo base_url('static/theme/flat/img/demo/user-avatar.jpg'); ?>" style="width: 125px; height: 160px;" />
-							<div style="padding: 10px 0 0 0;"><button class="btn btn-success">Upload Photo</button></div>
+							<div style="padding: 10px 0 0 0;">
+								<div class="default"><button class="btn btn-success">Upload Photo</button></div>
+								<div class="confirm hide">
+									<button class="btn btn-success">Save</button>
+									<button class="btn btn-success">Batal</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -295,9 +302,17 @@
 		$('[name="kelamin_nama"]').val(seeker.kelamin_nama);
 		$('[name="kebangsaan"]').val(seeker.kebangsaan);
 		
+		// set readonly for company
 		if (seeker.is_readonly) {
 			$('.actions').remove();
 		}
+		
+		// form
+		seeker_photo = function(p) {
+			console.log(p)
+			$('[name="logo"]').val(p.file_name);
+		}
+		$('#cnt-detail .default .btn').click(function() { window.iframe_seeker_photo.browse() });
 		
 		/*	Keahlian */
 		var ahli_dt = null;

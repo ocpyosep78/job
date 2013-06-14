@@ -91,6 +91,10 @@ class Widget_model extends CI_Model {
 		$row = StripArray($row);
 		$row['content_html'] = save_tinymce($row['content']);
 		
+		// content without tag p
+		$row['content_without_p'] = preg_replace('/^<p>/i', '', $row['content']);
+		$row['content_without_p'] = preg_replace('/<\/p>$/i', '', $row['content_without_p']);
+		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));
 		}

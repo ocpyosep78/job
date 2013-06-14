@@ -1,3 +1,52 @@
+<?php
+	// breadcrump
+	$breadcrump[] = array( 'title' => 'Index', 'link' => base_url() );
+	$breadcrump[] = array( 'title' => 'Events', 'link' => base_url('event') );
+	
+	// page
+	$page_item = 4;
+	$page_active = get_page();
+	$event_page = base_url('event');
+	
+	// event
+	$param_event = array(
+		'filter' => '[' .
+			'{"type":"custom","field":"DATE(waktu) = \''.date("Y-m-d").'\'"},' .
+			'{"type":"numeric","comparison":"lt","value":"'.date("Y-m-d").'","field":"Event.publish_date"}' .
+		']',
+		'sort' => '[{"property":"waktu","direction":"ASC"}]', 'limit' => $page_item
+	);
+	$array_event = $this->Event_model->get_array($param_event);
+	if (count($array_event) == 0) {
+		$param_event = array(
+			'filter' => '[' .
+				'{"type":"numeric","comparison":"gt","value":"'.date("Y-m-d").'","field":"Event.waktu"},' .
+				'{"type":"numeric","comparison":"lt","value":"'.date("Y-m-d").'","field":"Event.publish_date"}' .
+			']',
+			'sort' => '[{"property":"waktu","direction":"ASC"}]', 'limit' => $page_item
+		);
+		$array_event = $this->Event_model->get_array($param_event);
+		
+		$page_start = $page_active * $page_item;
+		$page_count_min = 4;
+	} else {
+		$page_start = 0;
+		$page_count_min = 0;
+	}
+	
+	// next event
+	$param_event = array(
+		'filter' => '[' .
+			'{"type":"numeric","comparison":"gt","value":"'.date("Y-m-d").'","field":"Event.waktu"},' .
+			'{"type":"numeric","comparison":"not","value":"'.date("Y-m-d").'","field":"DATE(Event.waktu)"},' .
+			'{"type":"numeric","comparison":"lt","value":"'.date("Y-m-d").'","field":"Event.publish_date"}' .
+		']',
+		'sort' => '[{"property":"waktu","direction":"ASC"}]', 'start' => $page_start, 'limit' => 4
+	);
+	$next_event = $this->Event_model->get_array($param_event);
+	$page_count = ceil(($this->Event_model->get_count() - $page_count_min) / $page_item);
+?>
+
 <?php $this->load->view( 'website/common/meta' ); ?>
 <?php $this->load->view( 'website/common/header' ); ?>
 
@@ -5,19 +54,9 @@
 	<div class='container'><div class='row'>
 		<div class='span9 content'>
 			<div class='main-top span9'>
-				<div class='span4 no-margin'>
-					<h1>Events</h1>
-					<div class='options-line'>
-						<div class='breadcrumb-container'>
-							<ul class="breadcrumb">
-								<li><a href="index.html">Index</a> <span class="divider">&raquo;</span></li>
-								<li class="active">Events</li>
-							</ul>
-						</div>
-					</div>
-				</div>
+				<?php $this->load->view( 'website/common/breadcrumb', array( 'array_breadcrumb' => $breadcrump, 'title' => 'Events' ) ); ?>
 			</div>
-
+			
 			<div class='span9 events no-margin'>
 				<h1 class='span6 no-margin'>Hari Ini</h1>
 				<div class='today-event-controls span3'>
@@ -27,152 +66,60 @@
 				<hr class='floating-hr' />
 				<div id='daily-event' class='span9 no-margin'>
 					<ul class='slides'>
+						<?php foreach ($array_event as $event) { ?>
 						<li>
-							<div class='span9 no-margin today-event today01'>
-								<div class='left'>
+							<div class="span9 no-margin today-event today01">
+								<div class="left">
 									<figure>
-										<img src='<?php echo base_url(); ?>static/upload/today-event.png' />
-										<figcaption>Merry Christmas party in coffee house! </figcaption>
+										<img src="<?php echo $event['photo_link']; ?>" />
+										<figcaption><?php echo $event['photo_desc']; ?></figcaption>
 									</figure>
-									<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta </p>
+									<?php echo $event['content_short']; ?>
 								</div>
-								<div class='right'>
-									<div class='date'>7 march <span class="time">12:00</span></div>
-									<a href="#" class='location'>Malang</a>
-									<div style="background: #FFFFFF; padding: 10px; font-size: 30px; line-height: 30px;">Pameran Lowongan kerja di Suriah dan dan Irak</div>
-									<div class='users'><a href="#" title='Sign in' class='go btn btn-main'>Lihat</a></div>
+								<div class="right">
+									<div class="date">7 march <span class="time">12:00</span></div>
+									<a class="cursor location"><?php echo $event['lokasi']; ?></a>
+									<div style="background: #FFFFFF; padding: 10px; font-size: 30px; line-height: 30px;"><?php echo $event['nama']; ?></div>
+									<div class="users"><a href="<?php echo $event['event_link']; ?>" title="Lihat" class="go btn btn-main">Lihat</a></div>
 								</div>
 							</div>
 						</li>
-						<li>
-							<div class='span9 no-margin today-event today01'>
-								<div class='left'>
-									<figure>
-										<img src='<?php echo base_url(); ?>static/upload/today-event.png' />
-										<figcaption>Merry Christmas party in coffee house! </figcaption>
-									</figure>
-									<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta </p>
-								</div>
-								<div class='right'>
-									<div class='date'>7 march <span class="time">12:00</span></div>
-									<a href="#" class='location'>Malang</a>
-									<div style="background: #FFFFFF; padding: 10px; font-size: 30px; line-height: 30px;">Pameran Lowongan kerja di Suriah dan dan Irak</div>
-									<div class='users'><a href="#" title='Sign in' class='go btn btn-main'>Lihat</a></div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class='span9 no-margin today-event today01'>
-								<div class='left'>
-									<figure>
-										<img src='<?php echo base_url(); ?>static/upload/today-event.png' />
-										<figcaption>Merry Christmas party in coffee house! </figcaption>
-									</figure>
-									<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta </p>
-								</div>
-								<div class='right'>
-									<div class='date'>7 march <span class="time">12:00</span></div>
-									<a href="#" class='location'>Malang</a>
-									<div style="background: #FFFFFF; padding: 10px; font-size: 30px; line-height: 30px;">Pameran Lowongan kerja di Suriah dan dan Irak</div>
-									<div class='users'><a href="#" title='Sign in' class='go btn btn-main'>Lihat</a></div>
-								</div>
-							</div>
-						</li>
+						<?php } ?>
 					</ul>
 				</div>
 				
 				<h1 class='pull-left'>Akan Datang... </h1>
-				<div style="float:right;">
-					<a href="#" title='Sign in' class='go btn btn-main'>Kirim event Ke Email saya</a>
-				</div>
+				<div style="float:right;"><a href="#" title='Sign in' class='go btn btn-main'>Kirim event Ke Email saya</a></div>
 				<hr class='floating-hr' />
 				
 				<div class='row'>
-					<article class='span4 art1'>
-						<div class='inner'>
-							<div style="float:none;font-size:20px;min-height: 40px;">Jobs fair khusus untuk Dept Kolektor</div>
+					<?php foreach ($next_event as $event) { ?>
+					<article class="span4 art1">
+						<div class="inner">
+							<div style="float:none; font-size: 20px; min-height: 40px;"><?php echo $event['nama']; ?></div>
 							<figure>
-								<img src='<?php echo base_url(); ?>static/upload/event01.jpg' />
-								<figcaption>Merry Christmas party in coffee house! </figcaption>
+								<img src="<?php echo base_url(); ?>static/upload/event01.jpg" />
+								<figcaption><?php echo $event['photo_desc']; ?></figcaption>
 							</figure>
-							<div class='date'>7 march <span class="time">12:00</span></div>
-							<a href="#" class='location'>Malang</a>
-							<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta </p>
+							<div class="date">7 march <span class="time">12:00</span></div>
+							<div><a class="cursor location"><?php echo $event['lokasi']; ?></a></div>
+							<p><?php echo $event['content_short']; ?></p>
 						</div>
 					</article>
-					<article class='span4 art2'>
-
-						<div class='inner'>
-
-						<div style="float:none;font-size:20px;min-height: 40px;">Islamic Book Fair 2013 !</div>
-
-							<figure>
-
-								<img src='<?php echo base_url(); ?>static/upload/event01.jpg' />
-
-								<figcaption>Merry Christmas party in coffee house! </figcaption>
-
-							</figure>
-
-							<div class='date'>
-
-								7 march <span class="time">12:00</span>
-
-							</div>
-
-							Lokasi :  <a href="#" class='location'>Malang, Hall Ekonomi Brawijaya</a>
-
-							<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta </p>
-
-						</div>
-
-						
-
-					</article>
-					<article class='span4 art3'>
-
-						<div class='inner'>
-
-						<div style="float:none;font-size:20px;min-height: 40px;">Pameran Lukisan semalang raya</div>
-
-							<figure>
-
-								<img src='<?php echo base_url(); ?>static/upload/event01.jpg' />
-
-								<figcaption>Merry Christmas party in coffee house! </figcaption>
-
-							</figure>
-
-							<div class='date'>
-
-								7 march <span class="time">12:00</span>
-
-							</div>
-
-						   Lokasi :  <a href="#" class='location'>Malang</a>
-
-							<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta </p>
-
-						</div>
-
-						
-
-					</article>
+					<?php } ?>
 				</div>
 			</div>
 			
 			<div class='standard-pagination'>
 				<ul>
-					<li class='active'><a href='#' class='btn'>1</a></li>
-					<li><a href='#' class='btn'>2</a></li>
-					<li><a href='#' class='btn'>3</a></li>
-					<li><a href='#' class='btn'>4</a></li>
-					<li><a href='#' class='btn'>5</a></li>
-					<li><a href='#' class='btn'>6</a></li>
-					<li><a href='#' class='btn'>7</a></li>
-					<li><a href='#' class='btn'>8</a></li>
-					<li><a href='#' class='btn'>9</a></li>
-					<li><a href='#' class='btn'>10</a></li>
+					<?php for ($i = -5; $i <= 5; $i++) { ?>
+						<?php $class = ($i == 0) ? 'active' : ''; ?>
+						<?php $page_counter = $page_active + $i; ?>
+						<?php $page_link = $event_page.'/page_'.$page_counter; ?>
+						<?php if ($page_counter > 0 && $page_counter <= $page_count) { ?>
+						<li class='<?php echo $class; ?>'><a href='<?php echo $page_link; ?>' class='btn'><?php echo $page_counter; ?></a></li>
+						<?php } ?>
+					<?php } ?>
 				</ul>
 			</div>
 		</div>

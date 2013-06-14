@@ -4,7 +4,7 @@ class Event_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array('id', 'editor_id', 'nama', 'alias', 'content', 'photo', 'lokasi', 'waktu', 'google_map', 'publish_date');
+        $this->field = array('id', 'editor_id', 'nama', 'alias', 'content', 'photo', 'photo_desc', 'lokasi', 'waktu', 'google_map', 'publish_date');
     }
 
     function update($param) {
@@ -25,6 +25,8 @@ class Event_model extends CI_Model {
             $result['status'] = '1';
             $result['message'] = 'Data berhasil diperbaharui.';
         }
+		
+		$this->resize_image($param);
        
         return $result;
     }
@@ -98,8 +100,9 @@ class Event_model extends CI_Model {
     }
 	
 	function sync($row, $column = array()) {
-		$row = StripArray($row);
-		$row['publish_date'] = ($row['publish_date'] == '0000-00-00 00:00:00') ? null : $row['publish_date'];
+		$row = StripArray($row, array('publish_date'));
+		$row['event_link'] = base_url('event/'.$row['alias']);
+		$row['content_short'] = GetLengthChar($row['content'], 175, '');
 		
 		if (! empty($row['photo'])) {
 			$row['photo_link'] = base_url('static/upload/'.$row['photo']);
@@ -110,5 +113,12 @@ class Event_model extends CI_Model {
 		}
 		
 		return $row;
+	}
+	
+	function resize_image($param) {
+		if (!empty($param['photo'])) {
+			$image_source = $this->config->item('base_path').'/static/upload/'.$param['photo'];
+			ImageResize($image_source, $image_source, 700, 350, 1);
+		}
 	}
 }

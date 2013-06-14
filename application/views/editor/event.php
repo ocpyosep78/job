@@ -44,6 +44,10 @@
 					<div class="controls"><input type="text" name="alias" id="input-alias" class="input-xxlarge" readonly="readonly" /></div>
 				</div>
 				<div class="control-group">
+					<label for="input-photo_desc" class="control-label">Judul Gambar</label>
+					<div class="controls"><input type="text" name="photo_desc" id="input-photo_desc" class="input-xxlarge" maxlength="50" /></div>
+				</div>
+				<div class="control-group">
 					<label for="input-lokasi" class="control-label">Lokasi</label>
 					<div class="controls"><input type="text" name="lokasi" id="input-lokasi" class="input-xxlarge" maxlength="50" /></div>
 				</div>
@@ -132,6 +136,7 @@
 						$('#form-event [name="content"]').val(record.content);
 						$('#form-event [name="photo"]').val(record.photo);
 						$('#form-event [name="lokasi"]').val(record.lokasi);
+						$('#form-event [name="photo_desc"]').val(record.photo_desc);
 						$('#form-event [name="waktu"]').val(Func.SwapDate(record.waktu));
 						$('#form-event [name="google_map"]').val(record.google_map);
 						

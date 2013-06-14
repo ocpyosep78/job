@@ -129,8 +129,7 @@ class Article_model extends CI_Model {
     }
 	
 	function sync($row, $column = array()) {
-		$row = StripArray($row);
-		$row['publish_date'] = ($row['publish_date'] == '0000-00-00 00:00:00') ? null : $row['publish_date'];
+		$row = StripArray($row, array('publish_date'));
 		$row['desc_short'] = GetLengthChar($row['article_desc_1'], 100, '');
 		$row['article_link'] = base_url('blog/'.$row['alias']);
 		
@@ -153,7 +152,9 @@ class Article_model extends CI_Model {
 	}
 	
 	function resize_image($param) {
-		$image_source = $this->config->item('base_path').'/static/upload/'.$param['photo'];
-		ImageResize($image_source, $image_source, 206, 127, 1);
+		if (!empty($param['photo'])) {
+			$image_source = $this->config->item('base_path').'/static/upload/'.$param['photo'];
+			ImageResize($image_source, $image_source, 206, 127, 1);
+		}
 	}
 }

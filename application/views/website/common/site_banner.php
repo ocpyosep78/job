@@ -1,5 +1,4 @@
-<a href='#' title='Download application' class='app-link'>
-	<div class='app-ad'>
-		<h3>Download our app for iphone <br /><strong>for free</strong></h3>
-	</div>
-</a>
+<?php
+	$iphone = $this->Widget_model->get_by_id(array( 'alias' => 'iphone' ));
+?>
+<?php echo $iphone['content']; ?>

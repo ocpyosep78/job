@@ -328,14 +328,14 @@
                 foreach ($Filter as $Array) {
                     $Field = (isset($ReplaceField[$Array->field])) ? $ReplaceField[$Array->field] : $Array->field;
                     
-                    if (isset($Array->field) && isset($Array->value)) {
+                    if (isset($Array->field) && isset($Array->type)) {
                         if ($Array->type == 'numeric') {
                             if ($Array->comparison == 'eq') {
                                 $StringFilter .= "AND " . $Field." = '".$Array->value."' ";
 							} else if ($Array->comparison == 'lt') {
-                                $StringFilter .= "AND " . $Field." < '".$Array->value."' ";
+                                $StringFilter .= "AND " . $Field." <= '".$Array->value."' ";
 							} else if ($Array->comparison == 'gt') {
-                                $StringFilter .= "AND " . $Field." > '".$Array->value."' ";
+                                $StringFilter .= "AND " . $Field." >= '".$Array->value."' ";
 							} else if ($Array->comparison == 'not') {
                                 $StringFilter .= "AND " . $Field." != '".$Array->value."' ";
 							} else if ($Array->comparison == 'eq_can_empty' && !empty($Array->value)) {

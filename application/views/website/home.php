@@ -129,7 +129,7 @@
 					<?php if (count($array_article) > 0) { ?>
 					<figure><img src="<?php echo $array_article[0]['photo_link']; ?>" /></figure>
 					<h2><a href="#"><?php echo $array_article[0]['nama']; ?></a></h2>
-					<p><?php echo $array_article[0]['article_desc_1']; ?></p>
+					<p><?php echo $array_article[0]['desc_short']; ?></p>
 					<?php } ?>
 				</div>
 			</div>
