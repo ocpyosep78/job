@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Waktu pembuatan: 14. Juni 2013 jam 08:42
--- Versi Server: 5.1.41
--- Versi PHP: 5.3.1
+-- Generation Time: Jun 14, 2013 at 10:38 PM
+-- Server version: 5.1.41
+-- PHP Version: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -22,7 +22,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `apply`
+-- Table structure for table `apply`
 --
 
 CREATE TABLE IF NOT EXISTS `apply` (
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `apply` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data untuk tabel `apply`
+-- Dumping data for table `apply`
 --
 
 INSERT INTO `apply` (`id`, `seeker_id`, `vacancy_id`, `apply_status_id`, `apply_date`, `is_delete`, `addtional_info`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `apply` (`id`, `seeker_id`, `vacancy_id`, `apply_status_id`, `apply_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `apply_status`
+-- Table structure for table `apply_status`
 --
 
 CREATE TABLE IF NOT EXISTS `apply_status` (
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `apply_status` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `apply_status`
+-- Dumping data for table `apply_status`
 --
 
 INSERT INTO `apply_status` (`id`, `nama`) VALUES
@@ -68,7 +68,7 @@ INSERT INTO `apply_status` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `article`
+-- Table structure for table `article`
 --
 
 CREATE TABLE IF NOT EXISTS `article` (
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `article` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data untuk tabel `article`
+-- Dumping data for table `article`
 --
 
 INSERT INTO `article` (`id`, `editor_id`, `subkategori_id`, `article_status_id`, `nama`, `alias`, `photo`, `article_url`, `article_desc_1`, `article_desc_2`, `article_desc_3`, `image_piracy`, `publish_date`) VALUES
@@ -100,7 +100,7 @@ INSERT INTO `article` (`id`, `editor_id`, `subkategori_id`, `article_status_id`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `article_status`
+-- Table structure for table `article_status`
 --
 
 CREATE TABLE IF NOT EXISTS `article_status` (
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `article_status` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `article_status`
+-- Dumping data for table `article_status`
 --
 
 INSERT INTO `article_status` (`id`, `nama`) VALUES
@@ -120,7 +120,7 @@ INSERT INTO `article_status` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `article_tag`
+-- Table structure for table `article_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `article_tag` (
@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `article_tag` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `article_tag`
+-- Dumping data for table `article_tag`
 --
 
 INSERT INTO `article_tag` (`id`, `article_id`, `tag_id`) VALUES
@@ -141,7 +141,7 @@ INSERT INTO `article_tag` (`id`, `article_id`, `tag_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bahasa`
+-- Table structure for table `bahasa`
 --
 
 CREATE TABLE IF NOT EXISTS `bahasa` (
@@ -154,14 +154,14 @@ CREATE TABLE IF NOT EXISTS `bahasa` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data untuk tabel `bahasa`
+-- Dumping data for table `bahasa`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `company`
+-- Table structure for table `company`
 --
 
 CREATE TABLE IF NOT EXISTS `company` (
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `company` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=71 ;
 
 --
--- Dumping data untuk tabel `company`
+-- Dumping data for table `company`
 --
 
 INSERT INTO `company` (`id`, `kota_id`, `industri_id`, `nama`, `phone`, `faximile`, `website`, `address`, `email`, `passwd`, `description`, `kodepos`, `sales`, `contact_name`, `contact_email`, `contact_no`, `logo`, `banner`, `google_map`) VALUES
@@ -266,7 +266,7 @@ INSERT INTO `company` (`id`, `kota_id`, `industri_id`, `nama`, `phone`, `faximil
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `company_info`
+-- Table structure for table `company_info`
 --
 
 CREATE TABLE IF NOT EXISTS `company_info` (
@@ -278,14 +278,14 @@ CREATE TABLE IF NOT EXISTS `company_info` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data untuk tabel `company_info`
+-- Dumping data for table `company_info`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `company_membership`
+-- Table structure for table `company_membership`
 --
 
 CREATE TABLE IF NOT EXISTS `company_membership` (
@@ -298,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `company_membership` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data untuk tabel `company_membership`
+-- Dumping data for table `company_membership`
 --
 
 INSERT INTO `company_membership` (`id`, `company_id`, `membership_id`, `date_request`, `status`) VALUES
@@ -307,7 +307,7 @@ INSERT INTO `company_membership` (`id`, `company_id`, `membership_id`, `date_req
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `company_post`
+-- Table structure for table `company_post`
 --
 
 CREATE TABLE IF NOT EXISTS `company_post` (
@@ -319,7 +319,7 @@ CREATE TABLE IF NOT EXISTS `company_post` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data untuk tabel `company_post`
+-- Dumping data for table `company_post`
 --
 
 INSERT INTO `company_post` (`id`, `company_id`, `nama`, `content`) VALUES
@@ -328,7 +328,7 @@ INSERT INTO `company_post` (`id`, `company_id`, `nama`, `content`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `editor`
+-- Table structure for table `editor`
 --
 
 CREATE TABLE IF NOT EXISTS `editor` (
@@ -340,7 +340,7 @@ CREATE TABLE IF NOT EXISTS `editor` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data untuk tabel `editor`
+-- Dumping data for table `editor`
 --
 
 INSERT INTO `editor` (`id`, `nama`, `email`, `passwd`) VALUES
@@ -349,31 +349,40 @@ INSERT INTO `editor` (`id`, `nama`, `email`, `passwd`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `event`
+-- Table structure for table `event`
 --
 
 CREATE TABLE IF NOT EXISTS `event` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `editor_id` int(10) unsigned DEFAULT NULL,
   `nama` varchar(255) DEFAULT NULL,
+  `alias` varchar(255) NOT NULL,
   `content` longtext,
   `photo` varchar(100) DEFAULT NULL,
+  `photo_desc` varchar(255) NOT NULL,
   `lokasi` varchar(100) DEFAULT NULL,
   `waktu` datetime DEFAULT NULL,
   `google_map` longtext,
   `publish_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data untuk tabel `event`
+-- Dumping data for table `event`
 --
 
+INSERT INTO `event` (`id`, `editor_id`, `nama`, `alias`, `content`, `photo`, `photo_desc`, `lokasi`, `waktu`, `google_map`, `publish_date`) VALUES
+(1, 1, 'Event Pertama', 'event_pertama', '<p>Belum ada deskripsi</p>', '2013/06/14/20130614_214350_1104.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-06-14 00:00:00', '', '2013-06-14 00:00:00'),
+(2, 1, 'Malang Jobs Fair 2013', 'malang_jobs_fair_2013', '<p><span data-mce-mark="1">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</span></p>\n<p><span>Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</span></p>\n<p><span>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</span></p>', '2013/06/14/20130614_214408_5203.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-06-14 00:00:00', '', '2013-06-14 00:00:00'),
+(3, 1, 'Pameran Lowongan kerja di Suriah dan dan Irak', 'pameran_lowongan_kerja_di_suriah_dan_dan_irak', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214417_3678.jpg', 'Merry Christmas party in coffee house!', 'Belum Tau', '2013-06-14 00:00:00', '', '2013-06-14 00:00:00'),
+(4, 1, 'Jobs fair khusus untuk Dept Kolektor', 'jobs_fair_khusus_untuk_dept_kolektor', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214335_2156.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-06-15 00:00:00', '', '2013-06-14 00:00:00'),
+(5, 1, 'Islamic Book Fair 2013 !', 'islamic_book_fair_2013_', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214343_2616.jpg', 'Merry Christmas party in coffee house!', 'Malang, Hall Ekonomi Brawijaya', '2013-06-15 00:00:00', '', '2013-06-14 00:00:00'),
+(6, 1, 'Pameran Lukisan semalang raya', 'pameran_lukisan_semalang_raya', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214422_3421.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-06-14 00:00:00', '', '2013-06-14 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `industri`
+-- Table structure for table `industri`
 --
 
 CREATE TABLE IF NOT EXISTS `industri` (
@@ -383,7 +392,7 @@ CREATE TABLE IF NOT EXISTS `industri` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `industri`
+-- Dumping data for table `industri`
 --
 
 INSERT INTO `industri` (`id`, `nama`) VALUES
@@ -395,7 +404,7 @@ INSERT INTO `industri` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenis_pekerjaan`
+-- Table structure for table `jenis_pekerjaan`
 --
 
 CREATE TABLE IF NOT EXISTS `jenis_pekerjaan` (
@@ -405,7 +414,7 @@ CREATE TABLE IF NOT EXISTS `jenis_pekerjaan` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data untuk tabel `jenis_pekerjaan`
+-- Dumping data for table `jenis_pekerjaan`
 --
 
 INSERT INTO `jenis_pekerjaan` (`id`, `nama`) VALUES
@@ -416,7 +425,7 @@ INSERT INTO `jenis_pekerjaan` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenis_subscribe`
+-- Table structure for table `jenis_subscribe`
 --
 
 CREATE TABLE IF NOT EXISTS `jenis_subscribe` (
@@ -426,14 +435,14 @@ CREATE TABLE IF NOT EXISTS `jenis_subscribe` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data untuk tabel `jenis_subscribe`
+-- Dumping data for table `jenis_subscribe`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenjang`
+-- Table structure for table `jenjang`
 --
 
 CREATE TABLE IF NOT EXISTS `jenjang` (
@@ -443,7 +452,7 @@ CREATE TABLE IF NOT EXISTS `jenjang` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data untuk tabel `jenjang`
+-- Dumping data for table `jenjang`
 --
 
 INSERT INTO `jenjang` (`id`, `nama`) VALUES
@@ -454,7 +463,7 @@ INSERT INTO `jenjang` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori`
+-- Table structure for table `kategori`
 --
 
 CREATE TABLE IF NOT EXISTS `kategori` (
@@ -465,7 +474,7 @@ CREATE TABLE IF NOT EXISTS `kategori` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `kategori`
+-- Dumping data for table `kategori`
 --
 
 INSERT INTO `kategori` (`id`, `nama`, `alias`) VALUES
@@ -475,7 +484,7 @@ INSERT INTO `kategori` (`id`, `nama`, `alias`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori_tag`
+-- Table structure for table `kategori_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `kategori_tag` (
@@ -486,7 +495,7 @@ CREATE TABLE IF NOT EXISTS `kategori_tag` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `kategori_tag`
+-- Dumping data for table `kategori_tag`
 --
 
 INSERT INTO `kategori_tag` (`id`, `kategori_id`, `tag_id`) VALUES
@@ -498,7 +507,7 @@ INSERT INTO `kategori_tag` (`id`, `kategori_id`, `tag_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kelamin`
+-- Table structure for table `kelamin`
 --
 
 CREATE TABLE IF NOT EXISTS `kelamin` (
@@ -508,7 +517,7 @@ CREATE TABLE IF NOT EXISTS `kelamin` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `kelamin`
+-- Dumping data for table `kelamin`
 --
 
 INSERT INTO `kelamin` (`id`, `nama`) VALUES
@@ -518,7 +527,7 @@ INSERT INTO `kelamin` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kota`
+-- Table structure for table `kota`
 --
 
 CREATE TABLE IF NOT EXISTS `kota` (
@@ -529,7 +538,7 @@ CREATE TABLE IF NOT EXISTS `kota` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4090 ;
 
 --
--- Dumping data untuk tabel `kota`
+-- Dumping data for table `kota`
 --
 
 INSERT INTO `kota` (`id`, `propinsi_id`, `nama`) VALUES
@@ -4627,7 +4636,7 @@ INSERT INTO `kota` (`id`, `propinsi_id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `marital`
+-- Table structure for table `marital`
 --
 
 CREATE TABLE IF NOT EXISTS `marital` (
@@ -4637,7 +4646,7 @@ CREATE TABLE IF NOT EXISTS `marital` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `marital`
+-- Dumping data for table `marital`
 --
 
 INSERT INTO `marital` (`id`, `nama`) VALUES
@@ -4647,7 +4656,7 @@ INSERT INTO `marital` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `membership`
+-- Table structure for table `membership`
 --
 
 CREATE TABLE IF NOT EXISTS `membership` (
@@ -4659,7 +4668,7 @@ CREATE TABLE IF NOT EXISTS `membership` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data untuk tabel `membership`
+-- Dumping data for table `membership`
 --
 
 INSERT INTO `membership` (`id`, `date_count`, `post_count`, `price`) VALUES
@@ -4672,7 +4681,7 @@ INSERT INTO `membership` (`id`, `date_count`, `post_count`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `negara`
+-- Table structure for table `negara`
 --
 
 CREATE TABLE IF NOT EXISTS `negara` (
@@ -4683,7 +4692,7 @@ CREATE TABLE IF NOT EXISTS `negara` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=240 ;
 
 --
--- Dumping data untuk tabel `negara`
+-- Dumping data for table `negara`
 --
 
 INSERT INTO `negara` (`id`, `kode`, `nama`) VALUES
@@ -4930,7 +4939,7 @@ INSERT INTO `negara` (`id`, `kode`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `page`
+-- Table structure for table `page`
 --
 
 CREATE TABLE IF NOT EXISTS `page` (
@@ -4941,14 +4950,14 @@ CREATE TABLE IF NOT EXISTS `page` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data untuk tabel `page`
+-- Dumping data for table `page`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengalaman`
+-- Table structure for table `pengalaman`
 --
 
 CREATE TABLE IF NOT EXISTS `pengalaman` (
@@ -4958,7 +4967,7 @@ CREATE TABLE IF NOT EXISTS `pengalaman` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data untuk tabel `pengalaman`
+-- Dumping data for table `pengalaman`
 --
 
 INSERT INTO `pengalaman` (`id`, `nama`) VALUES
@@ -4972,7 +4981,7 @@ INSERT INTO `pengalaman` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `position`
+-- Table structure for table `position`
 --
 
 CREATE TABLE IF NOT EXISTS `position` (
@@ -4982,7 +4991,7 @@ CREATE TABLE IF NOT EXISTS `position` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data untuk tabel `position`
+-- Dumping data for table `position`
 --
 
 INSERT INTO `position` (`id`, `nama`) VALUES
@@ -4996,7 +5005,7 @@ INSERT INTO `position` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `propinsi`
+-- Table structure for table `propinsi`
 --
 
 CREATE TABLE IF NOT EXISTS `propinsi` (
@@ -5007,7 +5016,7 @@ CREATE TABLE IF NOT EXISTS `propinsi` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1420 ;
 
 --
--- Dumping data untuk tabel `propinsi`
+-- Dumping data for table `propinsi`
 --
 
 INSERT INTO `propinsi` (`id`, `negara_id`, `nama`) VALUES
@@ -6404,7 +6413,7 @@ INSERT INTO `propinsi` (`id`, `negara_id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker`
+-- Table structure for table `seeker`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker` (
@@ -6434,16 +6443,16 @@ CREATE TABLE IF NOT EXISTS `seeker` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `seeker`
+-- Dumping data for table `seeker`
 --
 
 INSERT INTO `seeker` (`id`, `kelamin_id`, `kota_id`, `marital_id`, `seeker_no`, `first_name`, `last_name`, `email`, `tempat_lahir`, `tgl_lahir`, `address`, `phone`, `hp`, `passwd`, `photo`, `last_login`, `last_update`, `agama`, `kebangsaan`, `facebook`, `twitter`, `ibu_kandung`) VALUES
-(1, 1, 1327, 2, '50124587', 'dfgdfg', 'aaaa', 'her0satr@yahoo.com', 'tempat lahir', '2000-06-04', 'address', '+62 6541 8974 64', '+62 654 86 465', 'd0cccd72f00289035b8e25ff29100dee', NULL, NULL, NULL, 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu kandung');
+(1, 1, 0, 2, '50124587', 'dfgdfg', 'aaaa', 'her0satr@yahoo.com', 'tempat lahir', '2000-06-04', 'address', '+62 6541 8974 64', '+62 654 86 465', 'd0cccd72f00289035b8e25ff29100dee', NULL, NULL, NULL, 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu kandung');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker_education`
+-- Table structure for table `seeker_education`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_education` (
@@ -6459,14 +6468,14 @@ CREATE TABLE IF NOT EXISTS `seeker_education` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data untuk tabel `seeker_education`
+-- Dumping data for table `seeker_education`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker_exp`
+-- Table structure for table `seeker_exp`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_exp` (
@@ -6479,7 +6488,7 @@ CREATE TABLE IF NOT EXISTS `seeker_exp` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data untuk tabel `seeker_exp`
+-- Dumping data for table `seeker_exp`
 --
 
 INSERT INTO `seeker_exp` (`id`, `seeker_id`, `nama`, `date_start`, `date_end`) VALUES
@@ -6488,7 +6497,7 @@ INSERT INTO `seeker_exp` (`id`, `seeker_id`, `nama`, `date_start`, `date_end`) V
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker_expert`
+-- Table structure for table `seeker_expert`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_expert` (
@@ -6499,7 +6508,7 @@ CREATE TABLE IF NOT EXISTS `seeker_expert` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `seeker_expert`
+-- Dumping data for table `seeker_expert`
 --
 
 INSERT INTO `seeker_expert` (`id`, `seeker_id`, `content`) VALUES
@@ -6508,7 +6517,7 @@ INSERT INTO `seeker_expert` (`id`, `seeker_id`, `content`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker_reference`
+-- Table structure for table `seeker_reference`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_reference` (
@@ -6519,14 +6528,14 @@ CREATE TABLE IF NOT EXISTS `seeker_reference` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data untuk tabel `seeker_reference`
+-- Dumping data for table `seeker_reference`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker_setting`
+-- Table structure for table `seeker_setting`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_setting` (
@@ -6539,7 +6548,7 @@ CREATE TABLE IF NOT EXISTS `seeker_setting` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data untuk tabel `seeker_setting`
+-- Dumping data for table `seeker_setting`
 --
 
 INSERT INTO `seeker_setting` (`id`, `seeker_id`, `is_public`, `is_subscribe`, `is_work`) VALUES
@@ -6548,7 +6557,7 @@ INSERT INTO `seeker_setting` (`id`, `seeker_id`, `is_public`, `is_subscribe`, `i
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker_summary`
+-- Table structure for table `seeker_summary`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_summary` (
@@ -6562,7 +6571,7 @@ CREATE TABLE IF NOT EXISTS `seeker_summary` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data untuk tabel `seeker_summary`
+-- Dumping data for table `seeker_summary`
 --
 
 INSERT INTO `seeker_summary` (`id`, `seeker_id`, `jenjang_id`, `score`, `school`, `experience`) VALUES
@@ -6571,7 +6580,7 @@ INSERT INTO `seeker_summary` (`id`, `seeker_id`, `jenjang_id`, `score`, `school`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `subkategori`
+-- Table structure for table `subkategori`
 --
 
 CREATE TABLE IF NOT EXISTS `subkategori` (
@@ -6583,7 +6592,7 @@ CREATE TABLE IF NOT EXISTS `subkategori` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `subkategori`
+-- Dumping data for table `subkategori`
 --
 
 INSERT INTO `subkategori` (`id`, `kategori_id`, `nama`, `alias`) VALUES
@@ -6595,7 +6604,7 @@ INSERT INTO `subkategori` (`id`, `kategori_id`, `nama`, `alias`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `subkategori_tag`
+-- Table structure for table `subkategori_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `subkategori_tag` (
@@ -6606,7 +6615,7 @@ CREATE TABLE IF NOT EXISTS `subkategori_tag` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `subkategori_tag`
+-- Dumping data for table `subkategori_tag`
 --
 
 INSERT INTO `subkategori_tag` (`id`, `subkategori_id`, `tag_id`) VALUES
@@ -6616,7 +6625,7 @@ INSERT INTO `subkategori_tag` (`id`, `subkategori_id`, `tag_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `subscribe`
+-- Table structure for table `subscribe`
 --
 
 CREATE TABLE IF NOT EXISTS `subscribe` (
@@ -6627,14 +6636,14 @@ CREATE TABLE IF NOT EXISTS `subscribe` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data untuk tabel `subscribe`
+-- Dumping data for table `subscribe`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `surat_lamaran`
+-- Table structure for table `surat_lamaran`
 --
 
 CREATE TABLE IF NOT EXISTS `surat_lamaran` (
@@ -6646,7 +6655,7 @@ CREATE TABLE IF NOT EXISTS `surat_lamaran` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
--- Dumping data untuk tabel `surat_lamaran`
+-- Dumping data for table `surat_lamaran`
 --
 
 INSERT INTO `surat_lamaran` (`id`, `seeker_id`, `nama`, `content`) VALUES
@@ -6658,7 +6667,7 @@ INSERT INTO `surat_lamaran` (`id`, `seeker_id`, `nama`, `content`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tag`
+-- Table structure for table `tag`
 --
 
 CREATE TABLE IF NOT EXISTS `tag` (
@@ -6669,7 +6678,7 @@ CREATE TABLE IF NOT EXISTS `tag` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data untuk tabel `tag`
+-- Dumping data for table `tag`
 --
 
 INSERT INTO `tag` (`id`, `nama`, `alias`) VALUES
@@ -6685,7 +6694,7 @@ INSERT INTO `tag` (`id`, `nama`, `alias`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `vacancy`
+-- Table structure for table `vacancy`
 --
 
 CREATE TABLE IF NOT EXISTS `vacancy` (
@@ -6714,7 +6723,7 @@ CREATE TABLE IF NOT EXISTS `vacancy` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data untuk tabel `vacancy`
+-- Dumping data for table `vacancy`
 --
 
 INSERT INTO `vacancy` (`id`, `company_id`, `subkategori_id`, `nama`, `position`, `vacancy_status_id`, `article_url`, `article_link`, `content_short`, `content`, `opsi_1`, `opsi_2`, `kota_id`, `jenjang_id`, `jenis_pekerjaan_id`, `pengalaman_id`, `gaji`, `publish_date`, `close_date`, `email_apply`, `email_quick`) VALUES
@@ -6724,7 +6733,7 @@ INSERT INTO `vacancy` (`id`, `company_id`, `subkategori_id`, `nama`, `position`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `vacancy_status`
+-- Table structure for table `vacancy_status`
 --
 
 CREATE TABLE IF NOT EXISTS `vacancy_status` (
@@ -6734,7 +6743,7 @@ CREATE TABLE IF NOT EXISTS `vacancy_status` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data untuk tabel `vacancy_status`
+-- Dumping data for table `vacancy_status`
 --
 
 INSERT INTO `vacancy_status` (`id`, `nama`) VALUES
@@ -6745,7 +6754,7 @@ INSERT INTO `vacancy_status` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `widget`
+-- Table structure for table `widget`
 --
 
 CREATE TABLE IF NOT EXISTS `widget` (
@@ -6754,16 +6763,19 @@ CREATE TABLE IF NOT EXISTS `widget` (
   `alias` varchar(255) NOT NULL,
   `content` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data untuk tabel `widget`
+-- Dumping data for table `widget`
 --
 
 INSERT INTO `widget` (`id`, `nama`, `alias`, `content`) VALUES
 (1, 'About Dunia Karir', 'about_dunia_karir', '<h1>About Duniakarir.com</h1>\n<p>Dunia Karir adalah situ penyedia informasi lowongan kerja sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>\n<p>Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>\n<p><a class="btn btn-white" title="More info" href="#">More info</a></p>'),
 (2, 'Payment', 'payment', '<p><a class="discover" title="Discover" href="#">Discover</a> <a class="amex" title="Amex" href="#">Amex</a> <a class="american-express" title="American Express" href="#">American Express</a> <a class="visa" title="Visa" href="#">Visa</a> <a class="pay-pal" title="Pay Pal" href="#">Pay Pal</a> <a class="master-card" title="Master Card" href="#">Master Card</a></p>'),
-(3, 'Email Admin', 'email_admin', '<p>Herry &lt;herry@simetri.in&gt;</p>');
+(3, 'Email Admin', 'email_admin', '<p>Herry &lt;herry@simetri.in&gt;</p>'),
+(4, 'Iphone', 'iphone', '<div class="app-ad">\n<h3>Download our app for iphone <br /><strong>for free</strong></h3>\n</div>'),
+(5, 'Create Account', 'create_account', '<h1>Create account</h1>\n<ul>\n<li>Access to 6000 + songs</li>\n<li>Ability to purchase songs</li>\n<li>Forums and Chat</li>\n<li>Sell your songs</li>\n</ul>'),
+(6, 'Social Link', 'social_link', '<p><a class="rss" title="RSS" href="#">RSS</a> <a class="flickr" title="Flickr" href="#">Flickr</a> <a class="facebook" title="Facebook" href="#">Flickr</a> <a class="google" title="Google" href="#">Google</a> <a class="last-fm" title="Last FM" href="#">Last FM</a> <a class="my-space" title="My Space" href="#">My Space</a> <a class="plant" title="Plant" href="#">Plant</a> <a class="twitter" title="Twitter" href="#">Twitter</a></p>');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
