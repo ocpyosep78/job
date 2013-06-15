@@ -83,11 +83,11 @@
 				</div>
 				<div class="control-group">
 					<label for="input-content_short" class="control-label">Short Desc</label>
-					<div class="controls"><textarea name="content_short" id="input-content_short" class="tinymce" style="width: 800px; height: 300px;"></textarea></div>
+					<div class="controls"><textarea name="content_short" id="input-content_short" class="span9 tinymce" style="height: 300px;"></textarea></div>
 				</div>
 				<div class="control-group">
 					<label for="input-content1" class="control-label">Detail</label>
-					<div class="controls"><textarea name="content" id="input-content1" class="tinymce" style="width: 800px; height: 300px;"></textarea></div>
+					<div class="controls"><textarea name="content" id="input-content1" class="tinymce" style="height: 300px;"></textarea></div>
 				</div>
 				<div class="control-group">
 					<label for="input-opsi_1" class="control-label">Opsi 1</label>

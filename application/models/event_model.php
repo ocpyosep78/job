@@ -36,9 +36,18 @@ class Event_model extends CI_Model {
 		
         if (isset($param['id'])) {
             $select_query  = "
-				SELECT Event.*
+				SELECT Event.*, Editor.nama editor_name
 				FROM ".EVENT." Event
+				LEFT JOIN ".EDITOR." Editor ON Editor.id = Event.Editor_id
 				WHERE Event.id = '".$param['id']."'
+				LIMIT 1
+			";
+        } else if (isset($param['alias'])) {
+            $select_query  = "
+				SELECT Event.*, Editor.nama editor_name
+				FROM ".EVENT." Event
+				LEFT JOIN ".EDITOR." Editor ON Editor.id = Event.Editor_id
+				WHERE Event.alias = '".$param['alias']."'
 				LIMIT 1
 			";
         }
@@ -102,6 +111,8 @@ class Event_model extends CI_Model {
 	function sync($row, $column = array()) {
 		$row = StripArray($row, array('publish_date'));
 		$row['event_link'] = base_url('event/'.$row['alias']);
+		$row['content_html'] = save_tinymce($row['content']);
+		$row['google_map_html'] = save_tinymce($row['google_map']);
 		$row['content_short'] = GetLengthChar($row['content'], 175, '');
 		
 		if (! empty($row['photo'])) {
@@ -109,6 +120,9 @@ class Event_model extends CI_Model {
 		} 
 		
 		if (count($column) > 0) {
+			unset($row['content']);
+			unset($row['google_map']);
+			
 			$row = dt_view($row, $column, array('is_edit' => 1));
 		}
 		

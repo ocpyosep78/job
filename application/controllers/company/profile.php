@@ -20,6 +20,11 @@ class profile extends COMPANY_Controller {
 				$_POST['passwd'] = EncriptPassword($_POST['passwd']);
 			}
 			
+			// get alias
+			$_POST['alias'] = preg_replace('/[^a-z0-9]+/i', '-', $_POST['nama']);
+			$_POST['alias'] = preg_replace('/^-+/i', '', $_POST['alias']);
+			$_POST['alias'] = preg_replace('/-+$/i', '', $_POST['alias']);
+			
 			$result = $this->Company_model->update($_POST);
 		}
 		

@@ -22,6 +22,9 @@
 					</ul>
 				</div>
 			</div>
+			<?php if (!empty($sub_title)) { ?>
+			<h1><?php echo $sub_title; ?></h1>
+			<?php } ?>
 		</div>
 	</div>
 <?php } ?>

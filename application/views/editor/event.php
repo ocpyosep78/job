@@ -53,15 +53,22 @@
 				</div>
 				<div class="control-group">
 					<label for="input-google_map" class="control-label">Google Map</label>
-					<div class="controls"><input type="text" name="google_map" id="input-google_map" class="input-xxlarge" maxlength="50" /></div>
+					<div class="controls"><textarea name="google_map" id="input-google_map" style="width: 800px; height: 100px;"></textarea></div>
 				</div>
 				<div class="control-group">
 					<label for="input-event_content" class="control-label">Description</label>
 					<div class="controls"><textarea name="content" id="input-event_content" class="tinymce" style="width: 800px; height: 300px;"></textarea></div>
 				</div>
-				<div class="control-group">
-					<label for="input-waktu" class="control-label">Waktu</label>
-					<div class="controls"><input type="text" name="waktu" id="input-waktu" class="input-medium datepick" /></div>
+				<div class="grids">
+					<div class="row-fluid">
+						<div class="span1 form-me-label">Waktu</div>
+						<div class="span2 form-me-input" style="width: 160px;">
+							<input type="text" name="waktu_datepick" id="input-waktu_datepick" class="input-medium datepick" data-rule-required="true" />
+						</div>
+						<div class="span2 form-me-input">
+							<div class="bootstrap-timepicker"><input type="text" name="waktu_timepick" id="timepicker" class="input-small timepick" data-rule-required="true" /></div>
+						</div>
+					</div>
 				</div>
 				<div class="grids">
 					<div class="row-fluid">
@@ -137,8 +144,11 @@
 						$('#form-event [name="photo"]').val(record.photo);
 						$('#form-event [name="lokasi"]').val(record.lokasi);
 						$('#form-event [name="photo_desc"]').val(record.photo_desc);
-						$('#form-event [name="waktu"]').val(Func.SwapDate(record.waktu));
 						$('#form-event [name="google_map"]').val(record.google_map);
+						
+						var waktu_date = Func.get_date_time(record.waktu, 1);
+						$('#form-event [name="waktu_datepick"]').val(waktu_date.date);
+						$('#form-event [name="waktu_timepick"]').val(waktu_date.time);
 						
 						var publish_date = Func.get_date_time(record.publish_date, 1);
 						$('#form-event [name="publish_datepick"]').val(publish_date.date);
@@ -185,7 +195,7 @@
 			
 			var param = Site.Form.GetValue('form-event');
 			param.action = 'update';
-			param.waktu = Func.SwapDate(param.waktu);
+			param.waktu = Func.SwapDate(param.waktu_datepick) + ' ' + param.waktu_timepick;
 			param.publish_date = Func.SwapDate(param.publish_datepick) + ' ' + param.publish_timepick;
 			
 			Func.ajax({ url: web.host + 'editor/event/action', param: param, callback: function(result) {

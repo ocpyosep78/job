@@ -1,48 +1,59 @@
+<?php
+	// breadcrump
+	$breadcrump[] = array( 'title' => 'Index', 'link' => base_url() );
+	$breadcrump[] = array( 'title' => 'Company', 'link' => '#' );
+	$breadcrump[] = array( 'title' => $company['nama'], 'link' => $company['company_link'] );
+	
+	$param_vacancy = array(
+		'company_id' => $company['id'],
+		'publish_date' => $this->config->item('current_datetime'),
+		'filter' => '[{"type":"numeric","comparison":"eq","value":"'.VACANCY_STATUS_APPROVE.'","field":"Vacancy.vacancy_status_id"}]',
+		'limit' => 15
+	);
+	$array_vacancy = $this->Vacancy_model->get_array($param_vacancy);
+?>
+
 <?php $this->load->view( 'website/common/meta' ); ?>
 <?php $this->load->view( 'website/common/header' ); ?>
+
+<style>
+.buy a { text-decoration: none; }
+</style>
 
 <section id='main'>
 	<div class='container'><div class='row'>
 		<div class='span9 content'>
 			<div class='main-top span9'>
-				<div class='span9 no-margin'>
-					<div class='options-line'>
-						<div class='breadcrumb-container'>
-							<ul class="breadcrumb">
-								<li><a href="index.html">Index</a> <span class="divider">&raquo;</span></li>
-								<li><a href="new-albums.html">Company</a> <span class="divider">&raquo;</span></li>
-								<li class="active">PT Garuda Indonesa (Persero) Tbk</li>
-							</ul>
-						</div>
-					</div>
-					<h1>PT Garuda Indonesa (Persero) Tbk</h1>
-				</div>
+				<?php $this->load->view( 'website/common/breadcrumb', array( 'array_breadcrumb' => $breadcrump, 'sub_title' => $company['nama'] ) ); ?>
 			</div>
 			<div class='span9 no-margin album-article'>
 				<figure>
-					<img src="<?php echo base_url(); ?>static/upload/big-artwork.jpg" alt="" />
+					<img src="<?php echo $company['logo_link']; ?>" alt="" />
 				</figure>
 				
-				<div class='info-line'><span>Industry : </span> BioTechnology / Pharmaceutical / Clinical research </div>
-				<div class='info-line'><span>Company Address : </span> Jl. Limo No. 40 Permata Hijau Senayan Jakarta Selatan 10015 </div>
-				<div class='info-line'><span>Country: </span> Indonesia </div>
-				<div class='info-line'><span>Sales: </span> 1 214 324 </div>
+				<div class='info-line'><span>Industry : </span> <?php echo $company['industri_nama']; ?></div>
+				<div class='info-line'><span>Company Address : </span> <?php echo $company['address']; ?></div>
+				<div class='info-line'><span>City: </span> <?php echo $company['kota_nama']; ?></div>
+				<div class='info-line'><span>Sales: </span> <?php echo $company['sales']; ?></div>
 				<div class='buy'>
-					<span class='price'>Lihat Peta</span> <span class='price'>Laporkan</span>
-					<a href="#" title='Buy' class='btn btn-blue buy-album'> Subscribe</a>
+					<a href="<?php echo $company['google_map']; ?>" target="_blank"><span class='price'>Lihat Peta</span></a>
+					<span class='price'>Laporkan</span>
+					<a href="#" title='Subscribe' class='btn btn-blue buy-album'>Subscribe</a>
 				</div>
 				
-				<p class='description'>PT PLN Indonesia adalah merupakan satu dari lima perusahaan farmasi terbesar di Indonesia. Berdiri sejak tahun 1971 dan telah memiliki cabang-cabang yang tersebar di kota-kota besar di seluruh Indonesia dan telah memiliki lebih dari 6000 karyawan. Kami ingin memberikan kesempatan kepada profesional muda untuk bergabung menjadi bagian dari Pharos Group serta mengembangkan kemampuan di bidang masing-masing. </p>
+				<p class='description'><?php echo $company['description']; ?></p>
 			</div>
 			<div class='span9 album-files no-margin'>
 				<h1>Lowongan Yang Tersedia</h1>
 				<hr />
 				
+				<?php if (count($array_vacancy) == 0) { ?>
 				<div class="jp-audio custom">Saat Ini tidak ada lowongan yang tersedia</div>
-				
-				<div class="jp-audio custom"><a>J. Lanng - In Peace, The Love & Happiness Mix</a></div>
-				<div class="jp-audio custom"><a>J. Lanng - In Peace, The Love & Happiness Mix</a></div>
-				<div class="jp-audio custom"><a>J. Lanng - In Peace, The Love & Happiness Mix</a></div>
+				<?php } else { ?>
+				<?php foreach ($array_vacancy as $vacancy) { ?>
+				<?php } ?>
+				<div class="jp-audio custom"><a href="<?php echo $vacancy['vacancy_link']; ?>"><?php echo $vacancy['nama']; ?></a></div>
+				<?php } ?>
 			</div>
 		</div>
 		

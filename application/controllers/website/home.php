@@ -13,6 +13,22 @@ class home extends CI_Controller {
 			if (in_array($segments[1], array('blog', 'blog_detail', 'event', 'event_detail', 'company', 'listing', 'listing_detail', 'login', 'registrasi', 'ajax'))) {
 				$this->$segments[1]();
 			}
+			
+			// check company
+			$vacancy = array();
+			$company = $this->Company_model->get_by_id(array( 'alias' => $segments[1] ));
+			
+			// check vacancy
+			if (!empty($segments[2])) {
+				$temp = explode('_', $segments[2], 2);
+				$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $temp[0] ));
+			}
+			
+			if (count($vacancy) > 0) {
+				$this->load->view( 'website/listing_detail', array( 'vacancy' => $vacancy ) );
+			} else if (count($company) > 0) {
+				$this->load->view( 'website/company', array( 'company' => $company ));
+			}
 		}
 		
 		// index
@@ -36,23 +52,21 @@ class home extends CI_Controller {
 	}
 	
 	function event() {
-		$this->load->view( 'website/event' );
-	}
-	
-	function event_detail() {
-		$this->load->view( 'website/event_detail' );
-	}
-	
-	function company() {
-		$this->load->view( 'website/company' );
+		preg_match('/event\/([a-z0-9\_]+)$/i', $_SERVER['REQUEST_URI'], $match);
+		$alias = (empty($match[1])) ? '' : $match[1];
+		
+		// event
+		$event = $this->Event_model->get_by_id(array( 'alias' => $alias ));
+		
+		if (count($event) == 0) {
+			$this->load->view( 'website/event' );
+		} else {
+			$this->load->view( 'website/event_detail', array( 'event' => $event ) );
+		}
 	}
 	
 	function listing() {
 		$this->load->view( 'website/listing' );
-	}
-	
-	function listing_detail() {
-		$this->load->view( 'website/listing_detail' );
 	}
 	
 	function login() {

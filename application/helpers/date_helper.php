@@ -113,8 +113,7 @@ if (! function_exists('ConvertDateToString')) {
 
 if (! function_exists('GetFormatDate')) {
 	function GetFormatDate($String, $Param = array()) {
-		$String = (strlen($String) > 10) ? substr($String, 0, 10) : $String;
-		if ($String == '0000-00-00' || is_null($String)) {
+		if ($String == '0000-00-00' || empty($String)) {
 			return '';
         }
 		

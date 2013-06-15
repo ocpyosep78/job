@@ -77,8 +77,13 @@
 									<?php echo $event['content_short']; ?>
 								</div>
 								<div class="right">
-									<div class="date">7 march <span class="time">12:00</span></div>
-									<a class="cursor location"><?php echo $event['lokasi']; ?></a>
+									<div class="date">
+										<?php echo GetFormatDate($event['waktu'], array( 'FormatDate' => 'j F' )); ?>
+										<span class="time">
+											<?php echo GetFormatDate($event['waktu'], array( 'FormatDate' => 'H:i' )); ?>
+										</span>
+									</div>
+									<a href="<?php echo $event['event_link']; ?>" class="location"><?php echo $event['lokasi']; ?></a>
 									<div style="background: #FFFFFF; padding: 10px; font-size: 30px; line-height: 30px;"><?php echo $event['nama']; ?></div>
 									<div class="users"><a href="<?php echo $event['event_link']; ?>" title="Lihat" class="go btn btn-main">Lihat</a></div>
 								</div>
@@ -98,11 +103,16 @@
 						<div class="inner">
 							<div style="float:none; font-size: 20px; min-height: 40px;"><?php echo $event['nama']; ?></div>
 							<figure>
-								<img src="<?php echo base_url(); ?>static/upload/event01.jpg" />
+								<img src="<?php echo $event['photo_link']; ?>" />
 								<figcaption><?php echo $event['photo_desc']; ?></figcaption>
 							</figure>
-							<div class="date">7 march <span class="time">12:00</span></div>
-							<div><a class="cursor location"><?php echo $event['lokasi']; ?></a></div>
+							<div class="date">
+								<?php echo GetFormatDate($event['waktu'], array( 'FormatDate' => 'j F' )); ?>
+								<span class="time">
+									<?php echo GetFormatDate($event['waktu'], array( 'FormatDate' => 'H:i' )); ?>
+								</span>
+							</div>
+							<div><a href="<?php echo $event['event_link']; ?>" class="location"><?php echo $event['lokasi']; ?></a></div>
 							<p><?php echo $event['content_short']; ?></p>
 						</div>
 					</article>

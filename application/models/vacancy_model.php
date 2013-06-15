@@ -39,10 +39,12 @@ class Vacancy_model extends CI_Model {
         if (isset($param['id'])) {
             $select_query  = "
 				SELECT Vacancy.*,
-					Kategori.id kategori_id, Company.nama company_name, Kota.id kota_id, Kota.propinsi_id,
-					Company.nama company_name
+					Kategori.id kategori_id, Kota.id kota_id, Kota.propinsi_id, Industri.nama industri_nama,
+					Company.nama company_nama, Company.alias company_alias, Company.website company_website, Company.logo company_logo, Company.banner company_banner,
+					Kategori.nama kategori_nama, Subkategori.nama subkategori_nama
 				FROM ".VACANCY." Vacancy
 				LEFT JOIN ".COMPANY." Company ON Company.id = Vacancy.company_id
+				LEFT JOIN ".INDUSTRI." Industri ON Industri.id = Company.industri_id
 				LEFT JOIN ".SUBKATEGORI." Subkategori ON Subkategori.id = Vacancy.subkategori_id
 				LEFT JOIN ".KATEGORI." Kategori ON Kategori.id = Subkategori.kategori_id
 				LEFT JOIN ".VACANCY_STATUS." VacancyStatus ON VacancyStatus.id = Vacancy.vacancy_status_id
@@ -72,14 +74,22 @@ class Vacancy_model extends CI_Model {
 		$param['field_replace']['vacancy_status_name'] = 'VacancyStatus.nama';
 		
 		$string_company = (empty($param['company_id'])) ? '' : "AND Vacancy.company_id = '".$param['company_id']."'";
+		$string_publish_date = (empty($param['publish_date'])) ? '' : "AND Vacancy.publish_date <= '".$param['publish_date']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'Vacancy.close_date DESC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS Vacancy.*, VacancyStatus.nama vacancy_status_name
+			SELECT SQL_CALC_FOUND_ROWS
+				Vacancy.*,
+				Company.nama company_nama, Company.alias company_alias, Company.website company_website, Company.logo company_logo, Company.banner company_banner,
+				Kota.id kota_id, Kota.nama kota_nama, Kota.propinsi_id, Industri.nama industri_nama, VacancyStatus.nama vacancy_status_name,
+				Kategori.id kategori_id, Kategori.nama kategori_nama, Subkategori.nama subkategori_nama, JenisPekerjaan.nama jenis_pekerjaan_nama,
+				CompanyKota.nama company_kota_nama
 			FROM ".VACANCY." Vacancy
 			LEFT JOIN ".COMPANY." Company ON Company.id = Vacancy.company_id
+			LEFT JOIN ".KOTA." CompanyKota ON CompanyKota.id = Company.kota_id
+			LEFT JOIN ".INDUSTRI." Industri ON Industri.id = Company.industri_id
 			LEFT JOIN ".SUBKATEGORI." Subkategori ON Subkategori.id = Vacancy.subkategori_id
 			LEFT JOIN ".KATEGORI." Kategori ON Kategori.id = Subkategori.kategori_id
 			LEFT JOIN ".VACANCY_STATUS." VacancyStatus ON VacancyStatus.id = Vacancy.vacancy_status_id
@@ -87,7 +97,7 @@ class Vacancy_model extends CI_Model {
 			LEFT JOIN ".JENJANG." Jenjang ON Jenjang.id = Vacancy.jenjang_id
 			LEFT JOIN ".JENIS_PEKERJAAN." JenisPekerjaan ON JenisPekerjaan.id = Vacancy.jenis_pekerjaan_id
 			LEFT JOIN ".PENGALAMAN." Pengalaman ON Pengalaman.id = Vacancy.pengalaman_id
-			WHERE 1 $string_company $string_filter
+			WHERE 1 $string_company $string_publish_date $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";
@@ -120,6 +130,20 @@ class Vacancy_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row, array('publish_date', 'close_date'));
+		
+		if (isset($row['company_alias'])) {
+			$row['company_link'] = base_url($row['company_alias']);
+			$row['vacancy_link'] = base_url($row['company_alias'].'/'.$row['id'].'_'.$row['position']);
+		}
+		
+		if (isset($row['company_logo'])) {
+			$row['company_logo_link'] = base_url('static/upload/'.$row['company_logo']);
+		}
+		
+		$row['company_banner_link'] = base_url('static/img/company_banner.jpg');
+		if (isset($row['company_banner'])) {
+			$row['company_banner_link'] = base_url('static/upload/'.$row['company_banner']);
+		}
 		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));

@@ -6,7 +6,7 @@ class Company_model extends CI_Model {
 		
         $this->field = array(
 			'id', 'kota_id', 'nama', 'phone', 'faximile', 'website', 'address', 'email', 'passwd', 'description', 'kodepos', 'sales', 'contact_name',
-			'contact_email', 'contact_no', 'logo', 'banner', 'google_map', 'industri_id'
+			'contact_email', 'contact_no', 'logo', 'banner', 'google_map', 'industri_id', 'alias'
 		);
     }
 
@@ -28,6 +28,8 @@ class Company_model extends CI_Model {
             $result['status'] = '1';
             $result['message'] = 'Data berhasil diperbaharui.';
         }
+		
+		$this->resize_image($param);
        
         return $result;
     }
@@ -42,6 +44,15 @@ class Company_model extends CI_Model {
 				LEFT JOIN ".KOTA." Kota ON Kota.id = Company.kota_id
 				LEFT JOIN ".PROPINSI." Propinsi ON Propinsi.id = Kota.propinsi_id
 				WHERE Company.id = '".$param['id']."' LIMIT 1
+			";
+        } else if (isset($param['alias'])) {
+            $select_query  = "
+				SELECT Company.*, Kota.nama kota_nama, Propinsi.id propinsi_id, Industri.nama industri_nama
+				FROM ".COMPANY." Company
+				LEFT JOIN ".KOTA." Kota ON Kota.id = Company.kota_id
+				LEFT JOIN ".PROPINSI." Propinsi ON Propinsi.id = Kota.propinsi_id
+				LEFT JOIN ".INDUSTRI." Industri ON Industri.id = Company.industri_id
+				WHERE Company.alias = '".$param['alias']."' LIMIT 1
 			";
         } else if (isset($param['email'])) {
             $select_query  = "
@@ -111,6 +122,7 @@ class Company_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
+		$row['company_link'] = base_url($row['alias']);
 		
 		if (isset($row['logo'])) {
 			$row['logo_link'] = base_url('static/upload/'.$row['logo']);
@@ -121,6 +133,13 @@ class Company_model extends CI_Model {
 		}
 		
 		return $row;
+	}
+	
+	function resize_image($param) {
+		if (!empty($param['banner'])) {
+			$image_source = $this->config->item('base_path').'/static/upload/'.$param['banner'];
+			ImageResize($image_source, $image_source, 650, 186, 1);
+		}
 	}
 	
 	/*	Region Company Session */
