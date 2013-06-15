@@ -6,7 +6,7 @@ class Seeker_model extends CI_Model {
 		
         $this->field = array(
 			'id', 'kelamin_id', 'kota_id', 'marital_id', 'seeker_no', 'first_name', 'last_name', 'email', 'tempat_lahir', 'tgl_lahir', 'address', 'phone', 'hp',
-			'passwd', 'photo', 'last_login', 'last_update', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu_kandung'
+			'passwd', 'photo', 'last_login', 'last_update', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu_kandung', 'file_resume'
 		);
     }
 
@@ -129,6 +129,16 @@ class Seeker_model extends CI_Model {
 		$row['full_name'] = $row['first_name'];
 		if (isset($row['first_name']) && isset($row['last_name'])) {
 			$row['full_name'] = $row['first_name'].' '.$row['last_name'];
+		}
+		
+		$row['photo_link'] = base_url('static/img/no-images.jpg');
+		if (!empty($row['photo'])) {
+			$row['photo_link'] = base_url('static/upload/'.$row['photo']);
+		}
+		
+		$row['file_resume_link'] = '';
+		if (!empty($row['file_resume'])) {
+			$row['file_resume_link'] = base_url('static/upload/'.$row['file_resume']);
 		}
 		
 		if (count($column) > 0) {

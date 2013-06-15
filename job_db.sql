@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 15, 2013 at 05:07 PM
+-- Generation Time: Jun 15, 2013 at 09:16 PM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -193,76 +193,76 @@ CREATE TABLE IF NOT EXISTS `company` (
 --
 
 INSERT INTO `company` (`id`, `kota_id`, `industri_id`, `nama`, `alias`, `phone`, `faximile`, `website`, `address`, `email`, `passwd`, `description`, `kodepos`, `sales`, `contact_name`, `contact_email`, `contact_no`, `logo`, `banner`, `google_map`) VALUES
-(1, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(2, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(3, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(4, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(5, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(6, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(7, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(8, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(9, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(10, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(1, 1501, 1, 'PT Garuda Indonesa (Persero) Tbk', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'https://www.google.com/analytics/', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/15/20130615_102702_5438.jpg', 'http://goo.gl/maps/STM3U'),
+(2, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(3, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(4, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(5, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(6, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(7, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(8, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(9, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(10, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
 (11, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(12, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(13, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(14, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(15, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(16, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(17, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(18, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(19, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(20, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(12, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(13, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(14, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(15, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(16, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(17, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(18, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(19, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(20, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
 (21, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(22, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(23, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(24, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(25, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(26, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(27, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(28, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(29, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(30, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(22, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(23, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(24, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(25, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(26, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(27, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(28, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(29, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(30, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
 (31, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(32, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(33, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(34, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(35, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(36, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(37, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(38, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(39, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(40, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(32, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(33, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(34, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(35, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(36, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(37, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(38, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(39, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(40, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
 (41, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(42, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(43, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(44, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(45, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(46, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(47, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(48, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(49, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(50, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(42, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(43, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(44, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(45, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(46, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(47, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(48, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(49, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(50, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
 (51, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(52, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(53, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(54, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(55, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(56, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(57, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(58, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(59, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(60, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(52, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(53, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(54, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(55, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(56, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(57, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(58, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(59, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(60, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
 (61, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(62, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(63, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(64, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(65, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(66, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(67, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(68, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(69, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
-(70, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', '933902c6f005618c80b7760478a14cc1', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C');
+(62, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(63, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(64, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(65, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(66, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(67, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(68, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(69, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C'),
+(70, 1501, 1, 'PT Maju Terus 33', '', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C');
 
 -- --------------------------------------------------------
 
@@ -373,12 +373,12 @@ CREATE TABLE IF NOT EXISTS `event` (
 --
 
 INSERT INTO `event` (`id`, `editor_id`, `nama`, `alias`, `content`, `photo`, `photo_desc`, `lokasi`, `waktu`, `google_map`, `publish_date`) VALUES
-(1, 1, 'Event Pertama', 'event_pertama', '<p>Belum ada deskripsi</p>', '2013/06/14/20130614_214350_1104.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-06-14 00:00:00', '', '2013-06-14 00:00:00'),
-(2, 1, 'Malang Jobs Fair 2013', 'malang_jobs_fair_2013', '<p><span data-mce-mark="1">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</span></p>\n<p><span>Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</span></p>\n<p><span>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</span></p>', '2013/06/14/20130614_214408_5203.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-06-14 00:00:00', '', '2013-06-14 00:00:00'),
-(3, 1, 'Pameran Lowongan kerja di Suriah dan dan Irak', 'pameran_lowongan_kerja_di_suriah_dan_dan_irak', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214417_3678.jpg', 'Merry Christmas party in coffee house!', 'Belum Tau', '2013-06-14 00:00:00', '', '2013-06-14 00:00:00'),
-(4, 1, 'Jobs fair khusus untuk Dept Kolektor', 'jobs_fair_khusus_untuk_dept_kolektor', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214335_2156.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-06-15 00:00:00', '', '2013-06-14 00:00:00'),
-(5, 1, 'Islamic Book Fair 2013 !', 'islamic_book_fair_2013_', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214343_2616.jpg', 'Merry Christmas party in coffee house!', 'Malang, Hall Ekonomi Brawijaya', '2013-06-15 00:00:00', '', '2013-06-14 00:00:00'),
-(6, 1, 'Pameran Lukisan semalang raya', 'pameran_lukisan_semalang_raya', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214422_3421.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-06-14 00:00:00', '', '2013-06-14 00:00:00');
+(1, 1, 'Event Pertama', 'event_pertama', '<p>Belum ada deskripsi</p>', '2013/06/14/20130614_214350_1104.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-07-05 01:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
+(2, 1, 'Malang Jobs Fair 2013', 'malang_jobs_fair_2013', '<p><span data-mce-mark="1">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</span></p>\n<p><span>Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</span></p>\n<p><span>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</span></p>', '2013/06/14/20130614_214408_5203.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-07-05 04:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
+(3, 1, 'Pameran Lowongan kerja di Suriah dan dan Irak', 'pameran_lowongan_kerja_di_suriah_dan_dan_irak', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214417_3678.jpg', 'Merry Christmas party in coffee house!', 'Belum Tau', '2013-07-05 05:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
+(4, 1, 'Jobs fair khusus untuk Dept Kolektor', 'jobs_fair_khusus_untuk_dept_kolektor', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta<br /></span></p>', '2013/06/14/20130614_214335_2156.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-07-05 03:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
+(5, 1, 'Islamic Book Fair 2013 !', 'islamic_book_fair_2013_', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214343_2616.jpg', 'Merry Christmas party in coffee house!', 'Malang, Hall Ekonomi Brawijaya', '2013-07-05 02:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
+(6, 1, 'Pameran Lukisan semalang raya', 'pameran_lukisan_semalang_raya', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214422_3421.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-07-05 06:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -6440,6 +6440,7 @@ CREATE TABLE IF NOT EXISTS `seeker` (
   `facebook` varchar(255) DEFAULT NULL,
   `twitter` varchar(255) DEFAULT NULL,
   `ibu_kandung` varchar(100) DEFAULT NULL,
+  `file_resume` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
@@ -6447,8 +6448,30 @@ CREATE TABLE IF NOT EXISTS `seeker` (
 -- Dumping data for table `seeker`
 --
 
-INSERT INTO `seeker` (`id`, `kelamin_id`, `kota_id`, `marital_id`, `seeker_no`, `first_name`, `last_name`, `email`, `tempat_lahir`, `tgl_lahir`, `address`, `phone`, `hp`, `passwd`, `photo`, `last_login`, `last_update`, `agama`, `kebangsaan`, `facebook`, `twitter`, `ibu_kandung`) VALUES
-(1, 1, 0, 2, '50124587', 'dfgdfg', 'aaaa', 'her0satr@yahoo.com', 'tempat lahir', '2000-06-04', 'address', '+62 6541 8974 64', '+62 654 86 465', 'd0cccd72f00289035b8e25ff29100dee', NULL, NULL, NULL, 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu kandung');
+INSERT INTO `seeker` (`id`, `kelamin_id`, `kota_id`, `marital_id`, `seeker_no`, `first_name`, `last_name`, `email`, `tempat_lahir`, `tgl_lahir`, `address`, `phone`, `hp`, `passwd`, `photo`, `last_login`, `last_update`, `agama`, `kebangsaan`, `facebook`, `twitter`, `ibu_kandung`, `file_resume`) VALUES
+(1, 1, 0, 2, '50124587', 'dfgdfg', 'aaaa', 'her0satr@yahoo.com', 'tempat lahir', '2000-06-04', 'address', '+62 6541 8974 64', '+62 654 86 465', 'd0cccd72f00289035b8e25ff29100dee', '2013/06/15/20130615_200449_9616.jpg', NULL, NULL, 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu kandung', '2013/06/15/20130615_203038_4468.docx');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seeker_addon`
+--
+
+CREATE TABLE IF NOT EXISTS `seeker_addon` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `seeker_id` int(11) NOT NULL,
+  `kendaraan` int(11) NOT NULL,
+  `content` longtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `seeker_addon`
+--
+
+INSERT INTO `seeker_addon` (`id`, `seeker_id`, `kendaraan`, `content`) VALUES
+(1, 0, 0, ''),
+(2, 1, 1, '<p>sdfsdf 2 555 asdas&nbsp;</p>\n<p>&nbsp;</p>\n<p>&nbsp;kasjd hkajs hdkajsd</p>\n<p>asdk jsadh</p>\n<p>asd lkajsd</p>\n<p>&nbsp;</p>\n<p>Dear All 582</p>');
 
 -- --------------------------------------------------------
 
@@ -6466,14 +6489,12 @@ CREATE TABLE IF NOT EXISTS `seeker_education` (
   `nama_sekolah` varchar(100) DEFAULT NULL,
   `tgl_lulus` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `seeker_education`
 --
 
-INSERT INTO `seeker_education` (`id`, `seeker_id`, `jenjang_id`, `score`, `bidang_studi`, `jurusan`, `nama_sekolah`, `tgl_lulus`) VALUES
-(3, 1, 3, 2, '4', '3', '1', '2013-06-05');
 
 -- --------------------------------------------------------
 
@@ -6488,14 +6509,14 @@ CREATE TABLE IF NOT EXISTS `seeker_exp` (
   `date_start` date DEFAULT NULL,
   `date_end` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `seeker_exp`
 --
 
 INSERT INTO `seeker_exp` (`id`, `seeker_id`, `nama`, `date_start`, `date_end`) VALUES
-(3, 1, 'Pengalaman 12', '2013-06-22', '2013-06-29');
+(1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -6508,15 +6529,14 @@ CREATE TABLE IF NOT EXISTS `seeker_expert` (
   `seeker_id` int(10) unsigned DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `seeker_expert`
 --
 
 INSERT INTO `seeker_expert` (`id`, `seeker_id`, `content`) VALUES
-(4, 1, 'asd asd  ads'),
-(5, 1, '456');
+(4, 1, 'asd asd  ads');
 
 -- --------------------------------------------------------
 
@@ -6531,15 +6551,12 @@ CREATE TABLE IF NOT EXISTS `seeker_language` (
   `lisan` varchar(255) NOT NULL,
   `tulis` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `seeker_language`
 --
 
-INSERT INTO `seeker_language` (`id`, `seeker_id`, `nama`, `lisan`, `tulis`) VALUES
-(1, 1, 'Bahasa Indonesia', 'Pasif', 'Pasif'),
-(2, 1, 'Bahasa Inggris', 'Aktif', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -6551,17 +6568,13 @@ CREATE TABLE IF NOT EXISTS `seeker_reference` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `seeker_id` int(10) unsigned DEFAULT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `content` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `seeker_reference`
 --
 
-INSERT INTO `seeker_reference` (`id`, `seeker_id`, `nama`, `content`) VALUES
-(2, 0, '1 2', '<p>22</p>'),
-(3, 0, '3 3', '<p>22</p>');
 
 -- --------------------------------------------------------
 
@@ -6606,7 +6619,7 @@ CREATE TABLE IF NOT EXISTS `seeker_summary` (
 --
 
 INSERT INTO `seeker_summary` (`id`, `seeker_id`, `jenjang_id`, `score`, `school`, `experience`) VALUES
-(1, 1, 2, 11, '33', '44');
+(1, 1, 2, 3.56, 'Malang', 'Brawijaya');
 
 -- --------------------------------------------------------
 
@@ -6759,7 +6772,7 @@ CREATE TABLE IF NOT EXISTS `vacancy` (
 
 INSERT INTO `vacancy` (`id`, `company_id`, `subkategori_id`, `nama`, `position`, `vacancy_status_id`, `article_url`, `article_link`, `content_short`, `content`, `opsi_1`, `opsi_2`, `kota_id`, `jenjang_id`, `jenis_pekerjaan_id`, `pengalaman_id`, `gaji`, `publish_date`, `close_date`, `email_apply`, `email_quick`) VALUES
 (1, 1, 1, 'Lowongan Desainer', 'Arsitek,Driver', 2, 'URL Artikel', 'Link Artikel', '<p>Short Desc</p>', '<p>Detail</p>', 'Opsi 1', 'Opsi 2', 1536, 3, 1, 4, 5000000, '2013-06-12', '2013-06-23', 'mail11@mail.com', 'mail22@mail.com'),
-(3, 1, 4, 'Lowongan Q', 'Desainer', 3, '', '', '', '', '', '', 1655, 0, 0, 0, 0, '2013-06-11', '2013-06-28', '1mail@mail.com', 'mail2@mail.com');
+(3, 1, 4, 'Lowongan Q', 'Desainer', 3, '', '', '<p><em><strong>Mohon cantumkan permohonan Gaji</strong></em></p>', '<p>Requirements:</p>\n<ul>\n<li>Candidate must possess at least a Diploma, Bachelor''s Degree, Engineering (Computer/Telecommunication), Science &amp; Technology or equivalent.</li>\n<li>Good knowledge of HTML, CSS, PHP, and My SQL.</li>\n<li>Good knowledge of JavaScript (specifically JQuery) and Ajax.</li>\n<li>Have good estetics &nbsp;and taste on graphical area.</li>\n<li>Familiar with Search engine optimization (SEO).</li>\n<li>Attached your latest portfolio.</li>\n<li>At least 1 year(s) of working experience in the related field is required for this position.</li>\n<li>Full-Time position(s) available.</li>\n</ul>', '', '', 1655, 0, 3, 0, 0, '2013-06-11', '2013-06-28', '1mail@mail.com', 'mail2@mail.com');
 
 -- --------------------------------------------------------
 

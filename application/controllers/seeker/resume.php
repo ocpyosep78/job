@@ -78,6 +78,15 @@ class resume extends SEEKER_Controller {
 			$result = $this->Seeker_Language_model->delete($_POST);
 		}
 		
+		else if ($action == 'get_seeker_addon') {
+			$result = $this->Seeker_Addon_model->get_by_id(array( 'seeker_id' => $_POST['seeker_id'] ));
+		} else if ($action == 'update_seeker_addon') {
+			$param = $this->Seeker_Addon_model->force_get(array( 'seeker_id' => $_POST['seeker_id'] ));
+			$param['kendaraan'] = $_POST['kendaraan'];
+			$param['content'] = $_POST['content'];
+			$result = $this->Seeker_Addon_model->update($param);
+		}
+		
 		else if ($action == 'update_seeker_reference') {
 			$result = $this->Seeker_Reference_model->update($_POST);
 		} else if ($action == 'delete_seeker_reference') {

@@ -31,6 +31,7 @@
 			<div class="hide">
 				<div class="cnt-seeker"><?php echo json_encode($seeker); ?></div>
 				<div class="cnt-seeker_summary"><?php echo json_encode($seeker_summary); ?></div>
+				<iframe name="iframe_seeker_resume" src="<?php echo base_url('panel/upload?callback=seeker_resume'); ?>"></iframe>
 				<iframe name="iframe_seeker_photo" src="<?php echo base_url('panel/upload?callback=seeker_photo'); ?>"></iframe>
 			</div>
 			
@@ -168,6 +169,35 @@
 				</div>
 			</div>
 			
+			<div id="modal-addon" class="modal modal-bigest hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h3>Form Info Tambahan</h3>
+				</div>
+				<form class='form-horizontal' id="form-addon">
+					<input type="hidden" name="seeker_id" value="0" />
+					<input type="submit" class="btn-hidden" hidefocus="true" />
+					
+					<div class="modal-body">
+						<div class="control-group">
+							<label for="input-nama" class="control-label" style="width: 175px;">Memiliki kendaraan roda 2</label>
+							<div class="controls" style="margin-left: 175px;">
+								<label class="radio"><input type="radio" name="kendaraan" value="1" checked="checked"> Ya</label>
+								<label class="radio"><input type="radio" name="kendaraan" value="0"> Tidak</label>
+							</div>
+						</div>
+						<div class="control-group" style="width: 175px;">
+							<label for="input-content_2" class="control-label">Informasi Tambahan</label>
+							<div class="controls" style="margin-left: 175px;"><textarea name="content" id="input-content_2" class="tinymce" style="height: 300px"></textarea></div>
+						</div>
+					</div>
+				</form>
+				<div class="modal-footer">
+					<button class="btn modal-close" data-dismiss="modal" aria-hidden="true">Close</button>
+					<button class="btn modal-submit btn-primary" data-dismiss="modal">Save changes</button>
+				</div>
+			</div>
+			
 			<div id="modal-reference" class="modal modal-bigest hide fade" tabindex="-1" role="dialog" aria-hidden="true">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -238,11 +268,25 @@
 			<div class="box box-color box-bordered teal">
 				<div class="box-title"><h3><i class="icon-file"></i>Unggah Resume</h3></div>
 				<div class="box-content">
-					<form action="#" method="POST" class='form-horizontal'>
+					<form class='form-horizontal' id="form-resume">
+						<input type="hidden" name="file_resume" />
+						<input type="hidden" name="file_resume_link" />
+						
 						<div class="control-group">
-							<label for="textfield" class="control-label">Tidak ada resume</label>
+							<label for="textfield" class="control-label wo-resume">Tidak ada resume</label>
+							<label for="textfield" class="control-label wi-resume hide">
+								<a href="#" target="_blank"><img src="<?php echo base_url('static/img/document.png'); ?>" /></a>
+							</label>
+							
 							<div class="controls">
-								<button class="btn btn-success">Upload Resume</button>
+								<div class="default">
+									<button type="button" class="btn btn-success btn-upload">Upload Resume</button> Hanya file dengan format doc, docx atau pdf yang dapat diupload.
+								</div>
+								<div class="confirm hide">
+									<button type="button" class="btn btn-save btn-primary">Save</button>
+									<button type="button" class="btn btn-cancel">Batal</button>
+								</div>
+								
 								<span class="help-block error" style="margin: 15px 0 0 0;">
 									Catatan : Versi terakhir resume yang Anda unggah dapat di akses oleh semua parusahaan yang Anda lamar<br />
 									[<a>info lebih lanjut</a>]
@@ -253,7 +297,7 @@
 				</div>
 			</div>
 			
-			<div class="box box-color box-bordered teal" id="cnt-detail">
+			<div class="box box-color box-bordered teal">
 				<div class="box-title">
 					<h3><i class="icon-file"></i>Detail Kontak Informasi</h3>
 					<div class="actions">
@@ -284,18 +328,21 @@
 						</div>
 					</form>
 					
-					<div style="position: absolute; top: 10px; right: 10px;">
+					<div style="position: absolute; top: 10px; right: 10px;"><form id="form-photo">
+						<input type="hidden" name="photo" />
+						<input type="hidden" name="photo_backup" />
+						
 						<div style="width: 125px; text-align: center;">
-							<img src="<?php echo base_url('static/theme/flat/img/demo/user-avatar.jpg'); ?>" style="width: 125px; height: 160px;" />
+							<img class="seeker_photo" src="<?php echo base_url('static/theme/flat/img/demo/user-avatar.jpg'); ?>" style="width: 125px; height: 160px;" />
 							<div style="padding: 10px 0 0 0;">
-								<div class="default"><button class="btn btn-success">Upload Photo</button></div>
+								<div class="default"><button type="button" class="btn btn-success btn-upload">Upload Photo</button></div>
 								<div class="confirm hide">
-									<button class="btn btn-success">Save</button>
-									<button class="btn btn-success">Batal</button>
+									<button type="button" class="btn btn-primary btn-save">Save</button>
+									<button type="button" class="btn btn-cancel">Batal</button>
 								</div>
 							</div>
 						</div>
-					</div>
+					</form></div>
 				</div>
 			</div>
 			
@@ -334,7 +381,7 @@
 				<div class="box-title">
 					<h3><i class="icon-file"></i>Pendidikan</h3>
 					<div class="actions">
-						<a class="btn cursor btn-mini btn-modal-education"><i class="icon-edit"></i></a>
+						<a class="btn cursor btn-mini btn-modal-education" rel="tooltip" data-original-title="Tambah Pendidikan"><i class="icon-edit"></i></a>
 					</div>
 				</div>
 				<div class="box-content">
@@ -353,7 +400,7 @@
 				<div class="box-title">
 					<h3><i class="icon-file"></i>Keahlian / Ketrampilan</h3>
 					<div class="actions">
-						<a class="btn cursor btn-mini btn-modal-ahli"><i class="icon-edit"></i></a>
+						<a class="btn cursor btn-mini btn-modal-ahli" rel="tooltip" data-original-title="Tambah Keahlian / Ketrampilan"><i class="icon-edit"></i></a>
 					</div>
 				</div>
 				<div class="box-content">
@@ -371,7 +418,7 @@
 				<div class="box-title">
 					<h3><i class="icon-file"></i>Bahasa</h3>
 					<div class="actions">
-						<a class="btn cursor btn-mini btn-modal-language"><i class="icon-edit"></i></a>
+						<a class="btn cursor btn-mini btn-modal-language" rel="tooltip" data-original-title="Tambah Bahasa"><i class="icon-edit"></i></a>
 					</div>
 				</div>
 				<div class="box-content">
@@ -391,7 +438,7 @@
 				<div class="box-title">
 					<h3><i class="icon-file"></i>Pengalaman Kerja</h3>
 					<div class="actions">
-						<a class="btn cursor btn-mini btn-modal-exp"><i class="icon-edit"></i></a>
+						<a class="btn cursor btn-mini btn-modal-exp" rel="tooltip" data-original-title="Tambah Pengalaman Kerja"><i class="icon-edit"></i></a>
 					</div>
 				</div>
 				<div class="box-content">
@@ -411,19 +458,17 @@
 				<div class="box-title">
 					<h3><i class="icon-file"></i>Info Tambahan</h3>
 					<div class="actions">
-						<a class="btn cursor btn-mini"><i class="icon-edit"></i></a>
+						<a class="btn cursor btn-mini btn-modal-addon" rel="tooltip" data-original-title="Edit Info Tambahan"><i class="icon-edit"></i></a>
 					</div>
 				</div>
-				<div class="box-content">
-					?????????????????
-				</div>
+				<div class="box-content" id="cnt-addon">&nbsp;</div>
 			</div>
 			
 			<div class="box box-color box-bordered teal">
 				<div class="box-title">
 					<h3><i class="icon-file"></i>Referensi</h3>
 					<div class="actions">
-						<a class="btn cursor btn-mini btn-modal-reference"><i class="icon-edit"></i></a>
+						<a class="btn cursor btn-mini btn-modal-reference" rel="tooltip" data-original-title="Tambah Referensi"><i class="icon-edit"></i></a>
 					</div>
 				</div>
 				<div class="box-content">
@@ -441,11 +486,11 @@
 				<div class="box-title">
 					<h3><i class="icon-file"></i>Rangkuman Profile</h3>
 					<div class="actions">
-						<a class="btn cursor btn-mini btn-modal-summary"><i class="icon-edit"></i></a>
+						<a class="btn cursor btn-mini btn-modal-summary" rel="tooltip" data-original-title="Edit Rangkuman Profile"><i class="icon-edit"></i></a>
 					</div>
 				</div>
 				<div class="box-content">
-					<form class='form-horizontal form-textlong' id="form-resume">
+					<form class='form-horizontal form-textlong' id="form-summary">
 						<div class="control-group">
 							<label for="textfield" class="control-label">IPK / Nilai Terakhir</label>
 							<div class="controls"><input type="text" name="score" class="input-xxlarge" readonly="readonly" /></div>
@@ -471,7 +516,19 @@
 <script>
 $( document ).ready(function() {
 	seeker_photo = function(p) {
-		$('[name="logo"]').val(p.file_name);
+		var photo_backup = $('#form-photo .seeker_photo').attr('src');
+		$('#form-photo [name="photo_backup"]').val(photo_backup);
+		
+		$('#form-photo [name="photo"]').val(p.file_name);
+		$('#form-photo .seeker_photo').attr('src', p.file_link);
+		$('#form-photo .default').hide();
+		$('#form-photo .confirm').show();
+	}
+	seeker_resume = function(p) {
+		$('#form-resume [name="file_resume"]').val(p.file_name);
+		$('#form-resume [name="file_resume_link"]').val(p.file_link);
+		$('#form-resume .default').hide();
+		$('#form-resume .confirm').show();
 	}
 	
 	var seeker = Func.get_seeker();
@@ -486,27 +543,79 @@ $( document ).ready(function() {
 			$('[name="tgl_lahir"]').val(Func.SwapDate(seeker.tgl_lahir));
 			$('[name="kelamin_nama"]').val(seeker.kelamin_nama);
 			$('[name="kebangsaan"]').val(seeker.kebangsaan);
+			$('#form-photo .seeker_photo').attr('src', seeker.photo_link);
+			if (seeker.file_resume_link.length > 0) {
+				$('#form-resume .wo-resume').hide();
+				$('#form-resume .wi-resume').show();
+			}
 			
 			var raw_summary = $('.cnt-seeker_summary').text();
 			eval('var summary = ' + raw_summary);
-			$('#form-resume [name="jenjang_nama"]').val(summary.jenjang_nama);
-			$('#form-resume [name="score"]').val(summary.score);
-			$('#form-resume [name="school"]').val(summary.school);
-			$('#form-resume [name="experience"]').val(summary.experience);
+			$('#form-summary [name="jenjang_nama"]').val(summary.jenjang_nama);
+			$('#form-summary [name="score"]').val(summary.score);
+			$('#form-summary [name="school"]').val(summary.school);
+			$('#form-summary [name="experience"]').val(summary.experience);
 			
 			// set readonly for company
 			if (seeker.is_readonly) {
 				$('.actions').remove();
 			}
 			
-			// form
-			$('#cnt-detail .default .btn').click(function() { window.iframe_seeker_photo.browse() });
+			// form resume
+			$('#form-resume .btn-upload').click(function() { window.iframe_seeker_resume.browse() });
+			$('#form-resume .btn-save').click(function() {
+				var param = Site.Form.GetValue('form-resume');
+				param.id = seeker.id;
+				param.action = 'update';
+				param.update_session = 1;
+				Func.ajax({ url: web.host + 'seeker/resume/action', param: param, callback: function(result) {
+					Func.show_notice({ text: result.message });
+					if (result.status == 1) {
+						$('#form-resume .default').show();
+						$('#form-resume .confirm').hide();
+						
+						$('#form-resume .wo-resume').hide();
+						$('#form-resume .wi-resume').show();
+						$('#form-resume .wi-resume a').attr('href', $('#form-resume [name="file_resume_link"]').val());
+					}
+				} });
+			});
+			$('#form-resume .btn-cancel').click(function() {
+				$('#form-resume .default').show();
+				$('#form-resume .confirm').hide();
+			});
+			
+			// form photo
+			$('#form-photo .btn-upload').click(function() { window.iframe_seeker_photo.browse() });
+			$('#form-photo .btn-save').click(function() {
+				var param = Site.Form.GetValue('form-photo');
+				param.id = seeker.id;
+				param.action = 'update';
+				param.update_session = 1;
+				Func.ajax({ url: web.host + 'seeker/resume/action', param: param, callback: function(result) {
+					Func.show_notice({ text: result.message });
+					if (result.status == 1) {
+						$('#form-photo .default').show();
+						$('#form-photo .confirm').hide();
+					}
+				} });
+			});
+			$('#form-photo .btn-cancel').click(function() {
+				var photo_backup = $('#form-photo [name="photo_backup"]').val();
+				if (photo_backup.length > 0) {
+					$('#form-photo .seeker_photo').attr('src', photo_backup);
+				}
+				
+				$('#form-photo .default').show();
+				$('#form-photo .confirm').hide();
+			});
 			
 			// feature
 			page.ahli();
 			page.education();
 			page.exp();
 			page.language();
+			page.addon();
 			page.reference();
 			page.summary();
 		},
@@ -751,6 +860,42 @@ $( document ).ready(function() {
 				return false;
 			});
 		},
+		addon: function() {
+			// set content
+			Func.ajax({ url: web.host + 'seeker/resume/action', param: { action: 'get_seeker_addon', seeker_id: seeker.id }, callback: function(result) {
+				$('#cnt-addon').html(result.content);
+			} });
+			
+			// modal
+			$('.btn-modal-addon').click(function() {
+				Func.ajax({ url: web.host + 'seeker/resume/action', param: { action: 'get_seeker_addon', seeker_id: seeker.id }, callback: function(result) {
+					$('#modal-addon [name="seeker_id"]').val(seeker.id);
+					$('#modal-addon [name="kendaraan"][value=' + result.kendaraan + ']').attr('checked', 'checked');
+					$('#modal-addon [name="content"]').val(result.content);
+					$('#modal-addon').modal();
+				} });
+			});
+			$('#modal-addon .modal-footer .modal-close').click(function() { $('#modal-addon').modal('hide'); });
+			$('#modal-addon .modal-footer .modal-submit').click(function() { $('#modal-addon').find('form').submit(); });
+			$('#modal-addon form').submit(function() {
+				if (! $('#modal-addon form').valid()) {
+					return false;
+				}
+				
+				var param = Site.Form.GetValue('modal-addon form');
+				param.action = 'update_seeker_addon';
+				param.kendaraan = $('#modal-addon input[name=kendaraan]:checked').val();
+				Func.ajax({ url: web.host + 'seeker/resume/action', param: param, callback: function(result) {
+					Func.show_notice({ text: result.message });
+					if (result.status == 1) {
+						$('#cnt-addon').html(param.content);
+						$('#modal-addon').modal('hide');
+					}
+				} });
+				
+				return false;
+			});
+		},
 		reference: function() {
 			var dt = null;
 			var param = {
@@ -833,10 +978,10 @@ $( document ).ready(function() {
 				Func.ajax({ url: web.host + 'seeker/resume/action', param: param, callback: function(result) {
 					Func.show_notice({ text: result.message });
 					if (result.status == 1) {
-						$('#form-resume [name="jenjang_nama"]').val(result.jenjang_nama);
-						$('#form-resume [name="score"]').val(result.score);
-						$('#form-resume [name="school"]').val(result.school);
-						$('#form-resume [name="experience"]').val(result.experience);
+						$('#form-summary [name="jenjang_nama"]').val(result.jenjang_nama);
+						$('#form-summary [name="score"]').val(result.score);
+						$('#form-summary [name="school"]').val(result.school);
+						$('#form-summary [name="experience"]').val(result.experience);
 						$('#modal-summary').modal('hide');
 					}
 				} });

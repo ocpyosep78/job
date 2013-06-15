@@ -116,7 +116,7 @@
     
     if (! function_exists('Upload')) {
         function Upload($InputName, $PathDir = 'User', $Param = array()) {
-            $Param['AllowedExtention'] = (isset($Param['AllowedExtention'])) ? $Param['AllowedExtention'] : array('jpg', 'jpeg', 'gif', 'png', 'bmp', 'xls', 'csv');
+            $Param['AllowedExtention'] = (isset($Param['AllowedExtention'])) ? $Param['AllowedExtention'] : array('jpg', 'jpeg', 'gif', 'png', 'bmp', 'xls', 'csv', 'doc', 'docx', 'pdf');
             
             $ArrayResult = array('Result' => '0', 'FileDirName' => '');
             if (isset($_FILES[$InputName]) && is_array($_FILES[$InputName]) && is_array($_FILES[$InputName]['name'])) {

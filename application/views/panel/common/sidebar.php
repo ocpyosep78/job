@@ -35,7 +35,6 @@
 			<a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Administrator</span></a>
 		</div>
 		<ul class="subnav-menu">
-			<!-- <li><a href="<?php echo base_url('editor/login'); ?>">Login</a></li>	-->
 			<li><a href="<?php echo base_url('editor/home'); ?>">Dashboard</a></li>
 			<li><a href="<?php echo base_url('editor/article'); ?>">Article</a></li>
 			<li><a href="<?php echo base_url('editor/event'); ?>">Event</a></li>
@@ -43,6 +42,20 @@
 			<li><a href="<?php echo base_url('editor/seeker'); ?>">Pelamar</a></li>
 			<li><a href="<?php echo base_url('editor/company'); ?>">Perusahaan</a></li>
 			<li><a href="<?php echo base_url('editor/editor'); ?>">Editor</a></li>
+		</ul>
+	</div>
+	<div class="subnav">
+		<div class="subnav-title">
+			<a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Master</span></a>
+		</div>
+		<ul class="subnav-menu">
+			<li><a href="<?php echo base_url('master/kategori'); ?>">Kategori</a></li>
+			<li><a href="<?php echo base_url('master/subkategori'); ?>">Subkategori</a></li>
+			<li><a href="<?php echo base_url('master/industri'); ?>">Industri</a></li>
+			<li><a href="<?php echo base_url('master/jenis_pekerjaan'); ?>">Jenis Pekerjaan</a></li>
+			<li><a href="<?php echo base_url('master/jenjang'); ?>">Jenjang</a></li>
+			<li><a href="<?php echo base_url('master/pengalaman'); ?>">Pengalaman</a></li>
+			<li><a href="<?php echo base_url('master/position'); ?>">Posisi</a></li>
 		</ul>
 	</div>
 	<?php } ?>

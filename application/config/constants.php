@@ -46,6 +46,7 @@ define('PENGALAMAN',							'pengalaman');
 define('POSITION',								'position');
 define('PROPINSI',								'propinsi');
 define('SEEKER',								'seeker');
+define('SEEKER_ADDON',							'seeker_addon');
 define('SEEKER_EDUCATION',						'seeker_education');
 define('SEEKER_EXP',							'seeker_exp');
 define('SEEKER_EXPERT',							'seeker_expert');
