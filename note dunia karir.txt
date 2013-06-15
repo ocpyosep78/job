@@ -153,6 +153,8 @@ SLIDE BAR (VIEW)
 INFO TAMBAHAN
 - Copy dari Edit Resume, Header masih "Edit Resume"
 
+her0satr@yahoo.com
+qwertyui
 
 ----------------------------------------------------------------------------------------
 Note Kesulitan			
@@ -169,6 +171,7 @@ PROFIL PERUSAHAAN
 - Penambahan placeholder (phone number, fax number, company website)
 - Perbaikan combo box location (Propinsi)
 
+MASTERING UNTUK ADMIN
 
-her0satr@yahoo.com
-qwertyui
+SEEKER UNTUK EDIT DETAIL
+
