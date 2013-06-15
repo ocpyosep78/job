@@ -1,24 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Seeker_Summary_model extends CI_Model {
+class Seeker_Education_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array('id', 'seeker_id', 'jenjang_id', 'score', 'school', 'experience');
+        $this->field = array('id', 'seeker_id', 'jenjang_id', 'score', 'bidang_studi', 'jurusan', 'nama_sekolah', 'tgl_lulus');
     }
 
     function update($param) {
         $result = array();
        
         if (empty($param['id'])) {
-            $insert_query  = GenerateInsertQuery($this->field, $param, SEEKER_SUMMARY);
+            $insert_query  = GenerateInsertQuery($this->field, $param, SEEKER_EDUCATION);
             $insert_result = mysql_query($insert_query) or die(mysql_error());
            
             $result['id'] = mysql_insert_id();
             $result['status'] = '1';
             $result['message'] = 'Data berhasil disimpan.';
         } else {
-            $update_query  = GenerateUpdateQuery($this->field, $param, SEEKER_SUMMARY);
+            $update_query  = GenerateUpdateQuery($this->field, $param, SEEKER_EDUCATION);
             $update_result = mysql_query($update_query) or die(mysql_error());
            
             $result['id'] = $param['id'];
@@ -33,21 +33,7 @@ class Seeker_Summary_model extends CI_Model {
         $array = array();
        
         if (isset($param['id'])) {
-            $select_query  = "
-				SELECT SeekerSummary.*, Jenjang.nama jenjang_nama
-				FROM ".SEEKER_SUMMARY." SeekerSummary
-				LEFT JOIN ".JENJANG." Jenjang ON Jenjang.id = SeekerSummary.jenjang_id
-				WHERE id = '".$param['id']."'
-				LIMIT 1
-			";
-        } else if (isset($param['seeker_id'])) {
-            $select_query  = "
-				SELECT SeekerSummary.*, Jenjang.nama jenjang_nama
-				FROM ".SEEKER_SUMMARY." SeekerSummary
-				LEFT JOIN ".JENJANG." Jenjang ON Jenjang.id = SeekerSummary.jenjang_id
-				WHERE seeker_id = '".$param['seeker_id']."'
-				LIMIT 1
-			";
+            $select_query  = "SELECT * FROM ".SEEKER_EDUCATION." WHERE id = '".$param['id']."' LIMIT 1";
         } 
        
         $select_result = mysql_query($select_query) or die(mysql_error());
@@ -62,12 +48,13 @@ class Seeker_Summary_model extends CI_Model {
         $array = array();
 		
 		$string_filter = GetStringFilter($param, @$param['column']);
-		$string_sorting = GetStringSorting($param, @$param['column'], 'jenjang_id ASC');
+		$string_sorting = GetStringSorting($param, @$param['column'], 'is_public ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS SeekerSummary.*
-			FROM ".SEEKER_SUMMARY." SeekerSummary
+			SELECT SQL_CALC_FOUND_ROWS SeekerEducation.*, Jenjang.nama jenjang_nama
+			FROM ".SEEKER_EDUCATION." SeekerEducation
+			LEFT JOIN ".JENJANG." Jenjang ON Jenjang.id = SeekerEducation.jenjang_id
 			WHERE 1 $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
@@ -90,7 +77,7 @@ class Seeker_Summary_model extends CI_Model {
     }
 	
     function delete($param) {
-		$delete_query  = "DELETE FROM ".SEEKER_SUMMARY." WHERE id = '".$param['id']."' LIMIT 1";
+		$delete_query  = "DELETE FROM ".SEEKER_EDUCATION." WHERE id = '".$param['id']."' LIMIT 1";
 		$delete_result = mysql_query($delete_query) or die(mysql_error());
 		
 		$result['status'] = '1';
@@ -100,7 +87,7 @@ class Seeker_Summary_model extends CI_Model {
     }
 	
 	function sync($row, $column = array()) {
-		$row = StripArray($row);
+		$row = StripArray($row, array( 'tgl_lulus' ));
 		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));

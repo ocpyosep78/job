@@ -21,6 +21,22 @@ class resume extends SEEKER_Controller {
 			$_POST['column'] = array( 'content' );
 			$array = $this->Seeker_Expert_model->get_array($_POST);
 			$count = $this->Seeker_Expert_model->get_count();
+		} else if ($grid_name == 'seeker_education') {
+			$_POST['column'] = array( 'jenjang_nama', 'nama_sekolah' );
+			$array = $this->Seeker_Education_model->get_array($_POST);
+			$count = $this->Seeker_Education_model->get_count();
+		} else if ($grid_name == 'seeker_exp') {
+			$_POST['column'] = array( 'nama', 'date_start', 'date_end' );
+			$array = $this->Seeker_Exp_model->get_array($_POST);
+			$count = $this->Seeker_Exp_model->get_count();
+		} else if ($grid_name == 'seeker_language') {
+			$_POST['column'] = array( 'nama', 'lisan', 'tulis' );
+			$array = $this->Seeker_Language_model->get_array($_POST);
+			$count = $this->Seeker_Language_model->get_count();
+		} else if ($grid_name == 'seeker_reference') {
+			$_POST['column'] = array( 'nama' );
+			$array = $this->Seeker_Reference_model->get_array($_POST);
+			$count = $this->Seeker_Reference_model->get_count();
 		}
 		
 		$grid = array( 'sEcho' => $_POST['sEcho'], 'aaData' => $array, 'iTotalRecords' => $count, 'iTotalDisplayRecords' => $count );
@@ -42,6 +58,41 @@ class resume extends SEEKER_Controller {
 			$result = $this->Seeker_Expert_model->update($_POST);
 		} else if ($action == 'delete_seeker_expert') {
 			$result = $this->Seeker_Expert_model->delete($_POST);
+		}
+		
+		else if ($action == 'update_seeker_education') {
+			$result = $this->Seeker_Education_model->update($_POST);
+		} else if ($action == 'delete_seeker_education') {
+			$result = $this->Seeker_Education_model->delete($_POST);
+		}
+		
+		else if ($action == 'update_seeker_exp') {
+			$result = $this->Seeker_Exp_model->update($_POST);
+		} else if ($action == 'delete_seeker_exp') {
+			$result = $this->Seeker_Exp_model->delete($_POST);
+		}
+		
+		else if ($action == 'update_seeker_language') {
+			$result = $this->Seeker_Language_model->update($_POST);
+		} else if ($action == 'delete_seeker_language') {
+			$result = $this->Seeker_Language_model->delete($_POST);
+		}
+		
+		else if ($action == 'update_seeker_reference') {
+			$result = $this->Seeker_Reference_model->update($_POST);
+		} else if ($action == 'delete_seeker_reference') {
+			$result = $this->Seeker_Reference_model->delete($_POST);
+		}
+		
+		else if ($action == 'get_seeker_summary') {
+			$result = $this->Seeker_Summary_model->get_by_id(array( 'seeker_id' => $_POST['seeker_id'] ));
+			if (count($result) == 0) {
+				$result = $this->Seeker_Summary_model->update(array( 'seeker_id' => $_POST['seeker_id'] ));
+			}
+		} else if ($action == 'update_seeker_summary') {
+			$result = $this->Seeker_Summary_model->update($_POST);
+			$summary = $this->Seeker_Summary_model->get_by_id(array( 'seeker_id' => $_POST['seeker_id'] ));
+			$result = array_merge($result, $summary);
 		}
 		
 		if (!empty($_POST['update_session'])) {

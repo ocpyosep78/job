@@ -114,7 +114,7 @@ $autoload['model'] = array(
 	'Surat_Lamaran_model', 'Apply_model', 'Kota_model', 'Article_model', 'Article_Status_model', 'Kategori_model', 'Subkategori_model', 'Event_model', 'Widget_model',
 	'Company_Post_model', 'Vacancy_model', 'Seeker_Exp_model', 'Pengalaman_model', 'Vacancy_Status_model', 'Jenis_Pekerjaan_model', 'Position_model',
 	'Seeker_Summary_model', 'Industri_model', 'Membership_model', 'Company_Membership_model', 'Kategori_Tag_model', 'Subkategori_Tag_model', 'Article_Tag_model',
-	'Seeker_Expert_model'
+	'Seeker_Expert_model', 'Seeker_Education_model', 'Seeker_Language_model', 'Seeker_Reference_model'
 );
 
 

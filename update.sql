@@ -9,3 +9,6 @@ ALTER TABLE  `widget` ADD  `alias` VARCHAR( 255 ) NOT NULL AFTER  `nama`;
 2013-06-11 :
 CREATE TABLE  `job_db`.`vacancy_status` ( `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY , `nama` VARCHAR( 100 ) NOT NULL ) ENGINE = MYISAM ;
 CREATE TABLE `job_db`.`seeker_summary` ( `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY , `seeker_id` INT NOT NULL , `jenjang_id` INT NOT NULL , `score` FLOAT NOT NULL , `location` VARCHAR( 255 ) NOT NULL , `experience` VARCHAR( 255 ) NOT NULL ) ENGINE = MYISAM ;
+
+2013-06-15 :
+CREATE TABLE  `job_db`.`seeker_language` ( `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY , `seeker_id` INT NOT NULL , `nama` VARCHAR( 255 ) NOT NULL , `lisan` VARCHAR( 255 ) NOT NULL , `tulis` VARCHAR( 255 ) NOT NULL ) ENGINE = MYISAM ;
