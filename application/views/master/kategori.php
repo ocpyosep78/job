@@ -39,6 +39,10 @@
 						<label for="input-alias" class="control-label">Alias</label>
 						<div class="controls"><input type="text" name="alias" id="input-alias" class="input-xlarge" readonly="readonly" /></div>
 					</div>
+					<div class="control-group">
+						<label for="input-tag" class="control-label">Tag</label>
+						<div class="controls"><input type="text" name="tag" id="input-tag" class="input-xlarge tagsinput" /></div>
+					</div>
 				</div>
 			</form>
 			<div class="modal-footer">
@@ -69,10 +73,14 @@
 					var raw_record = $(this).siblings('.hide').text();
 					eval('var record = ' + raw_record);
 					
-					$('#modal-kategori [name="id"]').val(record.id);
-					$('#modal-kategori [name="nama"]').val(record.nama);
-					$('#modal-kategori [name="alias"]').val(record.alias);
-					$('#modal-kategori').modal();
+					Func.ajax({ url: web.host + 'master/kategori/action', param: { action: 'get_by_id', id: record.id }, callback: function(result) {
+						$('#modal-kategori [name="id"]').val(result.id);
+						$('#modal-kategori [name="nama"]').val(result.nama);
+						$('#modal-kategori [name="alias"]').val(result.alias);
+						$('#modal-kategori [name="tag"]').importTags(result.tag);
+						
+						$('#modal-kategori').modal();
+					} });
 				});
 				
 				$('#cnt-kategori .delete').click(function() {

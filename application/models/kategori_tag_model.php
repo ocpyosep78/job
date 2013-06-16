@@ -78,8 +78,13 @@ class Kategori_Tag_model extends CI_Model {
     }
 	
     function delete($param) {
-		$delete_query  = "DELETE FROM ".KATEGORI_TAG." WHERE id = '".$param['id']."' LIMIT 1";
-		$delete_result = mysql_query($delete_query) or die(mysql_error());
+		if (isset($param['id'])) {
+			$delete_query  = "DELETE FROM ".KATEGORI_TAG." WHERE id = '".$param['id']."' LIMIT 1";
+			$delete_result = mysql_query($delete_query) or die(mysql_error());
+		} else if (isset($param['kategori_id'])) {
+			$delete_query  = "DELETE FROM ".KATEGORI_TAG." WHERE kategori_id = '".$param['kategori_id']."'";
+			$delete_result = mysql_query($delete_query) or die(mysql_error());
+		}
 		
 		$result['status'] = '1';
 		$result['message'] = 'Data berhasil dihapus.';
