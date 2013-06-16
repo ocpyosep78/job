@@ -3,6 +3,8 @@
 	$breadcrump[] = array( 'title' => 'Index', 'link' => base_url() );
 	$breadcrump[] = array( 'title' => 'Events', 'link' => base_url('event') );
 	$breadcrump[] = array( 'title' => $event['nama'], 'link' => $event['event_link'] );
+	
+	$array_tag = $this->Event_Tag_model->get_array(array( 'event_id' => $event['id'] ));
 ?>
 
 <?php $this->load->view( 'website/common/meta' ); ?>
@@ -31,12 +33,13 @@
 				<div class="star-rating span2">
 					Submit by : <?php echo $event['editor_name']; ?>
 				</div>
+				<?php if (count($array_tag) > 0) { ?>
 				<div class="tags span6 no-margin">
-					<a href="#"><span>Malang</span></a>
-					<a href="#"><span>Jobs fair</span></a>
-					<a href="#"><span>Brawijaya</span></a>
-					<a href="#"><span>Love</span></a>
+					<?php foreach ($array_tag as $tag) { ?>
+					<a href="#"><span><?php echo $tag['tag_nama']; ?></span></a>
+					<?php } ?>
 				</div>
+				<?php } ?>
 			</div>
 		</div>
 		<aside class="span3">

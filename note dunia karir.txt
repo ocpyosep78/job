@@ -141,17 +141,9 @@ Subscribe
 - Ada 4 Jenis (Kategori, Sub Kategori, Event, Perusahaan)
 - Email support html
 
-
-
 ----------------------------------------------------------------------------------------
 HOLD
 ----------------------------------------------------------------------------------------
-
-SLIDE BAR (VIEW)
-- Tambahan "Info Tambahan"
-
-INFO TAMBAHAN
-- Copy dari Edit Resume, Header masih "Edit Resume"
 
 her0satr@yahoo.com
 qwertyui
@@ -159,19 +151,10 @@ qwertyui
 ----------------------------------------------------------------------------------------
 Note Kesulitan			
 ----------------------------------------------------------------------------------------
-RESUME
-- nama yang tampil cuma nama depan
-- email belum ada 
-- jenis kelamin masih berupa angka
 
-ADD JOBS POSITION / VACANCY
-- MASIH ADA KETERANGAN ERROR
-
-PROFIL PERUSAHAAN
-- Penambahan placeholder (phone number, fax number, company website)
-- Perbaikan combo box location (Propinsi)
-
-
-Tag
-
-
+Editor : Approve Vacancy
+Website : Subscribe
+Website : Advance Search Vacancy
+Website : Region Vacancy on Listing Vacancy
+Website : Report Company
+Seeker : Tampilan Dari Email : http://localhost/job/trunk/seeker/public/dfgdfgaaaa

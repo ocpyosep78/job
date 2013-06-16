@@ -1,24 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Subkategori_model extends CI_Model {
+class Event_Tag_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array('id', 'kategori_id', 'nama', 'alias');
+        $this->field = array('id', 'event_id', 'tag_id');
     }
 
     function update($param) {
         $result = array();
        
         if (empty($param['id'])) {
-            $insert_query  = GenerateInsertQuery($this->field, $param, SUBKATEGORI);
+            $insert_query  = GenerateInsertQuery($this->field, $param, EVENT_TAG);
             $insert_result = mysql_query($insert_query) or die(mysql_error());
            
             $result['id'] = mysql_insert_id();
             $result['status'] = '1';
             $result['message'] = 'Data berhasil disimpan.';
         } else {
-            $update_query  = GenerateUpdateQuery($this->field, $param, SUBKATEGORI);
+            $update_query  = GenerateUpdateQuery($this->field, $param, EVENT_TAG);
             $update_result = mysql_query($update_query) or die(mysql_error());
            
             $result['id'] = $param['id'];
@@ -33,24 +33,8 @@ class Subkategori_model extends CI_Model {
         $array = array();
        
         if (isset($param['id'])) {
-            $select_query  = "
-				SELECT Subkategori.*, Kategori.nama kategori_nama, Kategori.alias kategori_alias
-				FROM ".SUBKATEGORI." Subkategori
-				LEFT JOIN ".KATEGORI." Kategori ON Kategori.id = Subkategori.kategori_id
-				WHERE Subkategori.id = '".$param['id']."'
-				LIMIT 1
-			";
-        } else if (isset($param['alias'])) {
-            $select_query  = "
-				SELECT Subkategori.*, Kategori.nama kategori_nama, Kategori.alias kategori_alias
-				FROM ".SUBKATEGORI." Subkategori
-				LEFT JOIN ".KATEGORI." Kategori ON Kategori.id = Subkategori.kategori_id
-				WHERE Subkategori.alias = '".$param['alias']."'
-				LIMIT 1
-			";
-        } else {
-			return array();
-		}
+            $select_query  = "SELECT * FROM ".EVENT_TAG." WHERE id = '".$param['id']."' LIMIT 1";
+        } 
        
         $select_result = mysql_query($select_query) or die(mysql_error());
         if (false !== $row = mysql_fetch_assoc($select_result)) {
@@ -63,22 +47,16 @@ class Subkategori_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
-		// overwrite field name
-		$param['field_replace']['nama'] = 'Subkategori.nama';
-		$param['field_replace']['alias'] = 'Subkategori.alias';
-		$param['field_replace']['kategori_nama'] = 'Kategori.nama';
-		
-		$string_kategori = (empty($param['kategori_id'])) ? '' : "AND kategori_id = '".$param['kategori_id']."'";
+		$string_event = (empty($param['event_id'])) ? '' : "AND EventTag.event_id = '".$param['event_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
-		$string_sorting = GetStringSorting($param, @$param['column'], 'nama ASC');
+		$string_sorting = GetStringSorting($param, @$param['column'], 'tag_id ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS Subkategori.*,
-				Kategori.nama kategori_nama, Kategori.alias kategori_alias
-			FROM ".SUBKATEGORI." Subkategori
-			LEFT JOIN ".KATEGORI." Kategori ON Kategori.id = Subkategori.kategori_id
-			WHERE 1 $string_kategori $string_filter
+			SELECT SQL_CALC_FOUND_ROWS EventTag.*, Tag.nama tag_nama, Tag.alias tag_alias
+			FROM ".EVENT_TAG." EventTag
+			LEFT JOIN ".TAG." Tag ON Tag.id = EventTag.tag_id
+			WHERE 1 $string_event $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";
@@ -100,8 +78,13 @@ class Subkategori_model extends CI_Model {
     }
 	
     function delete($param) {
-		$delete_query  = "DELETE FROM ".SUBKATEGORI." WHERE id = '".$param['id']."' LIMIT 1";
-		$delete_result = mysql_query($delete_query) or die(mysql_error());
+		if (isset($param['id'])) {
+			$delete_query  = "DELETE FROM ".EVENT_TAG." WHERE id = '".$param['id']."' LIMIT 1";
+			$delete_result = mysql_query($delete_query) or die(mysql_error());
+		} else if (isset($param['event_id'])) {
+			$delete_query  = "DELETE FROM ".EVENT_TAG." WHERE event_id = '".$param['event_id']."'";
+			$delete_result = mysql_query($delete_query) or die(mysql_error());
+		}
 		
 		$result['status'] = '1';
 		$result['message'] = 'Data berhasil dihapus.';
@@ -111,7 +94,6 @@ class Subkategori_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
-		$row['link'] = base_url('blog/'.$row['kategori_alias'].'/'.$row['alias']);
 		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));

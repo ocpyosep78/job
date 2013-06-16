@@ -59,6 +59,10 @@
 					<label for="input-event_content" class="control-label">Description</label>
 					<div class="controls"><textarea name="content" id="input-event_content" class="tinymce" style="width: 800px; height: 300px;"></textarea></div>
 				</div>
+				<div class="control-group">
+					<label for="input-tag" class="control-label">Tag</label>
+					<div class="controls"><input type="text" name="tag" id="input-tag" class="input-xlarge tagsinput" /></div>
+				</div>
 				<div class="grids">
 					<div class="row-fluid">
 						<div class="span1 form-me-label">Waktu</div>
@@ -127,6 +131,8 @@
 					$('#form-event [name="id"]').val(0);
 					$('#form-event [name="editor_id"]').val(editor.id);
 					$('#form-event [name="photo"]').val('');
+					$('#form-event [name="tag"]').importTags('');
+					$('.event-photo').attr('src', NO_IMAGE);
 					
 					page.show_editor();
 				});
@@ -145,6 +151,7 @@
 						$('#form-event [name="lokasi"]').val(record.lokasi);
 						$('#form-event [name="photo_desc"]').val(record.photo_desc);
 						$('#form-event [name="google_map"]').val(record.google_map);
+						$('#form-event [name="tag"]').importTags(record.tag);
 						
 						var waktu_date = Func.get_date_time(record.waktu, 1);
 						$('#form-event [name="waktu_datepick"]').val(waktu_date.date);

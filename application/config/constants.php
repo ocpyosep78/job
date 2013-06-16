@@ -33,6 +33,7 @@ define('COMPANY_MEMBERSHIP',					'company_membership');
 define('COMPANY_POST',							'company_post');
 define('EDITOR',								'editor');
 define('EVENT',									'event');
+define('EVENT_TAG',								'event_tag');
 define('INDUSTRI',								'industri');
 define('JENIS_PEKERJAAN',						'jenis_pekerjaan');
 define('JENJANG',								'jenjang');

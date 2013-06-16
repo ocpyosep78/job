@@ -118,9 +118,9 @@
 					<h1>Lowongan Kerja Terbaru</h1>
 					<hr />
 					<?php foreach ($array_vacancy as $key => $vacancy) { ?>
-						<div class="jp-audio custom"><a><?php echo $vacancy['nama']; ?></a></div>
+						<div class="jp-audio custom"><a href="<?php echo $vacancy['vacancy_link']; ?>"><?php echo $vacancy['nama']; ?></a></div>
 					<?php } ?>
-					<!-- <a href="#" class='btn btn-main'>Lihat Semua</a>	-->
+					<a href="<?php echo base_url('listing'); ?>" class='btn btn-main'>Lihat Semua</a>
 				</div>
 				<div class='weekly-features span3'>
 					<h1>Artikel Dunia Kerja </h1>

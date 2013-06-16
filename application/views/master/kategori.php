@@ -65,6 +65,7 @@
 				$('#cnt-kategori_length .btn-add').click(function() {
 					$('#modal-kategori form')[0].reset()
 					$('#modal-kategori [name="id"]').val(0);
+					$('#modal-kategori [name="tag"]').importTags('');
 					$('#modal-kategori').modal();
 				});
 			},

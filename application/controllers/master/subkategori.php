@@ -25,6 +25,20 @@ class subkategori extends EDITOR_Controller {
 		$result = array();
 		if ($action == 'update') {
 			$result = $this->Subkategori_model->update($_POST);
+			
+			// tag
+			$this->Subkategori_Tag_model->delete(array( 'subkategori_id' => $result['id'] ));
+			if (!empty($_POST['tag'])) {
+				$array_tag = explode(',', $_POST['tag']);
+				foreach ($array_tag as $tag_name) {
+					$tag = $this->Tag_model->get_by_id(array( 'title' => $tag_name, 'force_insert' => 1 ));
+					$this->Subkategori_Tag_model->update(array( 'subkategori_id' => $result['id'], 'tag_id' => $tag['id'] ));
+				}
+			}
+		} else if ($action == 'get_by_id') {
+			$result = $this->Subkategori_model->get_by_id(array( 'id' => $_POST['id'] ));
+			$array_tag = $this->Subkategori_Tag_model->get_array(array( 'subkategori_id' => $_POST['id'] ));
+			$result['tag'] = get_tag_name($array_tag);
 		} else if ($action == 'delete') {
 			$result = $this->Subkategori_model->delete($_POST);
 		}

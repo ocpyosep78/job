@@ -78,6 +78,10 @@
 					<div class="controls"><input type="text" name="image_piracy" id="input-image_piracy" class="input-xxlarge" /></div>
 				</div>
 				<div class="control-group">
+					<label for="input-tag" class="control-label">Tag</label>
+					<div class="controls"><input type="text" name="tag" id="input-tag" class="input-xlarge tagsinput" /></div>
+				</div>
+				<div class="control-group">
 					<label for="input-article_status_id" class="control-label">Status</label>
 					<div class="controls"><select name="article_status_id" id="input-article_status_id" class="input-xxlarge">
 						<?php echo ShowOption(array( 'Array' => $array_article_status, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
@@ -143,6 +147,7 @@
 					$('#form-article [name="kategori_id"]').val('');
 					$('#form-article [name="subkategori_id"]').val('');
 					$('#form-article [name="article_status_id"]').val('');
+					$('#form-article [name="tag"]').importTags('');
 					
 					page.show_editor();
 				});
@@ -164,6 +169,7 @@
 						$('#form-article [name="article_desc_2"]').val(record.article_desc_2);
 						$('#form-article [name="article_desc_3"]').val(record.article_desc_3);
 						$('#form-article [name="image_piracy"]').val(record.image_piracy);
+						$('#form-article [name="tag"]').importTags(record.tag);
 						
 						var publish_date = Func.get_date_time(record.publish_date, 1);
 						$('#form-article [name="publish_datepick"]').val(publish_date.date);

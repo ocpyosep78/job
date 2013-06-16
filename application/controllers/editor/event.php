@@ -25,10 +25,22 @@ class event extends EDITOR_Controller {
 		$result = array();
 		if ($action == 'update') {
 			$result = $this->Event_model->update($_POST);
-		} else if ($action == 'delete') {
-			$result = $this->Event_model->delete($_POST);
+			
+			// tag
+			$this->Event_Tag_model->delete(array( 'event_id' => $result['id'] ));
+			if (!empty($_POST['tag'])) {
+				$array_tag = explode(',', $_POST['tag']);
+				foreach ($array_tag as $tag_name) {
+					$tag = $this->Tag_model->get_by_id(array( 'title' => $tag_name, 'force_insert' => 1 ));
+					$this->Event_Tag_model->update(array( 'event_id' => $result['id'], 'tag_id' => $tag['id'] ));
+				}
+			}
 		} else if ($action == 'get_by_id') {
 			$result = $this->Event_model->get_by_id($_POST);
+			$array_tag = $this->Event_Tag_model->get_array(array( 'event_id' => $_POST['id'] ));
+			$result['tag'] = get_tag_name($array_tag);
+		} else if ($action == 'delete') {
+			$result = $this->Event_model->delete($_POST);
 		}
 		
 		echo json_encode($result);

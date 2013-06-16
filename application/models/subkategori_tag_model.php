@@ -4,7 +4,7 @@ class Subkategori_Tag_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array('id', 'kategori_id', 'tag_id');
+        $this->field = array('id', 'subkategori_id', 'tag_id');
     }
 
     function update($param) {
@@ -78,8 +78,13 @@ class Subkategori_Tag_model extends CI_Model {
     }
 	
     function delete($param) {
-		$delete_query  = "DELETE FROM ".SUBKATEGORI_TAG." WHERE id = '".$param['id']."' LIMIT 1";
-		$delete_result = mysql_query($delete_query) or die(mysql_error());
+		if (isset($param['id'])) {
+			$delete_query  = "DELETE FROM ".SUBKATEGORI_TAG." WHERE id = '".$param['id']."' LIMIT 1";
+			$delete_result = mysql_query($delete_query) or die(mysql_error());
+		} else if (isset($param['subkategori_id'])) {
+			$delete_query  = "DELETE FROM ".SUBKATEGORI_TAG." WHERE subkategori_id = '".$param['subkategori_id']."'";
+			$delete_result = mysql_query($delete_query) or die(mysql_error());
+		}
 		
 		$result['status'] = '1';
 		$result['message'] = 'Data berhasil dihapus.';

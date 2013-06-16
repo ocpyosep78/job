@@ -50,6 +50,10 @@
 						<label for="input-alias" class="control-label">Alias</label>
 						<div class="controls"><input type="text" name="alias" id="input-alias" class="input-xlarge" readonly="readonly" /></div>
 					</div>
+					<div class="control-group">
+						<label for="input-tag" class="control-label">Tag</label>
+						<div class="controls"><input type="text" name="tag" id="input-tag" class="input-xlarge tagsinput" /></div>
+					</div>
 				</div>
 			</form>
 			<div class="modal-footer">
@@ -72,6 +76,7 @@
 				$('#cnt-subkategori_length .btn-add').click(function() {
 					$('#modal-subkategori form')[0].reset()
 					$('#modal-subkategori [name="id"]').val(0);
+					$('#modal-subkategori [name="tag"]').importTags('');
 					$('#modal-subkategori').modal();
 				});
 			},
@@ -80,10 +85,15 @@
 					var raw_record = $(this).siblings('.hide').text();
 					eval('var record = ' + raw_record);
 					
-					$('#modal-subkategori [name="id"]').val(record.id);
-					$('#modal-subkategori [name="nama"]').val(record.nama);
-					$('#modal-subkategori [name="alias"]').val(record.alias);
-					$('#modal-subkategori').modal();
+					Func.ajax({ url: web.host + 'master/subkategori/action', param: { action: 'get_by_id', id: record.id }, callback: function(result) {
+						$('#modal-subkategori [name="id"]').val(result.id);
+						$('#modal-subkategori [name="nama"]').val(result.nama);
+						$('#modal-subkategori [name="alias"]').val(result.alias);
+						$('#modal-subkategori [name="kategori_id"]').val(result.kategori_id);
+						$('#modal-subkategori [name="tag"]').importTags(result.tag);
+						
+						$('#modal-subkategori').modal();
+					} });
 				});
 				
 				$('#cnt-subkategori .delete').click(function() {
