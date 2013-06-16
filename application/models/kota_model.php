@@ -47,15 +47,21 @@ class Kota_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
+		// overwrite field name
+		$param['field_replace']['nama'] = 'Kota.nama';
+		$param['field_replace']['propinsi_nama'] = 'Propinsi.nama';
+		
+		$string_negara = (empty($param['negara_id'])) ? '' : "AND negara_id = '".$param['negara_id']."'";
 		$string_propinsi = (empty($param['propinsi_id'])) ? '' : "AND propinsi_id = '".$param['propinsi_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'nama ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS Kota.*
+			SELECT SQL_CALC_FOUND_ROWS Kota.*, Propinsi.nama propinsi_nama
 			FROM ".KOTA." Kota
-			WHERE 1 $string_propinsi $string_filter
+			LEFT JOIN ".PROPINSI." Propinsi ON Propinsi.id = Kota.propinsi_id
+			WHERE 1 $string_negara $string_propinsi $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";

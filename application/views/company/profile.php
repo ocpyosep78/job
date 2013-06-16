@@ -1,6 +1,6 @@
 <?php
 	$company = $this->Company_model->get_session();
-	$array_propinsi = $this->Propinsi_model->get_array(array('nagara_id' => NEGARA_INDONESIA_ID));
+	$array_propinsi = $this->Propinsi_model->get_array(array('negara_id' => NEGARA_INDONESIA_ID));
 	$array_industri = $this->Industri_model->get_array();
 ?>
 

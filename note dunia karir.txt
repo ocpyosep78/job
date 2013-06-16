@@ -171,7 +171,8 @@ PROFIL PERUSAHAAN
 - Penambahan placeholder (phone number, fax number, company website)
 - Perbaikan combo box location (Propinsi)
 
-MASTERING UNTUK ADMIN
+Kirim Email
+Registrasi -> Login -> LUpa Password -> Reset Password
+Tag
 
-SEEKER UNTUK EDIT DETAIL
 

@@ -47,7 +47,7 @@ class Propinsi_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
-		$string_negara = (empty($param['nagara_id'])) ? '' : "AND negara_id = '".$param['nagara_id']."'";
+		$string_negara = (empty($param['negara_id'])) ? '' : "AND negara_id = '".$param['negara_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'nama ASC');
 		$string_limit = GetStringLimit($param);

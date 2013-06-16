@@ -1,7 +1,7 @@
 <?php
 	$seeker = $this->Seeker_model->get_session();
 	
-	$array_propinsi = $this->Propinsi_model->get_array(array('nagara_id' => NEGARA_INDONESIA_ID));
+	$array_propinsi = $this->Propinsi_model->get_array(array('negara_id' => NEGARA_INDONESIA_ID));
 	$array_marital = $this->Marital_model->get_array();
 	$array_jenjang = $this->Jenjang_model->get_array();
 ?>

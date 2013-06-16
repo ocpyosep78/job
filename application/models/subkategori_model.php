@@ -63,6 +63,11 @@ class Subkategori_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
+		// overwrite field name
+		$param['field_replace']['nama'] = 'Subkategori.nama';
+		$param['field_replace']['alias'] = 'Subkategori.alias';
+		$param['field_replace']['kategori_nama'] = 'Kategori.nama';
+		
 		$string_kategori = (empty($param['kategori_id'])) ? '' : "AND kategori_id = '".$param['kategori_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'nama ASC');
