@@ -6,7 +6,7 @@ class Seeker_model extends CI_Model {
 		
         $this->field = array(
 			'id', 'kelamin_id', 'kota_id', 'marital_id', 'seeker_no', 'first_name', 'last_name', 'email', 'tempat_lahir', 'tgl_lahir', 'address', 'phone', 'hp',
-			'passwd', 'photo', 'last_login', 'last_update', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu_kandung', 'file_resume'
+			'passwd', 'photo', 'last_login', 'last_update', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu_kandung', 'file_resume', 'alias', 'reset'
 		);
     }
 
@@ -38,8 +38,9 @@ class Seeker_model extends CI_Model {
         if (isset($param['id'])) {
             $select_query  = "
 				SELECT Seeker.*, Kota.nama kota_nama, Propinsi.id propinsi_id, Propinsi.nama propinsi_nama,
-					Kelamin.nama kelamin_nama
+					Kelamin.nama kelamin_nama, Marital.nama marital_nama
 				FROM ".SEEKER." Seeker
+				LEFT JOIN ".MARITAL." Marital ON Marital.id = Seeker.marital_id
 				LEFT JOIN ".KELAMIN." Kelamin ON Kelamin.id = Seeker.kelamin_id
 				LEFT JOIN ".KOTA." Kota ON Kota.id = Seeker.kota_id
 				LEFT JOIN ".PROPINSI." Propinsi ON Propinsi.id = Kota.propinsi_id
@@ -49,8 +50,9 @@ class Seeker_model extends CI_Model {
         } else if (isset($param['seeker_no'])) {
             $select_query  = "
 				SELECT Seeker.*, Kota.nama kota_nama, Propinsi.id propinsi_id, Propinsi.nama propinsi_nama,
-					Kelamin.nama kelamin_nama
+					Kelamin.nama kelamin_nama, Marital.nama marital_nama
 				FROM ".SEEKER." Seeker
+				LEFT JOIN ".MARITAL." Marital ON Marital.id = Seeker.marital_id
 				LEFT JOIN ".KELAMIN." Kelamin ON Kelamin.id = Seeker.kelamin_id
 				LEFT JOIN ".KOTA." Kota ON Kota.id = Seeker.kota_id
 				LEFT JOIN ".PROPINSI." Propinsi ON Propinsi.id = Kota.propinsi_id
@@ -59,6 +61,10 @@ class Seeker_model extends CI_Model {
 			";
         } else if (isset($param['email'])) {
             $select_query  = "SELECT * FROM ".SEEKER." WHERE email = '".$param['email']."' LIMIT 1";
+        } else if (isset($param['alias'])) {
+            $select_query  = "SELECT * FROM ".SEEKER." WHERE alias = '".$param['alias']."' LIMIT 1";
+        } else if (isset($param['reset'])) {
+            $select_query  = "SELECT * FROM ".SEEKER." WHERE reset = '".$param['reset']."' LIMIT 1";
         }
 		
         $select_result = mysql_query($select_query) or die(mysql_error());
@@ -113,6 +119,33 @@ class Seeker_model extends CI_Model {
 		return $TotalRecord;
     }
 	
+	function get_alias($id, $title) {
+		$alias = trim(strtolower($title));
+		$alias = preg_replace('/[^a-z0-9]+/i', '', $alias);
+		
+		$loop = true;
+		do {
+			$seeker = $this->get_by_id(array('alias' => $alias));
+			if (count($seeker) == 0) {
+				$loop = false;
+				break;
+			} else if (count($seeker) > 0 && $seeker['id'] == $id) {
+				$loop = false;
+				break;
+			} else {
+				preg_match('/-(\d)+$/i', $alias, $Match);
+				if (count($Match) == 0) {
+					$alias .= '-1';
+				} else {
+					$Increment = (isset($Match[1])) ? $Match[1] + 1 : 2;
+					$alias = preg_replace('/-(\d)+$/i', '-' . $Increment, $alias);
+				}
+			}
+		} while ($loop);
+		
+		return $alias;
+	}
+	
     function delete($param) {
 		$delete_query  = "DELETE FROM ".SEEKER." WHERE id = '".$param['id']."' LIMIT 1";
 		$delete_result = mysql_query($delete_query) or die(mysql_error());
@@ -125,20 +158,29 @@ class Seeker_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
-		
 		$row['full_name'] = $row['first_name'];
+		$row['usia'] = get_usia($row['tgl_lahir']);
 		if (isset($row['first_name']) && isset($row['last_name'])) {
 			$row['full_name'] = $row['first_name'].' '.$row['last_name'];
+		}
+		
+		$row['seeker_link'] = base_url();
+		if (!empty($row['alias'])) {
+			$row['seeker_link'] = base_url('seeker/public/'.$row['alias']);
 		}
 		
 		$row['photo_link'] = base_url('static/img/no-images.jpg');
 		if (!empty($row['photo'])) {
 			$row['photo_link'] = base_url('static/upload/'.$row['photo']);
+			$row['photo_path'] = $this->config->item('base_path').'/static/upload/'.$row['photo'];
+			$row['photo_path'] = str_replace('\\', '/', $row['photo_path']);
 		}
 		
 		$row['file_resume_link'] = '';
 		if (!empty($row['file_resume'])) {
 			$row['file_resume_link'] = base_url('static/upload/'.$row['file_resume']);
+			$row['file_resume_path'] = $this->config->item('base_path').'/static/upload/'.$row['file_resume'];
+			$row['file_resume_path'] = str_replace('\\', '/', $row['file_resume_path']);
 		}
 		
 		if (count($column) > 0) {

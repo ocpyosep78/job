@@ -6,7 +6,7 @@ class Company_model extends CI_Model {
 		
         $this->field = array(
 			'id', 'kota_id', 'nama', 'phone', 'faximile', 'website', 'address', 'email', 'passwd', 'description', 'kodepos', 'sales', 'contact_name',
-			'contact_email', 'contact_no', 'logo', 'banner', 'google_map', 'industri_id', 'alias'
+			'contact_email', 'contact_no', 'logo', 'banner', 'google_map', 'industri_id', 'alias', 'reset'
 		);
     }
 
@@ -62,6 +62,8 @@ class Company_model extends CI_Model {
 				LEFT JOIN ".PROPINSI." Propinsi ON Propinsi.id = Kota.propinsi_id
 				WHERE email = '".$param['email']."' LIMIT 1
 			";
+        } else if (isset($param['reset'])) {
+            $select_query  = "SELECT * FROM ".COMPANY." WHERE reset = '".$param['reset']."' LIMIT 1";
         }
        
         $select_result = mysql_query($select_query) or die(mysql_error());

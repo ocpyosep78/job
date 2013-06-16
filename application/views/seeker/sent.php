@@ -59,6 +59,17 @@
 		
 		var param = Site.Form.GetValue('form-mail');
 		param.action = 'sent_mail';
+		param.with_resume = ($('[name="with_resume"]').is(":checked")) ? 1 : 0;
+		param.with_photo = ($('[name="with_photo"]').is(":checked")) ? 1 : 0;
+		
+		var with_letter = ($('[name="with_letter"]').is(":checked")) ? 1 : 0;
+		delete param.with_letter;
+		if (with_letter == 1) {
+			param.surat_lamaran_id = $('[name="surat_lamaran_id"]').val();
+		} else {
+			delete param.surat_lamaran_id;
+		}
+		
 		Func.ajax({ url: web.host + 'seeker/sent/action', param: param, callback: function(result) {
 			if (result.status == 1) {
 				Func.show_notice({ text: result.message });

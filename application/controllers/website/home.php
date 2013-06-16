@@ -84,64 +84,82 @@ class home extends CI_Controller {
 		}
 		
 		// additional action
+		$result = array( 'status' => false );
 		preg_match('/ajax\/([a-z0-9]+)/i', $_SERVER['REQUEST_URI'], $match);
 		$action = (empty($action) && !empty($match[1])) ? $match[1] : $action;
 		
-		$result = array( 'status' => false );
-		if ($action == 'login_seeker') {
-			$seeker = $this->Seeker_model->get_by_id(array('email' => $_POST['email']));
-			if (count($seeker) == 0 || empty($_POST['email'])) {
+		// login
+		if ($action == 'login_seeker' || $action == 'login_company' || $action == 'login_editor') {
+			if ($action == 'login_seeker') {
+				$model_name = 'Seeker_model';
+				$link = base_url('seeker/resume');
+			} else if ($action == 'login_company') {
+				$model_name = 'Company_model';
+				$link = base_url('company/post');
+			} else if ($action == 'login_editor') {
+				$model_name = 'Editor_model';
+				$link = base_url('editor/home');
+			}
+			
+			$user = $this->$model_name->get_by_id(array('email' => $_POST['email']));
+			if (count($user) == 0 || empty($_POST['email'])) {
 				$result['message'] = 'user anda tidak ditemukan.';
 				echo json_encode($result);
 				exit;
 			}
-			
-			if (EncriptPassword($_POST['passwd']) != $seeker['passwd']) {
+			if (EncriptPassword($_POST['passwd']) != $user['passwd']) {
 				$result['message'] = 'Password tidak sama.';
 				echo json_encode($result);
 				exit;
 			}
 			
-			$this->Seeker_model->set_session($seeker);
+			$this->$model_name->set_session($user);
 			$result['status'] = true;
-			$result['link'] = base_url('seeker/resume');
+			$result['link'] = $link;
 		}
-		else if ($action == 'login_company') {
-			$company = $this->Company_model->get_by_id(array('email' => $_POST['email']));
-			if (count($company) == 0 || empty($_POST['email'])) {
-				$result['message'] = 'user anda tidak ditemukan.';
+		
+		// reset password
+		else if ($action == 'forget_seeker' || $action == 'forget_company') {
+			$model_name = ($action == 'forget_seeker') ? 'Seeker_model' : 'Company_model';
+			$user = $this->$model_name->get_by_id(array( 'email' => $_POST['email'] ));
+			
+			if (count($user) == 0) {
+				$result['status'] = true;
+				$result['message'] = 'Email anda tidak terdaftar';
 				echo json_encode($result);
 				exit;
 			}
 			
-			if (EncriptPassword($_POST['passwd']) != $company['passwd']) {
-				$result['message'] = 'Password tidak sama.';
-				echo json_encode($result);
-				exit;
-			}
+			$reset = EncriptPassword($user['id'].'-'.time());
+			$this->$model_name->update(array( 'id' => $user['id'], 'reset' => $reset ));
+			$link_reset = base_url('login?reset='.$reset);
 			
-			$this->Company_model->set_session($company);
+			// mail
+			$param['to'] = $user['email'];
+			$param['message']  = "Berikut link untuk mereset password anda. Harap abaikan email ini jika password yang anda gunakan saat ini sudah benar.\n\n";
+			$param['message'] .= $link_reset;
+			sent_mail($param);
+			
 			$result['status'] = true;
-			$result['link'] = base_url('company/post');
+			$result['message'] = 'Silahkan memeriksa email anda untuk melakukan reset password.';
 		}
-		else if ($action == 'login_editor') {
-			$editor = $this->Editor_model->get_by_id(array('email' => $_POST['email']));
-			if (count($editor) == 0 || empty($_POST['email'])) {
-				$result['message'] = 'user anda tidak ditemukan.';
-				echo json_encode($result);
-				exit;
+		
+		// register
+		else if ($action == 'register_seeker' || $action == 'register_company') {
+			$model_name = ($action == 'register_seeker') ? 'Seeker_model' : 'Company_model';
+			$check = $this->$model_name->get_by_id(array( 'email' => $_POST['email'] ));
+			if (count($check) == 0) {
+				$_POST['passwd'] = EncriptPassword($_POST['passwd']);
+				$this->$model_name->update($_POST);
+				
+				$result['status'] = true;
+				$result['message'] = 'Registrasi anda berhasil, silahkan login.';
+			} else {
+				$result['status'] = false;
+				$result['message'] = 'Email sudah memiliki account, tidak bisa digunakan untuk registrasi lagi.';
 			}
-			
-			if (EncriptPassword($_POST['passwd']) != $editor['passwd']) {
-				$result['message'] = 'Password tidak sama.';
-				echo json_encode($result);
-				exit;
-			}
-			
-			$this->Editor_model->set_session($editor);
-			$result['status'] = true;
-			$result['link'] = base_url('editor/home');
 		}
+		
 		else if ($action == 'logout') {
 			$this->Seeker_model->delete_session();
 			$this->Company_model->delete_session();

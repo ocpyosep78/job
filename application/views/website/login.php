@@ -1,5 +1,33 @@
 <?php
 	$array_breadcrumb = array( array( 'title' => 'Index', 'link' => base_url() ), array( 'title' => 'Login' ) );
+	
+	$message = '';
+	if (!empty($_GET['reset'])) {
+		$seeker = $this->Seeker_model->get_by_id(array( 'reset' => $_GET['reset'] ));
+		$company = $this->Company_model->get_by_id(array( 'reset' => $_GET['reset'] ));
+		
+		$user = array();
+		if (count($seeker) > 0) {
+			$user = $seeker;
+			$model_name = 'Seeker_model';
+		} else if (count($company) > 0) {
+			$user = $company;
+			$model_name = 'Company_model';
+		} else {
+			$message = 'Maaf, link ini sudah tidak berlaku.';
+		}
+		
+		if (count($user) > 0) {
+			$passwd_new = substr(EncriptPassword(time()), 0, 10);
+			$param_update = array( 'id' => $user['id'], 'passwd' => EncriptPassword($passwd_new), 'reset' => '' );
+			$this->$model_name->update($param_update);
+			
+			$message = 'Password anda berhasil direset, silahkan memeriksa email anda.';
+			$param['to'] = $user['email'];
+			$param['message']  = "Password anda berhasil direset, berikut informasi password baru anda : $passwd_new \n\n";
+			sent_mail($param);
+		}
+	}
 ?>
 
 <?php $this->load->view( 'website/common/meta' ); ?>
@@ -8,11 +36,10 @@
 <section id='main'>
 	<div class='container'><div class='row'>
 		<div class='span9 content'>
-			<?php $this->load->view( 'website/common/breadcrumb', array( 'array_breadcrumb' => $array_breadcrumb, 'title' => 'Login' ) ); ?>
+			<?php $this->load->view( 'website/common/breadcrumb', array( 'array_breadcrumb' => $array_breadcrumb, 'sub_title' => 'Login' ) ); ?>
 			
 			<div class='span9 news blog-article no-margin' style="padding: 0 0 100px 0;">
-				<h1 class="span6 no-margin">&nbsp;</h1>
-				<div class="hide center message-login" style="text-align: center; padding: 0 0 15px 0; font-size: 14px; color: #FF0000;"></div>
+				<div class="hide center message-login" style="text-align: center; padding: 10px 0 15px 0; font-size: 14px; color: #FF0000;"><?php echo $message; ?></div>
 				
 				<div class="cnt-block">
 					<form class="cnt-form" id="form-seeker" data-ajaxpost="ajax/seeker">
@@ -30,7 +57,7 @@
 					</form>
 					
 					<form class="cnt-form hide" id="form-seeker-forget" data-ajaxpost="ajax/seeker">
-						<input type="hidden" name="action" value="login_seeker" />
+						<input type="hidden" name="action" value="forget_seeker" />
 						<h1>PENCARI KERJA</h1>
 						<fieldset class="inputs">
 							<input class="user" type="text" placeholder="Email" name="email" required>
@@ -43,7 +70,7 @@
 					</form>
 					
 					<form class="cnt-form hide" id="form-seeker-register" data-ajaxpost="ajax/seeker">
-						<input type="hidden" name="action" value="login_company" />
+						<input type="hidden" name="action" value="register_seeker" />
 						<h1>PENCARI KERJA</h1>
 						<fieldset class="inputs">
 							<input class="user" type="text" placeholder="Email" name="email" required>
@@ -71,7 +98,7 @@
 					</form>
 					
 					<form class="cnt-form hide" id="form-company-forget" data-ajaxpost="ajax/company">
-						<input type="hidden" name="action" value="login_company" />
+						<input type="hidden" name="action" value="forget_company" />
 						<h1>PERUSAHAAN</h1>
 						<fieldset class="inputs">
 							<input class="user" type="text" placeholder="Email" name="email" required>
@@ -84,7 +111,7 @@
 					</form>
 					
 					<form class="cnt-form hide" id="form-company-register" data-ajaxpost="ajax/company">
-						<input type="hidden" name="action" value="login_company" />
+						<input type="hidden" name="action" value="register_company" />
 						<h1>PERUSAHAAN</h1>
 						<fieldset class="inputs">
 							<input class="user" type="text" placeholder="Email" name="email" required>
@@ -125,6 +152,28 @@ $('#form-seeker, #form-company').submit(function() {
 	
 	return false;
 });
+$('#form-seeker-forget, #form-company-forget').submit(function() {
+	$('.message-login').hide();
+	var form_id = $(this).attr('id');
+	var param = Site.Form.GetValue(form_id);
+	Func.ajax({ url: web.host + $(this).data('ajaxpost'), param: param, callback: function(result) {
+		$('.message-login').text(result.message);
+		$('.message-login').slideDown();
+	} });
+	
+	return false;
+});
+$('#form-seeker-register, #form-company-register').submit(function() {
+	$('.message-login').hide();
+	var form_id = $(this).attr('id');
+	var param = Site.Form.GetValue(form_id);
+	Func.ajax({ url: web.host + $(this).data('ajaxpost'), param: param, callback: function(result) {
+		$('.message-login').text(result.message);
+		$('.message-login').slideDown();
+	} });
+	
+	return false;
+});
 
 $('.show-password').click(function() {
 	$(this).parents('.cnt-block').find('form').hide();
@@ -138,6 +187,10 @@ $('.show-register').click(function() {
 	$(this).parents('.cnt-block').find('form').hide();
 	$(this).parents('.cnt-block').find('form').eq(2).show();
 });
+
+if ($('.message-login').text().length > 0) {
+	$('.message-login').slideDown();
+}
 
 var link = window.location.href;
 var temp = link.match('registrasi');
