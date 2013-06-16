@@ -811,4 +811,15 @@
 			return $page;
 		}
 	}
+	
+	if (! function_exists('get_tag_name')) {
+		function get_tag_name($array) {
+			$result = '';
+			foreach ($array as $tag) {
+				$result .= (empty($result)) ? $tag['tag_nama'] : ','.$tag['tag_nama'];
+			}
+			
+			return $result;
+		}
+	}
 ?>
