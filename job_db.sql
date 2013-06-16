@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 16, 2013 at 10:21 PM
+-- Generation Time: Jun 17, 2013 at 07:58 AM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `article_tag` (
   `article_id` int(10) unsigned DEFAULT NULL,
   `tag_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=107 ;
 
 --
 -- Dumping data for table `article_tag`
@@ -136,7 +136,11 @@ CREATE TABLE IF NOT EXISTS `article_tag` (
 
 INSERT INTO `article_tag` (`id`, `article_id`, `tag_id`) VALUES
 (1, 3, 2),
-(2, 3, 4);
+(2, 3, 4),
+(11, 2, 27),
+(12, 2, 28),
+(106, 1, 26),
+(105, 1, 25);
 
 -- --------------------------------------------------------
 
@@ -382,6 +386,28 @@ INSERT INTO `event` (`id`, `editor_id`, `nama`, `alias`, `content`, `photo`, `ph
 (4, 1, 'Jobs fair khusus untuk Dept Kolektor', 'jobs_fair_khusus_untuk_dept_kolektor', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta<br /></span></p>', '2013/06/14/20130614_214335_2156.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-07-05 03:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
 (5, 1, 'Islamic Book Fair 2013 !', 'islamic_book_fair_2013_', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214343_2616.jpg', 'Merry Christmas party in coffee house!', 'Malang, Hall Ekonomi Brawijaya', '2013-07-05 02:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
 (6, 1, 'Pameran Lukisan semalang raya', 'pameran_lukisan_semalang_raya', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214422_3421.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-07-05 06:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_tag`
+--
+
+CREATE TABLE IF NOT EXISTS `event_tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `event_tag`
+--
+
+INSERT INTO `event_tag` (`id`, `event_id`, `tag_id`) VALUES
+(4, 1, 30),
+(3, 1, 29),
+(5, 1, 31);
 
 -- --------------------------------------------------------
 
@@ -6670,7 +6696,7 @@ CREATE TABLE IF NOT EXISTS `subkategori_tag` (
   `subkategori_id` int(10) DEFAULT NULL,
   `tag_id` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `subkategori_tag`
@@ -6678,7 +6704,13 @@ CREATE TABLE IF NOT EXISTS `subkategori_tag` (
 
 INSERT INTO `subkategori_tag` (`id`, `subkategori_id`, `tag_id`) VALUES
 (1, 1, 5),
-(2, 1, 8);
+(2, 1, 8),
+(11, 4, 21),
+(10, 2, 20),
+(9, 2, 19),
+(12, 4, 22),
+(13, 3, 23),
+(14, 3, 24);
 
 -- --------------------------------------------------------
 
@@ -6733,7 +6765,7 @@ CREATE TABLE IF NOT EXISTS `tag` (
   `nama` varchar(100) DEFAULT NULL,
   `alias` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `tag`
@@ -6756,7 +6788,21 @@ INSERT INTO `tag` (`id`, `nama`, `alias`) VALUES
 (14, 'Daerah', 'daerah'),
 (15, 'oyeah', 'oyeah'),
 (16, 'Film', 'film'),
-(17, 'Video', 'video');
+(17, 'Video', 'video'),
+(18, 'tag3', 'tag3'),
+(19, 'Lapangan', 'lapangan'),
+(20, 'Gapura', 'gapura'),
+(21, 'Teather', 'teather'),
+(22, 'Stadion', 'stadion'),
+(23, 'GI Joe', 'gi_joe'),
+(24, 'Iron Man', 'iron_man'),
+(25, 'Malang', 'malang'),
+(26, 'Surabaya', 'surabaya'),
+(27, 'Opera', 'opera'),
+(28, 'Museum', 'museum'),
+(29, 'New Moon', 'new_moon'),
+(30, 'Eclipse', 'eclipse'),
+(31, 'Dark Seer', 'dark_seer');
 
 -- --------------------------------------------------------
 
