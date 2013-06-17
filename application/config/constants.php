@@ -22,6 +22,7 @@ define('APPLY_STATUS_INTERVIEW',				2);
 define('APPLY_STATUS_REJECT',					4);
 define('ARTICLE_PUBLISH',						2);
 define('VACANCY_STATUS_APPROVE',				3);
+define('VACANCY_STATUS_CANCEL',					4);
 
 define('APPLY',									'apply');
 define('APPLY_STATUS',							'apply_status');
@@ -46,6 +47,7 @@ define('MEMBERSHIP',							'membership');
 define('PENGALAMAN',							'pengalaman');
 define('POSITION',								'position');
 define('PROPINSI',								'propinsi');
+define('REPORT',								'report');
 define('SEEKER',								'seeker');
 define('SEEKER_ADDON',							'seeker_addon');
 define('SEEKER_EDUCATION',						'seeker_education');

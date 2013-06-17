@@ -176,7 +176,7 @@ class Seeker_model extends CI_Model {
 		
 		$row['seeker_link'] = base_url();
 		if (!empty($row['alias'])) {
-			$row['seeker_link'] = base_url('seeker/public/'.$row['alias']);
+			$row['seeker_link'] = base_url('seeker/view/index/'.$row['alias']);
 		}
 		
 		$row['photo_link'] = base_url('static/img/no-images.jpg');

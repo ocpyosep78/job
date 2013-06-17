@@ -152,9 +152,7 @@ qwertyui
 Note Kesulitan			
 ----------------------------------------------------------------------------------------
 
-Editor : Approve Vacancy
 Website : Subscribe
 Website : Advance Search Vacancy
 Website : Region Vacancy on Listing Vacancy
-Website : Report Company
-Seeker : Tampilan Dari Email : http://localhost/job/trunk/seeker/public/dfgdfgaaaa
+

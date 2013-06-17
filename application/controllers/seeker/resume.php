@@ -1,5 +1,5 @@
 <?php
-class resume extends SEEKER_Controller {
+class resume extends CI_Controller {
     function __construct() {
         parent::__construct();
     }
@@ -9,13 +9,12 @@ class resume extends SEEKER_Controller {
     }
     
     function edit() {
+		$this->Seeker_model->login_required();
+		
 		$this->load->view( 'seeker/resume_edit' );
     }
 	
 	function grid() {
-		$seeker = $this->Seeker_model->get_session();
-		$_POST['seeker_id'] = $seeker['id'];
-		
 		$grid_name = $_POST['grid_name'];
 		if ($grid_name == 'seeker_expert') {
 			$_POST['column'] = array( 'content' );

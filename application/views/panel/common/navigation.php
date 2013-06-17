@@ -1,5 +1,6 @@
 <?php
 	$nama = '';
+	$show = true;
 	$link_edit = '';
 	if ($this->Seeker_model->is_login()) {
 		$user = $this->Seeker_model->get_session();
@@ -13,13 +14,16 @@
 		$user = $this->Editor_model->get_session();
 		$nama = $user['nama'];
 		$link_edit = base_url('editor/editor');
+	} else {
+		$show = false;
 	}
 	
 ?>
 <div id="navigation">
 	<div class="container-fluid">
-		<a href="#" id="brand">JOBS</a>
+		<a href="<?php echo base_url(); ?>" id="brand">JOBS</a>
 		<a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
+		<?php if($show) { ?>
 		<div class="user">
 			<div class="dropdown">
 				<a href="#" class='dropdown-toggle' data-toggle="dropdown">
@@ -32,5 +36,6 @@
 				</ul>
 			</div>
 		</div>
+		<?php } ?>
 	</div>
 </div>

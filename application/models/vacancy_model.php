@@ -85,7 +85,7 @@ class Vacancy_model extends CI_Model {
 				Company.nama company_nama, Company.alias company_alias, Company.website company_website, Company.logo company_logo, Company.banner company_banner,
 				Kota.id kota_id, Kota.nama kota_nama, Kota.propinsi_id, Industri.nama industri_nama, VacancyStatus.nama vacancy_status_name,
 				Kategori.id kategori_id, Kategori.nama kategori_nama, Subkategori.nama subkategori_nama, JenisPekerjaan.nama jenis_pekerjaan_nama,
-				CompanyKota.nama company_kota_nama
+				CompanyKota.nama company_kota_nama, VacancyStatus.nama vacancy_status_nama
 			FROM ".VACANCY." Vacancy
 			LEFT JOIN ".COMPANY." Company ON Company.id = Vacancy.company_id
 			LEFT JOIN ".KOTA." CompanyKota ON CompanyKota.id = Company.kota_id
@@ -103,7 +103,7 @@ class Vacancy_model extends CI_Model {
 		";
         $select_result = mysql_query($select_query) or die(mysql_error());
 		while ( $row = mysql_fetch_assoc( $select_result ) ) {
-			$array[] = $this->sync($row, @$param['column']);
+			$array[] = $this->sync($row, $param);
 		}
 		
         return $array;
@@ -128,7 +128,7 @@ class Vacancy_model extends CI_Model {
         return $result;
     }
 	
-	function sync($row, $column = array()) {
+	function sync($row, $param = array()) {
 		$row = StripArray($row, array('publish_date', 'close_date'));
 		
 		if (isset($row['company_alias'])) {
@@ -145,8 +145,8 @@ class Vacancy_model extends CI_Model {
 			$row['company_banner_link'] = base_url('static/upload/'.$row['company_banner']);
 		}
 		
-		if (count($column) > 0) {
-			$row = dt_view($row, $column, array('is_edit' => 1));
+		if (count(@$param['column']) > 0) {
+			$row = dt_view_set($row, $param);
 		}
 		
 		return $row;

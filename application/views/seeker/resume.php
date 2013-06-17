@@ -3,6 +3,8 @@
 		$seeker = $this->Seeker_model->get_by_id(array( 'seeker_no' => $seeker_no ));
 		$seeker['is_readonly'] = true;
 	} else {
+		$this->Seeker_model->login_required();
+		
 		$seeker = $this->Seeker_model->get_session();
 		$seeker['is_readonly'] = false;
 	}
@@ -279,10 +281,10 @@
 							</label>
 							
 							<div class="controls">
-								<div class="default">
+								<div class="actions default">
 									<button type="button" class="btn btn-success btn-upload">Upload Resume</button> Hanya file dengan format doc, docx atau pdf yang dapat diupload.
 								</div>
-								<div class="confirm hide">
+								<div class="actions confirm hide">
 									<button type="button" class="btn btn-save btn-primary">Save</button>
 									<button type="button" class="btn btn-cancel">Batal</button>
 								</div>
@@ -335,8 +337,8 @@
 						<div style="width: 125px; text-align: center;">
 							<img class="seeker_photo" src="<?php echo base_url('static/theme/flat/img/demo/user-avatar.jpg'); ?>" style="width: 125px; height: 160px;" />
 							<div style="padding: 10px 0 0 0;">
-								<div class="default"><button type="button" class="btn btn-success btn-upload">Upload Photo</button></div>
-								<div class="confirm hide">
+								<div class="actions default"><button type="button" class="btn btn-success btn-upload">Upload Photo</button></div>
+								<div class="actions confirm hide">
 									<button type="button" class="btn btn-primary btn-save">Save</button>
 									<button type="button" class="btn btn-cancel">Batal</button>
 								</div>
@@ -559,6 +561,7 @@ $( document ).ready(function() {
 			// set readonly for company
 			if (seeker.is_readonly) {
 				$('.actions').remove();
+				$('.button-cursor').parent('td').html('&nbsp;');
 			}
 			
 			// form resume
@@ -626,7 +629,7 @@ $( document ).ready(function() {
 				source: web.host + 'seeker/resume/grid',
 				column: [ { }, { bSortable: false, sClass: "center" } ],
 				fnServerParams: function ( aoData ) {
-					aoData.push( { "name": "grid_name", "value": "seeker_expert" } );
+					aoData.push( { "name": "grid_name", "value": "seeker_expert" }, { "name": "seeker_id", "value": seeker.id } );
 				},
 				callback: function() {
 					$('#cnt-grid-ahli .edit').click(function() {
@@ -683,7 +686,7 @@ $( document ).ready(function() {
 				source: web.host + 'seeker/resume/grid',
 				column: [ { }, { }, { bSortable: false, sClass: "center" } ],
 				fnServerParams: function ( aoData ) {
-					aoData.push( { "name": "grid_name", "value": "seeker_education" } );
+					aoData.push( { "name": "grid_name", "value": "seeker_education" }, { "name": "seeker_id", "value": seeker.id } );
 				},
 				callback: function() {
 					$('#cnt-grid-education .edit').click(function() {
@@ -747,7 +750,7 @@ $( document ).ready(function() {
 				source: web.host + 'seeker/resume/grid',
 				column: [ { }, { }, { }, { bSortable: false, sClass: "center" } ],
 				fnServerParams: function ( aoData ) {
-					aoData.push( { "name": "grid_name", "value": "seeker_exp" } );
+					aoData.push( { "name": "grid_name", "value": "seeker_exp" }, { "name": "seeker_id", "value": seeker.id } );
 				},
 				callback: function() {
 					$('#cnt-grid-exp .edit').click(function() {
@@ -808,7 +811,7 @@ $( document ).ready(function() {
 				source: web.host + 'seeker/resume/grid',
 				column: [ { }, { }, { }, { bSortable: false, sClass: "center" } ],
 				fnServerParams: function ( aoData ) {
-					aoData.push( { "name": "grid_name", "value": "seeker_language" } );
+					aoData.push( { "name": "grid_name", "value": "seeker_language" }, { "name": "seeker_id", "value": seeker.id } );
 				},
 				callback: function() {
 					$('#cnt-grid-language .edit').click(function() {
@@ -903,7 +906,7 @@ $( document ).ready(function() {
 				source: web.host + 'seeker/resume/grid',
 				column: [ { }, { bSortable: false, sClass: "center" } ],
 				fnServerParams: function ( aoData ) {
-					aoData.push( { "name": "grid_name", "value": "seeker_reference" } );
+					aoData.push( { "name": "grid_name", "value": "seeker_reference" }, { "name": "seeker_id", "value": seeker.id } );
 				},
 				callback: function() {
 					$('#cnt-grid-reference .edit').click(function() {

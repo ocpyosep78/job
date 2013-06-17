@@ -10,6 +10,18 @@ class home extends CI_Controller {
 		
 		// page
 		if (isset($segments[1]) && !empty($segments[1])) {
+			// access admin page
+			if (in_array($segments[1], array('seeker', 'company', 'editor'))) {
+				if ($segments[1] == 'seeker') {
+					header("Location: ".base_url('seeker/resume'));
+				} else if ($segments[1] == 'company') {
+					header("Location: ".base_url('company/post'));
+				} else if ($segments[1] == 'editor') {
+					header("Location: ".base_url('editor/home'));
+				}
+				exit;
+			}
+			
 			if (in_array($segments[1], array('blog', 'blog_detail', 'event', 'event_detail', 'company', 'listing', 'listing_detail', 'login', 'registrasi', 'ajax'))) {
 				$this->$segments[1]();
 			}
