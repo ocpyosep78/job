@@ -13,9 +13,13 @@
 						<?php echo $payment['content']; ?>
 					</div>
 					<h1>Newsletter</h1>
-					<form action="" method="post" accept-charset="utf-8">
-						<input type='email' name='newsletter-email' placeholder='Enter Your E-Mail' />
-						<input type='submit' name='submit' value='Enter' class='btn btn-white' />
+					<form method="post" id="form-subscribe-footer">
+						<input type="hidden" name="action" value="subscribe" />
+						<input type="hidden" name="jenis_subscribe_id" value="1" />
+						
+						<span class="message"></span>
+						<input type='email' name='email' placeholder='Enter Your E-Mail' />
+						<input type='submit' value='Enter' class='btn btn-white' />
 					</form>
 				</div>
 				<div class='footer-links'>
@@ -56,6 +60,30 @@
 		</div>
 	</div>
 </div>
+
+<script>
+$('#form-subscribe-footer').submit(function() {
+	var param = Site.Form.GetValue('form-subscribe-footer');
+	if (param.email.length == 0) {
+		$("#form-subscribe-footer .message").html('Isikan email Anda.'); 
+		$("#form-subscribe-footer .message").show();
+		$("#form-subscribe-footer .message").fadeOut(2000);
+		return false;
+	}
+	
+	Func.ajax({ url: web.host + 'ajax', param: param, callback: function(result) {
+		$("#form-subscribe-footer .message").html(result.message); 
+		$("#form-subscribe-footer .message").show();
+		$("#form-subscribe-footer .message").fadeOut(2000);
+		
+		if (result.status) {
+			$('#form-subscribe-footer')[0].reset()
+		}
+	} });
+	
+	return false;
+});
+</script>
 
 </body>
 </html>

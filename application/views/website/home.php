@@ -28,18 +28,16 @@
 				<?php $is_text = false; ?>
 				<?php for ($i = 0; $i < 18; $i++) { ?>
 				<?php if ($is_text || ($i % 5) == 0) { ?>
-				<a href="">
+				<a href="<?php echo $array_company[$i]['company_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
 						<div class='text'>
-							<span class='artist'>Metallica</span> <br />
-							<span class='song'>The Unforgiven</span> <br />
-							<span class='year'>2001</span>
+							<span class='artist'><?php echo $array_company[$i]['nama']; ?></span>
 						</div>
 					</div>
 				</a>
 				<?php } else { ?>
-				<a href="#">
+				<a href="<?php echo $array_company[$i]['company_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
 						<img src="<?php echo $array_company[$i]['logo_link']; ?>" />
@@ -51,13 +49,13 @@
 			<div class='slider-sidebar span3'>
 				<?php $this->load->view( 'website/common/register' ); ?>
 				
-				<a href="#">
+				<a href="<?php echo $array_company[17]['company_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
 						<img src='<?php echo $array_company[18]['logo_link']; ?>' />
 					</div>
 				</a>
-				<a href="#">
+				<a href="<?php echo $array_company[19]['company_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
 						<img src='<?php echo $array_company[19]['logo_link']; ?>' />
@@ -70,18 +68,16 @@
 				<?php $is_text = false; ?>
 				<?php for ($i = 20; $i < 38; $i++) { ?>
 				<?php if ($is_text || ($i % 4) == 0) { ?>
-				<a href="">
+				<a href="<?php echo $array_company[$i]['company_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
 						<div class='text'>
-							<span class='artist'>Metallica</span> <br />
-							<span class='song'>The Unforgiven</span> <br />
-							<span class='year'>2001</span>
+							<span class='artist'><?php echo $array_company[$i]['nama']; ?></span>
 						</div>
 					</div>
 				</a>
 				<?php } else { ?>
-				<a href="#">
+				<a href="<?php echo $array_company[$i]['company_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
 						<img src="<?php echo $array_company[$i]['logo_link']; ?>" />

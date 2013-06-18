@@ -22,7 +22,7 @@ class home extends CI_Controller {
 				exit;
 			}
 			
-			if (in_array($segments[1], array('blog', 'blog_detail', 'event', 'event_detail', 'company', 'listing', 'listing_detail', 'login', 'registrasi', 'ajax'))) {
+			if (in_array($segments[1], array('blog', 'blog_detail', 'event', 'event_detail', 'company', 'listing', 'listing_detail', 'login', 'registrasi', 'search', 'ajax'))) {
 				$this->$segments[1]();
 			}
 			
@@ -87,6 +87,10 @@ class home extends CI_Controller {
 	
 	function registrasi() {
 		$this->load->view( 'website/login' );
+	}
+	
+	function search() {
+		$this->load->view( 'website/listing' );
 	}
 	
 	function ajax() {
@@ -190,6 +194,18 @@ class home extends CI_Controller {
 			
 			$result['status'] = true;
 			$result['message'] = 'Pesan berhasil dikirim';
+		}
+		else if ($action == 'subscribe') {
+			$subscribe = $this->Subscribe_model->get_by_id(array( 'email' => $_POST['email'], 'jenis_subscribe_id' => $_POST['jenis_subscribe_id'] ));
+			
+			// set data
+			$_POST['status'] = 1;
+			if (count($subscribe) > 0) {
+				$_POST['id'] = $subscribe['id'];
+			}
+			
+			// update
+			$result = $this->Subscribe_model->update($_POST);
 		}
 		
 		echo json_encode($result);

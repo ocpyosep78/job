@@ -62,8 +62,9 @@
 				<?php $this->load->view( 'website/common/breadcrumb', array( 'array_breadcrumb' => $breadcrump, 'sub_title' => $company['nama'] ) ); ?>
 			</div>
 			<div class='span9 no-margin album-article'>
-				<figure><img src="<?php echo $company['logo_link']; ?>" /></figure>
+				<div class="hide subscribe-message" style="text-align: center; padding: 10px 0px 15px; font-size: 14px; color: rgb(255, 0, 0);"></div>
 				
+				<figure><img src="<?php echo $company['logo_link']; ?>" /></figure>
 				<div class='info-line'><span>Industry : </span> <?php echo $company['industri_nama']; ?></div>
 				<div class='info-line'><span>Company Address : </span> <?php echo $company['address']; ?></div>
 				<div class='info-line'><span>City: </span> <?php echo $company['kota_nama']; ?></div>
@@ -71,7 +72,7 @@
 				<div class='buy'>
 					<a href="<?php echo $company['google_map']; ?>" target="_blank"><span class='price'>Lihat Peta</span></a>
 					<span class="cursor price">Laporkan</span>
-					<a href="#" title='Subscribe' class='btn btn-blue buy-album'>Subscribe</a>
+					<a title='Subscribe' class='cursor btn btn-blue buy-album'>Subscribe</a>
 				</div>
 				
 				<p class='description'><?php echo $company['description']; ?></p>
@@ -110,7 +111,7 @@ $(document).ready( function() {
 		$('#popup_box .default').hide();
 	}
 	
-	// form
+	// form report
 	$('[name="submit"]').click(function() {
 		var param = { action: 'report', email: user.email, company_id: $('[name="company_id"]').val(), content: $('[name="content"]').val() };
 		if (param.content.length == 0) {
@@ -126,15 +127,33 @@ $(document).ready( function() {
 		} });
 	});
 	
+	// form subscribe
+	$('.buy-album').click(function() {
+		if (user.email == null) {
+			show_dialog({ title: 'Subscribe' });
+			return;
+		}
+		
+		Func.ajax({ url: web.host + 'ajax', param: { action: 'subscribe', jenis_subscribe_id: 3, email: user.email }, callback: function(result) {
+			$(".subscribe-message").html('Anda berhasil berlangganan'); 
+			$(".subscribe-message").slideDown('slow');
+		} });
+	});
+	
 	// popup
-	$('.price').click( function() { show_dialog(); });
+	$('.price').click( function() { show_dialog({}); });
 	$('#popupBoxClose').click( function() { hide_dialog(); });
 	$('#container').click( function() { hide_dialog(); });
 	function hide_dialog() {
 		$('#popup_box').fadeOut("slow");
 		$("#container").css({ "opacity": "1" }); 
 	}
-	function show_dialog() {
+	function show_dialog(p) {
+		p.title = (p.title == null) ? 'Report Company' : p.title;
+		
+		// render html
+		$('#popup_box h3').text(p.title);
+		
 		$('#popup_box').fadeIn("slow");
 		$("#container").css({ "opacity": "0.3" }); 		
 	}

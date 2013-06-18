@@ -1,3 +1,6 @@
+<?php
+	$keyword = (!empty($_POST['keyword'])) ? $_POST['keyword'] : '';
+?>
 <body>
 
 <header>
@@ -16,8 +19,8 @@
 				</nav>
 			</div>
 			<div class="span3-header search-container">
-				<form action="" method="get" accept-charset="utf-8" class="search-form">
-					<input type="text" name="search" placeholder="Search" />
+				<form action="<?php echo base_url('search'); ?>" method="post" class="search-form">
+					<input type="text" name="keyword" placeholder="Search" value="<?php echo $keyword; ?>" />
 					<input type="submit" name="submit" value="Search" />
 				</form>
 			</div>

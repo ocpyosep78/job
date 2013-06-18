@@ -17,22 +17,6 @@
 		'sort' => '[{"property":"waktu","direction":"ASC"}]', 'limit' => $page_item
 	);
 	$array_event = $this->Event_model->get_array($param_event);
-	if (count($array_event) == 0) {
-		$param_event = array(
-			'filter' => '[' .
-				'{"type":"numeric","comparison":"gt","value":"'.date("Y-m-d").'","field":"Event.waktu"},' .
-				'{"type":"numeric","comparison":"lt","value":"'.date("Y-m-d").'","field":"Event.publish_date"}' .
-			']',
-			'sort' => '[{"property":"waktu","direction":"ASC"}]', 'limit' => $page_item
-		);
-		$array_event = $this->Event_model->get_array($param_event);
-		
-		$page_start = $page_active * $page_item;
-		$page_count_min = 4;
-	} else {
-		$page_start = 0;
-		$page_count_min = 0;
-	}
 	
 	// next event
 	$param_event = array(
@@ -41,10 +25,12 @@
 			'{"type":"numeric","comparison":"not","value":"'.date("Y-m-d").'","field":"DATE(Event.waktu)"},' .
 			'{"type":"numeric","comparison":"lt","value":"'.date("Y-m-d").'","field":"Event.publish_date"}' .
 		']',
-		'sort' => '[{"property":"waktu","direction":"ASC"}]', 'start' => $page_start, 'limit' => 4
+		'sort' => '[{"property":"waktu","direction":"ASC"}]',
+		'start' => ($page_active - 1) * $page_item,
+		'limit' => $page_item
 	);
 	$next_event = $this->Event_model->get_array($param_event);
-	$page_count = ceil(($this->Event_model->get_count() - $page_count_min) / $page_item);
+	$page_count = ceil(($this->Event_model->get_count()) / $page_item);
 ?>
 
 <?php $this->load->view( 'website/common/meta' ); ?>
@@ -58,12 +44,16 @@
 			</div>
 			
 			<div class='span9 events no-margin'>
+				<?php if (count($array_event) > 0) { ?>
 				<h1 class='span6 no-margin'>Hari Ini</h1>
+				<?php if (count($array_event) > 1) { ?>
 				<div class='today-event-controls span3'>
 					<a href="#" class='next'>next</a>
 					<a href="#" class='prev'>prev</a>
 				</div>
+				<?php } ?>
 				<hr class='floating-hr' />
+				
 				<div id='daily-event' class='span9 no-margin'>
 					<ul class='slides'>
 						<?php foreach ($array_event as $event) { ?>
@@ -92,9 +82,10 @@
 						<?php } ?>
 					</ul>
 				</div>
+				<?php } ?>
 				
 				<h1 class='pull-left'>Akan Datang... </h1>
-				<div style="float:right;"><a href="#" title='Sign in' class='go btn btn-main'>Kirim event Ke Email saya</a></div>
+				<div style="float:right; padding: 9px 0 0 0;"><a href="#" title='Sign in' class='go btn btn-main'>Kirim event Ke Email saya</a></div>
 				<hr class='floating-hr' />
 				
 				<div class='row'>

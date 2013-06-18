@@ -357,7 +357,7 @@
 						} else if ($Array->type == 'custom') {
                             $StringFilter .= "AND " . $Array->field . ' ';
 						} else {
-                            $StringFilter .= "AND " . $Field." LIKE '".$Array->value."%' ";
+                            $StringFilter .= "AND " . $Field." LIKE '%".$Array->value."%' ";
                         }
                     }
                 }
@@ -857,6 +857,8 @@
 		function get_page() {
 			preg_match('/page_(\d+)/i', $_SERVER['REQUEST_URI'], $match);
 			$page = (empty($match[1])) ? 1 : $match[1];
+			$page = (!empty($_POST['page_no'])) ? $_POST['page_no'] : $page;
+			
 			return $page;
 		}
 	}

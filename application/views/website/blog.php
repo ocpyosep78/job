@@ -8,6 +8,10 @@
 	$kategori = $this->Kategori_model->get_by_id( array( 'alias' => @$array_temp[0] ) );
 	$subkategori = $this->Subkategori_model->get_by_id( array( 'alias' => @$array_temp[1] ) );
 	
+	// page
+	$page_item = 9;
+	$page_active = get_page();
+	
 	// breadcrump
 	$title = 'Blog';
 	$array_tag = array();
@@ -35,14 +39,13 @@
 		'publish_date' => $this->config->item('current_datetime'),
 		'kategori_id' => @$kategori['id'],
 		'subkategori_id' => @$subkategori['id'],
-		'sort' => '[{"property":"publish_date","direction":"DESC"}]'
+		'sort' => '[{"property":"publish_date","direction":"DESC"}]',
+		'start' => ($page_active - 1) * $page_item,
+		'limit' => $page_item
 	);
 	$array_article = $this->Article_model->get_array($param_article);
-	
-	// page
-	$page_item = 9;
-	$page_active = get_page();
 	$page_count = ceil($this->Article_model->get_count() / $page_item);
+	
 ?>
 
 <?php $this->load->view( 'website/common/meta', array( 'title' => $title ) ); ?>
