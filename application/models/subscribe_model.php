@@ -49,20 +49,23 @@ class Subscribe_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
+		$string_jenis_subscribe = (empty($param['jenis_subscribe_id'])) ? '' : "AND Subscribe.jenis_subscribe_id = '".$param['jenis_subscribe_id']."'";
+		$string_company = (empty($param['company_id'])) ? '' : "AND Vacancy.company_id = '".$param['company_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'nama ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS Subscribe.*
+			SELECT SQL_CALC_FOUND_ROWS Subscribe.*, JenisSubscribe.nama jenis_subscribe_nama
 			FROM ".SUBSCRIBE." Subscribe
-			WHERE 1 $string_filter
+			LEFT JOIN ".JENIS_SUBSCRIBE." JenisSubscribe ON JenisSubscribe.id = Subscribe.jenis_subscribe_id
+			WHERE 1 $string_jenis_subscribe $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";
         $select_result = mysql_query($select_query) or die(mysql_error());
 		while ( $row = mysql_fetch_assoc( $select_result ) ) {
-			$array[] = $this->sync($row, @$param['column']);
+			$array[] = $this->sync($row, $param);
 		}
 		
         return $array;
@@ -87,11 +90,19 @@ class Subscribe_model extends CI_Model {
         return $result;
     }
 	
-	function sync($row, $column = array()) {
+	function sync($row, $param = array()) {
 		$row = StripArray($row);
+		$row['status_text'] = ($row['status'] == 0) ? 'Tidak' : 'Ya';
 		
-		if (count($column) > 0) {
-			$row = dt_view($row, $column, array('is_edit' => 1));
+		if (count(@$param['column']) > 0) {
+			if (!empty($param['is_update_subscribe'])) {
+				$param['is_custom']  = (empty($param['is_custom'])) ? '' : $param['is_custom'];
+				$param['is_custom'] .= ($row['status'] == 0)
+					? '<img class="button-cursor confirm" src="'.base_url('static/img/button_check.png').'"> '
+					: '<img class="button-cursor remove" src="'.base_url('static/img/button_remove.png').'"> ';
+			}
+			
+			$row = dt_view_set($row, $param);
 		}
 		
 		return $row;

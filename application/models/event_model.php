@@ -63,6 +63,7 @@ class Event_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
+		$string_publish_date = (empty($param['publish_date'])) ? '' : "AND Event.publish_date <= '".$param['publish_date']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'nama ASC');
 		$string_limit = GetStringLimit($param);
@@ -70,7 +71,7 @@ class Event_model extends CI_Model {
 		$select_query = "
 			SELECT SQL_CALC_FOUND_ROWS Event.*
 			FROM ".EVENT." Event
-			WHERE 1 $string_filter
+			WHERE 1 $string_publish_date $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";

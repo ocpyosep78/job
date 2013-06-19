@@ -59,5 +59,15 @@
 			<li><a href="<?php echo base_url('master/kota'); ?>">Kota</a></li>
 		</ul>
 	</div>
+	<div class="subnav subnav-hidden">
+		<div class="subnav-title">
+			<a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Subscribe</span></a>
+		</div>
+		<ul class="subnav-menu">
+			<li><a href="<?php echo base_url('subscribe/jenis_subscribe'); ?>">Jenis Subscribe</a></li>
+			<li><a href="<?php echo base_url('subscribe/daftar'); ?>">Subscribe</a></li>
+			<li><a href="<?php echo base_url('subscribe/mail'); ?>">Mail</a></li>
+		</ul>
+	</div>
 	<?php } ?>
 </div>

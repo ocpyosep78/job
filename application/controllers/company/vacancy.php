@@ -10,6 +10,7 @@ class vacancy extends COMPANY_Controller {
 	
 	function grid() {
 		$company = $this->Company_model->get_session();
+		$_POST['is_edit'] = 1;
 		$_POST['company_id'] = $company['id'];
 		$_POST['column'] = array( 'nama', 'position', 'vacancy_status_name', 'publish_date' );
 		

@@ -3,6 +3,9 @@
 	$breadcrump[] = array( 'title' => 'Index', 'link' => base_url() );
 	$breadcrump[] = array( 'title' => 'Events', 'link' => base_url('event') );
 	
+	// get user
+	$user = get_user();
+	
 	// page
 	$page_item = 4;
 	$page_active = get_page();
@@ -10,20 +13,19 @@
 	
 	// event
 	$param_event = array(
-		'filter' => '[' .
-			'{"type":"custom","field":"DATE(waktu) = \''.date("Y-m-d").'\'"},' .
-			'{"type":"numeric","comparison":"lt","value":"'.date("Y-m-d").'","field":"Event.publish_date"}' .
-		']',
+		'publish_date' => $this->config->item('current_datetime'),
+		'filter' => '[{"type":"custom","field":"DATE(waktu) = \''.date("Y-m-d").'\'"}]',
 		'sort' => '[{"property":"waktu","direction":"ASC"}]', 'limit' => $page_item
 	);
 	$array_event = $this->Event_model->get_array($param_event);
 	
 	// next event
 	$param_event = array(
+		'publish_date' => $this->config->item('current_datetime'),
 		'filter' => '[' .
 			'{"type":"numeric","comparison":"gt","value":"'.date("Y-m-d").'","field":"Event.waktu"},' .
 			'{"type":"numeric","comparison":"not","value":"'.date("Y-m-d").'","field":"DATE(Event.waktu)"},' .
-			'{"type":"numeric","comparison":"lt","value":"'.date("Y-m-d").'","field":"Event.publish_date"}' .
+			'{"type":"numeric","comparison":"gt","value":"'.date("Y-m-d").'","field":"Event.publish_date"}' .
 		']',
 		'sort' => '[{"property":"waktu","direction":"ASC"}]',
 		'start' => ($page_active - 1) * $page_item,
@@ -37,11 +39,18 @@
 <?php $this->load->view( 'website/common/header' ); ?>
 
 <section id='main'>
+	<div class="hide">
+		<div class="cnt-user"><?php echo json_encode($user); ?></div>
+	</div>
+	
 	<div class='container'><div class='row'>
 		<div class='span9 content'>
 			<div class='main-top span9'>
 				<?php $this->load->view( 'website/common/breadcrumb', array( 'array_breadcrumb' => $breadcrump, 'title' => 'Events' ) ); ?>
 			</div>
+			<div style="clear: both;"></div>
+			<div class="slide-message"></div>
+			<div style="clear: both;"></div>
 			
 			<div class='span9 events no-margin'>
 				<?php if (count($array_event) > 0) { ?>
@@ -85,7 +94,7 @@
 				<?php } ?>
 				
 				<h1 class='pull-left'>Akan Datang... </h1>
-				<div style="float:right; padding: 9px 0 0 0;"><a href="#" title='Sign in' class='go btn btn-main'>Kirim event Ke Email saya</a></div>
+				<div style="float:right; padding: 9px 0 0 0;"><a href="#" title='Sign in' class='go btn btn-main subscribe-event'>Kirim event Ke Email saya</a></div>
 				<hr class='floating-hr' />
 				
 				<div class='row'>
@@ -133,5 +142,26 @@
 		</aside>
 	</div></div>
 </section>
+
+<script type="text/javascript">
+$(document).ready( function() {
+	var raw_user = $('.cnt-user').text();
+	eval('var user = ' + raw_user);
+	
+	// form subscribe
+	$('.subscribe-event').click(function() {
+		if (user.email == null) {
+			$('.slide-message').text('Silahkan Login untuk melanjutkan');
+			$('.slide-message').slideDown('slow');
+			return;
+		}
+		
+		Func.ajax({ url: web.host + 'ajax', param: { action: 'subscribe', jenis_subscribe_id: 2, email: user.email }, callback: function(result) {
+			$(".slide-message").html('Anda berhasil berlangganan'); 
+			$(".slide-message").slideDown('slow');
+		} });
+	});
+});
+</script>
 
 <?php $this->load->view( 'website/common/footer' ); ?>

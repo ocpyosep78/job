@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Waktu pembuatan: 18. Juni 2013 jam 22:56
+-- Waktu pembuatan: 19. Juni 2013 jam 20:01
 -- Versi Server: 5.1.41
 -- Versi PHP: 5.3.1
 
@@ -6752,14 +6752,16 @@ CREATE TABLE IF NOT EXISTS `subscribe` (
   `email` varchar(200) NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data untuk tabel `subscribe`
 --
 
 INSERT INTO `subscribe` (`id`, `jenis_subscribe_id`, `email`, `status`) VALUES
-(1, 3, 'her0satr@yahoo.com', 1);
+(1, 3, 'her0satr@yahoo.com', 1),
+(2, 2, 'her0satr@yahoo.com', 1),
+(3, 1, 'her0satr@yahoo.com', 1);
 
 -- --------------------------------------------------------
 

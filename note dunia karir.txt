@@ -152,7 +152,6 @@ qwertyui
 Note Kesulitan			
 ----------------------------------------------------------------------------------------
 
-Website : Subscribe
-Website : Advance Search Vacancy
-Website : Region Vacancy on Listing Vacancy
+
+Seeker : menentukan status resume nya reasy / belum
 

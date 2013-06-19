@@ -62,7 +62,7 @@ class Jenis_Subscribe_model extends CI_Model {
 		";
         $select_result = mysql_query($select_query) or die(mysql_error());
 		while ( $row = mysql_fetch_assoc( $select_result ) ) {
-			$array[] = $this->sync($row, @$param['column']);
+			$array[] = $this->sync($row, $param);
 		}
 		
         return $array;
@@ -87,11 +87,11 @@ class Jenis_Subscribe_model extends CI_Model {
         return $result;
     }
 	
-	function sync($row, $column = array()) {
+	function sync($row, $param = array()) {
 		$row = StripArray($row);
 		
-		if (count($column) > 0) {
-			$row = dt_view($row, $column, array('is_edit' => 1));
+		if (count(@$param['column']) > 0) {
+			$row = dt_view_set($row, $param);
 		}
 		
 		return $row;

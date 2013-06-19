@@ -4,7 +4,7 @@
 	$array_jenjang = $this->Jenjang_model->get_array();
 	$array_position = $this->Position_model->get_array(array( 'limit' => 250 ));
 	$array_pengalaman = $this->Pengalaman_model->get_array();
-	$array_vacancy_status = $this->Vacancy_Status_model->get_array();
+	$array_vacancy_status = $this->Vacancy_Status_model->get_array(array( 'is_company' => 1 ));
 	$array_jenis_pekerjaan = $this->Jenis_Pekerjaan_model->get_array();
 	$array_kategori = $this->Kategori_model->get_array(array( 'limit' => 100 ));
 	$array_propinsi = $this->Propinsi_model->get_array(array('negara_id' => NEGARA_INDONESIA_ID));

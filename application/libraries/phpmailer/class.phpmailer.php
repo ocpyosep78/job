@@ -2335,8 +2335,10 @@ if (! function_exists('SmtpMailer')) {
 		$mail->AddAddress($Param['EmailTo']);
 		
 		// attachment
-		foreach ($Param['Attachment'] as $attachment)  {
-			$mail->AddAttachment($attachment);
+		if (isset($Param['Attachment']) && is_array($Param['Attachment'])) {
+			foreach ($Param['Attachment'] as $attachment)  {
+				$mail->AddAttachment($attachment);
+			}
 		}
 		
 		if(!$mail->Send()) {
