@@ -39,7 +39,7 @@ class Vacancy_model extends CI_Model {
         if (isset($param['id'])) {
             $select_query  = "
 				SELECT Vacancy.*,
-					Kategori.id kategori_id, Kota.id kota_id, Kota.propinsi_id, Industri.nama industri_nama,
+					Kategori.id kategori_id, Kota.id kota_id, Kota.propinsi_id, Industri.nama industri_nama, Kota.nama kota_nama,
 					Company.nama company_nama, Company.alias company_alias, Company.website company_website, Company.logo company_logo, Company.banner company_banner,
 					Kategori.nama kategori_nama, Subkategori.nama subkategori_nama
 				FROM ".VACANCY." Vacancy

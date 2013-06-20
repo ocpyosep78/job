@@ -156,6 +156,28 @@ class Seeker_model extends CI_Model {
 		return $alias;
 	}
 	
+	function get_resume($param) {
+		$seeker = $this->get_by_id($param);
+		$seeker_summary = $this->Seeker_Summary_model->get_by_id(array( 'seeker_id' => $seeker['id'] ));
+		$result = array( 'is_pass' => true, 'message' => 'Siap melamat lowongan' );
+		
+		if (empty($seeker['full_name'])) {
+			$result = array( 'is_pass' => false, 'message' => 'Siap melamat lowongan' );
+		} else if (empty($seeker['photo'])) {
+			$result = array( 'is_pass' => false, 'message' => 'Silahkan memperbarui photo anda.' );
+		} else if (empty($seeker['file_resume'])) {
+			$result = array( 'is_pass' => false, 'message' => 'Silahkan upload resume anda.' );
+		} else if (empty($seeker_summary['school'])) {
+			$result = array( 'is_pass' => false, 'message' => 'Silahkan memperbarui sekolah terakhir anda.' );
+		} else if (empty($seeker_summary['score'])) {
+			$result = array( 'is_pass' => false, 'message' => 'Silahkan memperbarui nilai terakhir anda.' );
+		} else if (empty($seeker_summary['jenjang_nama'])) {
+			$result = array( 'is_pass' => false, 'message' => 'Silahkan pendidikan terakhir anda.' );
+		}
+		
+		return $result;
+	}
+	
     function delete($param) {
 		$delete_query  = "DELETE FROM ".SEEKER." WHERE id = '".$param['id']."' LIMIT 1";
 		$delete_result = mysql_query($delete_query) or die(mysql_error());

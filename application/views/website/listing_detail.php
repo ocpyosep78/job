@@ -40,8 +40,8 @@ img { border: none; }
 </font>
 
 <div style="text-align: center; color: #FFFFFF;">
-	<div style="font-size: 24px; font-weight: bold;">Programmer PHP</div>
-	<div style="font-size: 13px;">Jakarta Timur (Jakarta Raya)</div>
+	<div style="font-size: 24px; font-weight: bold;"><?php echo $vacancy['nama']; ?></div>
+	<div style="font-size: 13px;"><?php echo $vacancy['kota_nama']; ?></div>
 </div>
 <div style="color: #FFFFFF; font-size: 13px;"><?php echo $vacancy['content']; ?></div>
 

@@ -1,5 +1,6 @@
 <?php
 	$seeker = $this->Seeker_model->get_session();
+	$seeker_resume = $this->Seeker_model->get_resume(array( 'id' => $seeker['id'] ));
 	$array_surat_lamaran = $this->Surat_Lamaran_model->get_array(array( 'seeker_id' => $seeker['id'] ));
 ?>
 
@@ -13,6 +14,12 @@
 		<?php $this->load->view( 'panel/common/modul_name', array( 'name' => 'Kirim Lamaran', 'class' => 'icon-edit' ) ); ?>
 		
 		<div class="box-content">
+			<?php if (! $seeker_resume['is_pass']) { ?>
+			<div class="row-fluid margin-top">
+				<div class="alert alert-info">Harap melengkapi resume sebelum melamar pekerjaan.</div>
+			</div>
+			<?php } ?>
+			
 			<form class='form-horizontal form-validate' id="form-mail">
 				<div class="control-group">
 					<label for="input-to" class="control-label">To</label>
@@ -44,8 +51,10 @@
 					</div>
 				</div>
 				<div class="form-actions">
+					<?php if ($seeker_resume['is_pass']) { ?>
 					<button type="submit" class="btn btn-primary">Submit</button>
 					<button type="button" class="btn">Cancel</button>
+					<?php } ?>
 				</div>
 			</form>
 		</div>

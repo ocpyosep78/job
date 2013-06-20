@@ -9,6 +9,7 @@
 		$seeker['is_readonly'] = false;
 	}
 	
+	$seeker_resume = $this->Seeker_model->get_resume(array( 'id' => $seeker['id'] ));
 	$seeker_summary = $this->Seeker_Summary_model->get_by_id(array( 'seeker_id' => $seeker['id'] ));
 	$array_jenjang = $this->Jenjang_model->get_array();
 	$array_bahasa = array( array( 'id' => 'Aktif', 'nama' => 'Aktif' ), array( 'id' => 'Pasif', 'nama' => 'Pasif' ) );
@@ -264,7 +265,7 @@
 			</div>
 			
 			<div class="row-fluid margin-top">
-				<div class="alert alert-info">Status resume: <strong>Siap melamat lowongan</strong></div>
+				<div class="alert alert-info">Status resume : <strong><?php echo $seeker_resume['message']; ?></strong></div>
 			</div>
 			
 			<div class="box box-color box-bordered teal">
