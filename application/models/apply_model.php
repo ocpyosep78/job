@@ -34,8 +34,10 @@ class Apply_model extends CI_Model {
        
         if (isset($param['id'])) {
             $select_query  = "SELECT * FROM ".APPLY." WHERE id = '".$param['id']."' LIMIT 1";
-        } 
-       
+        } else if (isset($param['seeker_id']) && isset($param['vacancy_id'])) {
+			$select_query  = "SELECT Apply.* FROM ".APPLY." Apply WHERE seeker_id = '".$param['seeker_id']."' AND vacancy_id = '".$param['vacancy_id']."' LIMIT 1";
+		}
+		
         $select_result = mysql_query($select_query) or die(mysql_error());
         if (false !== $row = mysql_fetch_assoc($select_result)) {
             $array = $this->sync($row);
@@ -165,5 +167,12 @@ class Apply_model extends CI_Model {
 		}
 		
 		return $row;
+	}
+	
+	function is_apply($param) {
+		$row = $this->get_by_id($param);
+		$is_apply = (count($row) == 0) ? false : true;
+		
+		return $is_apply;
 	}
 }

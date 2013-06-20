@@ -46,7 +46,7 @@
 		<div><textarea name="content" style="width: 385px; height: 50px;"></textarea></div>
 		<div><input type="submit" name="submit" value="Kirim" style="width: 125px;"/></div>
 	</div>
-	<div class="content default">Please <a href="<?php echo base_url(); ?>">login</a> to report</div>
+	<div class="content default">Please <a href="<?php echo base_url('login'); ?>">login</a> to report</div>
 	
 	<a id="popupBoxClose">Close</a>	
 </div>
@@ -71,7 +71,7 @@
 				<div class='info-line'><span>Sales: </span> <?php echo $company['sales']; ?></div>
 				<div class='buy'>
 					<a href="<?php echo $company['google_map']; ?>" target="_blank"><span class='price'>Lihat Peta</span></a>
-					<span class="cursor price">Laporkan</span>
+					<span class="cursor price btn-report">Laporkan</span>
 					<a title='Subscribe' class='cursor btn btn-blue buy-album'>Subscribe</a>
 				</div>
 				
@@ -141,7 +141,7 @@ $(document).ready( function() {
 	});
 	
 	// popup
-	$('.price').click( function() { show_dialog({}); });
+	$('.btn-report').click( function() { show_dialog({}); });
 	$('#popupBoxClose').click( function() { hide_dialog(); });
 	$('#container').click( function() { hide_dialog(); });
 	function hide_dialog() {

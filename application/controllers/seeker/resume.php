@@ -48,7 +48,10 @@ class resume extends CI_Controller {
 		
 		$result = array();
 		if ($action == 'update') {
-			$_POST['alias'] = $this->Seeker_model->get_alias($_POST['id'], $_POST['first_name'].$_POST['last_name']);
+			if (isset($_POST['first_name']) && isset($_POST['last_name'])) {
+				$_POST['alias'] = $this->Seeker_model->get_alias($_POST['id'], $_POST['first_name'].$_POST['last_name']);
+			}
+			
 			$result = $this->Seeker_model->update($_POST);
 		} else if ($action == 'delete') {
 			$result = $this->Seeker_model->delete($_POST);

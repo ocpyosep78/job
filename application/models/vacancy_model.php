@@ -131,6 +131,14 @@ class Vacancy_model extends CI_Model {
 	function sync($row, $param = array()) {
 		$row = StripArray($row, array('publish_date', 'close_date'));
 		
+		// approved vacancy cannot be edit
+		if (isset($row['vacancy_status_id']) && $row['vacancy_status_id'] == VACANCY_STATUS_APPROVE) {
+			if (isset($param['is_edit'])) {
+				unset($param['is_edit']);
+				$param['is_custom'] = '&nbsp;';
+			}
+		}
+		
 		if (isset($row['company_alias'])) {
 			$row['company_link'] = base_url($row['company_alias']);
 			$row['vacancy_link'] = base_url($row['company_alias'].'/'.$row['id'].'_'.$row['position']);

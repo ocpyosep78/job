@@ -207,6 +207,26 @@ class home extends CI_Controller {
 			// update
 			$result = $this->Subscribe_model->update($_POST);
 		}
+		else if ($action == 'apply') {
+			$seeker = $this->Seeker_model->get_session();
+			
+			// set data
+			$_POST['seeker_id'] = $seeker['id'];
+			$_POST['apply_date'] = $this->config->item('current_datetime');
+			$_POST['apply_status_id'] = APPLY_STATUS_OPEN;
+			
+			// check
+			$is_apply = $this->Apply_model->is_apply(array( 'seeker_id' => $_POST['seeker_id'], 'vacancy_id' => $_POST['vacancy_id'] ));
+			if ($is_apply) {
+				$result['status'] = true;
+				$result['message'] = 'Anda sudah melamar lowongan ini.';
+			} else {
+				$result = $this->Apply_model->update($_POST);
+				if ($result['status']) {
+					$result['message'] = 'Surat lamaran anda berhasil dikirim.';
+				}
+			}
+		}
 		
 		echo json_encode($result);
 	}

@@ -547,6 +547,8 @@ $( document ).ready(function() {
 			$('[name="kelamin_nama"]').val(seeker.kelamin_nama);
 			$('[name="kebangsaan"]').val(seeker.kebangsaan);
 			$('#form-photo .seeker_photo').attr('src', seeker.photo_link);
+			$('#form-resume .wi-resume a').attr('href', seeker.file_resume_link);
+			
 			if (seeker.file_resume_link.length > 0) {
 				$('#form-resume .wo-resume').hide();
 				$('#form-resume .wi-resume').show();
@@ -562,7 +564,7 @@ $( document ).ready(function() {
 			// set readonly for company
 			if (seeker.is_readonly) {
 				$('.actions').remove();
-				$('.button-cursor').parent('td').html('&nbsp;');
+				setInterval(function(){ $('.button-cursor').parent('td').html('&nbsp;'); }, 100);
 			}
 			
 			// form resume

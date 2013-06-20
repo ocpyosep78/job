@@ -24,8 +24,7 @@
 		'publish_date' => $this->config->item('current_datetime'),
 		'filter' => '[' .
 			'{"type":"numeric","comparison":"gt","value":"'.date("Y-m-d").'","field":"Event.waktu"},' .
-			'{"type":"numeric","comparison":"not","value":"'.date("Y-m-d").'","field":"DATE(Event.waktu)"},' .
-			'{"type":"numeric","comparison":"gt","value":"'.date("Y-m-d").'","field":"Event.publish_date"}' .
+			'{"type":"numeric","comparison":"not","value":"'.date("Y-m-d").'","field":"DATE(Event.waktu)"}' .
 		']',
 		'sort' => '[{"property":"waktu","direction":"ASC"}]',
 		'start' => ($page_active - 1) * $page_item,

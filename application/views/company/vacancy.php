@@ -43,11 +43,11 @@
 				
 				<div class="control-group">
 					<label class="control-label">Penulis</label>
-					<div class="controls"><label class="control-label" id="cnt-company-name">-</label></div>
+					<div class="controls"><label class="control-label" id="cnt-company-name" style="width: 400px;">-</label></div>
 				</div>
 				<div class="control-group">
 					<label for="input-nama" class="control-label">Judul</label>
-					<div class="controls"><input type="text" name="nama" id="input-nama" class="input-xxlarge" /></div>
+					<div class="controls"><input type="text" name="nama" id="input-nama" class="input-xxlarge" data-rule-required="true" /></div>
 				</div>
 				<div class="control-group">
 					<label for="input-kategori_id" class="control-label">Kategori</label>
@@ -63,7 +63,7 @@
 				</div>
 				<div class="control-group">
 					<label for="input-vacancy_status_id" class="control-label">Status</label>
-					<div class="controls"><select name="vacancy_status_id" id="input-vacancy_status_id" class="input-xxlarge">
+					<div class="controls"><select name="vacancy_status_id" id="input-vacancy_status_id" class="input-xxlarge" data-rule-required="true">
 						<?php echo ShowOption(array( 'Array' => $array_vacancy_status, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
 					</select></div>
 				</div>
@@ -133,11 +133,11 @@
 				</div>
 				<div class="control-group">
 					<label for="input-publish_date" class="control-label">Publish Date</label>
-					<div class="controls"><input type="text" name="publish_date" id="input-publish_date" class="input-medium datepick" /></div>
+					<div class="controls"><input type="text" name="publish_date" id="input-publish_date" class="input-medium datepick" data-rule-required="true" /></div>
 				</div>
 				<div class="control-group">
 					<label for="input-close_date" class="control-label">Closed Date</label>
-					<div class="controls"><input type="text" name="close_date" id="input-close_date" class="input-medium datepick" /></div>
+					<div class="controls"><input type="text" name="close_date" id="input-close_date" class="input-medium datepick" data-rule-required="true" /></div>
 				</div>
 				
 				<div class="box box-color box-bordered teal">
