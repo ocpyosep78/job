@@ -204,6 +204,7 @@ $config['log_path'] = '';
 | codes to set your own date formatting
 |
 */
+$config['current_date'] = date("Y-m-d");
 $config['current_datetime'] = date('Y-m-d H:i:s');
 $config['log_date_format'] = 'Y-m-d H:i:s';
 

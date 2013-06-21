@@ -6,7 +6,7 @@ class Company_model extends CI_Model {
 		
         $this->field = array(
 			'id', 'kota_id', 'nama', 'phone', 'faximile', 'website', 'address', 'email', 'passwd', 'description', 'kodepos', 'sales', 'contact_name',
-			'contact_email', 'contact_no', 'logo', 'banner', 'google_map', 'industri_id', 'alias', 'reset'
+			'contact_email', 'contact_no', 'logo', 'banner', 'google_map', 'industri_id', 'alias', 'reset', 'vacancy_count_left', 'membership_date'
 		);
     }
 
@@ -112,6 +112,19 @@ class Company_model extends CI_Model {
 		return $TotalRecord;
     }
 	
+	function get_membership_status($param) {
+		$company = $this->get_by_id($param);
+		$membership_date = ConvertToUnixTime($company['membership_date']);
+		$current_date = ConvertToUnixTime($this->config->item('current_date'));
+		
+		$status = false;
+		if ($company['vacancy_count_left'] > 0 && $membership_date > $current_date) {
+			$status = true;
+		}
+		
+		return $status;
+	}
+	
     function delete($param) {
 		$delete_query  = "DELETE FROM ".COMPANY." WHERE id = '".$param['id']."' LIMIT 1";
 		$delete_result = mysql_query($delete_query) or die(mysql_error());
@@ -123,11 +136,19 @@ class Company_model extends CI_Model {
     }
 	
 	function sync($row, $column = array()) {
-		$row = StripArray($row);
+		$row = StripArray($row, array('membership_date'));
 		$row['company_link'] = base_url($row['alias']);
 		
-		if (isset($row['logo'])) {
+		// logo
+		$row['logo_link'] = base_url('static/img/company.png');
+		if (!empty($row['logo'])) {
 			$row['logo_link'] = base_url('static/upload/'.$row['logo']);
+		}
+		
+		// banner
+		$row['logo_banner'] = base_url('static/img/company_banner.jpg');
+		if (!empty($row['banner'])) {
+			$row['logo_banner'] = base_url('static/upload/'.$row['banner']);
 		}
 		
 		if (count($column) > 0) {
@@ -138,10 +159,22 @@ class Company_model extends CI_Model {
 	}
 	
 	function resize_image($param) {
+		if (!empty($param['logo'])) {
+			$image_source = $this->config->item('base_path').'/static/upload/'.$param['logo'];
+			ImageResize($image_source, $image_source, 143, 127, 1);
+		}
 		if (!empty($param['banner'])) {
 			$image_source = $this->config->item('base_path').'/static/upload/'.$param['banner'];
 			ImageResize($image_source, $image_source, 650, 186, 1);
 		}
+	}
+	
+	function vacancy_count_reduce($param) {
+		$company = $this->get_by_id(array( 'id' => $param['id'] ));
+		
+		$param_update['id'] = $company['id'];
+		$param_update['vacancy_count_left'] = $company['vacancy_count_left'] - 1;
+		$this->update($param_update);
 	}
 	
 	/*	Region Company Session */

@@ -67,7 +67,13 @@ if (! function_exists('ConvertDateToArray')) {
 if (! function_exists('ConvertToUnixTime')) {
 	function ConvertToUnixTime($String) {
 		preg_match('/(\d{4})-(\d{2})-(\d{2})/i', $String, $Match);
-		$UnixTime = mktime (0, 0, 0, $Match[2], $Match[3], $Match[1]);
+		
+		if (count($Match) >= 3) {
+			$UnixTime = mktime (0, 0, 0, $Match[2], $Match[3], $Match[1]);
+		} else {
+			$UnixTime = 0;
+		}
+		
 		return $UnixTime;
 	}
 }
@@ -120,6 +126,16 @@ if (! function_exists('GetFormatDate')) {
 		$Param['FormatDate'] = (isset($Param['FormatDate'])) ? $Param['FormatDate'] : "F d, Y";
 		
 		return date($Param['FormatDate'], strtotime($String));
+	}
+}
+
+if (! function_exists('AddDate')) {
+	function AddDate($date, $date_count) {
+		$temp_date = date_create($date);
+		date_add($temp_date, date_interval_create_from_date_string($date_count));
+		$result = date_format($temp_date, 'Y-m-d');
+		
+		return $result;
 	}
 }
 ?>

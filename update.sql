@@ -12,3 +12,7 @@ CREATE TABLE `job_db`.`seeker_summary` ( `id` INT NOT NULL AUTO_INCREMENT PRIMAR
 
 2013-06-15 :
 CREATE TABLE  `job_db`.`seeker_language` ( `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY , `seeker_id` INT NOT NULL , `nama` VARCHAR( 255 ) NOT NULL , `lisan` VARCHAR( 255 ) NOT NULL , `tulis` VARCHAR( 255 ) NOT NULL ) ENGINE = MYISAM ;
+
+2013-06-21 :
+ALTER TABLE `company_membership` CHANGE `status` `status` INT( 11 ) NOT NULL COMMENT '{ 0: pending, 1: confirm, 2: delete }';
+ALTER TABLE `company` ADD `vacancy_count_left` INT NOT NULL , ADD `membership_date` DATE NOT NULL;

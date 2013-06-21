@@ -36,6 +36,7 @@
 			<li><a href="<?php echo base_url('editor/article'); ?>">Article</a></li>
 			<li><a href="<?php echo base_url('editor/event'); ?>">Event</a></li>
 			<li><a href="<?php echo base_url('editor/vacancy'); ?>">Lowongan</a></li>
+			<li><a href="<?php echo base_url('editor/membership'); ?>">Membership</a></li>
 			<li><a href="<?php echo base_url('editor/widget'); ?>">Widget</a></li>
 			<li><a href="<?php echo base_url('editor/seeker'); ?>">Pelamar</a></li>
 			<li><a href="<?php echo base_url('editor/company'); ?>">Perusahaan</a></li>
@@ -50,6 +51,7 @@
 		<ul class="subnav-menu">
 			<li><a href="<?php echo base_url('master/kategori'); ?>">Kategori</a></li>
 			<li><a href="<?php echo base_url('master/subkategori'); ?>">Subkategori</a></li>
+			<li><a href="<?php echo base_url('master/membership'); ?>">Membership</a></li>
 			<li><a href="<?php echo base_url('master/industri'); ?>">Industri</a></li>
 			<li><a href="<?php echo base_url('master/jenis_pekerjaan'); ?>">Jenis Pekerjaan</a></li>
 			<li><a href="<?php echo base_url('master/jenjang'); ?>">Jenjang</a></li>

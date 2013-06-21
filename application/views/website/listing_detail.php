@@ -1,7 +1,10 @@
 <?php
 	$seeker = $this->Seeker_model->get_session();
 	$is_login = $this->Seeker_model->is_login();
-	$is_apply = $this->Apply_model->is_apply(array( 'seeker_id' => $seeker['id'], 'vacancy_id' => $vacancy['id'] ));
+	$is_apply = false;
+	if ($is_login) {
+		$is_apply = $this->Apply_model->is_apply(array( 'seeker_id' => $seeker['id'], 'vacancy_id' => $vacancy['id'] ));
+	}
 ?>
 
 <html>
@@ -56,9 +59,9 @@
 <div style="color: #FFFFFF; font-size: 13px;"><?php echo $vacancy['content']; ?></div>
 
 <font color="#FFFFFF" face="Arial" size="2">
-	<div style="text-align: center;">Pelamar Tertarik dapat mengirimkan CV dan Foto Terbaru ke email :</div>
-	<div style="text-align: center;">&nbsp;</div>
 	<div style="text-align: center;"><?php echo $vacancy['content_short']; ?></div>
+	<div style="text-align: center;">&nbsp;</div>
+	<div style="text-align: center;">Pelamar Tertarik dapat mengirimkan CV dan Foto Terbaru ke email :</div>
 	<div style="text-align: center;">&nbsp;</div>
 	<div style="text-align: center;"><?php echo $vacancy['email_apply']; ?></div>
 	<div style="text-align: center;">&nbsp;</div>

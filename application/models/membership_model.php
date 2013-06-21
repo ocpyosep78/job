@@ -4,7 +4,7 @@ class Membership_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array('id', 'nama');
+        $this->field = array('id', 'date_count', 'post_count', 'price');
     }
 
     function update($param) {

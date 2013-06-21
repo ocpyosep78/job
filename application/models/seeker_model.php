@@ -31,7 +31,13 @@ class Seeker_model extends CI_Model {
        
         return $result;
     }
-
+	
+	function update_no($param) {
+		$param_update['id'] = $param['id'];
+		$param_update['seeker_no'] = $this->get_max_no();
+		$this->update($param_update);
+	}
+	
     function get_by_id($param) {
         $array = array();
        
@@ -159,10 +165,11 @@ class Seeker_model extends CI_Model {
 	function get_resume($param) {
 		$seeker = $this->get_by_id($param);
 		$seeker_summary = $this->Seeker_Summary_model->get_by_id(array( 'seeker_id' => $seeker['id'] ));
-		$result = array( 'is_pass' => true, 'message' => 'Siap melamat lowongan' );
+		$result = array( 'is_pass' => true, 'message' => 'Siap melamar lowongan' );
 		
 		if (empty($seeker['full_name'])) {
-			$result = array( 'is_pass' => false, 'message' => 'Siap melamat lowongan' );
+			
+			$result = array( 'is_pass' => false, 'message' => 'Silahkan melengkapi biodata anda' );
 		} else if (empty($seeker['photo'])) {
 			$result = array( 'is_pass' => false, 'message' => 'Silahkan memperbarui photo anda.' );
 		} else if (empty($seeker['file_resume'])) {
@@ -178,6 +185,17 @@ class Seeker_model extends CI_Model {
 		return $result;
 	}
 	
+	function get_max_no() {
+		$seeker_no = '50124587';
+		$select_query  = "SELECT MAX(Seeker.seeker_no) seeker_no FROM ".SEEKER." Seeker LIMIT 1";
+        $select_result = mysql_query($select_query) or die(mysql_error());
+        if (false !== $row = mysql_fetch_assoc($select_result)) {
+            $seeker_no = $row['seeker_no'] + 1;
+        }
+       
+        return $seeker_no;
+	}
+	
     function delete($param) {
 		$delete_query  = "DELETE FROM ".SEEKER." WHERE id = '".$param['id']."' LIMIT 1";
 		$delete_result = mysql_query($delete_query) or die(mysql_error());
@@ -189,11 +207,11 @@ class Seeker_model extends CI_Model {
     }
 	
 	function sync($row, $column = array()) {
-		$row = StripArray($row);
+		$row = StripArray($row, array( 'tgl_lahir' ));
 		$row['full_name'] = $row['first_name'];
 		$row['usia'] = get_usia($row['tgl_lahir']);
 		if (isset($row['first_name']) && isset($row['last_name'])) {
-			$row['full_name'] = $row['first_name'].' '.$row['last_name'];
+			$row['full_name'] = trim($row['first_name'].' '.$row['last_name']);
 		}
 		
 		$row['seeker_link'] = base_url();

@@ -1,5 +1,6 @@
 <?php
 	$company = $this->Company_model->get_session();
+	$is_member = $this->Company_model->get_membership_status(array( 'id' => $company['id'] ));
 	
 	$array_jenjang = $this->Jenjang_model->get_array();
 	$array_position = $this->Position_model->get_array(array( 'limit' => 250 ));
@@ -31,7 +32,7 @@
 						<th>Posisi</th>
 						<th>Status</th>
 						<th>Publish Date</th>
-						<th style="width: 75px;">&nbsp;</th>
+						<th style="width: 125px;">&nbsp;</th>
 					</tr></thead>
 					<tbody><tr><td class="dataTables_empty">Loading data from server</td></tr></tbody>
 				</table>
@@ -155,8 +156,12 @@
 				</div>
 				
 				<div class="form-actions">
+					<?php if ($is_member) { ?>
 					<button type="submit" class="btn btn-primary">Save changes</button>
 					<button type="button" class="btn form-close">Cancel</button>
+					<?php } else { ?>
+					Harap memperbaharui membership anda untuk membuat lowongan baru.
+					<?php } ?>
 				</div>
 			</form>
 		</div>
@@ -194,6 +199,12 @@
 				});
 			},
 			callback: function() {
+				$('#cnt-vacancy .view').click(function() {
+					var raw_record = $(this).siblings('.hide').text();
+					eval('var record = ' + raw_record);
+					window.open(record.vacancy_link);
+				});
+				
 				$('#cnt-vacancy .edit').click(function() {
 					var raw_record = $(this).siblings('.hide').text();
 					eval('var temp = ' + raw_record);

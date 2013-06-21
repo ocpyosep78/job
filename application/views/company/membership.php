@@ -1,5 +1,6 @@
 <?php
 	$company = $this->Company_model->get_session();
+	$is_member = $this->Company_model->get_membership_status(array( 'id' => $company['id'] ));
 	$array_membership = $this->Membership_model->get_array();
 ?>
 
@@ -20,6 +21,17 @@
 		<div class="box-content">
 			<div class="hide">
 				<div class="cnt-company"><?php echo json_encode($company); ?></div>
+			</div>
+			
+			<div class="row-fluid margin-top">
+				<div class="alert alert-info">
+					<?php if ($is_member) { ?>
+					<div>Membership anda berlaku sampai : <?php echo GetFormatDate($company['membership_date'], array( 'FormatDate' => 'd-m-Y' )); ?></div>
+					<div>Jumlah posting lowongan yang tersedia sampai : <?php echo $company['vacancy_count_left']; ?></div>
+					<?php } else { ?>
+					<div>Membership anda sudah tidak berlaku, harap untuk segera diperpanjang</div>
+					<?php } ?>
+				</div>
 			</div>
 			
 			<div class="row-fluid"><div class="span12"><div class="box"><div class="box-content nopadding">

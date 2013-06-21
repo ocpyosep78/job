@@ -4,6 +4,7 @@
 		'event' => $this->Event_model->get_count(array( 'is_new' => 1 )),
 		'seeker' => $this->Seeker_model->get_count(array( 'is_new' => 1 )),
 		'company' => $this->Company_model->get_count(array( 'is_new' => 1 )),
+		'membership' => $this->Company_Membership_model->get_count(array( 'is_new' => 1, 'where' => "AND status = 'pending'" ))
 	);
 ?>
 
@@ -22,6 +23,7 @@
 				<li class="brown long"><a href="<?php echo base_url('editor/event'); ?>"><span><i class="icon-glass"></i> <?php echo $count['event']; ?></span><span class="name">Event</span></a></li>
 				<li class="green long"><a href="<?php echo base_url('editor/seeker'); ?>"><span><i class="icon-user"></i> <?php echo $count['seeker']; ?></span><span class="name">Pelamar</span></a></li>
 				<li class="teal long"><a href="<?php echo base_url('editor/company'); ?>"><span><i class="icon-home"></i> <?php echo $count['company']; ?></span><span class="name">Perusahaan</span></a></li>
+				<li class="blue long"><a href="<?php echo base_url('editor/membership'); ?>"><span><i class="icon-home"></i> <?php echo $count['membership']; ?></span><span class="name">Membership</span></a></li>
 			</ul>
 		</div></div></div>
 	</div></div></div></div></div>

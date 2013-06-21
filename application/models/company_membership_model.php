@@ -33,7 +33,16 @@ class Company_Membership_model extends CI_Model {
         $array = array();
        
         if (isset($param['id'])) {
-            $select_query  = "SELECT * FROM ".COMPANY_MEMBERSHIP." WHERE id = '".$param['id']."' LIMIT 1";
+            $select_query  = "
+				SELECT
+					CompanyMembership.*, Company.nama company_nama,
+					Membership.post_count, Membership.date_count, Membership.price
+				FROM ".COMPANY_MEMBERSHIP." CompanyMembership
+				LEFT JOIN ".COMPANY." Company ON Company.id = CompanyMembership.company_id
+				LEFT JOIN ".MEMBERSHIP." Membership ON Membership.id = CompanyMembership.membership_id
+				WHERE CompanyMembership.id = '".$param['id']."'
+				LIMIT 1
+			";
         } 
        
         $select_result = mysql_query($select_query) or die(mysql_error());
@@ -52,22 +61,33 @@ class Company_Membership_model extends CI_Model {
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS CompanyMembership.*
+			SELECT SQL_CALC_FOUND_ROWS CompanyMembership.*, Company.nama company_nama,
+				Membership.post_count, Membership.date_count, Membership.price
 			FROM ".COMPANY_MEMBERSHIP." CompanyMembership
+			LEFT JOIN ".COMPANY." Company ON Company.id = CompanyMembership.company_id
+			LEFT JOIN ".MEMBERSHIP." Membership ON Membership.id = CompanyMembership.membership_id
 			WHERE 1 $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";
         $select_result = mysql_query($select_query) or die(mysql_error());
 		while ( $row = mysql_fetch_assoc( $select_result ) ) {
-			$array[] = $this->sync($row, @$param['column']);
+			$array[] = $this->sync($row, $param);
 		}
 		
         return $array;
     }
 
     function get_count($param = array()) {
-		$select_query = "SELECT FOUND_ROWS() TotalRecord";
+		$param['is_new'] = (empty($param['is_new'])) ? 0 : $param['is_new'];
+		$string_where = (empty($param['where'])) ? '' : $param['where'];
+		
+		if ($param['is_new'] == 1) {
+			$select_query = "SELECT COUNT(*) TotalRecord FROM ".COMPANY_MEMBERSHIP." WHERE 1 $string_where";
+		} else {
+			$select_query = "SELECT FOUND_ROWS() TotalRecord";
+		}
+		
 		$select_result = mysql_query($select_query) or die(mysql_error());
 		$row = mysql_fetch_assoc($select_result);
 		$TotalRecord = $row['TotalRecord'];
@@ -85,11 +105,16 @@ class Company_Membership_model extends CI_Model {
         return $result;
     }
 	
-	function sync($row, $column = array()) {
+	function sync($row, $param = array()) {
 		$row = StripArray($row);
 		
-		if (count($column) > 0) {
-			$row = dt_view($row, $column, array('is_edit' => 1));
+		if (count(@$param['column']) > 0) {
+			$param['is_custom'] = (empty($param['is_custom'])) ? '&nbsp;' : $param['is_custom'];
+			if ($row['status'] == 'pending') {
+				$param['is_custom'] .= $param['is_pending'];
+			}
+			
+			$row = dt_view_set($row, $param);
 		}
 		
 		return $row;

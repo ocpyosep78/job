@@ -166,7 +166,12 @@ class home extends CI_Controller {
 			$check = $this->$model_name->get_by_id(array( 'email' => $_POST['email'] ));
 			if (count($check) == 0) {
 				$_POST['passwd'] = EncriptPassword($_POST['passwd']);
-				$this->$model_name->update($_POST);
+				$user = $this->$model_name->update($_POST);
+				
+				// add seeker no
+				if ($model_name == 'Seeker_model') {
+					$this->Seeker_model->update_no($user);
+				}
 				
 				$result['status'] = true;
 				$result['message'] = 'Registrasi anda berhasil, silahkan login.';

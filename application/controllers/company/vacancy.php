@@ -11,6 +11,9 @@ class vacancy extends COMPANY_Controller {
 	function grid() {
 		$company = $this->Company_model->get_session();
 		$_POST['is_edit'] = 1;
+		$_POST['is_custom']  = '<img class="button-cursor view" src="'.base_url('static/img/button_view.png').'"> ';
+		$_POST['is_custom'] .= '<img class="button-cursor edit" src="'.base_url('static/img/button_edit.png').'"> ';
+		$_POST['is_custom'] .= '<img class="button-cursor delete" src="'.base_url('static/img/button_delete.png').'"> ';
 		$_POST['company_id'] = $company['id'];
 		$_POST['column'] = array( 'nama', 'position', 'vacancy_status_name', 'publish_date' );
 		
@@ -27,6 +30,11 @@ class vacancy extends COMPANY_Controller {
 		
 		$result = array();
 		if ($action == 'update') {
+			if (empty($_POST['id'])) {
+				// reduce vacancy count
+				$this->Company_model->vacancy_count_reduce(array( 'id' => $_POST['company_id'] ));
+			}
+			
 			$result = $this->Vacancy_model->update($_POST);
 		} else if ($action == 'delete') {
 			$result = $this->Vacancy_model->delete($_POST);
