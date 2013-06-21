@@ -50,6 +50,7 @@ class sent extends SEEKER_Controller {
 				'Attachment' => $attach
 			);
 			$result = SmtpMailer($MailParam);
+			$result['status'] = ($result['success']) ? true : false;
 			
 			// delete file
 			@unlink($file_name);

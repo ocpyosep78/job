@@ -8,11 +8,11 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 	$db['default']['username'] = 'root';
 	$db['default']['password'] = '';
 	$db['default']['database'] = 'job_db';
-} else if ($_SERVER['SERVER_NAME'] == 'olshop.simetri.in') {
+} else if ($_SERVER['SERVER_NAME'] == 'parapekerja.com') {
 	$db['default']['hostname'] = 'localhost';
-	$db['default']['username'] = 'olshop';
-	$db['default']['password'] = 'olshop123';
-	$db['default']['database'] = 'olshop';
+	$db['default']['username'] = 'shoperin_job';
+	$db['default']['password'] = '4gzlX6^Ozc9f';
+	$db['default']['database'] = 'shoperin_job';
 }
 
 $db['default']['dbdriver'] = 'mysql';
