@@ -1,157 +1,71 @@
-source : http://www.duniadb.com/duniakarir/
-notifikasi pakai : http://www.eakroko.de/flat/components-elements.html (Sticky Notification)
+SEEKER
 
-----------------------------------------------------------------------------------------
-Admin Pencari Kerja
-----------------------------------------------------------------------------------------
-Common :
-- Layout : http://www.eakroko.de/flat/layouts-fixed.html
+Yang register (Seeker & Perusahaan) => Harus pakai validasi email
 
-Resume :
-- http://www.duniadb.com/duniakarir/1%20-%20MY%20RESUME.png
-- ada note last update
-- status resume : siap melamar lowongan / belum lengkap
-- resume ada 2 : upload / entry form
-- upload foto dengan watermark
+Pengalaman Kerja dibuat seperti : http://www.duniadb.com/duniakarir/jika%20pengalaman%20kerja%20di%20rubah.png
 
-Profile :
-- http://duniadb.com/duniakarir/my%20resume%20-%20profile.png
+Di Dashboard seeker ada :
+- News Dari Admin
+- Link Profile dia (pakai alias atau no pelamar)
 
-Melamar Kerja
-- http://www.duniadb.com/duniakarir/2%20-%20MY%20JOBS%20APPLYED.png
-- hanya menampilkan perusahaan yang dia lamar
+Surat Lamaran : judul surat kasih 50 karakter karena itu masih kurang panjang.. => maxlength nya dijadikan 50 karakter
 
-Master Surat Lamaran
-- http://www.duniadb.com/duniakarir/4%20-%20SURAT%20LAMARAN%20SAYA.png
-- Diketik manual dengan tinymce editor (title & content & last update)
-- fitur download PDF
+http://www.parapekerja.com/seeker/sent setelah tekan submit diarahkan ke halaman dashboard 
 
-Kirim Lamaran
-- http://www.duniadb.com/duniakarir/3%20-%20SEND%20CV.png
-- Bisa kirim dengan data yang ada di Master Surat Lamaran
+Hanya file dengan format doc, docx atau pdf yang dapat diupload : ini sudah di batasi nga besar filenya => ukuran file maksimal 250 KB
 
-Setting
-- http://www.duniadb.com/duniakarir/5%20-%20SETTING.png
+1 page seperti =>  http://parapekerja.com/resume/resume.htm
 
-Info Tambahan
-- http://duniadb.com/duniakarir/jika%20di%20tekan%20tombol%20apply%20oleh%20member.png
+untuk ganti password fielnya nga ada , karena saya sudah coba reset pass, tapi untuk ganti lagi nga bisa
 
-----------------------------------------------------------------------------------------
-Admin Perusahaan
-----------------------------------------------------------------------------------------
-Common :
-- Layout : http://www.eakroko.de/flat/
 
-Create Page
-- http://www.duniadb.com/duniakarir/perusahaan/Create%20Page.png
-- Form dengan entry (judul & content)
+yang http://parapekerja.com/resume/resume.htm
+herry: untuk public :
+- Menu atas dihilangkan
+- Ringkasan Resume di hilangkan
+herry: menu atas => Resume Saya (Perbarui Resume)
 
-Create Lowongan
-- http://www.duniadb.com/duniakarir/perusahaan/Create%20jobs%20position.png
-- Nanti di approve oleh admin
-- Type pekerjaan bisa lebih dari satu, nanti bisa contoh seperti di : "Multiple values" http://www.eakroko.de/flat/forms-extended.html
-- Lokasi Kerja Bisa dari luar negeri, maka kotanya berupa entry text box
+------------------------------------------------------------------------------------------------
+PERUSAHAAN
 
-Download Data Pelamar
-- http://www.duniadb.com/duniakarir/perusahaan/Download.png
-- Plan To Interview => langsung insert recordnya ke daftar yang akan di interview
-- Kirim Berita Penolakan
-- Download Table dalam format PDF
-- Table seperti di http://www.eakroko.de/flat/tables-dynamic.html (pdf, csv, dll)
-- Interview => buka modal popup (title & message) => sent email untuk pemberitahuan interview / penolakan
-- Penolakan => status record => apply_status => Rejected
+dashboard :
 
-View Slide
-- http://www.duniadb.com/duniakarir/perusahaan/slide%20page.png
-- dibagi untuk tiap2 job position
-- resize photo
+Paket Keanggotaan Anda saat ini: Free.
+Anda saat ini memiliki 10 kredit iklan lowongan.
+Jumlah lowongan yang aktif diiklankan saat ini: 0
+Paket Keanggotaan Anda saat ini berakhir pada: 04/25/2013
 
-Find Resume
-- http://www.duniadb.com/duniakarir/perusahaan/Find%20resume.png
+dan tampilkan div news from admin
 
-Profile Perusahaan
-- http://www.duniadb.com/duniakarir/perusahaan/Profile.png
-- Backgroundnya mengikuti (abaikan desain)
-- klo bisa tambahkan mam dari google
+http://www.parapekerja.com/company/search (opsi = Download Resume | View Resume Public | Send Message) dan tabelnya sama dengan tabel downlaod
+ yang pertama field di tabelnya mirip http://parapekerja.com/company/download/index/5
+Ridwan Amir: dapat !
 
-Membership
-- http://www.duniadb.com/duniakarir/perusahaan/membership.png
+Vacancy :
+nanti kolom nya : Nama | Posisi | Status | Publish Date | Closed Date | Total View | Total Pelamar
+Posisi : dihilangkan
+dihilangkan : position, url artikel, link artikel, shost desc, opsi 1 opsi 2
 
-----------------------------------------------------------------------------------------
-Admin Perusahaan
-----------------------------------------------------------------------------------------
-Common
-- Ada moderator dan Administrator
-- Layout : http://www.eakroko.de/flat/
+Klo ada yang apply : dia harus login dan dikirim email sepeerti di sent email di Seeker kirim lamaran
 
-Article
-- Mirip denga dunia db
+bedanya email apply & yang quick 
+Ridwan Amir: email apply untuk yang posisi di apply dari member area...
+Ridwan Amir: berarti dia dalam posisi login...
+Ridwan Amir: untuk quick apply..
+Ridwan Amir: dia nga nga login..
 
-----------------------------------------------------------------------------------------
-Website
-----------------------------------------------------------------------------------------
-Index
-- http://www.duniadb.com/duniakarir/v2/indexs.html
+Vacancy : Quick Apply (non member) :
+http://www.jobstreet.co.id/jobs/2013/6/default/40/876648.htm?fr=J&src=27
+http://www.duniadb.com/duniakarir/Quick%20Apply%20-%20non%20member.png
 
-Article
-- CRUD Article
-- ditampilkan 1 article terbaru
+Note :
+ada email template di admin
 
-Blog
-- http://www.duniadb.com/duniakarir/v2/blog.html
-- ini halaman artikel yang dibuat oleh admin
-- hapus comment & rating
-- 1 page berisi 9 item
-- tiap2 category memiliki tag => Desainer / Apps / Mattew
-
-Blog Detail
-- http://www.duniadb.com/duniakarir/v2/blog-article.html
-- comment & rating tidak perlu
-
-Listing Lowongan
-- http://www.duniadb.com/duniakarir/v2/listing.html
-- Region : Seperti : http://www.klikbay.com/Fashion+dan+Gaya
-
-Login Page
-- http://www.duniadb.com/duniakarir/v2/login.html
-- lost password
-- login perusahaan & login pencari kerja terpisah
-
-Advance Search
-- http://www.duniadb.com/duniakarir/v2/asearch.png
-
-Event
-- http://www.duniadb.com/duniakarir/v2/events.html
-
-Event Detail
-- http://www.duniadb.com/duniakarir/v2/events-article.html
-- "00:00:00" biarkan dulu
-
-Company Profile
-- http://www.duniadb.com/duniakarir/v2/Company-Profile.html
-- kalo tidak ada lowongan tampikan "saat ini tidak ada lowongan yang tersedia"
-- Lihat Peta => untuk menunjukan lokasi perusahaan di google map
-- Fitur laporkan perusahaan, mirip seperti di : http://www.duniadb.com/user/ridwan
-
-Detail Lowongan
-- http://siva-id.jobstreet.com/_ads/id/jobs/2013/5/default/40/852662.htm?fr=J&amp;src=27
-- link : duniakarir.com/PT-Telkom-indonesia/posisi
-
-Subscribe
-- Ada 4 Jenis (Kategori, Sub Kategori, Event, Perusahaan)
-- Email support html
-
-----------------------------------------------------------------------------------------
-HOLD
-----------------------------------------------------------------------------------------
-
-her0satr@yahoo.com
-qwertyui
-
-----------------------------------------------------------------------------------------
-Note Kesulitan			
-----------------------------------------------------------------------------------------
-
-Master Membership
-Editor Update Membership Perusahaan
-
+Banner klo tidak ada, hasilnya kurang bagus
+dan pake format email template...
+Ridwan Amir: liat ini http://www.parapekerja.com/PT-Garuda-Indonesa-Persero-Tbk/8_Driver
+Ridwan Amir: itu banner kalo nga di isi di buat nga kosong 
+herry: ok mas
+herry: sepertinya sudah ada default nya koq
+Ridwan Amir: kalo aku nga isi.. divnya tampil blank..
+Ridwan Amir: jadi keliatan gimana gitu..

@@ -52,7 +52,7 @@ class Article_model extends CI_Model {
 					Article.*,
 					Subkategori.nama subkategori_nama, Subkategori.alias subkategori_alias,
 					Kategori.nama kategori_nama, Kategori.alias kategori_alias, Kategori.id kategori_id
-				FROM ".ARTICLE."
+				FROM ".ARTICLE." Article
 				LEFT JOIN ".SUBKATEGORI." Subkategori ON Subkategori.id = Article.subkategori_id
 				LEFT JOIN ".KATEGORI." Kategori ON Kategori.id = Subkategori.kategori_id
 				WHERE Article.alias = '".$param['alias']."'
