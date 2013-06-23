@@ -23,6 +23,9 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 } else if ($_SERVER['SERVER_NAME'] == 'parapekerja.com') {
 	$config['base_url']		= 'http://parapekerja.com';
 	$config['base_path']    = realpath(dirname(__FILE__) . '/../..');
+} else if ($_SERVER['SERVER_NAME'] == 'www.parapekerja.com') {
+	$config['base_url']		= 'http://www.parapekerja.com';
+	$config['base_path']    = realpath(dirname(__FILE__) . '/../..');
 } else {
 	echo 'Please set up config.';
 	exit;

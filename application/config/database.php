@@ -8,7 +8,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 	$db['default']['username'] = 'root';
 	$db['default']['password'] = '';
 	$db['default']['database'] = 'job_db';
-} else if ($_SERVER['SERVER_NAME'] == 'parapekerja.com') {
+} else if ($_SERVER['SERVER_NAME'] == 'parapekerja.com' || $_SERVER['SERVER_NAME'] == 'www.parapekerja.com') {
 	$db['default']['hostname'] = 'localhost';
 	$db['default']['username'] = 'shoperin_job';
 	$db['default']['password'] = '4gzlX6^Ozc9f';
