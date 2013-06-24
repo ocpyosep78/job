@@ -6,7 +6,8 @@ class Seeker_model extends CI_Model {
 		
         $this->field = array(
 			'id', 'kelamin_id', 'kota_id', 'marital_id', 'seeker_no', 'first_name', 'last_name', 'email', 'tempat_lahir', 'tgl_lahir', 'address', 'phone', 'hp',
-			'passwd', 'photo', 'last_login', 'last_update', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu_kandung', 'file_resume', 'alias', 'reset'
+			'passwd', 'photo', 'last_login', 'last_update', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu_kandung', 'file_resume', 'alias', 'reset',
+			'validation', 'is_active'
 		);
     }
 
@@ -81,6 +82,8 @@ class Seeker_model extends CI_Model {
             $select_query  = "SELECT * FROM ".SEEKER." WHERE alias = '".$param['alias']."' LIMIT 1";
         } else if (isset($param['reset'])) {
             $select_query  = "SELECT * FROM ".SEEKER." WHERE reset = '".$param['reset']."' LIMIT 1";
+        } else if (isset($param['validation'])) {
+            $select_query  = "SELECT * FROM ".SEEKER." WHERE validation = '".$param['validation']."' LIMIT 1";
         }
 		
         $select_result = mysql_query($select_query) or die(mysql_error());

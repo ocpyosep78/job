@@ -1,6 +1,9 @@
-SEEKER
+All :
 
-Yang register (Seeker & Perusahaan) => Harus pakai validasi email
+cek => Yang register (Seeker & Perusahaan) => Harus pakai validasi email
+
+------------------------------------------------------------------------------------------------
+SEEKER
 
 Pengalaman Kerja dibuat seperti : http://www.duniadb.com/duniakarir/jika%20pengalaman%20kerja%20di%20rubah.png
 

@@ -16,3 +16,7 @@ CREATE TABLE  `job_db`.`seeker_language` ( `id` INT NOT NULL AUTO_INCREMENT PRIM
 2013-06-21 :
 ALTER TABLE `company_membership` CHANGE `status` `status` INT( 11 ) NOT NULL COMMENT '{ 0: pending, 1: confirm, 2: delete }';
 ALTER TABLE `company` ADD `vacancy_count_left` INT NOT NULL , ADD `membership_date` DATE NOT NULL;
+
+2013-06-24 :
+ALTER TABLE  `seeker` ADD  `validation` VARCHAR( 255 ) NOT NULL, ADD  `is_active` INT NOT NULL;
+ALTER TABLE  `company` ADD  `validation` VARCHAR( 255 ) NOT NULL, ADD  `is_active` INT NOT NULL;

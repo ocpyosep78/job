@@ -6,7 +6,8 @@ class Company_model extends CI_Model {
 		
         $this->field = array(
 			'id', 'kota_id', 'nama', 'phone', 'faximile', 'website', 'address', 'email', 'passwd', 'description', 'kodepos', 'sales', 'contact_name',
-			'contact_email', 'contact_no', 'logo', 'banner', 'google_map', 'industri_id', 'alias', 'reset', 'vacancy_count_left', 'membership_date'
+			'contact_email', 'contact_no', 'logo', 'banner', 'google_map', 'industri_id', 'alias', 'reset', 'vacancy_count_left', 'membership_date',
+			'validation', 'is_active'
 		);
     }
 
@@ -64,6 +65,8 @@ class Company_model extends CI_Model {
 			";
         } else if (isset($param['reset'])) {
             $select_query  = "SELECT * FROM ".COMPANY." WHERE reset = '".$param['reset']."' LIMIT 1";
+        } else if (isset($param['validation'])) {
+            $select_query  = "SELECT * FROM ".COMPANY." WHERE validation = '".$param['validation']."' LIMIT 1";
         }
        
         $select_result = mysql_query($select_query) or die(mysql_error());

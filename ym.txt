@@ -1,0 +1,337 @@
+
+Show Recent Messages (F3)
+
+Ridwan Amir: iya mas..
+herry: ok mas
+herry: gimana mas ?
+herry: mungkin ada yang saya kelewatan
+Ridwan Amir: kita mulai baca dari sekeernya ya..
+herry: ok mas
+Ridwan Amir: Register pencari kerja dan perusahaan harus melalui proses verifikasi email karena terlalu cepat proses resistrasinya takutnya banyak daftar asal asal
+
+Ridwan Amir: yang skarang nga pake verifikasi email ya..
+herry: iya
+herry: ok mas
+herry: ntar saya tambahkan
+Ridwan Amir: Revisi pencari kerja :
+
+Resume : pengalaman kerja : sperti ini http://www.duniadb.com/duniakarir/jika%20pengalaman%20kerja%20di%20rubah.png
+
+
+Start Photo Sharing
+Ridwan Amir: untuk field kalo pengalaman kerja di edit buat sperti itu mas..
+Ridwan Amir: coba masuk ke pekerja area..
+herry: ok otw
+herry: ok mas
+Ridwan Amir: jadi kalo check baru lulus,, maka yang muncul di resume fresh graduate....
+Ridwan Amir: Dashboard : disitu ada news from admin dan ID Pelamar ( untuk news di entry dari admin area)
+Ridwan Amir: ngerti ya..
+herry: bentar
+herry: ID Pelamar itu No Pelamar mas ?
+Ridwan Amir: untuk pelamara ini public profilenya pake apa ya..
+herry: ada 2
+herry: alias sama no pelamar
+herry: alias itu yang seperti di email
+Ridwan Amir: ok itu dua duanya di pasang di dashboard biar dia liat url profilenya dia..
+Ridwan Amir: lanjut ya..
+herry: ok mas
+Ridwan Amir: Surat Lamaran : judul surat kasih 50 karakter karena itu masih kurang panjang..
+
+http://www.parapekerja.com/seeker/sent setelah tekan submit diarahkan ke halaman dashboard
+
+
+Hanya file dengan format doc, docx atau pdf yang dapat diupload : ini sudah di batasi nga besar filenya
+
+
+Surat Lamaran : judul surat kasih 50 karakter karena itu masih kurang panjang..
+
+
+Ridwan Amir: di field judul di menu surat lamaran karakter judul cuma 30 klo nga salah.. itu kasih 50 max..
+Ridwan Amir: file fdb dan word untuk upload resume itu udah di batas besanya nga..
+herry: ooo
+Ridwan Amir: dan di menu kirim surat lamaran itu setelah di tekan submit di redirect ke dashboard.. takutnya pesan stykynya nga keliatan
+herry: dibatasi maks berapa mas file nya ?
+herry: *ukuran file nya ?
+herry: normal nya 4 M
+Ridwan Amir: di aksih 2 lembar ukuran pdf aja
+herry: by apache
+herry: 250 KB ?
+Ridwan Amir: 2 mb aja kali ya
+Ridwan Amir: ok 250KB.. 
+herry: ok mas
+Ridwan Amir: lanjut ya
+Ridwan Amir: resume public dan preview http://parapekerja.com/resume/resume.htm
+
+Ridwan Amir: itu saya buatkan profile resume onlineya.. yang resume online skarang kurang kebaca sama perusahaan..
+Ridwan Amir: gimana..
+herry: dibuatkan 1 page seperti itu yaa ?
+Ridwan Amir: iya itu 1 pege biar nanti saya bisa custom sendiri..
+herry: ok mas seep
+Ridwan Amir: itu 2 versi ya.. REVIEW dan PUBLIC
+Ridwan Amir: kalo review itu menu bagian atas muncul..
+Ridwan Amir: maksudnya pratinjau oleh pencari kerja liat hasil resumenya gimana...
+herry: oh ok mas
+herry: oiya
+herry: btw untuk link public nya nanti pakai halaman ini aja yaa ?
+herry: jadi ndak ke halaman dashboard nya pelamar
+herry: *saran aja 
+Ridwan Amir: ya betul. klo skarang public profilenya sama perusahan masih keliatan tulisan siap melamar..
+Ridwan Amir: jadi untuk public profilenya pake ini saja..
+Ridwan Amir: cuma ini page sendiri ya..
+Ridwan Amir: jadi bisa saya custom nanti..
+Ridwan Amir: untuk halaman ini di gunakan untuk public profile dan pratinjau resume
+herry: ok mas 
+Ridwan Amir: lanjut ya..
+herry: seep
+Ridwan Amir: untuk ganti password fielnya nga ada , karena saya sudah coba reset pass, tapi untuk ganti lagi nga bisa
+
+url profile saya apa ya
+
+Scrolling agak susah
+
+herry: oiya
+herry: saya tambahkan ganti password untuk pelamar
+herry: url profile saya apa ya => ini profile apa yaa ?
+Ridwan Amir: ok untuk url profile nanti diliatin di dashboard
+Ridwan Amir: url public profile pelamar..
+Ridwan Amir: nanti di tampilkan di dashboard ..
+herry: iya
+Ridwan Amir: trus itu scroling di floating menu kadang nga susah..
+Ridwan Amir: kalo udah ke geser kebawah udah nga keliatan..
+Ridwan Amir: di situ lancar nga..
+herry: lancar
+Ridwan Amir: coba edit field..
+herry: bingung saya 
+Ridwan Amir: coba edit resume
+herry: masuk ke "Edit Resume" yaa ?
+herry: iya
+Ridwan Amir: kan muncul floating ya..
+Ridwan Amir: floating untuk isi field..
+herry: saya isi "First Name"
+Ridwan Amir: yang ada text area..
+Ridwan Amir: kadang kalo text area di besarin.. tombol sumitnya ilang kebawah...
+herry: sebentar
+herry: kira sampeyan
+herry: pakai resolusi berapa ?
+herry: width nya
+Ridwan Amir: 14.000
+herry: kira2
+herry: yang resolusi monitor nya mas
+herry: saya 1360 * 768
+Ridwan Amir: 1366 x 768
+herry: browser nya full screen ?
+Ridwan Amir: nga
+Ridwan Amir: cuma kalo udah nga bisa baru saya tekan F11 untuk full screen
+Ridwan Amir: kalo tombol submit udah ilang baru saya full screen..
+herry: mungkin bisa bantu sama print screen mas
+herry: he he he
+herry: kurang mengerti saya
+Ridwan Amir: sperti itu mas..
+herry: ??
+herry: ndak masuk mas filenya
+herry: apa udah dikirim file nya ?
+Ridwan Amir: nga bisa..
+herry: di uplolad
+Ridwan Amir: untuk itu lewat aja dulu mas nga apap apa
+herry: oh ok mas
+Ridwan Amir: ok untuk pelamar udah kebaca ya..
+herry: iya
+Ridwan Amir: oh iya itu yang tadi http://parapekerja.com/resume/resume.htm
+Ridwan Amir: itu klo pratinjau field Ringkasan Resume (Bagian ini tidak akan di tampilkan untuk Perusahaan) untuk public profile tidak tampil ya
+herry: ok mas
+Ridwan Amir: kecuali posisi pratinjau itu baru keliatann.
+Ridwan Amir: masuk ke perusahaan.
+Ridwan Amir: resivisinya..
+herry: bentar mas
+herry: yang http://parapekerja.com/resume/resume.htm
+herry: untuk public :
+- Menu atas dihilangkan
+- Ringkasan Resume di hilangkan
+herry: menu atas => Resume Saya (Perbarui Resume)
+herry: gitu yaa ?
+Ridwan Amir: betul..
+Ridwan Amir: dan di halaman http://parapekerja.com/seeker/resume tambahkan link PRATINJAU. dan di arahkan ke halaman http://parapekerja.com/resume/resume.htm persis seperti itu untuk halaman pratinjau..
+Ridwan Amir: untuk halaman public profile
+Ridwan Amir: seperti ini
+Ridwan Amir: untuk public :
+- Menu atas dihilangkan
+- Ringkasan Resume di hilangkan
+herry: ok mas seep
+Ridwan Amir: ok lanjut ya..
+herry: ok mas
+Ridwan Amir: PERUSAHAAN..
+Ridwan Amir: 
+dashboard :
+
+Paket Keanggotaan Anda saat ini: Free.
+Anda saat ini memiliki 10 kredit iklan lowongan.
+Jumlah lowongan yang aktif diiklankan saat ini: 0
+Paket Keanggotaan Anda saat ini berakhir pada: 04/25/2013
+
+
+dan tampilkan div news from admin
+herry: ok mas
+herry: oiya
+herry: soal news
+Ridwan Amir: untuk news dari admin ada dua versi ya.. news for a=perusahaan dan news for pelamar..
+herry: news dari admin untuk semua perusahaan / hanya untuk perusahaan tertentu saja mas ?
+Ridwan Amir: semua perusahaan..
+herry: oh ok mas
+herry: lanjut
+Ridwan Amir: http://www.parapekerja.com/company/search (opsi = Download Resume | View Resume Public | Send Message) dan tabelnya sama dengan tabel downlaod
+
+Ridwan Amir: untuk tabelnya fieldnya itu mirip tabel http://www.duniadb.com/duniakarir/perusahaan/Download.png
+Start Photo Sharing
+herry: mirip table ini mas ?
+herry: http://parapekerja.com/company/download/index/5
+Ridwan Amir: yup betul..
+herry: sebentar
+herry: http://www.parapekerja.com/company/search (opsi = Download Resume | View Resume Public | Send Message) dan tabelnya sama dengan tabel downlaod
+herry: bahas feature nya mas
+herry: Download resume itu download file resume nya yaa ? 
+Ridwan Amir: http://www.parapekerja.com/company/search (opsi = Download Resume | View Resume Public | Send Message) dan tabelnya sama dengan tabel downlaod
+Ridwan Amir: yang pertama field di tabelnya mirip http://parapekerja.com/company/download/index/5
+Ridwan Amir: dapat !
+herry: disana ada download PDF, excel dll
+Ridwan Amir: oo bukan..
+Ridwan Amir: field dielnya aja..
+herry: oh ok mas
+Ridwan Amir: no pelamar dll..
+Ridwan Amir: trus untuk opsi..
+Ridwan Amir: tambahkan donwload resume = resume yang di upload..
+Ridwan Amir: dpat..
+herry: dapat
+Ridwan Amir: nah jika resume nga di upload yang muncul tulisan "no resume" 
+Ridwan Amir: view reseume = lihat public resume..
+Ridwan Amir: Send message = kirim pesan ke pelamar tersebut..
+herry: ok mas
+Ridwan Amir: ok lanjut ya.
+herry: seep
+Ridwan Amir: http://www.parapekerja.com/company/vacancy (tambahkan closed date) posisi di comment/ngadi tampilkan
+http://parapekerja.com/company/vacancy tambah table | Total View | Total pelamar |
+Ridwan Amir: http://parapekerja.com/company/vacancy tambah table | Total View | Total pelamar | closed date sperti ini 
+herry: kolom maksudnya yaa ?
+Ridwan Amir: ya betul.
+herry: nanti kolom nya : Nama | Posisi | Status | Publish Date | Closed Date | Total View | Total Pelamar
+Ridwan Amir: yup..
+herry: ok mas
+Ridwan Amir: ok masuk ke http://parapekerja.com/company/vacancy
+herry: iya
+Ridwan Amir: yang di comment = di hilangkan
+Ridwan Amir: bukan di hilangkan tapi nga tiampilkan
+Ridwan Amir: ngerti ya...
+herry: ok
+Ridwan Amir: bahasa di comment
+Ridwan Amir: kita bahas posisi dulu...
+Ridwan Amir: itu judul lowongan adalah posisi..
+Ridwan Amir: jadi posisi yang ada skarang nga di gunakan..
+Ridwan Amir: jadi cukup judul aja..
+herry: ok mas
+Ridwan Amir: posisi di comment : position, url artikel, link artikel, shost desc, opsi 1 opsi 2
+herry: ok mas
+Ridwan Amir: posisi di rubah akan berubah juga nanti di sini 
+http://www.parapekerja.com/PT-Garuda-Indonesa-Persero-Tbk/8_Driver,Technician
+Ridwan Amir: urklnya
+herry: iya
+herry: judulnya saja yang dipakai
+Ridwan Amir: ya betul..
+Ridwan Amir: ok balik lagi ke http://www.parapekerja.com/company/vacancy 
+herry: ok
+Ridwan Amir: set email penerima itu field biasa ya...
+Ridwan Amir: cuma buat tampilkna almat email di detail lowongan ?
+herry: iya
+Ridwan Amir: bukan
+Ridwan Amir: itu adalah email digunakan untuk alamat mengerim lowongan tersebut..
+Ridwan Amir: jadi kalo ada yang apply lowongan ini makan resume dan fotonya di kirim ke alamat email itu...
+Ridwan Amir: gitu maksudnya..
+herry: oh ok mas
+herry: ntar saya update kan
+Ridwan Amir: dan template emailnya mirip yang template sudah ada...
+herry: bedanya email apply & yang quick ada mas ?
+Ridwan Amir: yang pertama udah udah dapat ya..
+Ridwan Amir: pake format email template ya..
+herry: iya
+Ridwan Amir: bedanya email apply & yang quick 
+Ridwan Amir: email apply untuk yang posisi di apply dari member area...
+Ridwan Amir: berarti dia dalam posisi login...
+Ridwan Amir: untuk quick apply..
+Ridwan Amir: dia nga nga login..
+herry: oh i see
+herry: ok mas
+Ridwan Amir: ini mas..
+Ridwan Amir: http://www.jobstreet.co.id/jobs/2013/6/default/40/876648.htm?fr=J&src=27
+Ridwan Amir: mirip itu..
+Ridwan Amir: untuk non meber applynya sperti itu..
+Ridwan Amir: untuk model field fielnya liat ini http://www.duniadb.com/duniakarir/Quick%20Apply%20-%20non%20member.png
+Start Photo Sharing
+Ridwan Amir: gimana..
+herry: bentar
+herry: ok mas
+herry: lanjut
+Ridwan Amir: ok dapat ya.. email apply untuk member dan non member...
+herry: yups
+Ridwan Amir: dan pake format email template...
+Ridwan Amir: liat ini http://www.parapekerja.com/PT-Garuda-Indonesa-Persero-Tbk/8_Driver
+Ridwan Amir: itu banner kalo nga di isi di buat nga kosong 
+herry: ok mas
+herry: sepertinya sudah ada default nya koq
+Ridwan Amir: kalo aku nga isi.. divnya tampil blank..
+Ridwan Amir: jadi keliatan gimana gitu..
+herry: oh ok
+herry: nanti aku cek lagi
+Ridwan Amir: ok itu aja dulu yang di lengkap..
+Ridwan Amir: masih saya debug dulu errornya di mana..
+herry: ok mas
+Ridwan Amir: sama liatin dulu ini biar saya cek..
+Ridwan Amir: http://www.parapekerja.com/blog
+herry: table nya ndak ada
+Ridwan Amir: yup..
+Ridwan Amir: di setkan biar saya liat..
+herry: bentar
+herry: sudah mas
+Ridwan Amir: ok nanti saya cek..
+Ridwan Amir: butuh payment..
+herry: boleh
+Ridwan Amir: seep..
+herry: bca 
+herry: Nomor Rekening : 1230379846
+Nama : HERRY SATRIO
+Ridwan Amir: saya tranfer.. saya tranfer full ya.. tambahanya nanti.. 
+herry: nilai nya terserah pean dulu mas
+herry: oh ok mas
+herry: makasih 
+Ridwan Amir: seep..
+Ridwan Amir: bentar
+Ridwan Amir: TUJUAN TRANSFER
+
+:
+1230379846
+NAMA
+
+:
+HERRY SATRIO
+JUMLAH
+
+:
+
+Rp. 5.500.000,00
+Ridwan Amir: ok udah saya tranfer...
+herry: iya, makasih yaa mas 
+Ridwan Amir: ok mas saya cek lagi yang bagian lain ya..
+herry: saya info kan lagi nanti klo sudah selesai updatenya
+Ridwan Amir: seepp..
+herry: 
+Ridwan Amir is typing...
+Ridwan Amir: ok lajut mas.. terima kasih ya..
+herry: sama2 mas
+
+
+----------------------------------------------------------
+oh iya 1 lagi..
+Ridwan Amir: itu mr_lorem_ipsum_sit_dolor
+Ridwan Amir: jadikan mirip ini kapan-saya-dimana
+Ridwan Amir: kalo seprti yang pertama nga enak liatnya..
+Ridwan Amir: itu aja dulu mas..
+Ridwan Amir: untuk semua url..
+herry: oh ok mas
+herry: _ diganti -

@@ -28,6 +28,67 @@
 			sent_mail($param);
 		}
 	}
+	else if (!empty($_GET['validation'])) {
+		$seeker = $this->Seeker_model->get_by_id(array( 'validation' => $_GET['validation'] ));
+		$company = $this->Company_model->get_by_id(array( 'validation' => $_GET['validation'] ));
+		
+		$user = array();
+		if (count($seeker) > 0) {
+			$user = $seeker;
+			$model_name = 'Seeker_model';
+		} else if (count($company) > 0) {
+			$user = $company;
+			$model_name = 'Company_model';
+		} else {
+			$message = 'Maaf, link ini sudah tidak berlaku.';
+		}
+		
+		if (count($user) > 0) {
+			$param_update = array( 'id' => $user['id'], 'is_active' => 1, 'validation' => '' );
+			$this->$model_name->update($param_update);
+			
+			$message = 'Validasi anda berhasil, account anda sudah bisa digunakan.';
+		}
+	}
+	else if (!empty($_GET['request'])) {
+		$type = @$_GET['type'];
+		$request = $_GET['request'];
+		
+		if ($request == 'validation') {
+			$user = array();
+			if ($type == 'seeker') {
+				$model_name = 'Seeker_model';
+			} else if (($type == 'company')) {
+				$model_name = 'Company_model';
+			}
+			
+			// get data
+			$user = $this->$model_name->get_by_id(array( 'email' => $_GET['email'] ));
+			
+			$is_active = 0;
+			if (! empty($user['is_active'])) {
+				$is_active = $user['is_active'];
+				$message = 'Account anda sudah aktif, silahkan login.';
+			} else if (empty($user['validation'])) {
+				$validation = substr(md5(time() . rand(1000,9999)), 0, 20);
+				$param['id'] = $user['id'];
+				$param['validation'] = $validation;
+				$this->$model_name->update($param);
+			} else {
+				$validation = $user['validation'];
+			}
+			
+			if (empty($is_active)) {
+				$link_validation = base_url('login?validation='.$validation);
+				$param_mail['to'] = $user['email'];
+				$param_mail['title'] = 'Account Validation';
+				$param_mail['message'] = 'Silahkan klik link berikut untuk mengaktifkan user anda.<br />'.$link_validation;
+				sent_mail($param_mail);
+				
+				$message = 'Email validasi berhasil kirim ulang ke email anda.';
+			}
+		}
+	}
 ?>
 
 <?php $this->load->view( 'website/common/meta' ); ?>
@@ -145,7 +206,7 @@ $('#form-seeker, #form-company').submit(function() {
 		if (result.status) {
 			window.location = result.link;
 		} else {
-			$('.message-login').text(result.message);
+			$('.message-login').html(result.message);
 			$('.message-login').slideDown();
 		}
 	} });

@@ -107,9 +107,11 @@ class home extends CI_Controller {
 		// login
 		if ($action == 'login_seeker' || $action == 'login_company' || $action == 'login_editor') {
 			if ($action == 'login_seeker') {
+				$type = 'seeker';
 				$model_name = 'Seeker_model';
 				$link = base_url('seeker/resume');
 			} else if ($action == 'login_company') {
+				$type = 'company';
 				$model_name = 'Company_model';
 				$link = base_url('company/post');
 			} else if ($action == 'login_editor') {
@@ -118,12 +120,16 @@ class home extends CI_Controller {
 			}
 			
 			$user = $this->$model_name->get_by_id(array('email' => $_POST['email']));
-			if (count($user) == 0 || empty($_POST['email'])) {
+			if (isset($user['is_active']) && empty($user['is_active'])) {
+				$link_validasi = base_url('login?request=validation&type='.$type.'&email='.$_POST['email']);
+				$result['message'] = 'Harap men-validasi email untuk mengaktifkan user anda, klik link <a href="'.$link_validasi.'">berikut</a> jika anda belum menerima email.';
+				echo json_encode($result);
+				exit;
+			} else if (count($user) == 0 || empty($_POST['email'])) {
 				$result['message'] = 'user anda tidak ditemukan.';
 				echo json_encode($result);
 				exit;
-			}
-			if (EncriptPassword($_POST['passwd']) != $user['passwd']) {
+			} else if (EncriptPassword($_POST['passwd']) != $user['passwd']) {
 				$result['message'] = 'Password tidak sama.';
 				echo json_encode($result);
 				exit;
@@ -152,6 +158,7 @@ class home extends CI_Controller {
 			
 			// mail
 			$param['to'] = $user['email'];
+			$param['title'] = 'Reset Password';
 			$param['message']  = "Berikut link untuk mereset password anda. Harap abaikan email ini jika password yang anda gunakan saat ini sudah benar.\n\n";
 			$param['message'] .= $link_reset;
 			sent_mail($param);
@@ -165,8 +172,17 @@ class home extends CI_Controller {
 			$model_name = ($action == 'register_seeker') ? 'Seeker_model' : 'Company_model';
 			$check = $this->$model_name->get_by_id(array( 'email' => $_POST['email'] ));
 			if (count($check) == 0) {
+				$validation = substr(md5(time().rand(1000,999)), 0, 20);
+				
 				$_POST['passwd'] = EncriptPassword($_POST['passwd']);
+				$_POST['validation'] = $validation;
 				$user = $this->$model_name->update($_POST);
+				
+				$link_validation = base_url('login?validation='.$validation);
+				$param_mail['to'] = $_POST['email'];
+				$param_mail['title'] = 'Account Validation';
+				$param_mail['message'] = 'Silahkan klik link berikut untuk mengaktifkan user anda.<br />'.$link_validation;
+				sent_mail($param_mail);
 				
 				// add seeker no
 				if ($model_name == 'Seeker_model') {
@@ -174,7 +190,7 @@ class home extends CI_Controller {
 				}
 				
 				$result['status'] = true;
-				$result['message'] = 'Registrasi anda berhasil, silahkan login.';
+				$result['message'] = 'Registrasi anda berhasil, silahkan memeriksa email anda.';
 			} else {
 				$result['status'] = false;
 				$result['message'] = 'Email sudah memiliki account, tidak bisa digunakan untuk registrasi lagi.';
