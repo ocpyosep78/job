@@ -5,28 +5,27 @@ cek => Yang register (Seeker & Perusahaan) => Harus pakai validasi email
 ------------------------------------------------------------------------------------------------
 SEEKER
 
-Pengalaman Kerja dibuat seperti : http://www.duniadb.com/duniakarir/jika%20pengalaman%20kerja%20di%20rubah.png
-
-Di Dashboard seeker ada :
+Dashboard
 - News Dari Admin
 - Link Profile dia (pakai alias atau no pelamar)
+- Pengalaman Kerja dibuat seperti : http://www.duniadb.com/duniakarir/jika%20pengalaman%20kerja%20di%20rubah.png
+- Hanya file dengan format doc, docx atau pdf yang dapat diupload : ini sudah di batasi nga besar filenya => ukuran file maksimal 250 KB
 
-Surat Lamaran : judul surat kasih 50 karakter karena itu masih kurang panjang.. => maxlength nya dijadikan 50 karakter
+Edit Profile
+- untuk ganti password fielnya nga ada , karena saya sudah coba reset pass, tapi untuk ganti lagi nga bisa
 
-http://www.parapekerja.com/seeker/sent setelah tekan submit diarahkan ke halaman dashboard 
+Surat Lamaran
+- judul surat kasih 50 karakter karena itu masih kurang panjang.. => maxlength nya dijadikan 50 karakter
 
-Hanya file dengan format doc, docx atau pdf yang dapat diupload : ini sudah di batasi nga besar filenya => ukuran file maksimal 250 KB
+Kirim Lamaran
+- setelah tekan submit diarahkan ke halaman dashboard 
 
-1 page seperti =>  http://parapekerja.com/resume/resume.htm
+Review Seeker
+- 1 page seperti =>  http://parapekerja.com/resume/resume.htm
 
-untuk ganti password fielnya nga ada , karena saya sudah coba reset pass, tapi untuk ganti lagi nga bisa
-
-
-yang http://parapekerja.com/resume/resume.htm
-herry: untuk public :
+Review Seeker versi Public
 - Menu atas dihilangkan
 - Ringkasan Resume di hilangkan
-herry: menu atas => Resume Saya (Perbarui Resume)
 
 ------------------------------------------------------------------------------------------------
 PERUSAHAAN
