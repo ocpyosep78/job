@@ -48,7 +48,7 @@ class Seeker_Education_model extends CI_Model {
         $array = array();
 		
 		$string_filter = GetStringFilter($param, @$param['column']);
-		$string_sorting = GetStringSorting($param, @$param['column'], 'is_public ASC');
+		$string_sorting = GetStringSorting($param, @$param['column'], 'tgl_lulus ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "

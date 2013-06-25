@@ -89,6 +89,7 @@ class Seeker_Addon_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
+		$row['text_clean'] = trim(strip_tags($row['content']));
 		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));

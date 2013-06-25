@@ -48,7 +48,7 @@ class Seeker_Language_model extends CI_Model {
         $array = array();
 		
 		$string_filter = GetStringFilter($param, @$param['column']);
-		$string_sorting = GetStringSorting($param, @$param['column'], 'date_start ASC');
+		$string_sorting = GetStringSorting($param, @$param['column'], 'nama ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "

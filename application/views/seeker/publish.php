@@ -1,7 +1,10 @@
 <?php
 	$allow_update = (isset($allow_update)) ? $allow_update : false;
-//	echo GetFormatDate($seeker['last_update'], array( 'FormatDate' => 'd M Y' )); exit;
-//	print_r($seeker); exit;
+	$array_pendidikan = $this->Seeker_Education_model->get_array(array( 'seeker_id' => $seeker['id'] ));
+	$array_language = $this->Seeker_Language_model->get_array(array( 'seeker_id' => $seeker['id'] ));
+	$array_reference = $this->Seeker_Reference_model->get_array(array( 'seeker_id' => $seeker['id'] ));
+	$seeker_addon = $this->Seeker_Addon_model->get_by_id(array( 'seeker_id' => $seeker['id'] ));
+	$seeker_summary = $this->Seeker_Summary_model->get_by_id(array( 'seeker_id' => $seeker['id'] ));
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -10,8 +13,11 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title>Lihat ulang resume saya</title>
 	<link type="text/css" href="<?php echo base_url('static/css/resume.css'); ?>" rel="stylesheet" />
+	<script type="text/javascript" src="<?php echo base_url('static/js/jquery-1.8.2.min.js'); ?>"></script>
 </head>
 <body>
+
+<?php if ($allow_update) { ?>
 <div id="subNavWrap">
 	<div id="subNav">
 		<h1>Resume Saya</h1>
@@ -20,6 +26,7 @@
 		<h2>|<a href="<?php echo $seeker['seeker_no_pdf']; ?>">Simpan Resume Sebagai Pdf (.pdf)</a></h2>
 	</div>
 </div>
+<?php } ?>
 
 <div id="contentWrap">
 	<div id="content"><div id="pageContent" style="width:100%; margin:0px">
@@ -28,6 +35,7 @@
             <div class="colLeft" style="width:70%"><span id="logoPrint" style="display:none"><img src="resume_files/js-logo.gif"></span>&nbsp;</div>
             <div class="colRight" style="width:27%" id="print"><a style="cursor: pointer;" onclick="javascript: window.print();">Cetak resume</a></div>
 		</div>
+		
         <div class="formSection">
             <div class="pageRow">&nbsp;</div>            
             <div class="pageRow">
@@ -80,222 +88,143 @@
 		<tr><td valign="top">&nbsp;</td></tr>
 	</tbody></table>
   </td>
-</tr><tr class="TRHeader">
-  <td colspan="6" class="ResumeHdr" valign="top">
-    <b>Latar belakang pendidikan</b>
-  </td>
-</tr><tr>
-  <td colspan="6" class="tdRight" valign="top">
-    <div style="float:left;">
-      <b>Sarjana S1 - Field Bidang Studi</b>
-    </div>
-    <div style="float:right;text-align:right;font-size:10px;font-family:verdana;">
-                        Tanggal Kelulusan: 
-    					Sep&nbsp;
-                                        2010</div>
-  </td>
-</tr><tr>
-  <td valign="top" width="23%">Jurusan </td>
-  <td valign="top">:</td>
-  <td colspan="4" class="tdRight" valign="top">Teknik Informatika</td>
-</tr><tr>
-  <td valign="top" width="23%">Institusi / Universitas</td>
-  <td valign="top">:</td>
-  <td colspan="4" class="tdRight" valign="top">Stiki, 
-    					Indonesia</td>
-</tr><tr>
-  <td valign="top" width="23%">CGPA</td>
-  <td valign="top">:</td>
-  <td valign="top">3/4</td>
-</tr><tr>
-  <td colspan="6" valign="top">&nbsp;</td>
-</tr><tr>
-  <td colspan="6" class="tdRight" valign="top">
-    <div style="float:left;">
-      <b>(D3) Diploma of 
-        				Jurnalisme</b>
-    </div>
-    <div style="float:right;text-align:right;font-size:10px;font-family:verdana;">
-                        Tanggal Kelulusan: 
-    					Aug&nbsp;
-                                        2006</div>
-  </td>
-</tr><tr>
-  <td valign="top" width="23%">Jurusan </td>
-  <td valign="top">:</td>
-  <td colspan="4" class="tdRight" valign="top">fsdfsd</td>
-</tr><tr>
-  <td valign="top" width="23%">Institusi / Universitas</td>
-  <td valign="top">:</td>
-  <td colspan="4" class="tdRight" valign="top">fdsfsdfds, 
-    					Indonesia</td>
-</tr><tr>
-  <td valign="top" width="23%">CGPA</td>
-  <td valign="top">:</td>
-  <td valign="top">1/2</td>
-</tr><tr>
-  <td colspan="6" valign="top">&nbsp;</td>
 </tr>
 
-<tr class="TRHeader">
-  <td colspan="6" class="ResumeHdr" valign="top"><b>Keahlian / Ketrampilan</b></td>
-</tr><tr>
-  <td colspan="6" valign="top">
-
-DISINI TAMPILKAN DAFTAR KETRAMPILAN YANG DI ENTRY  DAN Tampilkan Ketrampilan dalam bentuk LIST
-  
-  </td>
-</tr>
-
+<?php if (count($array_pendidikan) > 0) { ?>
+<tr class="TRHeader"><td colspan="6" class="ResumeHdr" valign="top"><b>Latar belakang pendidikan</b></td></tr>
+<?php foreach ($array_pendidikan as $item) { ?>
 <tr>
-  <td colspan="6" valign="top">&nbsp; </td>
+	<td colspan="6" class="tdRight" valign="top">
+		<div style="float:left; font-weight: bold;"><?php echo $item['jenjang_nama'].' - '.$item['bidang_studi']; ?></div>
+		<div style="float:right; text-align:right; font-size:10px; font-family:verdana;">Tanggal Kelulusan: <?php echo GetFormatDate($item['tgl_lulus'], array( 'FormatDate' => 'M Y' )); ?></div>
+	</td>
 </tr>
+<tr>
+	<td valign="top" width="23%">Jurusan</td>
+	<td valign="top">:</td>
+	<td colspan="4" class="tdRight" valign="top"><?php echo $item['jurusan']; ?></td></tr>
+<tr>
+	<td valign="top" width="23%">Institusi / Universitas</td>
+	<td valign="top">:</td>
+	<td colspan="4" class="tdRight" valign="top"><?php echo $item['nama_sekolah']; ?></td></tr>
+<tr>
+	<td valign="top" width="23%">CGPA</td>
+	<td valign="top">:</td>
+	<td valign="top"><?php echo $item['score']; ?></td></tr>
+<tr><td colspan="6" valign="top">&nbsp;</td></tr>
+<?php } ?>
+<?php } ?>
 
-<tr class="TRHeader">
-  <td colspan="6" class="ResumeHdr" valign="top"><b>Penguasaan Bahasa</b></td>
-</tr><tr>
-  <td colspan="6" valign="top">
-    <table cellpadding="2" cellspacing="0" width="100%">
-      <tbody><tr>
-        <td valign="top" width="33%">
-          <b>Bahasa</b>
-        </td>
-        <td align="center" valign="top" width="20%">
-          <b>Lisan</b>
-        </td>
-        <td align="center" valign="top">
-          <b>Tertulis</b>
-        </td>
+<tr class="TRHeader"><td colspan="6" class="ResumeHdr" valign="top"><b>Keahlian / Ketrampilan</b></td></tr>
+<tr>
+	<td colspan="6" valign="top">
+	DISINI TAMPILKAN DAFTAR KETRAMPILAN YANG DI ENTRY  DAN Tampilkan Ketrampilan dalam bentuk LIST
+	</td>
+</tr>
+<tr><td colspan="6" valign="top">&nbsp;</td></tr>
+
+<?php if (count($array_language) > 0) { ?>
+<tr class="TRHeader"><td colspan="6" class="ResumeHdr" valign="top"><b>Penguasaan Bahasa</b></td></tr>
+<tr><td colspan="6" valign="top">
+    <table cellpadding="2" cellspacing="0" width="100%"><tbody>
+	<tr>
+        <td valign="top" width="33%"><b>Bahasa</b></td>
+        <td align="center" valign="top" width="20%"><b>Lisan</b></td>
+		<td align="center" valign="top"><b>Tertulis</b></td></tr>
+	<?php foreach ($array_language as $bahasa) { ?>
+	<tr>
+		<td valign="top"><?php echo $bahasa['nama']; ?></td>
+        <td align="center" valign="top"><?php echo $bahasa['lisan']; ?></td>
+        <td align="center" valign="top"><?php echo $bahasa['tulis']; ?></td>
       </tr>
-      <tr>
-        <td valign="top">Bahasa Inggris</td>
-        <td align="center" valign="top">Pasif</td>
-        <td align="center" valign="top">Pasif</td>
-      </tr>
+	<?php } ?>
     </tbody></table>
-  </td>
-</tr><tr>
-  <td colspan="6" valign="top">&nbsp; </td>
-</tr><tr class="TRHeader">
-  <td colspan="6" class="ResumeHdr" valign="top">
-    <b>Pengalaman Kerja</b>
-  </td>
-</tr><tr>
-  <td valign="top" width="23%">Tingkat Pengalaman</td>
-  <td valign="top">:</td>
-  <td colspan="4" valign="top">Lulusan Baru</td>
-</tr><tr>
-  <td colspan="6" valign="top">&nbsp; </td>
-</tr>
-<tr class="TRHeader">
-  <td colspan="6" class="ResumeHdr" valign="top">
-    <b>Info Tambahan</b>
-  </td>
-</tr>
+</td></tr>
+<tr><td colspan="6" valign="top">&nbsp;</td></tr>
+<?php } ?>
+
+<tr class="TRHeader"><td colspan="6" class="ResumeHdr" valign="top"><b>Pengalaman Kerja</b></td></tr>
 <tr>
-  <td colspan="6" class="tdRight" valign="top">Saya yang bertandatangan dibawah ini :<br><br>Nama         <br>	<br>: Agus Darwanto, SE<br>Tempat, Tanggal Lahir <br>	<br>: Jakarta, 8 Mei 1980<br>Alamat  <br>	<br>: Petamburan RT. 02/09, Tn. Abang, Jakarta<br>No. Telp/HP<br>	<br>: 0812 987654321<br>Pendidikan terakhir<br>	<br>: S1 Akuntansi<br>Dengan ini mengajukan surat permohonan untuk bekerja di perusahaan Bapak/Ibu sebagai Accounting Manager.<br><br>Saat
- ini saya memiliki pendidikan Strata 1 yang memiliki korelasi dengan 
+	<td valign="top" width="23%">Tingkat Pengalaman</td>
+	<td valign="top">:</td>
+	<td colspan="4" valign="top">Lulusan Baru</td></tr>
+<tr><td colspan="6" valign="top">&nbsp;</td></tr>
 
-tes seleksi dan wawancara.<br><br>Demikian, atas perhatian dan kerjasamanya diucapkan terima kasih.			</td>
-</tr>
+<?php if (!empty($seeker_addon['text_clean'])) { ?>
+<tr class="TRHeader"><td colspan="6" class="ResumeHdr" valign="top"><b>Info Tambahan</b></td></tr>
+<tr><td colspan="6" class="tdRight" valign="top"><?php echo $seeker_addon['content']; ?></td></tr>
+<tr><td colspan="6" valign="top">&nbsp;</td></tr>
+<?php } ?>
+
+<?php if (count($array_reference) > 0) { ?>
+<tr class="TRHeader"><td colspan="6" class="ResumeHdr" valign="top"><b>Referensi</b></td></tr>
+<?php foreach ($array_reference as $item) { ?>
+<tr><td colspan="6" class="tdRight" valign="top"><?php echo $item['nama'].' : '.$item['content']; ?></td></tr>
+<?php } ?>
+<tr><td colspan="6" valign="top">&nbsp;</td></tr>
+<?php } ?>
+
+<?php if ($allow_update) { ?>
 <tr>
-  <td colspan="6" valign="top">&nbsp; </td>
-</tr>
-<tr class="TRHeader">
-  <td colspan="6" class="ResumeHdr" valign="top">
-    <b>Referensi</b>
-  </td>
-</tr><tr>
-  <td colspan="6" class="tdRight" valign="top">
-Saya mendapatkan mandat dari pak presiden untuk menjadi direktur di tempat anda
-  </td>
-</tr><tr>
-  <td colspan="6" valign="top">&nbsp; </td>
-</tr>
-<tr>
-  <td colspan="6" valign="top">&nbsp; </td>
-</tr><tr>
-  <td colspan="6" valign="top">&nbsp; </td>
-</tr>
-<tr>
-  <td colspan="6">
-    <hr><table border="0" width="100%">
-      <tbody>
+	<td colspan="6"><hr />
+		<table border="0" width="100%"><tbody>
+		<tr><td style="font-type:Arial;font-size:14px" valign="top"><b>Ringkasan Resume (Bagian ini tidak akan di tampilkan untuk Perusahaan)</b></td></tr>
+		<tr><td valign="top">
+			<table border="0" width="100%"><tbody>
+				<tr>
+					<td valign="top" width="25%"> Pendidikan Terakhir</td>
+					<td valign="top">:</td>
+					<td class="tdRight" valign="top"><?php echo $seeker_summary['jenjang_nama']; ?></td></tr>
+				<tr>
+					<td valign="top" width="25%">Pendidikan Tertinggi</td>
+					<td valign="top">:</td>
+					<td class="tdRight" valign="top"><?php echo $seeker_summary['school']; ?></td></tr>
+				<tr>
+					<td valign="top" width="25%">Nilai / IPK Terakhir</td>
+					<td valign="top">:</td>
+					<td class="tdRight" valign="top"><?php echo $seeker_summary['score']; ?></td></tr>
+				<tr>
+					<td valign="top" width="25%">Tempat Dan Penglaman Terakhir</td>
+					<td valign="top">:</td>
+					<td class="tdRight" valign="top"><?php echo $seeker_summary['experience']; ?></td></tr>
+			</tbody></table>
+		</td></tr>
+		<tr><td valign="top">&nbsp;</td></tr>
+		</tbody></table>
+	</td></tr>
+<?php } ?>
+</tbody></table>
 
 
-
-	  
-	  
-      <tr>
-        <td style="font-type:Arial;font-size:14px" valign="top">
-          <b>Ringkasan Resume (Bagian ini tidak akan di tampilkan untuk Perusahaan)</b>
-        </td>
-      </tr>
-      <tr>
-        <td valign="top">
-          <table border="0" width="100%">
-            <tbody>
-            <tr>
-              <td valign="top" width="25%"> Pendidikan Terakhir</td>
-              <td valign="top">:</td>
-              <td class="tdRight" valign="top">Sarjana S1</td>
-            </tr>
-			<tr>
-              <td valign="top" width="25%">Pendidikan Tertinggi</td>
-              <td valign="top">:</td>
-              <td class="tdRight" valign="top">Sekolah Tinggil Ilmu Komputer - Malang</td>
-            </tr>
-            <tr>
-              <td valign="top" width="25%">Nilai / IPK Terakhir</td>
-              <td valign="top">:</td>
-              <td class="tdRight" valign="top">4.0</td>
-            </tr>
-            <tr>
-              <td valign="top" width="25%">Tempat Dan Penglaman Terakhir</td>
-              <td valign="top">:</td>
-              <td class="tdRight" valign="top">PT Arahan Mandiri sebagai direktur Utama</td>
-            </tr>
-		
-          </tbody></table>
-        </td>
-      </tr>
-      <tr>
-        <td valign="top">&nbsp;</td>
-      </tr>
-    </tbody></table>
-  </td>
-</tr>
-
-
-                    </tbody></table>
                 </div>
             </div>
         </div>
         <div id="pageRow">&nbsp;</div>
-        <div id="pageRow"><div class="colFRight">[<a href="#">Kembali ke atas</a>]</div></div>
+        <div id="pageRow"><div class="colFRight">[<a href="#" class="to-top">Kembali ke atas</a>]</div></div>
         <div id="pageRow">&nbsp;</div>
-    </div>
-<!--</form>-->
-
-
-    	<div class="clear"></div>
-	</div>	
-</div> 
+		<div class="clear"></div>
+    </div></div>
+</div>
 <div id="footer"> 
 	<div id="footer2Wrap">
-			<div class="horizontol_grey"></div>
-			<div id="term">
-			    <a href="#">Tentang Kami</a>
-				<a href="#">Bantuan</a>
-  </div>
-			<div class="clear"></div>
-			<div id="copyright">
-				Hak Cipta ©&nbsp;2013&nbsp;parapekerja.com
-
-							</div>
+		<div class="horizontol_grey"></div>
+		<div id="term">
+			<a href="#">Tentang Kami</a>
+			<a href="#">Bantuan</a>
+		</div>
+		<div class="clear"></div>
+		<div id="copyright">Hak Cipta &#169; <?php echo date("Y"); ?> parapekerja.com</div>
 	</div>
 </div>
-        
+
+<script>
+$(document).ready(function() {
+	$('.to-top').click(function(){
+		$('html, body').animate({scrollTop:0}, 'slow');
+		return false;
+	});
+});
+</script>
 
 </body>
 </html>

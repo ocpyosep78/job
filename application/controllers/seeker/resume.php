@@ -25,7 +25,7 @@ class resume extends SEEKER_Controller {
 			$array = $this->Seeker_Education_model->get_array($_POST);
 			$count = $this->Seeker_Education_model->get_count();
 		} else if ($grid_name == 'seeker_exp') {
-			$_POST['column'] = array( 'nama', 'date_start', 'date_end' );
+			$_POST['column'] = array( 'content' );
 			$array = $this->Seeker_Exp_model->get_array($_POST);
 			$count = $this->Seeker_Exp_model->get_count();
 		} else if ($grid_name == 'seeker_language') {

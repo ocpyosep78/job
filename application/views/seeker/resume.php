@@ -111,16 +111,16 @@
 					
 					<div class="modal-body">
 						<div class="control-group">
-							<label for="input-nama" class="control-label">Nama</label>
-							<div class="controls"><input type="text" name="nama" id="input-nama" class="input-xlarge" data-rule-required="true" /></div>
+							<label for="input-nama" class="control-label" style="width: 175px;">Tingkat Pengalaman</label>
+							<div class="controls" style="margin-left: 175px;">
+								<label class="radio"><input type="radio" name="exp_level" value="1" /> Saya baru lulus dan sedang mencari pekerjaan pertama saya</label>
+								<label class="radio"><input type="radio" name="exp_level" value="2" /> Saya adalah seorang mahasiswa yang mencari pekerjaan magang atau paruh waktu</label>
+								<label class="radio"><input type="radio" name="exp_level" value="3" /> Riwayat pengalaman kerja saya</label>
+							</div>
 						</div>
 						<div class="control-group">
-							<label for="input-date_start" class="control-label">Tanggal Mulai</label>
-							<div class="controls"><input type="text" name="date_start" id="input-date_start" class="input-medium datepick" /></div>
-						</div>
-						<div class="control-group">
-							<label for="input-date_end" class="control-label">Tanggal Mulai</label>
-							<div class="controls"><input type="text" name="date_end" id="input-date_end" class="input-medium datepick" /></div>
+							<label for="input-content_3" class="control-label">Tugas Kerja</label>
+							<div class="controls" style="margin-left: 175px;"><textarea name="content" id="input-content_3" class="tinymce"></textarea></div>
 						</div>
 					</div>
 				</form>
@@ -211,7 +211,7 @@
 						</div>
 						<div class="control-group">
 							<label for="input-content_1" class="control-label">Content</label>
-							<div class="controls"><textarea name="content" id="input-content_1" class="tinymce span9"></textarea></div>
+							<div class="controls"><textarea name="content" id="input-content_1" class="span9"></textarea></div>
 						</div>
 					</div>
 				</form>
@@ -268,8 +268,8 @@
 					<div style="padding: 0 0 10px 0;">Status resume : <strong><?php echo $seeker_resume['message']; ?></strong></div>
 					<?php if ($seeker_resume['is_pass']) { ?>
 						<div>Link Resume Online Anda :</div>
-						<div>Nama Pelamar : <a href="<?php echo $seeker['seeker_link']; ?>"><?php echo $seeker['seeker_link']; ?></a></div>
 						<div>No Pelamar : <a href="<?php echo $seeker['seeker_no_link']; ?>"><?php echo $seeker['seeker_no_link']; ?></a></div>
+						<div>Nama Pelamar : <a href="<?php echo $seeker['seeker_link']; ?>"><?php echo $seeker['seeker_link']; ?></a></div>
 					<?php } ?>
 				</div>
 			</div>
@@ -453,9 +453,7 @@
 				<div class="box-content">
 					<table id="cnt-grid-exp" class="table table-striped table-bordered">
 						<thead><tr>
-							<th>Nama</th>
-							<th>Tanggal Mulai</th>
-							<th>Tanggal Selesai</th>
+							<th>Keterangan</th>
 							<th style="width: 75px;">&nbsp;</th>
 						</tr></thead>
 						<tbody><tr><td class="dataTables_empty">Loading data from server</td></tr></tbody>
@@ -751,7 +749,7 @@ $( document ).ready(function() {
 			var param = {
 				id: 'cnt-grid-exp',
 				source: web.host + 'seeker/resume/grid',
-				column: [ { }, { }, { }, { bSortable: false, sClass: "center" } ],
+				column: [ { }, { bSortable: false, sClass: "center" } ],
 				fnServerParams: function ( aoData ) {
 					aoData.push( { "name": "grid_name", "value": "seeker_exp" }, { "name": "seeker_id", "value": seeker.id } );
 				},
@@ -760,10 +758,18 @@ $( document ).ready(function() {
 						var raw_record = $(this).siblings('.hide').text();
 						eval('var record = ' + raw_record);
 						
+						// set valid data
+						if (Func.InArray(record.exp_level, [1, 2])) {
+							record.content = '';
+						}
+						
+						a = record;
+						record = a;
+						console.log(record)
+						
 						$('#modal-exp [name="id"]').val(record.id);
-						$('#modal-exp [name="nama"]').val(record.nama);
-						$('#modal-exp [name="date_start"]').val(Func.SwapDate(record.date_start));
-						$('#modal-exp [name="date_end"]').val(Func.SwapDate(record.date_end));
+						$('#modal-exp [name="content"]').val(record.content);
+						$('#modal-exp [name="exp_level"][value=' + record.exp_level + ']').attr('checked', 'checked');
 						$('#modal-exp').modal();
 					});
 					
@@ -794,8 +800,11 @@ $( document ).ready(function() {
 				
 				var param = Site.Form.GetValue('modal-exp form');
 				param.action = 'update_seeker_exp';
-				param.date_start = Func.SwapDate(param.date_start);
-				param.date_end = Func.SwapDate(param.date_end);
+				param.exp_level = $('#modal-exp input[name=exp_level]:checked').val();
+				if (Func.InArray(param.exp_level, [1, 2])) {
+					param.content = $('#modal-exp input[name=exp_level]:checked').parent('label').text().trim();
+				}
+				
 				Func.ajax({ url: web.host + 'seeker/resume/action', param: param, callback: function(result) {
 					Func.show_notice({ text: result.message });
 					if (result.status == 1) {
@@ -918,6 +927,7 @@ $( document ).ready(function() {
 						
 						$('#modal-reference [name="id"]').val(record.id);
 						$('#modal-reference [name="nama"]').val(record.nama);
+						$('#modal-reference [name="content"]').val(record.content);
 						$('#modal-reference').modal();
 					});
 					

@@ -4,7 +4,7 @@ class Seeker_Exp_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array('id', 'seeker_id', 'nama', 'date_start', 'date_end');
+        $this->field = array('id', 'seeker_id', 'exp_level', 'content');
     }
 
     function update($param) {
@@ -48,7 +48,7 @@ class Seeker_Exp_model extends CI_Model {
         $array = array();
 		
 		$string_filter = GetStringFilter($param, @$param['column']);
-		$string_sorting = GetStringSorting($param, @$param['column'], 'date_start ASC');
+		$string_sorting = GetStringSorting($param, @$param['column'], 'content ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
