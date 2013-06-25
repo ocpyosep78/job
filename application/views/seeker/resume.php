@@ -763,13 +763,9 @@ $( document ).ready(function() {
 							record.content = '';
 						}
 						
-						a = record;
-						record = a;
-						console.log(record)
-						
 						$('#modal-exp [name="id"]').val(record.id);
 						$('#modal-exp [name="content"]').val(record.content);
-						$('#modal-exp [name="exp_level"][value=' + record.exp_level + ']').attr('checked', 'checked');
+						$('#modal-exp [name="exp_level"][value="' + record.exp_level + '"]').attr('checked', 'checked');
 						$('#modal-exp').modal();
 					});
 					
@@ -789,6 +785,7 @@ $( document ).ready(function() {
 				$('#modal-exp form')[0].reset()
 				$('#modal-exp [name="id"]').val(0);
 				$('#modal-exp [name="seeker_id"]').val(seeker.id);
+				$('#modal-exp [name="exp_level"][value="1"]').attr('checked', false);
 				$('#modal-exp').modal();
 			});
 			$('#modal-exp .modal-footer .modal-close').click(function() { $('#modal-exp').modal('hide'); });
