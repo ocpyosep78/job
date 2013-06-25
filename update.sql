@@ -20,3 +20,8 @@ ALTER TABLE `company` ADD `vacancy_count_left` INT NOT NULL , ADD `membership_da
 2013-06-24 :
 ALTER TABLE  `seeker` ADD  `validation` VARCHAR( 255 ) NOT NULL, ADD  `is_active` INT NOT NULL;
 ALTER TABLE  `company` ADD  `validation` VARCHAR( 255 ) NOT NULL, ADD  `is_active` INT NOT NULL;
+
+-- done --
+
+2013-06-25 :
+CREATE TABLE `job_db`.`news` ( `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY , `nama` VARCHAR( 255 ) NOT NULL , `content` LONGTEXT NOT NULL ) ENGINE = MYISAM ;

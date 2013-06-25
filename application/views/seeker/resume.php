@@ -1,14 +1,7 @@
 <?php
-	if (!empty($seeker_no)) {
-		$seeker = $this->Seeker_model->get_by_id(array( 'seeker_no' => $seeker_no ));
-		$seeker['is_readonly'] = true;
-	} else {
-		$this->Seeker_model->login_required();
-		
-		$seeker = $this->Seeker_model->get_session();
-		$seeker['is_readonly'] = false;
-	}
+	$seeker = $this->Seeker_model->get_session();
 	
+	$news_seeker = $this->News_model->get_seeker();
 	$seeker_resume = $this->Seeker_model->get_resume(array( 'id' => $seeker['id'] ));
 	$seeker_summary = $this->Seeker_Summary_model->get_by_id(array( 'seeker_id' => $seeker['id'] ));
 	$array_jenjang = $this->Jenjang_model->get_array();
@@ -265,7 +258,20 @@
 			</div>
 			
 			<div class="row-fluid margin-top">
-				<div class="alert alert-info">Status resume : <strong><?php echo $seeker_resume['message']; ?></strong></div>
+				<?php if (!empty($news_seeker)) { ?>
+				<div class="alert alert-success">
+					<strong>News</strong> : <?php echo $news_seeker; ?>
+				</div>
+				<?php } ?>
+				
+				<div class="alert alert-info">
+					<div style="padding: 0 0 10px 0;">Status resume : <strong><?php echo $seeker_resume['message']; ?></strong></div>
+					<?php if ($seeker_resume['is_pass']) { ?>
+						<div>Link Resume Online Anda :</div>
+						<div>Nama Pelamar : <a href="<?php echo $seeker['seeker_link']; ?>"><?php echo $seeker['seeker_link']; ?></a></div>
+						<div>No Pelamar : <a href="<?php echo $seeker['seeker_no_link']; ?>"><?php echo $seeker['seeker_no_link']; ?></a></div>
+					<?php } ?>
+				</div>
 			</div>
 			
 			<div class="box box-color box-bordered teal">
@@ -560,12 +566,6 @@ $( document ).ready(function() {
 			$('#form-summary [name="score"]').val(summary.score);
 			$('#form-summary [name="school"]').val(summary.school);
 			$('#form-summary [name="experience"]').val(summary.experience);
-			
-			// set readonly for company
-			if (seeker.is_readonly) {
-				$('.actions').remove();
-				setInterval(function(){ $('.button-cursor').parent('td').html('&nbsp;'); }, 100);
-			}
 			
 			// form resume
 			$('#form-resume .btn-upload').click(function() { window.iframe_seeker_resume.browse() });

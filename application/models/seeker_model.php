@@ -14,6 +14,9 @@ class Seeker_model extends CI_Model {
     function update($param) {
         $result = array();
        
+		// set default data
+		$param['last_update'] = $this->config->item('current_datetime');
+	   
         if (empty($param['id'])) {
             $insert_query  = GenerateInsertQuery($this->field, $param, SEEKER);
             $insert_result = mysql_query($insert_query) or die(mysql_error());
@@ -44,13 +47,14 @@ class Seeker_model extends CI_Model {
        
         if (isset($param['id'])) {
             $select_query  = "
-				SELECT Seeker.*, Kota.nama kota_nama, Propinsi.id propinsi_id, Propinsi.nama propinsi_nama,
+				SELECT Seeker.*, Kota.nama kota_nama, Propinsi.id propinsi_id, Propinsi.nama propinsi_nama, Negara.nama negara_nama,
 					Kelamin.nama kelamin_nama, Marital.nama marital_nama
 				FROM ".SEEKER." Seeker
 				LEFT JOIN ".MARITAL." Marital ON Marital.id = Seeker.marital_id
 				LEFT JOIN ".KELAMIN." Kelamin ON Kelamin.id = Seeker.kelamin_id
 				LEFT JOIN ".KOTA." Kota ON Kota.id = Seeker.kota_id
 				LEFT JOIN ".PROPINSI." Propinsi ON Propinsi.id = Kota.propinsi_id
+				LEFT JOIN ".NEGARA." Negara ON Negara.id = Propinsi.negara_id
 				WHERE Seeker.id = '".$param['id']."'
 				LIMIT 1
 			";
@@ -217,9 +221,14 @@ class Seeker_model extends CI_Model {
 			$row['full_name'] = trim($row['first_name'].' '.$row['last_name']);
 		}
 		
+		// link
 		$row['seeker_link'] = base_url();
 		if (!empty($row['alias'])) {
-			$row['seeker_link'] = base_url('seeker/view/index/'.$row['alias']);
+			$row['seeker_link'] = base_url('seeker/publish/index/'.$row['alias']);
+		}
+		if (!empty($row['seeker_no'])) {
+			$row['seeker_no_link'] = base_url('seeker/publish/index/'.$row['seeker_no']);
+			$row['seeker_no_pdf'] = base_url('seeker/publish/convert/'.$row['seeker_no']);
 		}
 		
 		$row['photo_link'] = base_url('static/img/no-images.jpg');

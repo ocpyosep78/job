@@ -45,6 +45,8 @@ define('KELAMIN',								'kelamin');
 define('KOTA',									'kota');
 define('MARITAL',								'marital');
 define('MEMBERSHIP',							'membership');
+define('NEGARA',								'negara');
+define('NEWS',									'news');
 define('PENGALAMAN',							'pengalaman');
 define('POSITION',								'position');
 define('PROPINSI',								'propinsi');

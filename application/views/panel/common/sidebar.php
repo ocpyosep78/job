@@ -40,6 +40,7 @@
 			<li><a href="<?php echo base_url('editor/widget'); ?>">Widget</a></li>
 			<li><a href="<?php echo base_url('editor/seeker'); ?>">Pelamar</a></li>
 			<li><a href="<?php echo base_url('editor/company'); ?>">Perusahaan</a></li>
+			<li><a href="<?php echo base_url('editor/news'); ?>">News</a></li>
 			<li><a href="<?php echo base_url('editor/editor'); ?>">Editor</a></li>
 			<li><a href="<?php echo base_url('editor/report'); ?>">Report</a></li>
 		</ul>
