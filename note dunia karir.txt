@@ -6,38 +6,41 @@ cek => Yang register (Seeker & Perusahaan) => Harus pakai validasi email
 SEEKER
 
 Dashboard
-- News Dari Admin
-- Link Profile dia (pakai alias atau no pelamar)
-- Pengalaman Kerja dibuat seperti : http://www.duniadb.com/duniakarir/jika%20pengalaman%20kerja%20di%20rubah.png
-- Hanya file dengan format doc, docx atau pdf yang dapat diupload : ini sudah di batasi nga besar filenya => ukuran file maksimal 250 KB
+cek => - News Dari Admin
+cek => - Link Profile dia (pakai alias atau no pelamar)
+cek => - Pengalaman Kerja dibuat seperti : http://www.duniadb.com/duniakarir/jika%20pengalaman%20kerja%20di%20rubah.png
+cek => - Hanya file dengan format doc, docx atau pdf yang dapat diupload : ini sudah di batasi nga besar filenya => ukuran file maksimal 250 KB
 
 Edit Profile
-- untuk ganti password fielnya nga ada , karena saya sudah coba reset pass, tapi untuk ganti lagi nga bisa
+cek => - Tambah input untuk ganti password
 
 Surat Lamaran
-- judul surat kasih 50 karakter karena itu masih kurang panjang.. => maxlength nya dijadikan 50 karakter
+cek => - judul surat kasih 50 karakter karena itu masih kurang panjang.. => maxlength nya dijadikan 50 karakter
 
 Kirim Lamaran
-- setelah tekan submit diarahkan ke halaman dashboard 
+cek => - setelah tekan submit diarahkan ke halaman dashboard 
 
 Review Seeker
-- 1 page seperti =>  http://parapekerja.com/resume/resume.htm
+cek => - 1 page seperti =>  http://parapekerja.com/resume/resume.htm
 
 Review Seeker versi Public
-- Menu atas dihilangkan
-- Ringkasan Resume di hilangkan
+cek => - Menu atas dihilangkan
+cek => - Ringkasan Resume di hilangkan
+
+Update Link Dari :
+cek => - Kirim Lamaran
+nok => - Company Admin
 
 ------------------------------------------------------------------------------------------------
 PERUSAHAAN
 
-dashboard :
+Dashboard :
+- Tambah News
 
 Paket Keanggotaan Anda saat ini: Free.
 Anda saat ini memiliki 10 kredit iklan lowongan.
 Jumlah lowongan yang aktif diiklankan saat ini: 0
 Paket Keanggotaan Anda saat ini berakhir pada: 04/25/2013
-
-dan tampilkan div news from admin
 
 http://www.parapekerja.com/company/search (opsi = Download Resume | View Resume Public | Send Message) dan tabelnya sama dengan tabel downlaod
  yang pertama field di tabelnya mirip http://parapekerja.com/company/download/index/5
@@ -71,3 +74,27 @@ herry: ok mas
 herry: sepertinya sudah ada default nya koq
 Ridwan Amir: kalo aku nga isi.. divnya tampil blank..
 Ridwan Amir: jadi keliatan gimana gitu..
+
+
+C:\Program Files\xampplite\htdocs\job\trunk
+C:\Program Files\xampplite\htdocs\job\trunk\application\config\autoload.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\config\constants.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\news.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\seeker\publish.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\seeker\resume.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\models\news_model.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\models\seeker_addon_model.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\models\seeker_education_model.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\models\seeker_exp_model.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\models\seeker_language_model.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\models\seeker_model.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\news.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\views\panel\common\sidebar.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\views\seeker\publish.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\views\seeker\resume.php
+C:\Program Files\xampplite\htdocs\job\trunk\static\css\resume.css
+C:\Program Files\xampplite\htdocs\job\trunk\update.sql
+
+
+Tambahan :
+Cetak PDF Halaman : http://parapekerja.com/resume/resume.htm

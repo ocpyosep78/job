@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 21, 2013 at 12:07 PM
--- Server version: 5.1.41
--- PHP Version: 5.3.1
+-- Waktu pembuatan: 26. Juni 2013 jam 09:13
+-- Versi Server: 5.1.41
+-- Versi PHP: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -22,7 +22,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `apply`
+-- Struktur dari tabel `apply`
 --
 
 CREATE TABLE IF NOT EXISTS `apply` (
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `apply` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `apply`
+-- Dumping data untuk tabel `apply`
 --
 
 INSERT INTO `apply` (`id`, `seeker_id`, `vacancy_id`, `apply_status_id`, `apply_date`, `is_delete`, `addtional_info`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `apply` (`id`, `seeker_id`, `vacancy_id`, `apply_status_id`, `apply_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `apply_status`
+-- Struktur dari tabel `apply_status`
 --
 
 CREATE TABLE IF NOT EXISTS `apply_status` (
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `apply_status` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `apply_status`
+-- Dumping data untuk tabel `apply_status`
 --
 
 INSERT INTO `apply_status` (`id`, `nama`) VALUES
@@ -72,7 +72,7 @@ INSERT INTO `apply_status` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article`
+-- Struktur dari tabel `article`
 --
 
 CREATE TABLE IF NOT EXISTS `article` (
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `article` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `article`
+-- Dumping data untuk tabel `article`
 --
 
 INSERT INTO `article` (`id`, `editor_id`, `subkategori_id`, `article_status_id`, `nama`, `alias`, `photo`, `article_url`, `article_desc_1`, `article_desc_2`, `article_desc_3`, `image_piracy`, `publish_date`) VALUES
@@ -104,7 +104,7 @@ INSERT INTO `article` (`id`, `editor_id`, `subkategori_id`, `article_status_id`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article_status`
+-- Struktur dari tabel `article_status`
 --
 
 CREATE TABLE IF NOT EXISTS `article_status` (
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `article_status` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `article_status`
+-- Dumping data untuk tabel `article_status`
 --
 
 INSERT INTO `article_status` (`id`, `nama`) VALUES
@@ -124,7 +124,7 @@ INSERT INTO `article_status` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article_tag`
+-- Struktur dari tabel `article_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `article_tag` (
@@ -135,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `article_tag` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=107 ;
 
 --
--- Dumping data for table `article_tag`
+-- Dumping data untuk tabel `article_tag`
 --
 
 INSERT INTO `article_tag` (`id`, `article_id`, `tag_id`) VALUES
@@ -149,7 +149,7 @@ INSERT INTO `article_tag` (`id`, `article_id`, `tag_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bahasa`
+-- Struktur dari tabel `bahasa`
 --
 
 CREATE TABLE IF NOT EXISTS `bahasa` (
@@ -162,14 +162,14 @@ CREATE TABLE IF NOT EXISTS `bahasa` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `bahasa`
+-- Dumping data untuk tabel `bahasa`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `company`
+-- Struktur dari tabel `company`
 --
 
 CREATE TABLE IF NOT EXISTS `company` (
@@ -196,65 +196,67 @@ CREATE TABLE IF NOT EXISTS `company` (
   `reset` varchar(255) NOT NULL,
   `vacancy_count_left` int(11) NOT NULL,
   `membership_date` date NOT NULL,
+  `validation` varchar(255) NOT NULL,
+  `is_active` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=75 ;
 
 --
--- Dumping data for table `company`
+-- Dumping data untuk tabel `company`
 --
 
-INSERT INTO `company` (`id`, `kota_id`, `industri_id`, `nama`, `alias`, `phone`, `faximile`, `website`, `address`, `email`, `passwd`, `description`, `kodepos`, `sales`, `contact_name`, `contact_email`, `contact_no`, `logo`, `banner`, `google_map`, `reset`, `vacancy_count_left`, `membership_date`) VALUES
-(1, 1501, 1, 'PT Garuda Indonesa (Persero) Tbk', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'https://www.google.com/analytics/', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_105003_3676.png', '2013/06/21/20130621_112402_2259.jpg', 'http://goo.gl/maps/STM3U', '', 45, '2014-03-28'),
-(2, 1501, 1, 'PT Gudang Garam', 'PT-Gudang-Garam', '521477', 'A', 'B', 'Surabaya', 'her0satr1@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', 'Pabrik Garam', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_105750_6574.jpg', '2013/06/21/20130621_112319_6724.jpg', 'C', '', 0, '0000-00-00'),
-(3, 1501, 1, 'CV Mitra Desain', 'CV-Mitra-Desain', '521477', 'A', 'B', 'Malang', 'her0satr2@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', 'Perusahaan Website', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_111130_8108.jpg', '2013/06/21/20130621_111135_4526.jpg', 'C', '', 0, '0000-00-00'),
-(4, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(5, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(6, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(7, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(8, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(9, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(10, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(11, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(12, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(13, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(14, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(15, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(16, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(17, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(18, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(19, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(20, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(21, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(22, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(23, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(24, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(25, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(26, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(27, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(28, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(29, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(30, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(31, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(32, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(33, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(34, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(35, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(36, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(37, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(38, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(39, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(40, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(41, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(42, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(43, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(44, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(45, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00'),
-(74, 1560, 1, 'PT Baru Buka', 'PT-Baru-Buka', '521477', '', '', '', 'baru@baru.com', 'd0cccd72f00289035b8e25ff29100dee', 'PT yang baru buka ini belum punya description', '62584', '', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_113708_5653.jpg', '2013/06/21/20130621_113714_8267.jpg', '', '', 3, '2013-07-21');
+INSERT INTO `company` (`id`, `kota_id`, `industri_id`, `nama`, `alias`, `phone`, `faximile`, `website`, `address`, `email`, `passwd`, `description`, `kodepos`, `sales`, `contact_name`, `contact_email`, `contact_no`, `logo`, `banner`, `google_map`, `reset`, `vacancy_count_left`, `membership_date`, `validation`, `is_active`) VALUES
+(1, 1501, 1, 'PT Garuda Indonesa (Persero) Tbk', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'https://www.google.com/analytics/', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_105003_3676.png', '2013/06/21/20130621_112402_2259.jpg', 'http://goo.gl/maps/STM3U', '', 45, '2014-03-28', '', 0),
+(2, 1501, 1, 'PT Gudang Garam', 'PT-Gudang-Garam', '521477', 'A', 'B', 'Surabaya', 'her0satr1@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', 'Pabrik Garam', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_105750_6574.jpg', '2013/06/21/20130621_112319_6724.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(3, 1501, 1, 'CV Mitra Desain', 'CV-Mitra-Desain', '521477', 'A', 'B', 'Malang', 'her0satr2@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', 'Perusahaan Website', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_111130_8108.jpg', '2013/06/21/20130621_111135_4526.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(4, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(5, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(6, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(7, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(8, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(9, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(10, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(11, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(12, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(13, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(14, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(15, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(16, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(17, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(18, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(19, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(20, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(21, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(22, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(23, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(24, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(25, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(26, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(27, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(28, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(29, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(30, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(31, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(32, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(33, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(34, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(35, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(36, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(37, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(38, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(39, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(40, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(41, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(42, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(43, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(44, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(45, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
+(74, 1560, 1, 'PT Baru Buka', 'PT-Baru-Buka', '521477', '', '', '', 'baru@baru.com', 'd0cccd72f00289035b8e25ff29100dee', 'PT yang baru buka ini belum punya description', '62584', '', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_113708_5653.jpg', '2013/06/21/20130621_113714_8267.jpg', '', '', 3, '2013-07-21', '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `company_info`
+-- Struktur dari tabel `company_info`
 --
 
 CREATE TABLE IF NOT EXISTS `company_info` (
@@ -266,14 +268,14 @@ CREATE TABLE IF NOT EXISTS `company_info` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `company_info`
+-- Dumping data untuk tabel `company_info`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `company_membership`
+-- Struktur dari tabel `company_membership`
 --
 
 CREATE TABLE IF NOT EXISTS `company_membership` (
@@ -286,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `company_membership` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `company_membership`
+-- Dumping data untuk tabel `company_membership`
 --
 
 INSERT INTO `company_membership` (`id`, `company_id`, `membership_id`, `date_request`, `status`) VALUES
@@ -297,7 +299,7 @@ INSERT INTO `company_membership` (`id`, `company_id`, `membership_id`, `date_req
 -- --------------------------------------------------------
 
 --
--- Table structure for table `company_post`
+-- Struktur dari tabel `company_post`
 --
 
 CREATE TABLE IF NOT EXISTS `company_post` (
@@ -309,7 +311,7 @@ CREATE TABLE IF NOT EXISTS `company_post` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `company_post`
+-- Dumping data untuk tabel `company_post`
 --
 
 INSERT INTO `company_post` (`id`, `company_id`, `nama`, `content`) VALUES
@@ -318,7 +320,7 @@ INSERT INTO `company_post` (`id`, `company_id`, `nama`, `content`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editor`
+-- Struktur dari tabel `editor`
 --
 
 CREATE TABLE IF NOT EXISTS `editor` (
@@ -330,7 +332,7 @@ CREATE TABLE IF NOT EXISTS `editor` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `editor`
+-- Dumping data untuk tabel `editor`
 --
 
 INSERT INTO `editor` (`id`, `nama`, `email`, `passwd`) VALUES
@@ -340,7 +342,7 @@ INSERT INTO `editor` (`id`, `nama`, `email`, `passwd`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event`
+-- Struktur dari tabel `event`
 --
 
 CREATE TABLE IF NOT EXISTS `event` (
@@ -359,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `event` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `event`
+-- Dumping data untuk tabel `event`
 --
 
 INSERT INTO `event` (`id`, `editor_id`, `nama`, `alias`, `content`, `photo`, `photo_desc`, `lokasi`, `waktu`, `google_map`, `publish_date`) VALUES
@@ -373,7 +375,7 @@ INSERT INTO `event` (`id`, `editor_id`, `nama`, `alias`, `content`, `photo`, `ph
 -- --------------------------------------------------------
 
 --
--- Table structure for table `event_tag`
+-- Struktur dari tabel `event_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `event_tag` (
@@ -384,7 +386,7 @@ CREATE TABLE IF NOT EXISTS `event_tag` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `event_tag`
+-- Dumping data untuk tabel `event_tag`
 --
 
 INSERT INTO `event_tag` (`id`, `event_id`, `tag_id`) VALUES
@@ -395,7 +397,7 @@ INSERT INTO `event_tag` (`id`, `event_id`, `tag_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `industri`
+-- Struktur dari tabel `industri`
 --
 
 CREATE TABLE IF NOT EXISTS `industri` (
@@ -405,7 +407,7 @@ CREATE TABLE IF NOT EXISTS `industri` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `industri`
+-- Dumping data untuk tabel `industri`
 --
 
 INSERT INTO `industri` (`id`, `nama`) VALUES
@@ -417,7 +419,7 @@ INSERT INTO `industri` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis_pekerjaan`
+-- Struktur dari tabel `jenis_pekerjaan`
 --
 
 CREATE TABLE IF NOT EXISTS `jenis_pekerjaan` (
@@ -427,7 +429,7 @@ CREATE TABLE IF NOT EXISTS `jenis_pekerjaan` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `jenis_pekerjaan`
+-- Dumping data untuk tabel `jenis_pekerjaan`
 --
 
 INSERT INTO `jenis_pekerjaan` (`id`, `nama`) VALUES
@@ -438,7 +440,7 @@ INSERT INTO `jenis_pekerjaan` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis_subscribe`
+-- Struktur dari tabel `jenis_subscribe`
 --
 
 CREATE TABLE IF NOT EXISTS `jenis_subscribe` (
@@ -448,7 +450,7 @@ CREATE TABLE IF NOT EXISTS `jenis_subscribe` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `jenis_subscribe`
+-- Dumping data untuk tabel `jenis_subscribe`
 --
 
 INSERT INTO `jenis_subscribe` (`id`, `nama`) VALUES
@@ -459,7 +461,7 @@ INSERT INTO `jenis_subscribe` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenjang`
+-- Struktur dari tabel `jenjang`
 --
 
 CREATE TABLE IF NOT EXISTS `jenjang` (
@@ -469,7 +471,7 @@ CREATE TABLE IF NOT EXISTS `jenjang` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `jenjang`
+-- Dumping data untuk tabel `jenjang`
 --
 
 INSERT INTO `jenjang` (`id`, `nama`) VALUES
@@ -483,7 +485,7 @@ INSERT INTO `jenjang` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori`
+-- Struktur dari tabel `kategori`
 --
 
 CREATE TABLE IF NOT EXISTS `kategori` (
@@ -494,7 +496,7 @@ CREATE TABLE IF NOT EXISTS `kategori` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `kategori`
+-- Dumping data untuk tabel `kategori`
 --
 
 INSERT INTO `kategori` (`id`, `nama`, `alias`) VALUES
@@ -509,7 +511,7 @@ INSERT INTO `kategori` (`id`, `nama`, `alias`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori_tag`
+-- Struktur dari tabel `kategori_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `kategori_tag` (
@@ -520,7 +522,7 @@ CREATE TABLE IF NOT EXISTS `kategori_tag` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
 
 --
--- Dumping data for table `kategori_tag`
+-- Dumping data untuk tabel `kategori_tag`
 --
 
 INSERT INTO `kategori_tag` (`id`, `kategori_id`, `tag_id`) VALUES
@@ -535,7 +537,7 @@ INSERT INTO `kategori_tag` (`id`, `kategori_id`, `tag_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelamin`
+-- Struktur dari tabel `kelamin`
 --
 
 CREATE TABLE IF NOT EXISTS `kelamin` (
@@ -545,7 +547,7 @@ CREATE TABLE IF NOT EXISTS `kelamin` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `kelamin`
+-- Dumping data untuk tabel `kelamin`
 --
 
 INSERT INTO `kelamin` (`id`, `nama`) VALUES
@@ -555,7 +557,7 @@ INSERT INTO `kelamin` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kota`
+-- Struktur dari tabel `kota`
 --
 
 CREATE TABLE IF NOT EXISTS `kota` (
@@ -566,7 +568,7 @@ CREATE TABLE IF NOT EXISTS `kota` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4091 ;
 
 --
--- Dumping data for table `kota`
+-- Dumping data untuk tabel `kota`
 --
 
 INSERT INTO `kota` (`id`, `propinsi_id`, `nama`) VALUES
@@ -4665,7 +4667,7 @@ INSERT INTO `kota` (`id`, `propinsi_id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `marital`
+-- Struktur dari tabel `marital`
 --
 
 CREATE TABLE IF NOT EXISTS `marital` (
@@ -4675,7 +4677,7 @@ CREATE TABLE IF NOT EXISTS `marital` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `marital`
+-- Dumping data untuk tabel `marital`
 --
 
 INSERT INTO `marital` (`id`, `nama`) VALUES
@@ -4685,7 +4687,7 @@ INSERT INTO `marital` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `membership`
+-- Struktur dari tabel `membership`
 --
 
 CREATE TABLE IF NOT EXISTS `membership` (
@@ -4697,7 +4699,7 @@ CREATE TABLE IF NOT EXISTS `membership` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `membership`
+-- Dumping data untuk tabel `membership`
 --
 
 INSERT INTO `membership` (`id`, `date_count`, `post_count`, `price`) VALUES
@@ -4710,7 +4712,7 @@ INSERT INTO `membership` (`id`, `date_count`, `post_count`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `negara`
+-- Struktur dari tabel `negara`
 --
 
 CREATE TABLE IF NOT EXISTS `negara` (
@@ -4721,7 +4723,7 @@ CREATE TABLE IF NOT EXISTS `negara` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=240 ;
 
 --
--- Dumping data for table `negara`
+-- Dumping data untuk tabel `negara`
 --
 
 INSERT INTO `negara` (`id`, `kode`, `nama`) VALUES
@@ -4968,7 +4970,25 @@ INSERT INTO `negara` (`id`, `kode`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `page`
+-- Struktur dari tabel `news`
+--
+
+CREATE TABLE IF NOT EXISTS `news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(255) NOT NULL,
+  `content` longtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data untuk tabel `news`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `page`
 --
 
 CREATE TABLE IF NOT EXISTS `page` (
@@ -4979,14 +4999,14 @@ CREATE TABLE IF NOT EXISTS `page` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `page`
+-- Dumping data untuk tabel `page`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengalaman`
+-- Struktur dari tabel `pengalaman`
 --
 
 CREATE TABLE IF NOT EXISTS `pengalaman` (
@@ -4996,7 +5016,7 @@ CREATE TABLE IF NOT EXISTS `pengalaman` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `pengalaman`
+-- Dumping data untuk tabel `pengalaman`
 --
 
 INSERT INTO `pengalaman` (`id`, `nama`) VALUES
@@ -5010,7 +5030,7 @@ INSERT INTO `pengalaman` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `position`
+-- Struktur dari tabel `position`
 --
 
 CREATE TABLE IF NOT EXISTS `position` (
@@ -5020,7 +5040,7 @@ CREATE TABLE IF NOT EXISTS `position` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `position`
+-- Dumping data untuk tabel `position`
 --
 
 INSERT INTO `position` (`id`, `nama`) VALUES
@@ -5034,7 +5054,7 @@ INSERT INTO `position` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `propinsi`
+-- Struktur dari tabel `propinsi`
 --
 
 CREATE TABLE IF NOT EXISTS `propinsi` (
@@ -5045,7 +5065,7 @@ CREATE TABLE IF NOT EXISTS `propinsi` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1423 ;
 
 --
--- Dumping data for table `propinsi`
+-- Dumping data untuk tabel `propinsi`
 --
 
 INSERT INTO `propinsi` (`id`, `negara_id`, `nama`) VALUES
@@ -6443,7 +6463,7 @@ INSERT INTO `propinsi` (`id`, `negara_id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `report`
+-- Struktur dari tabel `report`
 --
 
 CREATE TABLE IF NOT EXISTS `report` (
@@ -6455,14 +6475,14 @@ CREATE TABLE IF NOT EXISTS `report` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `report`
+-- Dumping data untuk tabel `report`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seeker`
+-- Struktur dari tabel `seeker`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker` (
@@ -6491,23 +6511,27 @@ CREATE TABLE IF NOT EXISTS `seeker` (
   `ibu_kandung` varchar(100) DEFAULT NULL,
   `file_resume` varchar(200) NOT NULL,
   `reset` varchar(200) NOT NULL,
+  `validation` varchar(255) NOT NULL,
+  `is_active` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
--- Dumping data for table `seeker`
+-- Dumping data untuk tabel `seeker`
 --
 
-INSERT INTO `seeker` (`id`, `kelamin_id`, `kota_id`, `marital_id`, `alias`, `seeker_no`, `first_name`, `last_name`, `email`, `tempat_lahir`, `tgl_lahir`, `address`, `phone`, `hp`, `passwd`, `photo`, `last_login`, `last_update`, `agama`, `kebangsaan`, `facebook`, `twitter`, `ibu_kandung`, `file_resume`, `reset`) VALUES
-(1, 1, 1322, 2, 'dfgdfgaaaa', '50124587', 'dfgdfg', 'aaaa', 'her0satr@yahoo.com', 'tempat lahir', '2000-06-04', 'address', '+62 6541 8974 64', '+62 654 86 465', 'd0cccd72f00289035b8e25ff29100dee', '2013/06/16/20130616_104315_8342.jpg', NULL, NULL, 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu kandung', '2013/06/16/20130616_104449_1424.docx', '2331d800a0c5dcc152aee4ff8abccbc3'),
-(5, 0, 0, 0, '', '50124588', '', '', 'saya@mailc.com', '', '0000-00-00', '', '', '', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', '', '', '', ''),
-(6, 1, 1529, 1, 'pelamarbaru', '50124589', 'Pelamar', 'Baru', 'pelamar@baru.com', 'Malang', '2013-06-21', 'Malang', '521477', '65847', 'd0cccd72f00289035b8e25ff29100dee', '2013/06/21/20130621_113913_4793.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Muslim', 'Indoensia', '-', '-', '', '2013/06/21/20130621_113906_2792.jpg', ''),
-(9, 0, 0, 0, '', '50124590', '', '', 'say@mail.com', '', '0000-00-00', '', '', '', 'd0cccd72f00289035b8e25ff29100dee', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', '', '', '', '');
+INSERT INTO `seeker` (`id`, `kelamin_id`, `kota_id`, `marital_id`, `alias`, `seeker_no`, `first_name`, `last_name`, `email`, `tempat_lahir`, `tgl_lahir`, `address`, `phone`, `hp`, `passwd`, `photo`, `last_login`, `last_update`, `agama`, `kebangsaan`, `facebook`, `twitter`, `ibu_kandung`, `file_resume`, `reset`, `validation`, `is_active`) VALUES
+(1, 1, 1322, 2, 'dfgdfgaaaa', '50124587', 'dfgdfg', 'aaaa', 'her0satr@yahoo.com', 'tempat lahir', '2000-06-04', 'address', '+62 6541 8974 64', '+62 654 86 465', 'd0cccd72f00289035b8e25ff29100dee', '2013/06/16/20130616_104315_8342.jpg', NULL, '2013-06-25 20:16:49', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu kandung', '2013/06/25/20130625_193956_7224.docx', '', '', 1),
+(5, 0, 0, 0, '', '50124588', '', '', 'saya@mailc.com', '', '0000-00-00', '', '', '', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', '', '', '', '', '', 0),
+(6, 1, 1529, 1, 'pelamarbaru', '50124589', 'Pelamar', 'Baru', 'pelamar@baru.com', 'Malang', '2013-06-21', 'Malang', '521477', '65847', 'd0cccd72f00289035b8e25ff29100dee', '2013/06/21/20130621_113913_4793.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Muslim', 'Indoensia', '-', '-', '', '2013/06/21/20130621_113906_2792.jpg', '', '', 0),
+(9, 0, 0, 0, '', '50124590', '', '', 'say@mail.com', '', '0000-00-00', '', '', '', 'd0cccd72f00289035b8e25ff29100dee', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', '', '', '', '', '', 0),
+(10, 0, 0, 0, '', '50124591', '', '', 'her0satr11@yahoo.com', '', '0000-00-00', '', '', '', 'd0cccd72f00289035b8e25ff29100dee', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', '', '', '', '', '', 0),
+(11, 1, 1378, 2, 'herrysatrio', '50124592', 'Herry', 'Satrio', 'her0satr@gmail.com', 'Malang', '2013-06-25', 'Jl. Pelabuhan', '08563', '215454', 'd0cccd72f00289035b8e25ff29100dee', '2013/06/25/20130625_200425_3269.jpg', '0000-00-00 00:00:00', '2013-06-25 20:05:13', 'Islam', 'Indonesia', 'fb', 'tw', 'Ibu Kandung', '2013/06/25/20130625_200420_2223.docx', '', '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seeker_addon`
+-- Struktur dari tabel `seeker_addon`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_addon` (
@@ -6519,7 +6543,7 @@ CREATE TABLE IF NOT EXISTS `seeker_addon` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `seeker_addon`
+-- Dumping data untuk tabel `seeker_addon`
 --
 
 INSERT INTO `seeker_addon` (`id`, `seeker_id`, `kendaraan`, `content`) VALUES
@@ -6529,7 +6553,7 @@ INSERT INTO `seeker_addon` (`id`, `seeker_id`, `kendaraan`, `content`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seeker_education`
+-- Struktur dari tabel `seeker_education`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_education` (
@@ -6542,39 +6566,42 @@ CREATE TABLE IF NOT EXISTS `seeker_education` (
   `nama_sekolah` varchar(100) DEFAULT NULL,
   `tgl_lulus` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `seeker_education`
+-- Dumping data untuk tabel `seeker_education`
 --
 
+INSERT INTO `seeker_education` (`id`, `seeker_id`, `jenjang_id`, `score`, `bidang_studi`, `jurusan`, `nama_sekolah`, `tgl_lulus`) VALUES
+(1, 1, 3, 4, 'Elektronika', 'Elektronika', 'Politehnik Negeri Malang', '2006-06-22'),
+(2, 1, 2, 4, 'Sistem Informasi', 'Sistem Informasi', 'Universitas Kanjuruhan', '2013-05-31');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seeker_exp`
+-- Struktur dari tabel `seeker_exp`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_exp` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `seeker_id` int(10) unsigned DEFAULT NULL,
-  `nama` longtext,
-  `date_start` date DEFAULT NULL,
-  `date_end` date DEFAULT NULL,
+  `exp_level` int(11) DEFAULT NULL,
+  `content` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `seeker_exp`
+-- Dumping data untuk tabel `seeker_exp`
 --
 
-INSERT INTO `seeker_exp` (`id`, `seeker_id`, `nama`, `date_start`, `date_end`) VALUES
-(1, NULL, NULL, NULL, NULL);
+INSERT INTO `seeker_exp` (`id`, `seeker_id`, `exp_level`, `content`) VALUES
+(2, 1, 1, 'Saya baru lulus dan sedang mencari pekerjaan pertama saya'),
+(3, 1, 2, 'Saya adalah seorang mahasiswa yang mencari pekerjaan magang atau paruh waktu');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seeker_expert`
+-- Struktur dari tabel `seeker_expert`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_expert` (
@@ -6582,19 +6609,22 @@ CREATE TABLE IF NOT EXISTS `seeker_expert` (
   `seeker_id` int(10) unsigned DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `seeker_expert`
+-- Dumping data untuk tabel `seeker_expert`
 --
 
 INSERT INTO `seeker_expert` (`id`, `seeker_id`, `content`) VALUES
-(4, 1, 'asd asd  ads');
+(4, 0, 'Membaca'),
+(5, 1, 'Menulis'),
+(6, 1, 'Mengarang'),
+(8, 1, 'Tebak Kata');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seeker_language`
+-- Struktur dari tabel `seeker_language`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_language` (
@@ -6604,35 +6634,42 @@ CREATE TABLE IF NOT EXISTS `seeker_language` (
   `lisan` varchar(255) NOT NULL,
   `tulis` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `seeker_language`
+-- Dumping data untuk tabel `seeker_language`
 --
 
+INSERT INTO `seeker_language` (`id`, `seeker_id`, `nama`, `lisan`, `tulis`) VALUES
+(1, 1, 'Bahasa Indonesia', 'Aktif', 'Aktif'),
+(2, 1, 'Bahasa Inggris', 'Aktif', 'Aktif');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seeker_reference`
+-- Struktur dari tabel `seeker_reference`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_reference` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `seeker_id` int(10) unsigned DEFAULT NULL,
   `nama` varchar(100) DEFAULT NULL,
+  `content` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `seeker_reference`
+-- Dumping data untuk tabel `seeker_reference`
 --
 
+INSERT INTO `seeker_reference` (`id`, `seeker_id`, `nama`, `content`) VALUES
+(1, 1, 'Pak Yoyok', 'Dekan'),
+(2, 1, 'Rizal', 'Staf Admin');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seeker_setting`
+-- Struktur dari tabel `seeker_setting`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_setting` (
@@ -6645,7 +6682,7 @@ CREATE TABLE IF NOT EXISTS `seeker_setting` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `seeker_setting`
+-- Dumping data untuk tabel `seeker_setting`
 --
 
 INSERT INTO `seeker_setting` (`id`, `seeker_id`, `is_public`, `is_subscribe`, `is_work`) VALUES
@@ -6654,7 +6691,7 @@ INSERT INTO `seeker_setting` (`id`, `seeker_id`, `is_public`, `is_subscribe`, `i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seeker_summary`
+-- Struktur dari tabel `seeker_summary`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_summary` (
@@ -6665,20 +6702,21 @@ CREATE TABLE IF NOT EXISTS `seeker_summary` (
   `school` varchar(255) NOT NULL,
   `experience` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `seeker_summary`
+-- Dumping data untuk tabel `seeker_summary`
 --
 
 INSERT INTO `seeker_summary` (`id`, `seeker_id`, `jenjang_id`, `score`, `school`, `experience`) VALUES
 (1, 1, 2, 3.56, 'Malang', 'Brawijaya'),
-(2, 6, 4, 3.88, 'Universitas Brawijaya', 'Malang');
+(2, 6, 4, 3.88, 'Universitas Brawijaya', 'Malang'),
+(3, 11, 2, 4, 'Universitas Kanjuruhan', 'Unibraw');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subkategori`
+-- Struktur dari tabel `subkategori`
 --
 
 CREATE TABLE IF NOT EXISTS `subkategori` (
@@ -6690,7 +6728,7 @@ CREATE TABLE IF NOT EXISTS `subkategori` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `subkategori`
+-- Dumping data untuk tabel `subkategori`
 --
 
 INSERT INTO `subkategori` (`id`, `kategori_id`, `nama`, `alias`) VALUES
@@ -6702,7 +6740,7 @@ INSERT INTO `subkategori` (`id`, `kategori_id`, `nama`, `alias`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subkategori_tag`
+-- Struktur dari tabel `subkategori_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `subkategori_tag` (
@@ -6713,7 +6751,7 @@ CREATE TABLE IF NOT EXISTS `subkategori_tag` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
--- Dumping data for table `subkategori_tag`
+-- Dumping data untuk tabel `subkategori_tag`
 --
 
 INSERT INTO `subkategori_tag` (`id`, `subkategori_id`, `tag_id`) VALUES
@@ -6729,7 +6767,7 @@ INSERT INTO `subkategori_tag` (`id`, `subkategori_id`, `tag_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subscribe`
+-- Struktur dari tabel `subscribe`
 --
 
 CREATE TABLE IF NOT EXISTS `subscribe` (
@@ -6741,7 +6779,7 @@ CREATE TABLE IF NOT EXISTS `subscribe` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `subscribe`
+-- Dumping data untuk tabel `subscribe`
 --
 
 INSERT INTO `subscribe` (`id`, `jenis_subscribe_id`, `email`, `status`) VALUES
@@ -6752,7 +6790,7 @@ INSERT INTO `subscribe` (`id`, `jenis_subscribe_id`, `email`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `surat_lamaran`
+-- Struktur dari tabel `surat_lamaran`
 --
 
 CREATE TABLE IF NOT EXISTS `surat_lamaran` (
@@ -6764,7 +6802,7 @@ CREATE TABLE IF NOT EXISTS `surat_lamaran` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
--- Dumping data for table `surat_lamaran`
+-- Dumping data untuk tabel `surat_lamaran`
 --
 
 INSERT INTO `surat_lamaran` (`id`, `seeker_id`, `nama`, `content`) VALUES
@@ -6776,7 +6814,7 @@ INSERT INTO `surat_lamaran` (`id`, `seeker_id`, `nama`, `content`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tag`
+-- Struktur dari tabel `tag`
 --
 
 CREATE TABLE IF NOT EXISTS `tag` (
@@ -6787,7 +6825,7 @@ CREATE TABLE IF NOT EXISTS `tag` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
--- Dumping data for table `tag`
+-- Dumping data untuk tabel `tag`
 --
 
 INSERT INTO `tag` (`id`, `nama`, `alias`) VALUES
@@ -6826,7 +6864,7 @@ INSERT INTO `tag` (`id`, `nama`, `alias`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vacancy`
+-- Struktur dari tabel `vacancy`
 --
 
 CREATE TABLE IF NOT EXISTS `vacancy` (
@@ -6855,7 +6893,7 @@ CREATE TABLE IF NOT EXISTS `vacancy` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `vacancy`
+-- Dumping data untuk tabel `vacancy`
 --
 
 INSERT INTO `vacancy` (`id`, `company_id`, `subkategori_id`, `nama`, `position`, `vacancy_status_id`, `article_url`, `article_link`, `content_short`, `content`, `opsi_1`, `opsi_2`, `kota_id`, `jenjang_id`, `jenis_pekerjaan_id`, `pengalaman_id`, `gaji`, `publish_date`, `close_date`, `email_apply`, `email_quick`) VALUES
@@ -6868,7 +6906,7 @@ INSERT INTO `vacancy` (`id`, `company_id`, `subkategori_id`, `nama`, `position`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vacancy_status`
+-- Struktur dari tabel `vacancy_status`
 --
 
 CREATE TABLE IF NOT EXISTS `vacancy_status` (
@@ -6878,7 +6916,7 @@ CREATE TABLE IF NOT EXISTS `vacancy_status` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `vacancy_status`
+-- Dumping data untuk tabel `vacancy_status`
 --
 
 INSERT INTO `vacancy_status` (`id`, `nama`) VALUES
@@ -6890,7 +6928,7 @@ INSERT INTO `vacancy_status` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `widget`
+-- Struktur dari tabel `widget`
 --
 
 CREATE TABLE IF NOT EXISTS `widget` (
@@ -6902,7 +6940,7 @@ CREATE TABLE IF NOT EXISTS `widget` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `widget`
+-- Dumping data untuk tabel `widget`
 --
 
 INSERT INTO `widget` (`id`, `nama`, `alias`, `content`) VALUES
