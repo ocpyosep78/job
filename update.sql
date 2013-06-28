@@ -26,3 +26,5 @@ ALTER TABLE  `company` ADD  `validation` VARCHAR( 255 ) NOT NULL, ADD  `is_activ
 2013-06-25 :
 CREATE TABLE `job_db`.`news` ( `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY , `nama` VARCHAR( 255 ) NOT NULL , `content` LONGTEXT NOT NULL ) ENGINE = MYISAM ;
 CREATE TABLE IF NOT EXISTS `seeker_exp` ( `id` int(10) unsigned NOT NULL AUTO_INCREMENT, `seeker_id` int(10) unsigned DEFAULT NULL, `exp_level` int(11) DEFAULT NULL, `content` longtext, PRIMARY KEY (`id`) ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+ALTER TABLE  `vacancy` ADD  `total_view` INT NOT NULL , ADD  `total_seeker` INT NOT NULL
+ALTER TABLE  `widget` ADD  `is_html` INT NOT NULL;

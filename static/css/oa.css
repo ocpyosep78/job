@@ -1,0 +1,58 @@
+a { color: #0000FF; }
+TD
+{
+    FONT: 8pt verdana;
+    COLOR: #000000;
+    PADDING: 2px;
+}
+.button
+{
+    PADDING: 2px;
+    FONT: bold 8pt Verdana;
+    COLOR: #000000
+}
+.text
+{
+    BORDER-TOP: #7F9DB9 1px solid;
+    BORDER-BOTTOM: #7F9DB9 1px solid;
+    BORDER-LEFT: #7F9DB9 1px solid;
+    BORDER-RIGHT: #7F9DB9 1px solid;
+    FONT: 8pt verdana
+}
+.select
+{
+    BORDER-TOP: #7F9DB9 1px solid;
+    BORDER-BOTTOM: #7F9DB9 1px solid;
+    BORDER-LEFT: #7F9DB9 1px solid;
+    BORDER-RIGHT: #7F9DB9 1px solid;
+    FONT: 8pt verdana
+}
+.file
+{
+    BORDER-TOP: #7F9DB9 1px solid;
+    BORDER-BOTTOM: #7F9DB9 1px solid;
+    BORDER-LEFT: #7F9DB9 1px solid;
+    BORDER-RIGHT: #7F9DB9 1px solid;
+    FONT: 8pt verdana
+}
+.tip
+{
+    FONT: 7.5pt verdana;
+    COLOR: #666666
+}
+.title 
+{
+    FONT: bold 10pt verdana; 
+    COLOR:#000000
+}
+TD.msg
+{ 
+    PADDING: 4px; 
+    BACKGROUND-COLOR: #eeeeee;
+    BORDER: solid #cccccc 0.5pt
+}
+.navigator {font: 8pt verdana}
+.item {font: bold 8pt verdana}
+.normal {font: 8pt verdana}
+.hint {font: italic 8pt verdana}
+.request {font: 10pt verdana; color: #003366}
