@@ -120,3 +120,9 @@ D:\Program Files\xampplite\htdocs\job\trunk\application\views\seeker\email\lamar
 D:\Program Files\xampplite\htdocs\job\trunk\application\models\seeker_setting_model.php
 D:\Program Files\xampplite\htdocs\job\trunk\application\models\seeker_language_model.php
 D:\Program Files\xampplite\htdocs\job\trunk\application\models\seeker_addon_model.php
+D:\Program Files\xampplite\htdocs\job\trunk\static\css\oa.css
+D:\Program Files\xampplite\htdocs\job\trunk\note dunia karir.txt
+D:\Program Files\xampplite\htdocs\job\trunk\static\img\warn.gif
+D:\Program Files\xampplite\htdocs\job\trunk\static\img\button_document.png
+D:\Program Files\xampplite\htdocs\job\trunk\update.sql
+D:\Program Files\xampplite\htdocs\job\trunk\static\img\space.gif
