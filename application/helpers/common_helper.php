@@ -116,7 +116,8 @@
     
     if (! function_exists('Upload')) {
         function Upload($InputName, $PathDir = 'User', $Param = array()) {
-            $Param['AllowedExtention'] = (isset($Param['AllowedExtention'])) ? $Param['AllowedExtention'] : array('jpg', 'jpeg', 'gif', 'png', 'bmp', 'xls', 'csv', 'doc', 'docx', 'pdf');
+            $Param['max_size'] = (isset($Param['max_size'])) ? $Param['max_size'] : 1000000;
+            $Param['AllowedExtention'] = (isset($Param['AllowedExtention'])) ? $Param['AllowedExtention'] : array('jpg', 'jpeg', 'gif', 'png', 'bmp');
             
             $ArrayResult = array('Result' => '0', 'FileDirName' => '');
             if (isset($_FILES[$InputName]) && is_array($_FILES[$InputName]) && is_array($_FILES[$InputName]['name'])) {
@@ -149,10 +150,12 @@
                 $Extention = GetExtention($_FILES[$InputName]['name']);
                 $ArrayResult['Message'] = 'There was an error uploading the file, please try again!';
                 $ArrayResult['FileDirName'] = '';
-                
-                if (! in_array($Extention, $Param['AllowedExtention'])) {
-                    $ArrayResult['Message'] = 'Hanya file bertipe jpg, jpeg, gif, png, bmp dan xls yang dapat di upload.';
-                    } else if ($_FILES[$InputName]['error'] == '0') {
+				
+                if ($_FILES[$InputName]['size'] > $Param['max_size']) {
+					$ArrayResult['Message'] = 'Ukuran file yang diupload terlalu besar, ukuran file maks '.($Param['max_size'] / 1000).' KB';
+				} else if (! in_array($Extention, $Param['AllowedExtention'])) {
+                    $ArrayResult['Message'] = 'Hanya file bertipe '.implode(', ', $Param['AllowedExtention']).' yang dapat di upload.';
+				} else if ($_FILES[$InputName]['error'] == '0') {
                     $DirYear = date("Y");
                     $DirMonth = date("m");
                     $DirDay = date("d");
@@ -887,6 +890,16 @@
 			}
 			
 			return $user;
+		}
+	}
+	
+	if (! function_exists('get_name')) {
+		function get_name($value) {
+			$result = preg_replace('/[^0-9a-z]+/i', '-', $value);
+			$result = preg_replace('/^-/i', '', $result);
+			$result = preg_replace('/-$/i', '', $result);
+			
+			return $result;
 		}
 	}
 ?>

@@ -7,7 +7,7 @@ class Vacancy_model extends CI_Model {
         $this->field = array(
 			'id', 'company_id', 'subkategori_id', 'nama', 'position', 'vacancy_status_id', 'article_url', 'article_link', 'content_short',
 			'content', 'opsi_1', 'opsi_2', 'kota_id', 'jenjang_id', 'jenis_pekerjaan_id', 'pengalaman_id', 'gaji', 'publish_date', 'close_date',
-			'email_apply', 'email_quick'
+			'email_apply', 'email_quick', 'total_view', 'total_seeker'
 		);
     }
 
@@ -32,7 +32,23 @@ class Vacancy_model extends CI_Model {
        
         return $result;
     }
-
+	
+	function update_view($param) {
+		$vacancy = $this->get_by_id(array( 'id' => $param['id'] ));
+		
+		$param_update['id'] = $vacancy['id'];
+		$param_update['total_view'] = $vacancy['total_view']  + 1;
+		$this->update($param_update);
+	}
+	
+	function update_seeker($param) {
+		$vacancy = $this->get_by_id(array( 'id' => $param['id'] ));
+		
+		$param_update['id'] = $vacancy['id'];
+		$param_update['total_seeker'] = $vacancy['total_seeker']  + 1;
+		$this->update($param_update);
+	}
+	
     function get_by_id($param) {
         $array = array();
        
@@ -110,7 +126,16 @@ class Vacancy_model extends CI_Model {
     }
 
     function get_count($param = array()) {
-		$select_query = "SELECT FOUND_ROWS() TotalRecord";
+		$param['is_new'] = (empty($param['is_new'])) ? 0 : $param['is_new'];
+		
+		if ($param['is_new'] == 1) {
+			$string_company = (!empty($param['company_id'])) ? "AND company_id = '".$param['company_id']."'" : "";
+			
+			$select_query = "SELECT COUNT(*) TotalRecord FROM ".VACANCY." Vacancy WHERE 1 $string_company";
+		} else {
+			$select_query = "SELECT FOUND_ROWS() TotalRecord";
+		}
+		
 		$select_result = mysql_query($select_query) or die(mysql_error());
 		$row = mysql_fetch_assoc($select_result);
 		$TotalRecord = $row['TotalRecord'];
@@ -141,15 +166,17 @@ class Vacancy_model extends CI_Model {
 		
 		if (isset($row['company_alias'])) {
 			$row['company_link'] = base_url($row['company_alias']);
-			$row['vacancy_link'] = base_url($row['company_alias'].'/'.$row['id'].'_'.$row['position']);
+			$row['vacancy_link'] = base_url($row['company_alias'].'/'.$row['id'].'-'.get_name($row['nama']));
+			$row['vacancy_quick_apply_link'] = $row['vacancy_link'].'/quick';
 		}
 		
-		if (isset($row['company_logo'])) {
+		$row['company_logo_link'] = base_url('static/img/company.png');
+		if (!empty($row['company_logo'])) {
 			$row['company_logo_link'] = base_url('static/upload/'.$row['company_logo']);
 		}
 		
 		$row['company_banner_link'] = base_url('static/img/company_banner.jpg');
-		if (isset($row['company_banner'])) {
+		if (!empty($row['company_banner'])) {
 			$row['company_banner_link'] = base_url('static/upload/'.$row['company_banner']);
 		}
 		

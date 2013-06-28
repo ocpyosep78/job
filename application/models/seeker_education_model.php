@@ -47,6 +47,7 @@ class Seeker_Education_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
+		$string_seeker = (empty($param['seeker_id'])) ? '' : "AND SeekerEducation.seeker_id = '".$param['seeker_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'tgl_lulus ASC');
 		$string_limit = GetStringLimit($param);
@@ -55,7 +56,7 @@ class Seeker_Education_model extends CI_Model {
 			SELECT SQL_CALC_FOUND_ROWS SeekerEducation.*, Jenjang.nama jenjang_nama
 			FROM ".SEEKER_EDUCATION." SeekerEducation
 			LEFT JOIN ".JENJANG." Jenjang ON Jenjang.id = SeekerEducation.jenjang_id
-			WHERE 1 $string_filter
+			WHERE 1 $string_seeker $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";

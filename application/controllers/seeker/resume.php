@@ -48,6 +48,11 @@ class resume extends SEEKER_Controller {
 		
 		$result = array();
 		if ($action == 'update') {
+			if (empty($_POST['passwd'])) {
+				unset($_POST['passwd']);
+			} else {
+				$_POST['passwd'] = EncriptPassword($_POST['passwd']);
+			}
 			if (isset($_POST['first_name']) && isset($_POST['last_name'])) {
 				$_POST['alias'] = $this->Seeker_model->get_alias($_POST['id'], $_POST['first_name'].$_POST['last_name']);
 			}

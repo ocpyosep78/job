@@ -3,7 +3,6 @@
 	$is_member = $this->Company_model->get_membership_status(array( 'id' => $company['id'] ));
 	
 	$array_jenjang = $this->Jenjang_model->get_array();
-	$array_position = $this->Position_model->get_array(array( 'limit' => 250 ));
 	$array_pengalaman = $this->Pengalaman_model->get_array();
 	$array_vacancy_status = $this->Vacancy_Status_model->get_array(array( 'is_company' => 1 ));
 	$array_jenis_pekerjaan = $this->Jenis_Pekerjaan_model->get_array();
@@ -29,9 +28,11 @@
 				<table id="cnt-vacancy" class="table table-striped table-bordered">
 					<thead><tr>
 						<th>Nama</th>
-						<th>Posisi</th>
 						<th>Status</th>
 						<th>Publish Date</th>
+						<th>Closed Date</th>
+						<th>Total View</th>
+						<th>Total Pelamar</th>
 						<th style="width: 125px;">&nbsp;</th>
 					</tr></thead>
 					<tbody><tr><td class="dataTables_empty">Loading data from server</td></tr></tbody>
@@ -69,34 +70,8 @@
 					</select></div>
 				</div>
 				<div class="control-group">
-					<label for="input-position" class="control-label">Position</label>
-					<div class="controls"><select name="position" class="select2-me input-block-level" style="width: 530px;" multiple="multiple">
-						<?php echo ShowOption(array( 'Array' => $array_position, 'ArrayID' => 'nama', 'ArrayTitle' => 'nama', 'WithEmptySelect' => 0 )); ?>
-					</select></div>
-				</div>
-				<div class="control-group">
-					<label for="input-article_url" class="control-label">URL Artikel</label>
-					<div class="controls"><input type="text" name="article_url" id="input-article_url" class="input-xxlarge" /></div>
-				</div>
-				<div class="control-group">
-					<label for="input-article_link" class="control-label">Link Artikel</label>
-					<div class="controls"><input type="text" name="article_link" id="input-article_link" class="input-xxlarge" /></div>
-				</div>
-				<div class="control-group">
-					<label for="input-content_short" class="control-label">Short Desc</label>
-					<div class="controls"><textarea name="content_short" id="input-content_short" class="span9 tinymce" style="height: 300px;"></textarea></div>
-				</div>
-				<div class="control-group">
 					<label for="input-content1" class="control-label">Detail</label>
 					<div class="controls"><textarea name="content" id="input-content1" class="tinymce" style="height: 300px;"></textarea></div>
-				</div>
-				<div class="control-group">
-					<label for="input-opsi_1" class="control-label">Opsi 1</label>
-					<div class="controls"><input type="text" name="opsi_1" id="input-opsi_1" class="input-xxlarge" /></div>
-				</div>
-				<div class="control-group">
-					<label for="input-opsi_2" class="control-label">Opsi 2</label>
-					<div class="controls"><input type="text" name="opsi_2" id="input-opsi_2" class="input-xxlarge" /></div>
 				</div>
 				<div class="control-group">
 					<label for="input-propinsi_id" class="control-label">Lokasi Kerja</label>
@@ -185,14 +160,13 @@
 		var param = {
 			id: 'cnt-vacancy',
 			source: web.host + 'company/vacancy/grid',
-			column: [ { }, { }, { }, { }, { bSortable: false, sClass: "center" } ],
+			column: [ { }, { }, { sClass: 'center' }, { sClass: 'center' }, { sClass: 'center' }, { sClass: 'center' }, { bSortable: false, sClass: 'center' } ],
 			init: function() {
 				$('#cnt-vacancy_length').prepend('<div style="float: left; width: 65px; padding: 2px 0 0 0;"><button class="btn btn-small btn-add">Tambah</button></div>');
 				$('#cnt-vacancy_length .btn-add').click(function() {
 					$('#form-vacancy')[0].reset();
 					$('#form-vacancy [name="id"]').val(0);
 					$('#form-vacancy [name="company_id"]').val(company.id);
-					$('#form-vacancy [name="position"]').val([]).select2();
 					$('#cnt-company-name').html(company.nama);
 					
 					page.show_editor();
@@ -209,7 +183,7 @@
 					var raw_record = $(this).siblings('.hide').text();
 					eval('var temp = ' + raw_record);
 					Func.ajax({ url: web.host + 'company/vacancy/action', param: { action: 'get_by_id', id: temp.id }, callback: function(record) {
-						$('#cnt-company-name').html(record.company_name);
+						$('#cnt-company-name').html(record.company_nama);
 						$('#form-vacancy [name="id"]').val(record.id);
 						$('#form-vacancy [name="company_id"]').val(record.company_id);
 						$('#form-vacancy [name="kategori_id"]').val(record.kategori_id);
@@ -219,13 +193,7 @@
 						$('#form-vacancy [name="jenis_pekerjaan_id"]').val(record.jenis_pekerjaan_id);
 						$('#form-vacancy [name="pengalaman_id"]').val(record.pengalaman_id);
 						$('#form-vacancy [name="nama"]').val(record.nama);
-						$('#form-vacancy [name="position"]').val(record.position.split(',')).select2();
-						$('#form-vacancy [name="article_url"]').val(record.article_url);
-						$('#form-vacancy [name="article_link"]').val(record.article_link);
-						$('#form-vacancy [name="content_short"]').val(record.content_short);
 						$('#form-vacancy [name="content"]').val(record.content);
-						$('#form-vacancy [name="opsi_1"]').val(record.opsi_1);
-						$('#form-vacancy [name="opsi_2"]').val(record.opsi_2);
 						$('#form-vacancy [name="gaji"]').val(record.gaji);
 						$('#form-vacancy [name="publish_date"]').val(Func.SwapDate(record.publish_date));
 						$('#form-vacancy [name="close_date"]').val(Func.SwapDate(record.close_date));
@@ -273,7 +241,6 @@
 			param.action = 'update';
 			param.publish_date = Func.SwapDate(param.publish_date);
 			param.close_date = Func.SwapDate(param.close_date);
-			param.position = param.position.join(',');
 			
 			Func.ajax({ url: web.host + 'company/vacancy/action', param: param, callback: function(result) {
 				Func.show_notice({ text: result.message });

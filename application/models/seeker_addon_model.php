@@ -49,6 +49,7 @@ class Seeker_Addon_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
+		$string_seeker = (empty($param['seeker_id'])) ? '' : "AND SeekerAddon.seeker_id = '".$param['seeker_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'is_public ASC');
 		$string_limit = GetStringLimit($param);
@@ -56,7 +57,7 @@ class Seeker_Addon_model extends CI_Model {
 		$select_query = "
 			SELECT SQL_CALC_FOUND_ROWS SeekerAddon.*
 			FROM ".SEEKER_ADDON." SeekerAddon
-			WHERE 1 $string_filter
+			WHERE 1 $string_seeker $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";

@@ -27,7 +27,7 @@
 			<div class="hide">
 				<div class="cnt-seeker"><?php echo json_encode($seeker); ?></div>
 				<div class="cnt-seeker_summary"><?php echo json_encode($seeker_summary); ?></div>
-				<iframe name="iframe_seeker_resume" src="<?php echo base_url('panel/upload?callback=seeker_resume'); ?>"></iframe>
+				<iframe name="iframe_seeker_resume" src="<?php echo base_url('panel/upload?callback=seeker_resume&filetype=document'); ?>"></iframe>
 				<iframe name="iframe_seeker_photo" src="<?php echo base_url('panel/upload?callback=seeker_photo'); ?>"></iframe>
 			</div>
 			
@@ -257,7 +257,7 @@
 				</div>
 			</div>
 			
-			<div class="row-fluid margin-top">
+			<div class="row-fluid">
 				<?php if (!empty($news_seeker)) { ?>
 				<div class="alert alert-success">
 					<strong>News</strong> : <?php echo $news_seeker; ?>
@@ -532,10 +532,14 @@ $( document ).ready(function() {
 		$('#form-photo .confirm').show();
 	}
 	seeker_resume = function(p) {
-		$('#form-resume [name="file_resume"]').val(p.file_name);
-		$('#form-resume [name="file_resume_link"]').val(p.file_link);
-		$('#form-resume .default').hide();
-		$('#form-resume .confirm').show();
+		if (p.message.length > 0) {
+			Func.show_notice({ text: p.message });
+		} else {
+			$('#form-resume [name="file_resume"]').val(p.file_name);
+			$('#form-resume [name="file_resume_link"]').val(p.file_link);
+			$('#form-resume .default').hide();
+			$('#form-resume .confirm').show();
+		}
 	}
 	
 	var seeker = Func.get_seeker();

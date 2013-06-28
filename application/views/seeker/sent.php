@@ -80,8 +80,9 @@
 		}
 		
 		Func.ajax({ url: web.host + 'seeker/sent/action', param: param, callback: function(result) {
+			Func.show_notice({ text: result.message });
 			if (result.status == 1) {
-				Func.show_notice({ text: result.message });
+				setTimeout(function() { window.location = web.host + 'seeker/resume'; }, 3000);
 			}
 		} });
 		

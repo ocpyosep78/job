@@ -6,7 +6,7 @@
 	<div style="background: #82BB0B; padding: 15px 30px; font-size: 16px; font-weight: bold; color: #454545;">
 		<div style="float: right;">
 			<div style="padding: 10px 0 0 0;">
-				<a href="<?php echo base_url(); ?>" style="text-decoration: none; color: #454545; padding: 5px 25px; background: #FFFFFF;">Visi Website</a>
+				<a href="<?php echo base_url(); ?>" style="text-decoration: none; color: #454545; padding: 5px 25px; background: #FFFFFF;">Visit Website</a>
 			</div>
 		</div>
 		<div>

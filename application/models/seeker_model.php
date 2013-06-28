@@ -102,25 +102,34 @@ class Seeker_model extends CI_Model {
         $array = array();
 		
 		// overwrite field name
+		$param['field_replace']['usia'] = 'Seeker.tgl_lahir';
 		$param['field_replace']['full_name'] = 'Seeker.first_name';
 		
+		$string_is_active = (isset($param['is_active'])) ? "AND Seeker.is_active = '".$param['is_active']."'" : '';
+		$string_with_alias = (isset($param['with_alias'])) ? "AND Seeker.alias != ''" : '';
+		$string_with_photo = (isset($param['with_photo'])) ? "AND Seeker.photo != ''" : '';
+		$string_with_tgl_lahir = (isset($param['with_tgl_lahir'])) ? "AND Seeker.tgl_lahir != ''" : '';
+		$string_with_file_resume = (isset($param['with_file_resume'])) ? "AND Seeker.file_resume != ''" : '';
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'Seeker.first_name ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS Seeker.*, Jenjang.nama jenjang_nama,
-				SeekerSummary.score, SeekerSummary.school, SeekerSummary.experience
+			SELECT SQL_CALC_FOUND_ROWS Seeker.*, Jenjang.nama jenjang_nama, Kota.nama kota_nama,
+				SeekerSummary.score, SeekerSummary.school, SeekerSummary.experience, Marital.nama marital_nama
 			FROM ".SEEKER." Seeker
 			LEFT JOIN ".SEEKER_SUMMARY." SeekerSummary ON SeekerSummary.seeker_id = Seeker.id
 			LEFT JOIN ".JENJANG." Jenjang ON Jenjang.id = SeekerSummary.jenjang_id
-			WHERE 1 $string_filter
+			LEFT JOIN ".MARITAL." Marital ON Marital.id = Seeker.marital_id
+			LEFT JOIN ".KOTA." Kota ON Kota.id = Seeker.kota_id
+			WHERE 1 $string_is_active $string_with_alias $string_with_photo $string_with_tgl_lahir $string_with_file_resume $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";
+		
         $select_result = mysql_query($select_query) or die(mysql_error());
 		while ( $row = mysql_fetch_assoc( $select_result ) ) {
-			$array[] = $this->sync($row, @$param['column']);
+			$array[] = $this->sync($row, $param);
 		}
 		
         return $array;
@@ -213,7 +222,7 @@ class Seeker_model extends CI_Model {
         return $result;
     }
 	
-	function sync($row, $column = array()) {
+	function sync($row, $param = array()) {
 		$row = StripArray($row, array( 'tgl_lahir' ));
 		$row['full_name'] = $row['first_name'];
 		$row['usia'] = get_usia($row['tgl_lahir']);
@@ -245,8 +254,14 @@ class Seeker_model extends CI_Model {
 			$row['file_resume_path'] = str_replace('\\', '/', $row['file_resume_path']);
 		}
 		
+		/*
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));
+		}
+		/* */
+		
+		if (count(@$param['column']) > 0) {
+			$row = dt_view_set($row, $param);
 		}
 		
 		return $row;

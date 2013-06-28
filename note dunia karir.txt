@@ -35,45 +35,34 @@ nok => - Company Admin
 PERUSAHAAN
 
 Dashboard :
-- Tambah News
+cek => - Tambah News
+cek => - Tambah Dashboard dengan info nya (Paket Keanggotaan Anda saat ini: Free.<br />Anda saat ini memiliki 10 kredit iklan lowongan.<br />Jumlah lowongan yang aktif diiklankan saat ini: 0<br />Paket Keanggotaan Anda saat ini berakhir pada: 04/25/2013)
 
-Paket Keanggotaan Anda saat ini: Free.
-Anda saat ini memiliki 10 kredit iklan lowongan.
-Jumlah lowongan yang aktif diiklankan saat ini: 0
-Paket Keanggotaan Anda saat ini berakhir pada: 04/25/2013
 
-http://www.parapekerja.com/company/search (opsi = Download Resume | View Resume Public | Send Message) dan tabelnya sama dengan tabel downlaod
- yang pertama field di tabelnya mirip http://parapekerja.com/company/download/index/5
-Ridwan Amir: dapat !
+Find Resume
+cek => - Punya action :
+  - Download Resume
+  - View Resume Public
+  - Send Message
+  - Table nya sama dengan table download
+
+Vacancy
+cek => - colom : Nama | Status | Publish Date | Closed Date | Total View | Total Pelamar
+cek => - Form : position, url artikel, link artikel, shost desc, opsi 1 opsi 2 => dihilangkan
+
 
 Vacancy :
-nanti kolom nya : Nama | Posisi | Status | Publish Date | Closed Date | Total View | Total Pelamar
-Posisi : dihilangkan
-dihilangkan : position, url artikel, link artikel, shost desc, opsi 1 opsi 2
+cek => - ketika ada yang apply vacancy, maka ada notice kirim ke email
+cek => - quick apply => mirip seperti punya job street dan kirim email
 
-Klo ada yang apply : dia harus login dan dikirim email sepeerti di sent email di Seeker kirim lamaran
+------------------------------------------------------------------------------------------------
+WEBSITE
+Halaman Vacancy
+cek => - Banner & Logo klo perusahaan baru belum sempat ngisi, gambarnya kurang bagus
+cek => - Ganti '_' dengan '-'
 
-bedanya email apply & yang quick 
-Ridwan Amir: email apply untuk yang posisi di apply dari member area...
-Ridwan Amir: berarti dia dalam posisi login...
-Ridwan Amir: untuk quick apply..
-Ridwan Amir: dia nga nga login..
 
-Vacancy : Quick Apply (non member) :
-http://www.jobstreet.co.id/jobs/2013/6/default/40/876648.htm?fr=J&src=27
-http://www.duniadb.com/duniakarir/Quick%20Apply%20-%20non%20member.png
-
-Note :
-ada email template di admin
-
-Banner klo tidak ada, hasilnya kurang bagus
-dan pake format email template...
-Ridwan Amir: liat ini http://www.parapekerja.com/PT-Garuda-Indonesa-Persero-Tbk/8_Driver
-Ridwan Amir: itu banner kalo nga di isi di buat nga kosong 
-herry: ok mas
-herry: sepertinya sudah ada default nya koq
-Ridwan Amir: kalo aku nga isi.. divnya tampil blank..
-Ridwan Amir: jadi keliatan gimana gitu..
+cek => - Cetak PDF Halaman : http://parapekerja.com/resume/resume.htm
 
 
 C:\Program Files\xampplite\htdocs\job\trunk
@@ -94,7 +83,3 @@ C:\Program Files\xampplite\htdocs\job\trunk\application\views\seeker\publish.php
 C:\Program Files\xampplite\htdocs\job\trunk\application\views\seeker\resume.php
 C:\Program Files\xampplite\htdocs\job\trunk\static\css\resume.css
 C:\Program Files\xampplite\htdocs\job\trunk\update.sql
-
-
-Tambahan :
-Cetak PDF Halaman : http://parapekerja.com/resume/resume.htm

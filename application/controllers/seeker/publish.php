@@ -21,8 +21,19 @@ class publish extends CI_Controller {
 		
 		// check user
 		$user_session = $this->Seeker_model->get_session();
-		$allow_update = ($user_session['id'] == $seeker['id']) ? true : false;
+		$allow_update = (@$user_session['id'] == $seeker['id']) ? true : false;
 		
 		$this->load->view( 'seeker/publish', array( 'seeker' => $seeker, 'allow_update' => $allow_update ) );
     }
+	
+	function convert($seeker_no) {
+		$this->load->library('mpdf');
+		
+		$seeker = $this->Seeker_model->get_by_id(array( 'seeker_no' => $seeker_no ));
+		$seeker = $this->Seeker_model->get_by_id(array( 'id' => $seeker['id'] ));
+		
+		$content = $this->load->view( 'seeker/publish', array( 'seeker' => $seeker, 'allow_update' => false, 'is_pdf' => true ), true );
+		$this->mpdf->WriteHTML($content);
+		$this->mpdf->Output();
+	}
 }

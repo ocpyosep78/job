@@ -18,6 +18,7 @@
 			<a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Perusahaan</span></a>
 		</div>
 		<ul class="subnav-menu">
+			<li><a href="<?php echo base_url('company/home'); ?>">Dashboard</a></li>
 			<li><a href="<?php echo base_url('company/post'); ?>">Create Page</a></li>
 			<li><a href="<?php echo base_url('company/vacancy'); ?>">Add Jobs Position</a></li>
 			<li><a href="<?php echo base_url('company/search'); ?>">Find Resume</a></li>

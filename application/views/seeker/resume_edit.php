@@ -120,23 +120,35 @@
 					</div>
 					<div class="box-content">
 						<div class="control-group">
-							<label for="facebook" class="control-label">Facebook</label>
-							<div class="controls">
-								<input type="text" name="facebook" id="facebook" class="input-xlarge">
-							</div>
+							<label for="input-facebook" class="control-label">Facebook</label>
+							<div class="controls"><input type="text" name="facebook" id="input-facebook" class="input-xlarge"></div>
 						</div>
 						<div class="control-group">
-							<label for="twitter" class="control-label">Twitter</label>
-							<div class="controls">
-								<input type="text" name="twitter" id="twitter" class="input-xlarge">
-							</div>
+							<label for="input-twitter" class="control-label">Twitter</label>
+							<div class="controls"><input type="text" name="twitter" id="input-twitter" class="input-xlarge"></div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="box box-color box-bordered teal">
+					<div class="box-title">
+						<h3><i class="icon-file"></i> Change Password</h3>
+					</div>
+					<div class="box-content">
+						<div class="control-group">
+							<label for="input-passwd" class="control-label">Password</label>
+							<div class="controls"><input type="password" name="passwd" id="input-passwd" class="input-xlarge" data-rule-samevalue="true" data-classname="password" /></div>
+						</div>
+						<div class="control-group">
+							<label for="input-passwd_confirm" class="control-label">Confirm Password</label>
+							<div class="controls"><input type="password" name="passwd_confirm" id="input-passwd_confirm" class="input-xlarge" data-rule-samevalue="true" data-classname="password" /></div>
 						</div>
 					</div>
 				</div>
 				
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary save">Save changes</button>
-					<button type="button" class="btn">Cancel</button>
+					<a href="<?php echo base_url('seeker/resume'); ?>" class="btn">Resume</a>
 				</div>
 			</form>
 		</div>
@@ -180,7 +192,6 @@
 		param.action = 'update';
 		param.tgl_lahir = Func.SwapDate(param.tgl_lahir);
 		param.update_session = 1;
-		
 		Func.ajax({ url: web.host + 'seeker/resume/action', param: param, callback: function(result) {
 			if (result.status == 1) {
 				Func.show_notice({ text: result.message });

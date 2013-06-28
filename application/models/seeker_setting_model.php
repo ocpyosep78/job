@@ -49,6 +49,7 @@ class Seeker_Setting_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
+		$string_seeker = (empty($param['seeker_id'])) ? '' : "AND SeekerSetting.seeker_id = '".$param['seeker_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'is_public ASC');
 		$string_limit = GetStringLimit($param);
@@ -56,7 +57,7 @@ class Seeker_Setting_model extends CI_Model {
 		$select_query = "
 			SELECT SQL_CALC_FOUND_ROWS SeekerSetting.*
 			FROM ".SEEKER_SETTING." SeekerSetting
-			WHERE 1 $string_filter
+			WHERE 1 $string_seeker $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";

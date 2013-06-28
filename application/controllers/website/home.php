@@ -36,7 +36,9 @@ class home extends CI_Controller {
 				$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $temp[0] ));
 			}
 			
-			if (count($vacancy) > 0) {
+			if (count($vacancy) > 0 && @$segments[3] == 'quick') {
+				$this->load->view( 'website/listing_quick', array( 'vacancy' => $vacancy ) );
+			} else if (count($vacancy) > 0) {
 				$this->load->view( 'website/listing_detail', array( 'vacancy' => $vacancy ) );
 			} else if (count($company) > 0) {
 				$this->load->view( 'website/company', array( 'company' => $company ));
@@ -50,7 +52,7 @@ class home extends CI_Controller {
     }
 	
 	function blog() {
-		preg_match('/blog\/([a-z0-9\_]+)$/i', $_SERVER['REQUEST_URI'], $match);
+		preg_match('/blog\/([a-z0-9\-\_]+)$/i', $_SERVER['REQUEST_URI'], $match);
 		$alias = (empty($match[1])) ? '' : $match[1];
 		
 		// article
@@ -64,7 +66,7 @@ class home extends CI_Controller {
 	}
 	
 	function event() {
-		preg_match('/event\/([a-z0-9\_]+)$/i', $_SERVER['REQUEST_URI'], $match);
+		preg_match('/event\/([a-z0-9\-\_]+)$/i', $_SERVER['REQUEST_URI'], $match);
 		$alias = (empty($match[1])) ? '' : $match[1];
 		
 		// event
@@ -94,6 +96,8 @@ class home extends CI_Controller {
 	}
 	
 	function ajax() {
+		$this->load->library('phpmailer');
+		
 		$action = (empty($_POST['action'])) ? '' : $_POST['action'];
 		if (isset($_POST['action'])) {
 			unset($_POST['action']);
@@ -113,7 +117,7 @@ class home extends CI_Controller {
 			} else if ($action == 'login_company') {
 				$type = 'company';
 				$model_name = 'Company_model';
-				$link = base_url('company/post');
+				$link = base_url('company/home');
 			} else if ($action == 'login_editor') {
 				$model_name = 'Editor_model';
 				$link = base_url('editor/home');
@@ -216,6 +220,25 @@ class home extends CI_Controller {
 			$result['status'] = true;
 			$result['message'] = 'Pesan berhasil dikirim';
 		}
+		else if ($action == 'sent_vacancy') {
+			$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $_POST['vacancy_id'] ));
+			$content = $this->load->view( 'seeker/email/quick_apply', array( 'post' => $_POST ), true );
+			
+			// Sent Email
+			$MailParam = array(
+				'EmailTo' => $vacancy['email_apply'],
+				'EmailFrom' => 'no-reply@duniakarir.com',
+				'EmailFromName' => 'Dunia Karir',
+				'EmailSubject' => $vacancy['nama'],
+				'EmailBody' => $content,
+				'Attachment' => array( $_POST['file_resume'] )
+			);
+			$result = SmtpMailer($MailParam);
+			$result['status'] = ($result['success']) ? true : false;
+			
+			// add seeker
+			$this->Vacancy_model->update_seeker(array( 'id' => $_POST['vacancy_id'] ));
+		}
 		else if ($action == 'subscribe') {
 			$subscribe = $this->Subscribe_model->get_by_id(array( 'email' => $_POST['email'], 'jenis_subscribe_id' => $_POST['jenis_subscribe_id'] ));
 			
@@ -230,11 +253,29 @@ class home extends CI_Controller {
 		}
 		else if ($action == 'apply') {
 			$seeker = $this->Seeker_model->get_session();
+			$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $_POST['vacancy_id'] ));
 			
 			// set data
 			$_POST['seeker_id'] = $seeker['id'];
 			$_POST['apply_date'] = $this->config->item('current_datetime');
 			$_POST['apply_status_id'] = APPLY_STATUS_OPEN;
+			
+			$attach[] = $seeker['photo_path'];
+			$attach[] = $seeker['file_resume_path'];
+			$apply_vacancy = $this->Widget_model->get_by_id(array( 'alias' => 'apply_vacancy' ));
+			$content = $this->load->view( 'seeker/email/lamaran', array( 'seeker' => $seeker, 'content' => $apply_vacancy['content'] ), true );
+			
+			// Sent Email
+			$MailParam = array(
+				'EmailTo' => $vacancy['email_apply'],
+				'EmailFrom' => 'no-reply@duniakarir.com',
+				'EmailFromName' => 'Dunia Karir',
+				'EmailSubject' => $vacancy['nama'],
+				'EmailBody' => $content,
+				'Attachment' => $attach
+			);
+			$result = SmtpMailer($MailParam);
+			$result['status'] = ($result['success']) ? true : false;
 			
 			// check
 			$is_apply = $this->Apply_model->is_apply(array( 'seeker_id' => $_POST['seeker_id'], 'vacancy_id' => $_POST['vacancy_id'] ));
@@ -242,6 +283,10 @@ class home extends CI_Controller {
 				$result['status'] = true;
 				$result['message'] = 'Anda sudah melamar lowongan ini.';
 			} else {
+				// add seeker
+				$this->Vacancy_model->update_seeker(array( 'id' => $_POST['vacancy_id'] ));
+				
+				// add apply
 				$result = $this->Apply_model->update($_POST);
 				if ($result['status']) {
 					$result['message'] = 'Surat lamaran anda berhasil dikirim.';

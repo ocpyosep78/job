@@ -26,6 +26,8 @@
 			</div>
 			<form class='form-horizontal form-validate' id="form-widget">
 				<input type="hidden" name="id" value="0" />
+				<input type="hidden" name="is_html" value="0" />
+				
 				<div class="modal-body">
 					<div class="control-group">
 						<label for="input-nama" class="control-label">Nama</label>
@@ -41,8 +43,11 @@
 					</div>
 					<div class="control-group">
 						<label for="input-content1" class="control-label">Content</label>
-						<div class="controls">
-							<textarea name="content" id="input-content1" class="tinymce span9" style="height: 350px;"></textarea>
+						<div class="controls cnt-raw">
+							<textarea name="content_raw" id="input-content1" class="span9" style="height: 350px;"></textarea>
+						</div>
+						<div class="controls cnt-html">
+							<textarea name="content_html" id="input-content2" class="span9 tinymce" style="height: 350px;"></textarea>
 						</div>
 					</div>
 				</div>
@@ -65,8 +70,12 @@
 			init: function() {
 				$('#cnt-widget_length').prepend('<div style="float: left; width: 65px; padding: 2px 0 0 0;"><button class="btn btn-small btn-add">Tambah</button></div>');
 				$('#cnt-widget_length .btn-add').click(function() {
-					$('#modal-widget form')[0].reset()
+					$('#modal-widget .cnt-raw').hide();
+					$('#modal-widget .cnt-html').show();
+					
+					$('#modal-widget form')[0].reset();
 					$('#modal-widget [name="id"]').val(0);
+					$('#modal-widget [name="is_html"]').val(1);
 					$('#modal-widget').modal();
 				});
 			},
@@ -78,7 +87,18 @@
 					$('#modal-widget [name="id"]').val(record.id);
 					$('#modal-widget [name="nama"]').val(record.nama);
 					$('#modal-widget [name="alias"]').val(record.alias);
-					$('#modal-widget [name="content"]').val(record.content_html);
+					$('#modal-widget [name="is_html"]').val(record.is_html);
+					
+					if (record.is_html == 1) {
+						$('#modal-widget .cnt-raw').hide();
+						$('#modal-widget .cnt-html').show();
+						$('#modal-widget [name="content_html"]').val(record.content_html);
+					} else {
+						$('#modal-widget .cnt-raw').show();
+						$('#modal-widget .cnt-html').hide();
+						$('#modal-widget [name="content_raw"]').val(record.content);
+					}
+					
 					$('#modal-widget').modal();
 				});
 				
@@ -109,6 +129,14 @@
 			
 			var param = Site.Form.GetValue('modal-widget form');
 			param.action = 'update';
+			
+			// content
+			if (param.is_html == 1) {
+				param.content = $('#modal-widget [name="content_html"]').val();
+			} else {
+				param.content = $('#modal-widget [name="content_raw"]').val();
+			}
+			
 			Func.ajax({ url: web.host + 'editor/widget/action', param: param, callback: function(result) {
 				if (result.status == 1) {
 					dt.reload();

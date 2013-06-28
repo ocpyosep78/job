@@ -1,7 +1,11 @@
 <?php
+	$is_pdf = (isset($is_pdf)) ? $is_pdf : false;
 	$allow_update = (isset($allow_update)) ? $allow_update : false;
+	
 	$array_pendidikan = $this->Seeker_Education_model->get_array(array( 'seeker_id' => $seeker['id'] ));
 	$array_language = $this->Seeker_Language_model->get_array(array( 'seeker_id' => $seeker['id'] ));
+	$array_exp = $this->Seeker_Exp_model->get_array(array( 'seeker_id' => $seeker['id'] ));
+	$array_expert = $this->Seeker_Expert_model->get_array(array( 'seeker_id' => $seeker['id'] ));
 	$array_reference = $this->Seeker_Reference_model->get_array(array( 'seeker_id' => $seeker['id'] ));
 	$seeker_addon = $this->Seeker_Addon_model->get_by_id(array( 'seeker_id' => $seeker['id'] ));
 	$seeker_summary = $this->Seeker_Summary_model->get_by_id(array( 'seeker_id' => $seeker['id'] ));
@@ -31,10 +35,12 @@
 <div id="contentWrap">
 	<div id="content"><div id="pageContent" style="width:100%; margin:0px">
         <div id="pageRow">&nbsp;</div>
+		<?php if (! $is_pdf) { ?>
         <div id="pageRow">
-            <div class="colLeft" style="width:70%"><span id="logoPrint" style="display:none"><img src="resume_files/js-logo.gif"></span>&nbsp;</div>
+            <div class="colLeft" style="width:70%">&nbsp;</div>
             <div class="colRight" style="width:27%" id="print"><a style="cursor: pointer;" onclick="javascript: window.print();">Cetak resume</a></div>
 		</div>
+		<?php } ?>
 		
         <div class="formSection">
             <div class="pageRow">&nbsp;</div>            
@@ -57,9 +63,9 @@
 			<table border="0" width="100%"><tbody>
 				<?php if (!empty($seeker['phone'])) { ?>
 				<tr>
-					<td valign="top" width="25%">Telepon</td>
-					<td valign="top">:</td>
-					<td class="tdRight" valign="top"><?php echo $seeker['phone']; ?></td></tr>
+					<td valign="top" style="width: 40%;">Telepon</td>
+					<td valign="top" style="width: 5%;">:</td>
+					<td class="tdRight" valign="top" style="width: 55%;"><?php echo $seeker['phone']; ?></td></tr>
 				<?php } ?>
 				<?php if (!empty($seeker['hp'])) { ?>
 				<tr>
@@ -115,22 +121,28 @@
 <?php } ?>
 <?php } ?>
 
+<?php if (count($array_expert) > 0) { ?>
 <tr class="TRHeader"><td colspan="6" class="ResumeHdr" valign="top"><b>Keahlian / Ketrampilan</b></td></tr>
 <tr>
 	<td colspan="6" valign="top">
-	DISINI TAMPILKAN DAFTAR KETRAMPILAN YANG DI ENTRY  DAN Tampilkan Ketrampilan dalam bentuk LIST
+		<ul>
+			<?php foreach ($array_expert as $item) { ?>
+			<li><?php echo $item['content']; ?></li>
+			<?php } ?>
+		</ul>
 	</td>
 </tr>
 <tr><td colspan="6" valign="top">&nbsp;</td></tr>
+<?php } ?>
 
 <?php if (count($array_language) > 0) { ?>
 <tr class="TRHeader"><td colspan="6" class="ResumeHdr" valign="top"><b>Penguasaan Bahasa</b></td></tr>
-<tr><td colspan="6" valign="top">
-    <table cellpadding="2" cellspacing="0" width="100%"><tbody>
+<tr><td colspan="6">
+    <table cellpadding="2" cellspacing="0" style="width: 100%;"><tbody>
 	<tr>
-        <td valign="top" width="33%"><b>Bahasa</b></td>
-        <td align="center" valign="top" width="20%"><b>Lisan</b></td>
-		<td align="center" valign="top"><b>Tertulis</b></td></tr>
+        <td style="width: 30%;"><b>Bahasa</b></td>
+        <td style="width: 35%;" align="center" valign="top"><b>Lisan</b></td>
+		<td style="width: 35%;" align="center" valign="top"><b>Tertulis</b></td></tr>
 	<?php foreach ($array_language as $bahasa) { ?>
 	<tr>
 		<td valign="top"><?php echo $bahasa['nama']; ?></td>
@@ -143,12 +155,16 @@
 <tr><td colspan="6" valign="top">&nbsp;</td></tr>
 <?php } ?>
 
+<?php if (count($array_exp) > 0) { ?>
 <tr class="TRHeader"><td colspan="6" class="ResumeHdr" valign="top"><b>Pengalaman Kerja</b></td></tr>
+<?php foreach ($array_exp as $exp) { ?>
 <tr>
 	<td valign="top" width="23%">Tingkat Pengalaman</td>
 	<td valign="top">:</td>
-	<td colspan="4" valign="top">Lulusan Baru</td></tr>
+	<td colspan="4" valign="top"><?php echo strip_tags($exp['content']); ?></td></tr>
+<?php } ?>
 <tr><td colspan="6" valign="top">&nbsp;</td></tr>
+<?php } ?>
 
 <?php if (!empty($seeker_addon['text_clean'])) { ?>
 <tr class="TRHeader"><td colspan="6" class="ResumeHdr" valign="top"><b>Info Tambahan</b></td></tr>
@@ -194,7 +210,6 @@
 	</td></tr>
 <?php } ?>
 </tbody></table>
-
 
                 </div>
             </div>

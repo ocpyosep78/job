@@ -20,7 +20,6 @@
 				<table id="cnt-widget" class="table table-striped table-bordered">
 					<thead><tr>
 						<th>Nama</th>
-						<th>Posisi</th>
 						<th>Perusahaan</th>
 						<th>Status</th>
 						<th>Publish Date</th>
@@ -43,7 +42,7 @@
 		var param = {
 			id: 'cnt-widget',
 			source: web.host + 'editor/vacancy/grid',
-			column: [ { }, { }, { }, { }, { }, { bSortable: false, sClass: "center" } ],
+			column: [ { }, { }, { }, { }, { bSortable: false, sClass: "center" } ],
 			callback: function() {
 				$('#cnt-widget .view').click(function() {
 					var raw_record = $(this).siblings('.hide').text();

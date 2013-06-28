@@ -337,7 +337,9 @@ var Func = {
 		return value.replace(/^\s+|\s+$/g,'');
 	},
 	GetName: function(value) {
-		var result = value.trim().replace(new RegExp(/[^0-9a-z]+/gi), '_').toLowerCase();
+		var result = value.trim().replace(new RegExp(/[^0-9a-z]+/gi), '-').toLowerCase();
+		result = result.replace(new RegExp(/^-/gi), '').toLowerCase();
+		result = result.replace(new RegExp(/-$/gi), '').toLowerCase();
 		return result;
 	},
 	GetStringFromDate: function(Value) {
@@ -468,7 +470,7 @@ var Func = {
 		setTimeout(function() {
 			var id = $('.gritter-item-wrapper').last().attr('id');
 			$('#' + id).find('.gritter-close').click();
-		}, 1000);
+		}, 3000);
 	},
 	confirm_delete: function(p) {
 		bootbox.confirm("Apa anda yakin ?", function(result) {

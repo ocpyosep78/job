@@ -81,20 +81,26 @@ class News_model extends CI_Model {
 		$news = $this->get_by_id(array( 'nama' => 'Pelamar' ));
 		
 		// make it valid
-		$content = trim(strip_tags($news['content']));
-		$news['content'] = (empty($content)) ? $content : $news['content'];
+		$content = '';
+		if (count($news) > 0) {
+			$content = trim(strip_tags($news['content']));
+			$content = (empty($content)) ? $content : $news['content'];
+		}
 		
-		return $news['content'];
+		return $content;
 	}
 	
 	function get_company() {
 		$news = $this->get_by_id(array( 'nama' => 'Perusahaan' ));
 		
 		// make it valid
-		$content = trim(strip_tags($news['content']));
-		$news['content'] = (empty($content)) ? $content : $news['content'];
+		$content = '';
+		if (count($news) > 0) {
+			$content = trim(strip_tags($news['content']));
+			$content = (empty($content)) ? $content : $news['content'];
+		}
 		
-		return $news['content'];
+		return $content;
 	}
 	
     function delete($param) {

@@ -61,6 +61,7 @@ class Seeker_Summary_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
+		$string_seeker = (empty($param['seeker_id'])) ? '' : "AND SeekerSummary.seeker_id = '".$param['seeker_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'jenjang_id ASC');
 		$string_limit = GetStringLimit($param);
@@ -68,7 +69,7 @@ class Seeker_Summary_model extends CI_Model {
 		$select_query = "
 			SELECT SQL_CALC_FOUND_ROWS SeekerSummary.*
 			FROM ".SEEKER_SUMMARY." SeekerSummary
-			WHERE 1 $string_filter
+			WHERE 1 $string_seeker $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";

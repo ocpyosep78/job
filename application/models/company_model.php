@@ -103,7 +103,9 @@ class Company_model extends CI_Model {
 		$param['is_new'] = (empty($param['is_new'])) ? 0 : $param['is_new'];
 		
 		if ($param['is_new'] == 1) {
-			$select_query = "SELECT COUNT(*) TotalRecord FROM ".COMPANY."";
+			$string_company = (!empty($param['company_id'])) ? "AND Company.id = '".$param['company_id']."'" : "";
+			
+			$select_query = "SELECT COUNT(*) TotalRecord FROM ".COMPANY." Company WHERE 1 $string_company";
 		} else {
 			$select_query = "SELECT FOUND_ROWS() TotalRecord";
 		}
@@ -126,6 +128,18 @@ class Company_model extends CI_Model {
 		}
 		
 		return $status;
+	}
+	
+	function get_membership_detail($param) {
+		$company = $this->get_by_id($param);
+		
+		$result['status'] = $this->get_membership_status($param);
+		$result['status_text'] = ($result['status']) ? 'Premium' : 'Free';
+		$result['vacancy_left'] = $company['vacancy_count_left'];
+		$result['vacancy_count'] = $this->Vacancy_model->get_count(array( 'is_new' => 1, 'company_id' => $company['id'] ));
+		$result['membership_date'] = $company['membership_date'];
+		
+		return $result;
 	}
 	
     function delete($param) {

@@ -1,6 +1,11 @@
 <?php
 	$seeker = $this->Seeker_model->get_session();
 	$is_login = $this->Seeker_model->is_login();
+	
+	// add view
+	$this->Vacancy_model->update_view($vacancy);
+	
+	// page property
 	$is_apply = false;
 	if ($is_login) {
 		$is_apply = $this->Apply_model->is_apply(array( 'seeker_id' => $seeker['id'], 'vacancy_id' => $vacancy['id'] ));
@@ -20,6 +25,7 @@
 </head>
 <body style="background: #D1D3D4; font-family: arial;">
 <input type="hidden" name="vacancy_id" value="<?php echo $vacancy['id']; ?>" />
+<input type="hidden" name="is_login" value="<?php echo ($is_login) ? 1 : 0; ?>" />
 
 <table border="0" cellpadding="0" cellspacing="0" align="center" width="700"><tbody><tr><td><table border="0" cellpadding="5" cellspacing="0" align="center" width="700"><tbody><tr>
 	<td><div style="text-align: center; color: #000000; font-size: 12px;">
@@ -59,8 +65,6 @@
 <div style="color: #FFFFFF; font-size: 13px;"><?php echo $vacancy['content']; ?></div>
 
 <font color="#FFFFFF" face="Arial" size="2">
-	<div style="text-align: center;"><?php echo $vacancy['content_short']; ?></div>
-	<div style="text-align: center;">&nbsp;</div>
 	<div style="text-align: center;">Pelamar Tertarik dapat mengirimkan CV dan Foto Terbaru ke email :</div>
 	<div style="text-align: center;">&nbsp;</div>
 	<div style="text-align: center;"><?php echo $vacancy['email_apply']; ?></div>
@@ -76,13 +80,21 @@
 <table border="0" cellpadding="0" cellspacing="0" align="center" width="600"><tbody><tr><td>
 <table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody>
 	<tr><td>
-		<div class="cnt-apply" style="text-align: center; padding: 30px 0 30px 0;">
+		<div class="cnt-apply" style="padding: 30px 0 30px 0; text-align: center;">
 			<?php if ($is_apply) { ?>
 			Anda sudah melamar lowongan ini.
-			<?php } else if ($is_login) { ?>
-			<input type="button" style="font-weight:bold; width:150px" value="Apply" />
 			<?php } else { ?>
-			Silahkan <a href="<?php echo base_url('login'); ?>" style="color: #0000FF;">login</a> untuk melamar lowongan ini
+			<div style="width: 300px; margin: 0 auto; font-size: 12px;">
+				<div style="float: left; width: 50%;">
+					<div>&nbsp;</div>
+					<div><input type="button" class="apply" style="font-weight: bold; width: 100px" value="Apply" /></div>
+				</div>
+				<div style="float: left; width: 50%;">
+					<div>Non Member</div>
+					<div><input type="button" class="quick" style="font-weight: bold; width: 100px" value="Quick Apply" data-quick-link="<?php echo $vacancy['vacancy_quick_apply_link']; ?>" /></div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
 			<?php } ?>
 		</div>
 		
@@ -101,11 +113,22 @@
 </td></tr></tbody></table></td></tr></tbody></table>
 
 <script>
-	$('.cnt-apply input').click(function() {
+	var is_login = ($('[name="is_login"]').val() == 1) ? true : false;
+	
+	$('.cnt-apply .apply').click(function() {
+		if (!is_login) {
+			alert('Silahkan login untuk melamar.');
+			return false;
+		}
+		
 		var param = { action: 'apply', vacancy_id: $('[name="vacancy_id"]').val() }
 		Func.ajax({ url: web.host + 'ajax', param: param, callback: function(result) {
 			$('.cnt-apply').text(result.message);
 		} });
+	});
+	
+	$('.cnt-apply .quick').click(function() {
+		window.location = $(this).data('quick-link');
 	});
 </script>
 
