@@ -12,7 +12,7 @@ class apply extends SEEKER_Controller {
 		$seeker = $this->Seeker_model->get_session();
 		$_POST['is_delete'] = 0;
 		$_POST['seeker_id'] = $seeker['id'];
-		$_POST['column'] = array( 'position', 'company_nama', 'location', 'apply_date', 'apply_status_name' );
+		$_POST['column'] = array( 'vancancy_nama', 'company_nama', 'location', 'apply_date', 'apply_status_name' );
 		
 		$array = $this->Apply_model->get_array($_POST);
 		$count = $this->Apply_model->get_count();

@@ -10,7 +10,7 @@
 		<div class="box-content"><div class="row-fluid"><div class="span12"><div class="box"><div class="box-content nopadding">
 			<table id="cnt-apply" class="table table-striped table-bordered">
 				<thead><tr>
-					<th>Position</th>
+					<th>Lowongan</th>
 					<th>Company</th>
 					<th>Location</th>
 					<th>Time</th>

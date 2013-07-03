@@ -1,6 +1,12 @@
 <?php
 	$company = $this->Company_model->get_session();
+	$company = $this->Company_model->get_by_id(array( 'id' => $company['id'] ));
 	$is_member = $this->Company_model->get_membership_status(array( 'id' => $company['id'] ));
+	
+	$is_pass = true;
+	if (empty($company['nama'])) {
+		$is_pass = false;
+	}
 	
 	$array_jenjang = $this->Jenjang_model->get_array();
 	$array_pengalaman = $this->Pengalaman_model->get_array();
@@ -131,7 +137,9 @@
 				</div>
 				
 				<div class="form-actions">
-					<?php if ($is_member) { ?>
+					<?php if (!$is_pass) { ?>
+					Harap memperbaharui profile perusahaan anda sebelum membuat lowongan baru.
+					<?php } else if ($is_member) { ?>
 					<button type="submit" class="btn btn-primary">Save changes</button>
 					<button type="button" class="btn form-close">Cancel</button>
 					<?php } else { ?>

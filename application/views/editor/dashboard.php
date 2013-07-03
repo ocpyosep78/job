@@ -25,7 +25,7 @@
 				<li class="green long"><a href="<?php echo base_url('editor/seeker'); ?>"><span><i class="icon-user"></i> <?php echo $count['seeker']; ?></span><span class="name">Pelamar</span></a></li>
 				<li class="teal long"><a href="<?php echo base_url('editor/company'); ?>"><span><i class="icon-home"></i> <?php echo $count['company']; ?></span><span class="name">Perusahaan</span></a></li>
 				<li class="blue long"><a href="<?php echo base_url('editor/membership'); ?>"><span><i class="icon-home"></i> <?php echo $count['membership']; ?></span><span class="name">Membership</span></a></li>
-				<li class="blue long"><a href="<?php echo base_url('editor/vacancy'); ?>"><span><i class="icon-home"></i> <?php echo $count['vacancy']; ?></span><span class="name">Lowongan</span></a></li>
+				<li class="satblue long"><a href="<?php echo base_url('editor/vacancy'); ?>"><span><i class="icon-home"></i> <?php echo $count['vacancy']; ?></span><span class="name">Lowongan</span></a></li>
 			</ul>
 		</div></div></div>
 	</div></div></div></div></div>

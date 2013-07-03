@@ -134,6 +134,7 @@
 				<div style="padding: 0 50px 25px 0; text-align: right;"><input type="submit" class="btn" value="Cari Lowongan" /></div>
 			</form></div>
 			
+			<?php if (count($array_vacancy) > 0) { ?>
 			<div class='new-albums list' style="width: 100%;">
 				<?php foreach ($array_vacancy as $vacancy) { ?>
 				<div class="new-album-box">
@@ -170,6 +171,11 @@
 					<?php } ?>
 				</ul>
 			</div>
+			<?php } else { ?>
+			<div class='new-albums list' style="width: 100%; padding: 25px 15px;">
+				Maaf, tidak ada hasil pencarian yang ditemukan.
+			</div>
+			<?php } ?>
 		</div>
 		
 		<aside class='span3'>
@@ -192,6 +198,14 @@ $('.show-search').click(function() {
 	} else {
 		$('#advance-search').slideUp('slow');
 	}
+});
+
+// form
+$('.cnt-option .item a').click(function() {
+	var raw = $(this).find('.hide').text();
+	eval('var propinsi = ' + raw);
+	$('[name="propinsi_id"]').val(propinsi.id);
+	$('#advance-search form').submit();
 });
 
 var is_search = $('[name="is_search"]').val();

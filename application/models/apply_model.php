@@ -63,7 +63,7 @@ class Apply_model extends CI_Model {
 		
 		$select_query = "
 			SELECT SQL_CALC_FOUND_ROWS Apply.*,
-				Vacancy.position, Company.nama company_nama, Kota.nama kota_nama, Propinsi.nama propinsi_nama,
+				Vacancy.nama vancancy_nama, Company.nama company_nama, Kota.nama kota_nama, Propinsi.nama propinsi_nama,
 				ApplyStatus.nama apply_status_name
 			FROM ".APPLY." Apply
 			LEFT JOIN ".APPLY_STATUS." ApplyStatus ON ApplyStatus.id = Apply.apply_status_id

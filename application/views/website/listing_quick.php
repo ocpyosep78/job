@@ -163,7 +163,7 @@
 																	<td valign="top">:</td>
 																	<td align="left">
 																		<select name="qualification" class="select" style="width:350px">
-																			<?php echo ShowOption(array( 'Array' => $array_jenjang, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
+																			<?php echo ShowOption(array( 'Array' => $array_jenjang, 'ArrayID' => 'nama', 'ArrayTitle' => 'nama' )); ?>
 																		</select>																																
 																	</td>
 																	<td width="100%"></td></tr>
@@ -238,7 +238,7 @@ $( document ).ready(function() {
 		if (p.message != null && p.message.length > 0) {
 			$('.file-resume-info').text(p.message);
 		} else {
-			$('#form-apply [name="file_resume"]').val(p.file_link);
+			$('#form-apply [name="file_resume"]').val(p.file_name);
 			$('.file-resume-info').html('<a href="' + p.file_link + '" target="_blank">Resume</a>');
 		}
 	}
@@ -282,7 +282,7 @@ $( document ).ready(function() {
 		}
 		
 		Func.ajax({ url: web.host + 'ajax', param: param, callback: function(result) {
-			console.log(result);
+			alert (result.message);
 		} });
 	});
 	

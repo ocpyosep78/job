@@ -224,6 +224,12 @@ class home extends CI_Controller {
 			$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $_POST['vacancy_id'] ));
 			$content = $this->load->view( 'seeker/email/quick_apply', array( 'post' => $_POST ), true );
 			
+			// attachemnt
+			$attach = array();
+			if (!empty($_POST['file_resume'])) {
+				$attach[] = $this->config->item('base_path').'/static/upload/'.$_POST['file_resume'];
+			}
+			
 			// Sent Email
 			$MailParam = array(
 				'EmailTo' => $vacancy['email_apply'],
@@ -231,10 +237,11 @@ class home extends CI_Controller {
 				'EmailFromName' => 'Dunia Karir',
 				'EmailSubject' => $vacancy['nama'],
 				'EmailBody' => $content,
-				'Attachment' => array( $_POST['file_resume'] )
+				'Attachment' => $attach
 			);
 			$result = SmtpMailer($MailParam);
 			$result['status'] = ($result['success']) ? true : false;
+			$result['message'] = ($result['status']) ? 'Lamaran anda berhasil dikirim' : 'Lamaran anda gagal dikirim';
 			
 			// add seeker
 			$this->Vacancy_model->update_seeker(array( 'id' => $_POST['vacancy_id'] ));
