@@ -11,10 +11,11 @@
 			<div class="row-fluid"><div class="span12"><div class="box"><div class="box-content nopadding">
 				<table id="cnt-report" class="table table-striped table-bordered">
 					<thead><tr>
+						<th>ID</th>
 						<th>Perusahaan</th>
 						<th>Email Pelapor</th>
 						<th>Berita</th>
-						<th style="width: 110px;">&nbsp;</th>
+						<th>&nbsp;</th>
 					</tr></thead>
 					<tbody><tr><td class="dataTables_empty">Loading data from server</td></tr></tbody>
 				</table>
@@ -27,16 +28,15 @@
 		var dt = null;
 		
 		var param = {
-			id: 'cnt-report',
+			id: 'cnt-report', aaSorting: [[0, 'desc']],
 			source: web.host + 'editor/report/grid',
-			column: [ { }, { }, { }, { bSortable: false, sClass: "center" } ],
+			column: [ { "bSearchable": false, "bVisible": false }, { }, { }, { }, { bSortable: false, sClass: "center", sWidth: "10%" } ],
 			callback: function() {
 				$('#cnt-report .view').click(function() {
 					var raw_record = $(this).siblings('.hide').text();
 					eval('var record = ' + raw_record);
 					window.open(record.vacancy_link);
 				});
-				
 				
 				$('#cnt-report .delete').click(function() {
 					var raw_record = $(this).siblings('.hide').text();

@@ -104,6 +104,10 @@ class Seeker_model extends CI_Model {
 		// overwrite field name
 		$param['field_replace']['usia'] = 'Seeker.tgl_lahir';
 		$param['field_replace']['full_name'] = 'Seeker.first_name';
+		$param['field_replace']['jenjang_nama'] = 'Jenjang.nama';
+		$param['field_replace']['jenjang_nama'] = 'Jenjang.nama';
+		$param['field_replace']['kota_nama'] = 'Kota.nama';
+		$param['field_replace']['marital_nama'] = 'Marital.nama';
 		
 		$string_is_active = (isset($param['is_active'])) ? "AND Seeker.is_active = '".$param['is_active']."'" : '';
 		$string_with_alias = (isset($param['with_alias'])) ? "AND Seeker.alias != ''" : '';

@@ -10,7 +10,7 @@ class seeker extends EDITOR_Controller {
 	
 	function grid() {
 		$_POST['is_edit'] = 1;
-		$_POST['column'] = array( 'seeker_no', 'first_name', 'last_name', 'email' );
+		$_POST['column'] = array( 'id', 'seeker_no', 'first_name', 'last_name', 'email' );
 		
 		$array = $this->Seeker_model->get_array($_POST);
 		$count = $this->Seeker_model->get_count();

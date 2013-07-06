@@ -9,7 +9,7 @@ class report extends EDITOR_Controller {
     }
 	
 	function grid() {
-		$_POST['column'] = array( 'company_nama', 'email', 'content' );
+		$_POST['column'] = array( 'id', 'company_nama', 'email', 'content' );
 		$_POST['is_custom'] = '<img class="button-cursor delete" src="'.base_url('static/img/button_delete.png').'"> ';
 		
 		$array = $this->Report_model->get_array($_POST);

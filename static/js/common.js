@@ -509,6 +509,9 @@ var Func = {
 		if (p.fnServerParams != null) {
 			dt_param.fnServerParams = p.fnServerParams;
 		}
+		if (p.aaSorting != null) {
+			dt_param.aaSorting = p.aaSorting;
+		}
 		
 		$(cnt_id).dataTable(dt_param);
 		$(cnt_id + '_wrapper input').attr("placeholder", "Search here...");

@@ -20,11 +20,12 @@
 			<div class="row-fluid" id="grid-event"><div class="span12"><div class="box"><div class="box-content nopadding">
 				<table id="cnt-event" class="table table-striped table-bordered">
 					<thead><tr>
+						<th>ID</th>
 						<th>Nama</th>
 						<th>Lokasi</th>
 						<th>Waktu</th>
 						<th>Publish Date</th>
-						<th style="width: 75px;">&nbsp;</th>
+						<th>&nbsp;</th>
 					</tr></thead>
 					<tbody><tr><td class="dataTables_empty">Loading data from server</td></tr></tbody>
 				</table>
@@ -121,9 +122,9 @@
 		}
 		
 		var param = {
-			id: 'cnt-event',
+			id: 'cnt-event', aaSorting: [[0, 'desc']],
 			source: web.host + 'editor/event/grid',
-			column: [ { }, { }, { }, { }, { bSortable: false, sClass: "center" } ],
+			column: [ { "bSearchable": false, "bVisible": false }, { }, { }, { }, { }, { bSortable: false, sClass: "center", sWidth: "10%" } ],
 			init: function() {
 				$('#cnt-event_length').prepend('<div style="float: left; width: 65px; padding: 2px 0 0 0;"><button class="btn btn-small btn-add">Tambah</button></div>');
 				$('#cnt-event_length .btn-add').click(function() {

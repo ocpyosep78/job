@@ -9,7 +9,7 @@ class membership extends EDITOR_Controller {
     }
 	
 	function grid() {
-		$_POST['column'] = array( 'date_request', 'company_nama', 'post_count', 'date_count', 'price', 'status' );
+		$_POST['column'] = array( 'id', 'date_request', 'company_nama', 'post_count', 'date_count', 'price', 'status' );
 		$_POST['is_pending']  = '<img class="button-cursor confirm" src="'.base_url('static/img/button_check.png').'"> ';
 		$_POST['is_pending'] .= '<img class="button-cursor delete" src="'.base_url('static/img/button_remove.png').'"> ';
 		

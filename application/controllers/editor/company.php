@@ -9,7 +9,7 @@ class company extends EDITOR_Controller {
     }
 	
 	function grid() {
-		$_POST['column'] = array( 'nama', 'phone', 'email', 'website' );
+		$_POST['column'] = array( 'id', 'nama', 'phone', 'email', 'website' );
 		
 		$array = $this->Company_model->get_array($_POST);
 		$count = $this->Company_model->get_count();

@@ -4,7 +4,7 @@
 	
 	$company = $this->Company_model->get_session();
 	$array_vacancy = $this->Vacancy_model->get_array(array( 'company_id' => $company['id'] ));
-	$array_apply_status = array( 'APPLY_STATUS_INTERVIEW' => APPLY_STATUS_INTERVIEW, 'APPLY_STATUS_REJECT' => APPLY_STATUS_REJECT );
+	$array_apply_status = array( 'APPLY_STATUS_INTERVIEW' => APPLY_STATUS_INTERVIEW, 'APPLY_STATUS_REJECT' => APPLY_STATUS_REJECT, 'APPLY_STATUS_VIEW' => APPLY_STATUS_VIEW );
 	
 	$array_apply = array();
 	if (!empty($vacancy_id)) {
@@ -103,7 +103,7 @@
 								<td><?php echo $seeker['marital_nama']; ?></td>
 								<td><?php echo $seeker['experience']; ?></td>
 								<td style="min-width: 90px; text-align: center;">
-									<a href="<?php echo $seeker['seeker_link']; ?>">
+									<a href="<?php echo $seeker['seeker_link']; ?>" target="_blank" class="update_view">
 										<img src="<?php echo base_url('static/img/button_view.png'); ?>" class="button-cursor">
 									</a>
 									
@@ -144,6 +144,14 @@
 		});
 		
 		// grid
+		$('.grid-apply .update_view').click(function() {
+			row = $(this).parents('tr');
+			var raw_record = row.find('span.hide').text();
+			eval('var record = ' + raw_record);
+			
+			var param = { action: 'update_status', id: record.id }
+			Func.ajax({ url: web.host + 'company/download/action', param: param, callback: function(result) { } });
+		});
 		$('.grid-apply .interview').click(function() {
 			row = $(this).parents('tr');
 			var raw_record = row.find('span.hide').text();

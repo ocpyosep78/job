@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Waktu pembuatan: 26. Juni 2013 jam 09:13
--- Versi Server: 5.1.41
--- Versi PHP: 5.3.1
+-- Generation Time: Jul 06, 2013 at 01:23 PM
+-- Server version: 5.1.41
+-- PHP Version: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -22,7 +22,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `apply`
+-- Table structure for table `apply`
 --
 
 CREATE TABLE IF NOT EXISTS `apply` (
@@ -34,10 +34,10 @@ CREATE TABLE IF NOT EXISTS `apply` (
   `is_delete` int(11) NOT NULL,
   `addtional_info` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
--- Dumping data untuk tabel `apply`
+-- Dumping data for table `apply`
 --
 
 INSERT INTO `apply` (`id`, `seeker_id`, `vacancy_id`, `apply_status_id`, `apply_date`, `is_delete`, `addtional_info`) VALUES
@@ -45,34 +45,43 @@ INSERT INTO `apply` (`id`, `seeker_id`, `vacancy_id`, `apply_status_id`, `apply_
 (2, 6, 1, 1, '2013-06-21 11:44:27', 0, ''),
 (3, 6, 3, 1, '2013-06-21 11:44:31', 0, ''),
 (4, 6, 4, 1, '2013-06-21 11:44:33', 0, ''),
-(5, 6, 5, 1, '2013-06-21 11:46:38', 0, '');
+(5, 6, 5, 1, '2013-06-21 11:46:38', 0, ''),
+(6, 10, 7, 1, '2013-06-21 10:28:32', 0, ''),
+(7, 10, 10, 1, '2013-06-21 22:58:43', 1, ''),
+(8, 10, 13, 1, '2013-06-22 00:53:21', 0, ''),
+(9, 14, 14, 1, '2013-06-30 08:50:27', 0, ''),
+(10, 10, 16, 1, '2013-06-30 20:35:08', 0, ''),
+(11, 15, 17, 1, '2013-07-03 12:12:34', 0, ''),
+(12, 10, 17, 1, '2013-07-05 07:45:40', 0, ''),
+(14, 1, 8, 5, '2013-07-06 12:17:32', 0, '');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `apply_status`
+-- Table structure for table `apply_status`
 --
 
 CREATE TABLE IF NOT EXISTS `apply_status` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data untuk tabel `apply_status`
+-- Dumping data for table `apply_status`
 --
 
 INSERT INTO `apply_status` (`id`, `nama`) VALUES
 (1, 'Open'),
 (2, 'Interview'),
 (3, 'Accepted'),
-(4, 'Rejected');
+(4, 'Rejected'),
+(5, 'Viewed');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `article`
+-- Table structure for table `article`
 --
 
 CREATE TABLE IF NOT EXISTS `article` (
@@ -90,21 +99,23 @@ CREATE TABLE IF NOT EXISTS `article` (
   `image_piracy` varchar(255) DEFAULT NULL,
   `publish_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data untuk tabel `article`
+-- Dumping data for table `article`
 --
 
 INSERT INTO `article` (`id`, `editor_id`, `subkategori_id`, `article_status_id`, `nama`, `alias`, `photo`, `article_url`, `article_desc_1`, `article_desc_2`, `article_desc_3`, `image_piracy`, `publish_date`) VALUES
-(1, 1, 2, 2, '1', '1', '2013/06/13/20130613_191014_1325.png', 'asd', '<p>Description 1</p>', '<p>Description 2</p>', '<p>Description 3</p>', 'asd', '2013-06-10 18:10:06'),
-(2, 1, 1, 2, 'A Night At The Opera', 'a_night_at_the_opera', '2013/06/13/20130613_110614_3921.jpg', '', '<p>Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>', '', '', '', '2013-06-11 00:00:00'),
-(3, 1, 2, 2, 'mr. Lorem ipsum sit dolor', 'mr_lorem_ipsum_sit_dolor', '2013/06/13/20130613_213213_7458.jpg', '', '<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>\n<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et</p>', '<p>iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus</p>', '<p>omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum</p>', '', '2013-06-13 00:00:00');
+(1, 1, 2, 2, 'Ini Artikel Pertama Saya', 'ini-artikel-pertama-saya', '2013/06/13/20130613_191014_1325.png', 'asd', '<p>Description 1</p>', '<p>Description 2</p>', '<p>Description 3</p>', 'asd', '2013-06-10 18:10:06'),
+(2, 1, 1, 2, 'A Night At The Opera', 'a-night-at-the-opera', '2013/06/13/20130613_110614_3921.jpg', '', '<p>Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>', '', '', '', '2013-06-11 00:00:00'),
+(3, 1, 2, 2, 'mr. Lorem ipsum sit dolor', 'mr-lorem-ipsum-sit-dolor', '2013/06/13/20130613_213213_7458.jpg', '', '<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>\n<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et</p>', '<p>iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus</p>', '<p>omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum</p>', '', '2013-06-13 00:00:00'),
+(4, 2, 2, 2, 'tes tagfsdfds fsdfd fsddfsd fdfsd', 'tes-tagfsdfds-fsdfd-fsddfsd-fdfsd', '2013/06/22/20130622_235121_9203.png', '', '<p>sdfdsf</p>', '<p>fsdfds</p>', '<p>fsdfsd</p>', 'fdfds', '2013-06-23 00:00:00'),
+(5, 2, 2, 2, 'INGIN KERJA KE AUSTRALIA ??? Baca dulu persyaratan', 'ingin-kerja-ke-australia-baca-dulu-persyaratan', '2013/07/01/20130701_005641_1349.jpg', 'fsdfsdfsd', '<p>Australia bagi Indonesia merupakan &ldquo;<strong>Land of Opportunity</strong>&rdquo; untuk bekerja, dengan Gaji Minimum sekitar 35jt/bulan, tentu sangat menggiurkan bagi TKI untuk berusaha sebisa mungkin bekerja di Australia kalau bisa dengan cara apapun dan bagaimanapun.<br />Belum lagi informasi yang tidak lengkap tentang Australia membuka lowongan Un-Skilled atau tidak butuh keahlian/pengalaman untuk diperkebunan. Ratusan TKI telah banyak tertipu dan milyaran uang telah hilang akibat informasi tidak lengkap tersebut.<br /><br />Bekerja ke Australia bagi WNI diluar jalur Pendidikan, hanya dapat dilakukan melalui 2 (dua) cara yaitu :</p>\n<ol>\n<li>Jalur WORKING HOLIDAY VISA</li>\n<li>Jalur Work Visa / LONG BUSINESS VISA</li>\n</ol>\n<p>JALUR WORKING HOLIDAY VISA<br />Merupakan program bekerja yang ditujukan bagi Pemuda-pemudi Indonesia untuk mengenal lebih dekat tentang Australia. Ketentuan dari pengajuan visa ini adalah :</p>\n<ol>\n<li>Warga Negara Indonesia, usia 18-30 tahun</li>\n<li>Minimal Pendidikan Diploma 3 (segala jurusan)</li>\n<li>Memiliki Uang Tabungan minimal Rp. 50.000.000 (lima puluh juta rupiah)</li>\n<li>Kemampuan IELTS minimal rata-rata 4,5 (Setara S1), info detail buka www.ialf.edu</li>\n<li>Membawa Surat Pengantar dari Ditjen Imigrasi (http://www.imigrasi.go.id/index.php/en/layanan-publik/rekomendasi-work-and-holiday-visa#umum)</li>\n<li>Belum pernah berpergian ke Australia dengan visa sejenis</li>\n<li>Visa dibatasi hanya 100 orang pertahun, sehingga candidat yang kehabisan kuota harus menunggu tahun berikut-berikutnya bila kuota tahun ini terpenuhi.</li>\n</ol>\n<p><br />Working Holiday Visa, mengijinkan TKI untuk bekerja maksimal 12 bulan dan tidak dapat diperpanjang atau mengajukan kembali sepulang dari Australia dengan alasan apapun. TKI maksimal hanya dapat bekerja selama 6 bulan pada 1 majikan/perusahaan, untuk selanjutnya mencari pekerjaan lain hingga genap 12 bulan. TKI dapat bekerja di sektor apapun tanpa pengecualian termasuk di Perkebunan/Peternakan yang paling banyak membutuhkan.<br /><br />JALUR LONG BUSINESS VISA<br />Merupakan program bekerja yang memang ditujukan untuk bekerja dalam waktu lama dan bisa mendapatkan Permanent Resident/Kewarganegaraan. Visa ini memungkin TKI bekerja hingga maksimal 2 (dua) tahun, dalam satu kali pengajuan visa, dan dapat diperpanjang tanpa batas waktu.<br /><br />Ketentuan dari pengajuan visa ini adalah :</p>\n<ul>\n<li>Warga Negara Indonesia, usia minimal 25 tahun</li>\n<li>Memiliki Pengalaman Kerja minimal 3 tahun terakhir dibidangnya.</li>\n<li>Kemampuan IELTS minimal 5,5 (setara S2) dengan masing-masing Mata Ujian tidak boleh kurang dari 5. Untuk pekerjaan tertentu, Nilai IELTS bisa mencapai 7 (setara S3) seperti Guru, Perawat, Akuntan dan Dokter</li>\n</ul>\n<p><br />Lowongan pekerjaan yang ada dapat dilihat di Daftar berikut : http://www.immi.gov.au/skilled/general-skilled-migration/pdf/sol.pdf<br /><br />Ini merupakan visa kerja yang memungkinkan kandidat dapat bekerja di Australia secara penuh tidak sekedar magang atau coba-coba seperti Working Holiday Visa.<br /><br />HAL YANG WAJIB TAHU TENTANG BEKERJA KE AUSTRALIA :</p>\n<ol>\n<li>Australia tidak mengijinkan TKI untuk bekerja di Sektor Perkebunan/Peternakan kecuali TKI tersebut datang dengan menggunakan Working Holiday Visa, dan itu hanya bisa untuk masa maksimal 1 tahun dan tidak bisa diperpanjang</li>\n<li>Bekerja di Sektor Perkebunan dalam Skema Seasonal Worker, HANYA Boleh untuk Tenaga Kerja dari Wilayah Pasifik, seperti Timor Leste, Vanuatu, Samoa, dll dan Indonesia TIDAK TERMASUK Negara penyedia tenaga musimam tersebut (baca http://www.immi.gov.au/skilled/seasonal-worker/)</li>\n<li>Jikalau anda melakukan pelanggaran Visa dengan tidak kembali ke Indonesia setelah 1 (satu) bekerja dengan Visa Working Holiday Visa atau setelah 3 (bulan) dengan visa turis. Jika anda kembali ke Indonesia secara sukarela pada suatu waktu di kemudian hari tanpa proses penangkapan oleh Imigrasi, maka Saudara akan di Black List dan TIDAK AKAN DIBERIKAN VISA KEMBALI KE NEGARA BARAT MANAPUN DAN SELAMANYA (termasuk Amerika, Eropa, Selandia Baru dll), walaupun hanya untuk berkunjung/turis.</li>\n<li>Jikalau Saudara tertangkap oleh Imigrasi dalam hal pelanggaran visa, maka resikonya akan lebih berat lagi, selain dikemudian hari tidak akan mendapatkan visa kembali, saudara akan mendapatkan hukuman penjara dan denda sebelum dideportasi</li>\n</ol>\n<p><br />INFORMASI LENGKAP TELAH kami sampaikan tentang bagaimana bekerja ke Australia, untuk itu, jangan pernah Tanya ada pekerjaan apa di Australia, Bayar atau tidak, gaji berapa dsb, dsb, dsb<br />PASTIKAN DULU!!!! &ndash; Anda memenuhi semua persyaratan Utama untuk bekerja dan informasi lowongan apa yang ada buka di : <a title="bekerja ke autralia" href="http://www.immi.gov.au/skilled/general-skilled-migration/pdf/sol.pdf" target="_blank">http://www.immi.gov.au/skilled/general-skilled-migration/pdf/sol.pdf</a><br /><br />Kemudian anda dapat mendaftar ke Kami untuk kami carikan perusahaan di Australia berikut informasi Gaji, Biaya, Fasilitas dan prosedurnya.</p>', '', '<p>xczxczxcx</p>', 'Binamandiri', '2013-07-01 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `article_status`
+-- Table structure for table `article_status`
 --
 
 CREATE TABLE IF NOT EXISTS `article_status` (
@@ -114,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `article_status` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `article_status`
+-- Dumping data for table `article_status`
 --
 
 INSERT INTO `article_status` (`id`, `nama`) VALUES
@@ -124,7 +135,7 @@ INSERT INTO `article_status` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `article_tag`
+-- Table structure for table `article_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `article_tag` (
@@ -132,24 +143,25 @@ CREATE TABLE IF NOT EXISTS `article_tag` (
   `article_id` int(10) unsigned DEFAULT NULL,
   `tag_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=107 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=120 ;
 
 --
--- Dumping data untuk tabel `article_tag`
+-- Dumping data for table `article_tag`
 --
 
 INSERT INTO `article_tag` (`id`, `article_id`, `tag_id`) VALUES
-(1, 3, 2),
-(2, 3, 4),
-(11, 2, 27),
-(12, 2, 28),
-(106, 1, 26),
-(105, 1, 25);
+(110, 3, 4),
+(109, 3, 2),
+(114, 2, 28),
+(113, 2, 27),
+(112, 1, 26),
+(111, 1, 25),
+(119, 5, 34);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bahasa`
+-- Table structure for table `bahasa`
 --
 
 CREATE TABLE IF NOT EXISTS `bahasa` (
@@ -162,14 +174,14 @@ CREATE TABLE IF NOT EXISTS `bahasa` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data untuk tabel `bahasa`
+-- Dumping data for table `bahasa`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `company`
+-- Table structure for table `company`
 --
 
 CREATE TABLE IF NOT EXISTS `company` (
@@ -199,14 +211,14 @@ CREATE TABLE IF NOT EXISTS `company` (
   `validation` varchar(255) NOT NULL,
   `is_active` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=75 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=77 ;
 
 --
--- Dumping data untuk tabel `company`
+-- Dumping data for table `company`
 --
 
 INSERT INTO `company` (`id`, `kota_id`, `industri_id`, `nama`, `alias`, `phone`, `faximile`, `website`, `address`, `email`, `passwd`, `description`, `kodepos`, `sales`, `contact_name`, `contact_email`, `contact_no`, `logo`, `banner`, `google_map`, `reset`, `vacancy_count_left`, `membership_date`, `validation`, `is_active`) VALUES
-(1, 1501, 1, 'PT Garuda Indonesa (Persero) Tbk', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'https://www.google.com/analytics/', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_105003_3676.png', '2013/06/21/20130621_112402_2259.jpg', 'http://goo.gl/maps/STM3U', '', 45, '2014-03-28', '', 0),
+(1, 1501, 1, 'PT Garuda Indonesa (Persero) Tbk', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'https://www.google.com/', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_105003_3676.png', '2013/06/21/20130621_102026_2025.png', 'http://goo.gl/maps/STM3U', '', 40, '2014-03-28', '', 1),
 (2, 1501, 1, 'PT Gudang Garam', 'PT-Gudang-Garam', '521477', 'A', 'B', 'Surabaya', 'her0satr1@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', 'Pabrik Garam', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_105750_6574.jpg', '2013/06/21/20130621_112319_6724.jpg', 'C', '', 0, '0000-00-00', '', 0),
 (3, 1501, 1, 'CV Mitra Desain', 'CV-Mitra-Desain', '521477', 'A', 'B', 'Malang', 'her0satr2@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', 'Perusahaan Website', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_111130_8108.jpg', '2013/06/21/20130621_111135_4526.jpg', 'C', '', 0, '0000-00-00', '', 0),
 (4, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
@@ -251,12 +263,14 @@ INSERT INTO `company` (`id`, `kota_id`, `industri_id`, `nama`, `alias`, `phone`,
 (43, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
 (44, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
 (45, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0),
-(74, 1560, 1, 'PT Baru Buka', 'PT-Baru-Buka', '521477', '', '', '', 'baru@baru.com', 'd0cccd72f00289035b8e25ff29100dee', 'PT yang baru buka ini belum punya description', '62584', '', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_113708_5653.jpg', '2013/06/21/20130621_113714_8267.jpg', '', '', 3, '2013-07-21', '', 0);
+(74, 1560, 1, 'PT Baru Buka', 'PT-Baru-Buka', '521477', '', '', '', 'baru@baru.com', 'd0cccd72f00289035b8e25ff29100dee', 'PT yang baru buka ini belum punya description', '62584', '', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_113708_5653.jpg', '2013/06/21/20130621_113714_8267.jpg', '', '', 3, '2013-07-21', '', 0),
+(75, 1592, 6, 'PT Arahan Mandiri', 'PT-Arahan-Mandiri', '081233743926', '443243', 'https://www.parapekerja.com', 'Perumah Griyashanta malang', 'ridwanamirsene@yahoo.com', '933902c6f005618c80b7760478a14cc1', 'perusahaan ini adalah perusahaan yang sedang berkembang dalam kehidupan', '35465', 'Ridwan Amir', 'Ridwan amir', 'ridwanamirsene@yahoo.com', '081233743926', '2013/06/21/20130621_224313_4849.jpg', '', '', '', 11, '2013-09-30', '', 1),
+(76, 1557, 3, 'Perusahaan Mesir', 'Perusahaan-Mesir', '6325148888', '6325148888', '', '', 'her0satr@gmail.com', 'd0cccd72f00289035b8e25ff29100dee', 'Buat Batu untuk Monumen', '65214', 'Mesir', 'Mesir', 'mail@mail.com', '62514444', '', '', '', '', 0, '2013-07-07', '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `company_info`
+-- Table structure for table `company_info`
 --
 
 CREATE TABLE IF NOT EXISTS `company_info` (
@@ -268,14 +282,14 @@ CREATE TABLE IF NOT EXISTS `company_info` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data untuk tabel `company_info`
+-- Dumping data for table `company_info`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `company_membership`
+-- Table structure for table `company_membership`
 --
 
 CREATE TABLE IF NOT EXISTS `company_membership` (
@@ -285,21 +299,27 @@ CREATE TABLE IF NOT EXISTS `company_membership` (
   `date_request` datetime NOT NULL,
   `status` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
--- Dumping data untuk tabel `company_membership`
+-- Dumping data for table `company_membership`
 --
 
 INSERT INTO `company_membership` (`id`, `company_id`, `membership_id`, `date_request`, `status`) VALUES
 (1, 1, 3, '2013-06-12 20:44:53', 'confirm'),
 (2, 1, 1, '2013-06-21 09:10:10', 'confirm'),
-(6, 74, 2, '2013-06-21 11:35:43', 'confirm');
+(6, 74, 2, '2013-06-21 11:35:43', 'confirm'),
+(7, 1, 2, '2013-06-21 10:11:48', 'cancel'),
+(8, 1, 1, '2013-06-21 14:10:24', 'pending'),
+(9, 75, 1, '2013-06-21 14:59:49', 'cancel'),
+(10, 75, 1, '2013-06-21 22:44:03', 'confirm'),
+(11, 76, 1, '2013-06-30 08:56:41', 'confirm'),
+(12, 75, 3, '2013-06-30 20:29:36', 'confirm');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `company_post`
+-- Table structure for table `company_post`
 --
 
 CREATE TABLE IF NOT EXISTS `company_post` (
@@ -311,7 +331,7 @@ CREATE TABLE IF NOT EXISTS `company_post` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data untuk tabel `company_post`
+-- Dumping data for table `company_post`
 --
 
 INSERT INTO `company_post` (`id`, `company_id`, `nama`, `content`) VALUES
@@ -320,7 +340,7 @@ INSERT INTO `company_post` (`id`, `company_id`, `nama`, `content`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `editor`
+-- Table structure for table `editor`
 --
 
 CREATE TABLE IF NOT EXISTS `editor` (
@@ -332,7 +352,7 @@ CREATE TABLE IF NOT EXISTS `editor` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `editor`
+-- Dumping data for table `editor`
 --
 
 INSERT INTO `editor` (`id`, `nama`, `email`, `passwd`) VALUES
@@ -342,7 +362,7 @@ INSERT INTO `editor` (`id`, `nama`, `email`, `passwd`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `event`
+-- Table structure for table `event`
 --
 
 CREATE TABLE IF NOT EXISTS `event` (
@@ -358,24 +378,26 @@ CREATE TABLE IF NOT EXISTS `event` (
   `google_map` longtext,
   `publish_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data untuk tabel `event`
+-- Dumping data for table `event`
 --
 
 INSERT INTO `event` (`id`, `editor_id`, `nama`, `alias`, `content`, `photo`, `photo_desc`, `lokasi`, `waktu`, `google_map`, `publish_date`) VALUES
-(1, 1, 'Event Pertama', 'event_pertama', '<p>Belum ada deskripsi</p>', '2013/06/14/20130614_214350_1104.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-06-17 01:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
+(1, 1, 'Event Pertama', 'event-pertama', '<p>Belum ada deskripsi</p>', '2013/06/14/20130614_214350_1104.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-06-17 01:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
 (2, 1, 'Malang Jobs Fair 2013', 'malang_jobs_fair_2013', '<p><span data-mce-mark="1">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</span></p>\n<p><span>Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</span></p>\n<p><span>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</span></p>', '2013/06/14/20130614_214408_5203.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-07-05 04:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
 (3, 1, 'Pameran Lowongan kerja di Suriah dan dan Irak', 'pameran_lowongan_kerja_di_suriah_dan_dan_irak', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214417_3678.jpg', 'Merry Christmas party in coffee house!', 'Belum Tau', '2013-07-05 05:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
-(4, 1, 'Jobs fair khusus untuk Dept Kolektor', 'jobs_fair_khusus_untuk_dept_kolektor', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta<br /></span></p>', '2013/06/14/20130614_214335_2156.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-07-05 03:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
-(5, 1, 'Islamic Book Fair 2013 !', 'islamic_book_fair_2013_', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214343_2616.jpg', 'Merry Christmas party in coffee house!', 'Malang, Hall Ekonomi Brawijaya', '2013-07-05 02:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
-(6, 1, 'Pameran Lukisan semalang raya', 'pameran_lukisan_semalang_raya', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214422_3421.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-07-05 06:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00');
+(4, 1, 'Jobs fair khusus untuk Dept Kolektor', 'jobs-fair-khusus-untuk-dept-kolektor', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta<br /></span></p>', '2013/06/14/20130614_214335_2156.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-07-05 03:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
+(5, 1, 'Islamic Book Fair 2013 !', 'islamic-book-fair-2013', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214343_2616.jpg', 'Merry Christmas party in coffee house!', 'Malang, Hall Ekonomi Brawijaya', '2013-07-05 02:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
+(6, 1, 'Pameran Lukisan semalang raya', 'pameran_lukisan_semalang_raya', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214422_3421.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-07-05 06:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2013-06-14 00:00:00'),
+(7, 2, 'Event griyashanta', 'event-griyashanta', '<p>tes event property kota malang di griyashanta</p>', '2013/06/23/20130623_051937_8031.png', 'pameran property di griyashanta malang', 'Griyashanta Malang', '2013-06-23 23:58:30', 'http://maps.google.com/maps/myplaces?ll=-7.937006,112.62188&spn=0.085689,0.154324&ctz=-420&t=m&z=13\n', '2013-06-23 23:59:45'),
+(8, 2, 'tes event malam hari', 'tes-event-malam-hari', '<p>dasdasdasdasdas</p>', '2013/07/01/20130701_095747_7183.jpg', 'nama gaabr', 'malam griyashanta', '2013-07-01 23:00:00', '', '2013-07-01 23:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `event_tag`
+-- Table structure for table `event_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `event_tag` (
@@ -383,43 +405,46 @@ CREATE TABLE IF NOT EXISTS `event_tag` (
   `event_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
--- Dumping data untuk tabel `event_tag`
+-- Dumping data for table `event_tag`
 --
 
 INSERT INTO `event_tag` (`id`, `event_id`, `tag_id`) VALUES
-(8, 1, 31),
-(7, 1, 30),
-(6, 1, 29);
+(14, 1, 31),
+(13, 1, 30),
+(12, 1, 29),
+(11, 7, 25),
+(15, 8, 25);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `industri`
+-- Table structure for table `industri`
 --
 
 CREATE TABLE IF NOT EXISTS `industri` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data untuk tabel `industri`
+-- Dumping data for table `industri`
 --
 
 INSERT INTO `industri` (`id`, `nama`) VALUES
 (1, 'Periklanan'),
 (2, 'Furniture'),
 (3, 'Aluminium'),
-(4, 'Perkapalan');
+(4, 'Perkapalan'),
+(6, 'Construction / Build');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenis_pekerjaan`
+-- Table structure for table `jenis_pekerjaan`
 --
 
 CREATE TABLE IF NOT EXISTS `jenis_pekerjaan` (
@@ -429,7 +454,7 @@ CREATE TABLE IF NOT EXISTS `jenis_pekerjaan` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `jenis_pekerjaan`
+-- Dumping data for table `jenis_pekerjaan`
 --
 
 INSERT INTO `jenis_pekerjaan` (`id`, `nama`) VALUES
@@ -440,7 +465,7 @@ INSERT INTO `jenis_pekerjaan` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenis_subscribe`
+-- Table structure for table `jenis_subscribe`
 --
 
 CREATE TABLE IF NOT EXISTS `jenis_subscribe` (
@@ -450,7 +475,7 @@ CREATE TABLE IF NOT EXISTS `jenis_subscribe` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data untuk tabel `jenis_subscribe`
+-- Dumping data for table `jenis_subscribe`
 --
 
 INSERT INTO `jenis_subscribe` (`id`, `nama`) VALUES
@@ -461,7 +486,7 @@ INSERT INTO `jenis_subscribe` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenjang`
+-- Table structure for table `jenjang`
 --
 
 CREATE TABLE IF NOT EXISTS `jenjang` (
@@ -471,7 +496,7 @@ CREATE TABLE IF NOT EXISTS `jenjang` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data untuk tabel `jenjang`
+-- Dumping data for table `jenjang`
 --
 
 INSERT INTO `jenjang` (`id`, `nama`) VALUES
@@ -485,7 +510,7 @@ INSERT INTO `jenjang` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori`
+-- Table structure for table `kategori`
 --
 
 CREATE TABLE IF NOT EXISTS `kategori` (
@@ -493,10 +518,10 @@ CREATE TABLE IF NOT EXISTS `kategori` (
   `nama` varchar(100) DEFAULT NULL,
   `alias` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
--- Dumping data untuk tabel `kategori`
+-- Dumping data for table `kategori`
 --
 
 INSERT INTO `kategori` (`id`, `nama`, `alias`) VALUES
@@ -506,12 +531,13 @@ INSERT INTO `kategori` (`id`, `nama`, `alias`) VALUES
 (6, 'Gossips', 'gossips'),
 (7, 'Politics', 'politics'),
 (8, 'Sports', 'sports'),
-(9, 'TV Shows', 'tv_shows');
+(9, 'TV Shows', 'tv-shows'),
+(10, 'Akuntansi / Keuangan', 'akuntansi-keuangan');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori_tag`
+-- Table structure for table `kategori_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `kategori_tag` (
@@ -519,10 +545,10 @@ CREATE TABLE IF NOT EXISTS `kategori_tag` (
   `kategori_id` int(10) unsigned DEFAULT NULL,
   `tag_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
--- Dumping data untuk tabel `kategori_tag`
+-- Dumping data for table `kategori_tag`
 --
 
 INSERT INTO `kategori_tag` (`id`, `kategori_id`, `tag_id`) VALUES
@@ -532,12 +558,13 @@ INSERT INTO `kategori_tag` (`id`, `kategori_id`, `tag_id`) VALUES
 (20, 1, 15),
 (21, 2, 5),
 (22, 2, 16),
-(23, 2, 17);
+(23, 2, 17),
+(25, 10, 32);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kelamin`
+-- Table structure for table `kelamin`
 --
 
 CREATE TABLE IF NOT EXISTS `kelamin` (
@@ -547,7 +574,7 @@ CREATE TABLE IF NOT EXISTS `kelamin` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `kelamin`
+-- Dumping data for table `kelamin`
 --
 
 INSERT INTO `kelamin` (`id`, `nama`) VALUES
@@ -557,7 +584,7 @@ INSERT INTO `kelamin` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kota`
+-- Table structure for table `kota`
 --
 
 CREATE TABLE IF NOT EXISTS `kota` (
@@ -568,7 +595,7 @@ CREATE TABLE IF NOT EXISTS `kota` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4091 ;
 
 --
--- Dumping data untuk tabel `kota`
+-- Dumping data for table `kota`
 --
 
 INSERT INTO `kota` (`id`, `propinsi_id`, `nama`) VALUES
@@ -4667,7 +4694,7 @@ INSERT INTO `kota` (`id`, `propinsi_id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `marital`
+-- Table structure for table `marital`
 --
 
 CREATE TABLE IF NOT EXISTS `marital` (
@@ -4677,7 +4704,7 @@ CREATE TABLE IF NOT EXISTS `marital` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `marital`
+-- Dumping data for table `marital`
 --
 
 INSERT INTO `marital` (`id`, `nama`) VALUES
@@ -4687,7 +4714,7 @@ INSERT INTO `marital` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `membership`
+-- Table structure for table `membership`
 --
 
 CREATE TABLE IF NOT EXISTS `membership` (
@@ -4699,7 +4726,7 @@ CREATE TABLE IF NOT EXISTS `membership` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data untuk tabel `membership`
+-- Dumping data for table `membership`
 --
 
 INSERT INTO `membership` (`id`, `date_count`, `post_count`, `price`) VALUES
@@ -4712,7 +4739,7 @@ INSERT INTO `membership` (`id`, `date_count`, `post_count`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `negara`
+-- Table structure for table `negara`
 --
 
 CREATE TABLE IF NOT EXISTS `negara` (
@@ -4723,7 +4750,7 @@ CREATE TABLE IF NOT EXISTS `negara` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=240 ;
 
 --
--- Dumping data untuk tabel `negara`
+-- Dumping data for table `negara`
 --
 
 INSERT INTO `negara` (`id`, `kode`, `nama`) VALUES
@@ -4970,7 +4997,7 @@ INSERT INTO `negara` (`id`, `kode`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `news`
+-- Table structure for table `news`
 --
 
 CREATE TABLE IF NOT EXISTS `news` (
@@ -4978,17 +5005,20 @@ CREATE TABLE IF NOT EXISTS `news` (
   `nama` varchar(255) NOT NULL,
   `content` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `news`
+-- Dumping data for table `news`
 --
 
+INSERT INTO `news` (`id`, `nama`, `content`) VALUES
+(1, 'Pelamar', '<p>wah anda hebat semua</p>'),
+(2, 'Perusahaan', '<p>Pengumuman untuk Para Perusahaan</p>');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `page`
+-- Table structure for table `page`
 --
 
 CREATE TABLE IF NOT EXISTS `page` (
@@ -4999,14 +5029,14 @@ CREATE TABLE IF NOT EXISTS `page` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data untuk tabel `page`
+-- Dumping data for table `page`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengalaman`
+-- Table structure for table `pengalaman`
 --
 
 CREATE TABLE IF NOT EXISTS `pengalaman` (
@@ -5016,7 +5046,7 @@ CREATE TABLE IF NOT EXISTS `pengalaman` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data untuk tabel `pengalaman`
+-- Dumping data for table `pengalaman`
 --
 
 INSERT INTO `pengalaman` (`id`, `nama`) VALUES
@@ -5030,17 +5060,17 @@ INSERT INTO `pengalaman` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `position`
+-- Table structure for table `position`
 --
 
 CREATE TABLE IF NOT EXISTS `position` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(200) NOT NULL,
   KEY `id` (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data untuk tabel `position`
+-- Dumping data for table `position`
 --
 
 INSERT INTO `position` (`id`, `nama`) VALUES
@@ -5049,12 +5079,13 @@ INSERT INTO `position` (`id`, `nama`) VALUES
 (3, 'Desainer'),
 (4, 'Arsitek'),
 (5, 'Driver'),
-(6, 'Pilot');
+(6, 'Pilot'),
+(8, 'kerjarodi');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `propinsi`
+-- Table structure for table `propinsi`
 --
 
 CREATE TABLE IF NOT EXISTS `propinsi` (
@@ -5065,7 +5096,7 @@ CREATE TABLE IF NOT EXISTS `propinsi` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1423 ;
 
 --
--- Dumping data untuk tabel `propinsi`
+-- Dumping data for table `propinsi`
 --
 
 INSERT INTO `propinsi` (`id`, `negara_id`, `nama`) VALUES
@@ -6463,7 +6494,7 @@ INSERT INTO `propinsi` (`id`, `negara_id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `report`
+-- Table structure for table `report`
 --
 
 CREATE TABLE IF NOT EXISTS `report` (
@@ -6472,17 +6503,19 @@ CREATE TABLE IF NOT EXISTS `report` (
   `email` varchar(255) NOT NULL,
   `content` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `report`
+-- Dumping data for table `report`
 --
 
+INSERT INTO `report` (`id`, `company_id`, `email`, `content`) VALUES
+(4, 75, 'ridwanamirsene@yahoo.com', 'tes lapor diri');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker`
+-- Table structure for table `seeker`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker` (
@@ -6514,24 +6547,26 @@ CREATE TABLE IF NOT EXISTS `seeker` (
   `validation` varchar(255) NOT NULL,
   `is_active` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
--- Dumping data untuk tabel `seeker`
+-- Dumping data for table `seeker`
 --
 
 INSERT INTO `seeker` (`id`, `kelamin_id`, `kota_id`, `marital_id`, `alias`, `seeker_no`, `first_name`, `last_name`, `email`, `tempat_lahir`, `tgl_lahir`, `address`, `phone`, `hp`, `passwd`, `photo`, `last_login`, `last_update`, `agama`, `kebangsaan`, `facebook`, `twitter`, `ibu_kandung`, `file_resume`, `reset`, `validation`, `is_active`) VALUES
-(1, 1, 1322, 2, 'dfgdfgaaaa', '50124587', 'dfgdfg', 'aaaa', 'her0satr@yahoo.com', 'tempat lahir', '2000-06-04', 'address', '+62 6541 8974 64', '+62 654 86 465', 'd0cccd72f00289035b8e25ff29100dee', '2013/06/16/20130616_104315_8342.jpg', NULL, '2013-06-25 20:16:49', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu kandung', '2013/06/25/20130625_193956_7224.docx', '', '', 1),
+(1, 1, 1322, 2, 'anakbaru', '50124587', 'Anak', 'Baru', 'her0satr@yahoo.com', 'tempat lahir', '2000-06-04', 'address', '+62 6541 8974 64', '+62 654 86 465', 'd0cccd72f00289035b8e25ff29100dee', '2013/06/21/20130621_083318_6237.jpg', NULL, '2013-07-05 21:41:56', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu kandung', '2013/06/16/20130616_104449_1424.docx', '', '', 1),
 (5, 0, 0, 0, '', '50124588', '', '', 'saya@mailc.com', '', '0000-00-00', '', '', '', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', '', '', '', '', '', 0),
 (6, 1, 1529, 1, 'pelamarbaru', '50124589', 'Pelamar', 'Baru', 'pelamar@baru.com', 'Malang', '2013-06-21', 'Malang', '521477', '65847', 'd0cccd72f00289035b8e25ff29100dee', '2013/06/21/20130621_113913_4793.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Muslim', 'Indoensia', '-', '-', '', '2013/06/21/20130621_113906_2792.jpg', '', '', 0),
 (9, 0, 0, 0, '', '50124590', '', '', 'say@mail.com', '', '0000-00-00', '', '', '', 'd0cccd72f00289035b8e25ff29100dee', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', '', '', '', '', '', 0),
-(10, 0, 0, 0, '', '50124591', '', '', 'her0satr11@yahoo.com', '', '0000-00-00', '', '', '', 'd0cccd72f00289035b8e25ff29100dee', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', '', '', '', '', '', 0),
-(11, 1, 1378, 2, 'herrysatrio', '50124592', 'Herry', 'Satrio', 'her0satr@gmail.com', 'Malang', '2013-06-25', 'Jl. Pelabuhan', '08563', '215454', 'd0cccd72f00289035b8e25ff29100dee', '2013/06/25/20130625_200425_3269.jpg', '0000-00-00 00:00:00', '2013-06-25 20:05:13', 'Islam', 'Indonesia', 'fb', 'tw', 'Ibu Kandung', '2013/06/25/20130625_200420_2223.docx', '', '', 1);
+(10, 1, 1591, 1, 'ridwannamirnn', '50124591', 'Ridwann', 'Amirnn', 'ridwanamirsene@yahoo.com', 'Nggawiaad', '1982-06-03', 'Jl Candi blok 2a no 401d', '081233743926', '081233743926', '933902c6f005618c80b7760478a14cc1', '2013/06/21/20130621_095838_1414.png', '0000-00-00 00:00:00', '2013-07-05 03:55:39', 'Islam', 'Indonesia', 'ridwanamir', 'rid1amir', 'Aminah', '2013/06/21/20130621_100502_3944.pdf', '', '', 1),
+(11, 0, 0, 0, '', '50124592', '', '', 'her0satr22@yahoo.com', '', '0000-00-00', '', '', '', 'd0cccd72f00289035b8e25ff29100dee', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', '', '', '', '', '', 0),
+(14, 1, 1529, 1, 'herrysatrio', '50124593', 'Herry', 'Satrio', 'her0satr@gmail.com', 'Malang', '1984-10-15', 'Jl. Pelabuhan Ketapang 835', '08563555402', '08563555402', 'd0cccd72f00289035b8e25ff29100dee', '2013/06/30/20130630_075248_1232.jpg', '0000-00-00 00:00:00', '2013-06-30 08:04:29', 'Muslim', 'Indonesia', 'fb', 'tw', '-', '2013/06/30/20130630_075240_8270.docx', '', '', 1),
+(15, 0, 0, 0, '', '50124594', '', '', 'rid1amir@yahoo.com', '', '0000-00-00', '', '', '', '933902c6f005618c80b7760478a14cc1', '', '0000-00-00 00:00:00', '2013-07-01 08:16:12', '', '', '', '', '', '', '', '', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker_addon`
+-- Table structure for table `seeker_addon`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_addon` (
@@ -6540,20 +6575,22 @@ CREATE TABLE IF NOT EXISTS `seeker_addon` (
   `kendaraan` int(11) NOT NULL,
   `content` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `seeker_addon`
+-- Dumping data for table `seeker_addon`
 --
 
 INSERT INTO `seeker_addon` (`id`, `seeker_id`, `kendaraan`, `content`) VALUES
 (1, 0, 0, ''),
-(2, 1, 1, '<p>sdfsdf 2 555 asdas&nbsp;</p>\n<p>&nbsp;</p>\n<p>&nbsp;kasjd hkajs hdkajsd</p>\n<p>asdk jsadh</p>\n<p>asd lkajsd</p>\n<p>&nbsp;</p>\n<p>Dear All 582</p>');
+(2, 1, 1, '<p>sdfsdf 2 555 asdas&nbsp;</p>\n<p>&nbsp;</p>\n<p>&nbsp;kasjd hkajs hdkajsd</p>\n<p>asdk jsadh</p>\n<p>asd lkajsd</p>\n<p>&nbsp;</p>\n<p>Dear All 582</p>'),
+(3, 10, 0, '<p>tes tessdsadsa dsd asdas dasd asdas asd asdas</p>'),
+(4, 14, 1, '<p>Ini isi informasi tambahan saya, sementara masih saya tulis sampai ini dulu :)</p>');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker_education`
+-- Table structure for table `seeker_education`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_education` (
@@ -6566,20 +6603,24 @@ CREATE TABLE IF NOT EXISTS `seeker_education` (
   `nama_sekolah` varchar(100) DEFAULT NULL,
   `tgl_lulus` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data untuk tabel `seeker_education`
+-- Dumping data for table `seeker_education`
 --
 
 INSERT INTO `seeker_education` (`id`, `seeker_id`, `jenjang_id`, `score`, `bidang_studi`, `jurusan`, `nama_sekolah`, `tgl_lulus`) VALUES
-(1, 1, 3, 4, 'Elektronika', 'Elektronika', 'Politehnik Negeri Malang', '2006-06-22'),
-(2, 1, 2, 4, 'Sistem Informasi', 'Sistem Informasi', 'Universitas Kanjuruhan', '2013-05-31');
+(1, 10, 3, 0, 'dfsdf', 'dfsdf', 'hggf', '2013-06-22'),
+(3, 0, 2, 3, '-', 'Sitem Informasi', 'Sekolah Tinggi Ilmu komputer Indonesia Malang', '2011-12-02'),
+(4, 14, 3, 3.11, 'Elektronika', 'Elektronika', 'Politehnik Negeri Malang', '2013-06-01'),
+(5, 14, 2, 3.66, 'Sistem Informasi', 'Sistem Informasi', 'Universitas Kanjuruhan', '2013-06-30'),
+(6, 10, 2, 3, '-', 'Sistem Informasi', 'Sekolah Tinggi Ilmu Komputer Indonesia', '2010-12-09'),
+(7, 10, 3, 9, 'ips', 'ips', 'sekolah jaman pak harto', '2013-05-15');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker_exp`
+-- Table structure for table `seeker_exp`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_exp` (
@@ -6588,20 +6629,25 @@ CREATE TABLE IF NOT EXISTS `seeker_exp` (
   `exp_level` int(11) DEFAULT NULL,
   `content` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data untuk tabel `seeker_exp`
+-- Dumping data for table `seeker_exp`
 --
 
 INSERT INTO `seeker_exp` (`id`, `seeker_id`, `exp_level`, `content`) VALUES
-(2, 1, 1, 'Saya baru lulus dan sedang mencari pekerjaan pertama saya'),
-(3, 1, 2, 'Saya adalah seorang mahasiswa yang mencari pekerjaan magang atau paruh waktu');
+(2, 0, 3, '<p>fgfgsgdsfdsdfdsfdsfdsfds</p>'),
+(3, 15, 2, 'Saya adalah seorang mahasiswa yang mencari pekerjaan magang atau paruh waktu'),
+(4, 10, 3, '<p>sdfgfdg gsgfsdsf ffdsfdsfds fds dffsdfsfds dsfd</p>\n<p>f</p>\n<p>as''d</p>\n<p>sd</p>\n<p>sd</p>\n<p>as</p>'),
+(5, 10, 3, '<p>dsadkljsaldksadasd a s dasdasda</p>\n<p>das</p>\n<p>dasdsdas</p>'),
+(6, 10, 2, 'Saya adalah seorang mahasiswa yang mencari pekerjaan magang atau paruh waktu'),
+(7, 10, 2, 'Saya adalah seorang mahasiswa yang mencari pekerjaan magang atau paruh waktu'),
+(8, 10, 1, 'Saya baru lulus dan sedang mencari pekerjaan pertama saya');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker_expert`
+-- Table structure for table `seeker_expert`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_expert` (
@@ -6609,22 +6655,25 @@ CREATE TABLE IF NOT EXISTS `seeker_expert` (
   `seeker_id` int(10) unsigned DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
--- Dumping data untuk tabel `seeker_expert`
+-- Dumping data for table `seeker_expert`
 --
 
 INSERT INTO `seeker_expert` (`id`, `seeker_id`, `content`) VALUES
-(4, 0, 'Membaca'),
-(5, 1, 'Menulis'),
-(6, 1, 'Mengarang'),
-(8, 1, 'Tebak Kata');
+(4, 1, 'asd asd  ads'),
+(5, 10, 'bisa rakit komputer'),
+(6, 10, 'bisa buat pesawat'),
+(7, 14, 'Elektronika'),
+(8, 14, 'Sistem Informasi'),
+(9, 10, 'bisa mengoperasikan komputer dengan baik'),
+(10, 10, 'Bisa di suruh apa saja');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker_language`
+-- Table structure for table `seeker_language`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_language` (
@@ -6634,42 +6683,42 @@ CREATE TABLE IF NOT EXISTS `seeker_language` (
   `lisan` varchar(255) NOT NULL,
   `tulis` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data untuk tabel `seeker_language`
+-- Dumping data for table `seeker_language`
 --
 
 INSERT INTO `seeker_language` (`id`, `seeker_id`, `nama`, `lisan`, `tulis`) VALUES
-(1, 1, 'Bahasa Indonesia', 'Aktif', 'Aktif'),
-(2, 1, 'Bahasa Inggris', 'Aktif', 'Aktif');
+(1, 10, 'Bahasa Inggris', 'Aktif', 'Aktif'),
+(2, 14, 'Bahasa Indonesia', 'Aktif', 'Aktif'),
+(3, 14, 'Bahasa Inggris', 'Aktif', 'Aktif'),
+(4, 10, 'Bahasa Indonesia', 'Aktif', 'Aktif'),
+(5, 10, 'Bahsa paling atas', 'Pasif', 'Aktif'),
+(6, 10, 'bahasa baru ini', 'Aktif', 'Pasif');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker_reference`
+-- Table structure for table `seeker_reference`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_reference` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `seeker_id` int(10) unsigned DEFAULT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `content` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data untuk tabel `seeker_reference`
+-- Dumping data for table `seeker_reference`
 --
 
-INSERT INTO `seeker_reference` (`id`, `seeker_id`, `nama`, `content`) VALUES
-(1, 1, 'Pak Yoyok', 'Dekan'),
-(2, 1, 'Rizal', 'Staf Admin');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker_setting`
+-- Table structure for table `seeker_setting`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_setting` (
@@ -6679,19 +6728,20 @@ CREATE TABLE IF NOT EXISTS `seeker_setting` (
   `is_subscribe` int(10) unsigned DEFAULT NULL,
   `is_work` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data untuk tabel `seeker_setting`
+-- Dumping data for table `seeker_setting`
 --
 
 INSERT INTO `seeker_setting` (`id`, `seeker_id`, `is_public`, `is_subscribe`, `is_work`) VALUES
-(1, 1, 0, 0, 0);
+(1, 1, 1, 0, 0),
+(2, 10, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `seeker_summary`
+-- Table structure for table `seeker_summary`
 --
 
 CREATE TABLE IF NOT EXISTS `seeker_summary` (
@@ -6702,21 +6752,22 @@ CREATE TABLE IF NOT EXISTS `seeker_summary` (
   `school` varchar(255) NOT NULL,
   `experience` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `seeker_summary`
+-- Dumping data for table `seeker_summary`
 --
 
 INSERT INTO `seeker_summary` (`id`, `seeker_id`, `jenjang_id`, `score`, `school`, `experience`) VALUES
 (1, 1, 2, 3.56, 'Malang', 'Brawijaya'),
 (2, 6, 4, 3.88, 'Universitas Brawijaya', 'Malang'),
-(3, 11, 2, 4, 'Universitas Kanjuruhan', 'Unibraw');
+(3, 10, 4, 4, 'Stiki Malang sad', 'PT Arahan Mandsiri sebagai direktur Utama'),
+(4, 14, 2, 4, 'Universitas Kanjuruhan', 'Universitas Brawijayaa');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `subkategori`
+-- Table structure for table `subkategori`
 --
 
 CREATE TABLE IF NOT EXISTS `subkategori` (
@@ -6725,22 +6776,23 @@ CREATE TABLE IF NOT EXISTS `subkategori` (
   `nama` varchar(100) DEFAULT NULL,
   `alias` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data untuk tabel `subkategori`
+-- Dumping data for table `subkategori`
 --
 
 INSERT INTO `subkategori` (`id`, `kategori_id`, `nama`, `alias`) VALUES
 (1, 1, 'Nasional', 'nasional'),
 (2, 1, 'Daerah', 'daerah'),
 (3, 2, 'Film', 'film'),
-(4, 2, 'Musik', 'musik');
+(4, 2, 'Musik', 'musik'),
+(6, 10, 'Akuntansi Umum/Pembi', 'akuntansi-umum-pembi');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `subkategori_tag`
+-- Table structure for table `subkategori_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `subkategori_tag` (
@@ -6748,10 +6800,10 @@ CREATE TABLE IF NOT EXISTS `subkategori_tag` (
   `subkategori_id` int(10) DEFAULT NULL,
   `tag_id` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
--- Dumping data untuk tabel `subkategori_tag`
+-- Dumping data for table `subkategori_tag`
 --
 
 INSERT INTO `subkategori_tag` (`id`, `subkategori_id`, `tag_id`) VALUES
@@ -6762,12 +6814,13 @@ INSERT INTO `subkategori_tag` (`id`, `subkategori_id`, `tag_id`) VALUES
 (9, 2, 19),
 (12, 4, 22),
 (13, 3, 23),
-(14, 3, 24);
+(14, 3, 24),
+(16, 6, 33);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `subscribe`
+-- Table structure for table `subscribe`
 --
 
 CREATE TABLE IF NOT EXISTS `subscribe` (
@@ -6776,21 +6829,22 @@ CREATE TABLE IF NOT EXISTS `subscribe` (
   `email` varchar(200) NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `subscribe`
+-- Dumping data for table `subscribe`
 --
 
 INSERT INTO `subscribe` (`id`, `jenis_subscribe_id`, `email`, `status`) VALUES
 (1, 3, 'her0satr@yahoo.com', 1),
 (2, 2, 'her0satr@yahoo.com', 1),
-(3, 1, 'her0satr@yahoo.com', 1);
+(3, 1, 'her0satr@yahoo.com', 1),
+(4, 3, 'ridwanamirsene@yahoo.com', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `surat_lamaran`
+-- Table structure for table `surat_lamaran`
 --
 
 CREATE TABLE IF NOT EXISTS `surat_lamaran` (
@@ -6799,22 +6853,29 @@ CREATE TABLE IF NOT EXISTS `surat_lamaran` (
   `nama` varchar(100) DEFAULT NULL,
   `content` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
--- Dumping data untuk tabel `surat_lamaran`
+-- Dumping data for table `surat_lamaran`
 --
 
 INSERT INTO `surat_lamaran` (`id`, `seeker_id`, `nama`, `content`) VALUES
 (20, 1, 'Surat Lamaran HTML', '<p>Saya coba <strong>tebal</strong> <em>italic</em> <span style="text-decoration: underline;">underline</span></p>'),
 (11, 1, 'Surat Lamaran 1', '<p>Isi Surat Lamaran 1</p>'),
 (15, 1, '4', '<p>4</p>'),
-(16, 1, '5', '<p>5</p>');
+(16, 1, '5', '<p>5</p>'),
+(21, 10, 'surat lamaran pt ara', '<p>dasdasdasdasdas</p>'),
+(22, 10, 'PT Telkom Indonesia', '<p>hai idasdnasdaskldaskldjklasdjasldasdas sdadasdas</p>'),
+(23, 10, 'PT MJSA', '<p>dfsdfsdfdf fdsfsd fsd fsdfsd f</p>'),
+(24, 10, 'PT lestari', '<p>asdasdsadasdsa</p>'),
+(25, 10, 'PT Apa Aja Deh', '<p>sdasdasdasdasd</p>'),
+(26, 10, 'sdffsdfsd', '<p>sdfsdfsd</p>'),
+(27, 14, 'Surat Lamaran Pertama Saya Panjangnya sampai 50 ', '<p>seeeep</p>');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tag`
+-- Table structure for table `tag`
 --
 
 CREATE TABLE IF NOT EXISTS `tag` (
@@ -6822,10 +6883,10 @@ CREATE TABLE IF NOT EXISTS `tag` (
   `nama` varchar(100) DEFAULT NULL,
   `alias` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
--- Dumping data untuk tabel `tag`
+-- Dumping data for table `tag`
 --
 
 INSERT INTO `tag` (`id`, `nama`, `alias`) VALUES
@@ -6859,12 +6920,15 @@ INSERT INTO `tag` (`id`, `nama`, `alias`) VALUES
 (28, 'Museum', 'museum'),
 (29, 'New Moon', 'new_moon'),
 (30, 'Eclipse', 'eclipse'),
-(31, 'Dark Seer', 'dark_seer');
+(31, 'Dark Seer', 'dark_seer'),
+(32, 'initag', 'initag'),
+(33, 'subtag', 'subtag'),
+(34, 'kerja ke luar negeri', 'kerja_ke_luar_negeri');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `vacancy`
+-- Table structure for table `vacancy`
 --
 
 CREATE TABLE IF NOT EXISTS `vacancy` (
@@ -6889,24 +6953,36 @@ CREATE TABLE IF NOT EXISTS `vacancy` (
   `close_date` date DEFAULT NULL,
   `email_apply` varchar(50) DEFAULT NULL,
   `email_quick` varchar(50) DEFAULT NULL,
+  `total_view` int(11) NOT NULL,
+  `total_seeker` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
--- Dumping data untuk tabel `vacancy`
+-- Dumping data for table `vacancy`
 --
 
-INSERT INTO `vacancy` (`id`, `company_id`, `subkategori_id`, `nama`, `position`, `vacancy_status_id`, `article_url`, `article_link`, `content_short`, `content`, `opsi_1`, `opsi_2`, `kota_id`, `jenjang_id`, `jenis_pekerjaan_id`, `pengalaman_id`, `gaji`, `publish_date`, `close_date`, `email_apply`, `email_quick`) VALUES
-(1, 1, 1, 'Lowongan Desainer', 'Arsitek,Driver', 3, 'URL Artikel', 'Link Artikel', '<p>Short Desc</p>', '<p>Detail</p>', 'Opsi 1', 'Opsi 2', 1536, 3, 1, 4, 5000000, '2013-06-12', '2013-06-23', 'mail11@mail.com', 'mail22@mail.com'),
-(3, 1, 4, 'Lowongan Q', 'Desainer', 3, '', '', '<p><em><strong>Mohon cantumkan permohonan Gaji</strong></em></p>', '<p>Requirements:</p>\n<ul>\n<li>Candidate must possess at least a Diploma, Bachelor''s Degree, Engineering (Computer/Telecommunication), Science &amp; Technology or equivalent.</li>\n<li>Good knowledge of HTML, CSS, PHP, and My SQL.</li>\n<li>Good knowledge of JavaScript (specifically JQuery) and Ajax.</li>\n<li>Have good estetics &nbsp;and taste on graphical area.</li>\n<li>Familiar with Search engine optimization (SEO).</li>\n<li>Attached your latest portfolio.</li>\n<li>At least 1 year(s) of working experience in the related field is required for this position.</li>\n<li>Full-Time position(s) available.</li>\n</ul>', '', '', 1655, 0, 3, 0, 0, '2013-06-11', '2013-06-28', '1mail@mail.com', 'mail2@mail.com'),
-(4, 1, 1, 'judul', 'Technician', 3, '', '', '<p>dibutuhkan </p>', '', '', '', 1592, 0, 0, 0, 0, '0000-00-00', '0000-00-00', 'email@gmail.com', ''),
-(5, 1, 1, 'Lowongan Arsitek', 'Arsitek', 3, '', '', '<p>Dibutuhkan segera seorang Asitek untuk bekerja di Malang</p>', '', '', '', 1305, 2, 3, 1, 0, '2013-06-21', '2013-07-06', 'mail@mail.com', ''),
-(6, 74, 2, 'Lowongan Pilot', 'Pilot', 2, '', '', '<p>Lowongan ini untuk pilot, silahkan melamar</p>', '', '', '', 1504, 2, 3, 3, 0, '2013-06-21', '2013-06-30', 'mail@mail.com', 'mail@mail.com');
+INSERT INTO `vacancy` (`id`, `company_id`, `subkategori_id`, `nama`, `position`, `vacancy_status_id`, `article_url`, `article_link`, `content_short`, `content`, `opsi_1`, `opsi_2`, `kota_id`, `jenjang_id`, `jenis_pekerjaan_id`, `pengalaman_id`, `gaji`, `publish_date`, `close_date`, `email_apply`, `email_quick`, `total_view`, `total_seeker`) VALUES
+(1, 1, 1, 'Lowongan Desainer', 'Arsitek,Driver', 3, 'URL Artikel', 'Link Artikel', '<p>Short Desc</p>', '<p>Detail</p>', 'Opsi 1', 'Opsi 2', 1536, 3, 1, 4, 5000000, '2013-06-12', '2013-06-23', 'mail11@mail.com', 'mail22@mail.com', 2, 0),
+(3, 1, 4, 'Lowongan Q', 'Desainer', 3, '', '', '<p><em><strong>Mohon cantumkan permohonan Gaji</strong></em></p>', '<p>Requirements:</p>\n<ul>\n<li>Candidate must possess at least a Diploma, Bachelor''s Degree, Engineering (Computer/Telecommunication), Science &amp; Technology or equivalent.</li>\n<li>Good knowledge of HTML, CSS, PHP, and My SQL.</li>\n<li>Good knowledge of JavaScript (specifically JQuery) and Ajax.</li>\n<li>Have good estetics &nbsp;and taste on graphical area.</li>\n<li>Familiar with Search engine optimization (SEO).</li>\n<li>Attached your latest portfolio.</li>\n<li>At least 1 year(s) of working experience in the related field is required for this position.</li>\n<li>Full-Time position(s) available.</li>\n</ul>', '', '', 1655, 0, 3, 0, 0, '2013-06-11', '2013-06-28', '1mail@mail.com', 'mail2@mail.com', 4, 0),
+(4, 1, 1, 'judul', 'Technician', 3, '', '', '<p>dibutuhkan </p>', '', '', '', 1592, 0, 0, 0, 0, '0000-00-00', '0000-00-00', 'email@gmail.com', '', 4, 0),
+(5, 1, 1, 'Lowongan Arsitek', 'Arsitek', 3, '', '', '<p>Dibutuhkan segera seorang Asitek untuk bekerja di Malang</p>', '', '', '', 1305, 2, 3, 1, 0, '2013-06-21', '2013-07-06', 'mail@mail.com', '', 2, 0),
+(6, 74, 2, 'Lowongan Pilot', 'Pilot', 2, '', '', '<p>Lowongan ini untuk pilot, silahkan melamar</p>', '', '', '', 1504, 2, 3, 3, 0, '2013-06-21', '2013-06-30', 'mail@mail.com', 'mail@mail.com', 0, 0),
+(7, 1, 3, 'tes perusahaan ridwan', 'Driver,Technician', 3, '', '', '<p>di cari oofice boy fdsfdsfdsfsdf</p>', '<p>fdsfdsfsd</p>', '', '', 1370, 3, 3, 1, 6565, '2013-06-21', '2013-06-22', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 3, 0),
+(8, 1, 2, 'Lowongan malam malam dan tutup tgl 23', 'Driver,Technician', 3, ' URL Artikel ini', 'Link Artikel ini', '<p>tes asdsadas</p>', '<p>asdasds</p>', '', '', 1592, 3, 2, 3, 200000, '2013-06-22', '2013-06-23', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 8, 2),
+(9, 1, 2, 'tes subscribe', 'Desainer', 3, 'fsdf', 'fsdf', '<p>fsdfds</p>', '<p>dfsdfds</p>', '', '', 1592, 7, 3, 3, 454, '2013-06-22', '2013-06-23', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 2, 0),
+(10, 75, 2, 'tes lowongan kerja pt arahan mandiri', 'Driver', 3, '', '', '<h2>Requirements</h2>\n<p>&nbsp;</p>\n<div id="jobreq-text">\n<ul>\n<li>Candidates must possess at least a Bachelor&rsquo;s Degree in Environmental Health and Safety or any relevant field.</li>\n<li>At least 2 years of working experiences in the related field is required for this position.</li>\n<li>Application should be Malaysian citizens or hold relevant residence status.</li>\n<li>Willing to work long hours.</li>\n<li>High degree of integrity, maturity, professionalism and loyalty.</li>\n<li>Strong leadership qualities and good interpersonal skills.</li>\n<li>Demonstrates commitment to working as part of the team.</li>\n<li>Generate ideas and solutions with some creativity and laterality of thought.</li>\n<li>Demonstrates a broader understanding of the business beyond a single function.</li>\n<li>Works to build or maintain friendly reciprocal and warm relationships or network of contacts with people who are or might someday be useful in achieving work related goals.</li>\n<li>Knowledge and understanding of ISO 9001:2000 requirements.</li>\n</ul>\n</div>', '', '', '', 1592, 3, 2, 4, 200000, '2014-03-28', '2014-03-31', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 7, 0),
+(11, 75, 1, 'tes iklan kedua apakah bisa', 'Driver', 2, '', '', '<p>dfsdf</p>', '<p>fsd</p>', '', '', 1502, 3, 3, 3, 423423, '2014-03-28', '2014-03-30', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 0, 0),
+(16, 75, 6, 'tes pasang iklan senin pagi yang indah', '', 3, '', '', '', '<p>asfsdffgsdfgfg dfdsfsdf fsd dfsdf sdfsd</p>', '', '', 1502, 7, 1, 3, 423432423, '2013-07-01', '2013-07-03', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 20, 2),
+(13, 1, 1, 'tes apakah sudah di status open apa belum', 'Desainer', 3, '', '', '<p>fasddasd</p>', '<p>dasdsa</p>', '', '', 1636, 7, 1, 3, 45454, '2013-06-22', '2013-06-24', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 4, 0),
+(14, 1, 6, 'Lowongan Akuntasi Keuangan', '', 3, '', '', '', '<p>Ini isi lowowngan Lowongan Malam Senin, silahkan melamar</p>', '', '', 1626, 2, 1, 2, 0, '2013-06-30', '2013-07-11', 'her0satr@yahoo.com', 'her0satr@gmail.com', 7, 7),
+(15, 76, 1, 'Lowongan Perusahaan Pertama', '', 2, '', '', '', '<p>Berikut informasi lowongan yang akan kami sampaikan :</p>\n<p>- point 1</p>\n<p>- point 2</p>\n<p>- point 3</p>\n<p>&nbsp;</p>', '', '', 1502, 2, 3, 2, 0, '2013-06-30', '2013-07-06', 'her0satr@gmail.com', 'her0satr@gmail.com', 1, 0),
+(17, 75, 6, 'JDE Developer', '', 3, '', '', '', '<p><strong>Responsibilities</strong><br /><br />The candidate will be primarily responsible for the system development and maintenance of JD Edwards EnterpriseOne version 9.1.<br />A minimum of 5 years experience in design, coding and testing of JDE applications is required.<br />In addition, the candidate will have experience working closely with project managers and other technical resources to shape innovative business solutions.<br /><br /><strong>Requirements</strong><br /><br />Candidate must possess at least a Bachelor''s Degree, Post Graduate Diploma, Professional Degree, Computer Science/Information Technology or equivalent.<br />Required skill(s): design, coding and testing of jde applications is required, .net, JDE edwards enterpriseone version 9.1., C++ Language, C#.<br />At least 5 year(s) of working experience in the related field is required for this position.<br />Preferably Senior Executives specializing in IT/Computer - Software or equivalent.<br />Contract position(s) available.<br /><br /></p>', '', '', 4090, 7, 1, 3, 2000000, '2013-07-02', '2013-07-25', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 28, 3);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `vacancy_status`
+-- Table structure for table `vacancy_status`
 --
 
 CREATE TABLE IF NOT EXISTS `vacancy_status` (
@@ -6916,7 +6992,7 @@ CREATE TABLE IF NOT EXISTS `vacancy_status` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `vacancy_status`
+-- Dumping data for table `vacancy_status`
 --
 
 INSERT INTO `vacancy_status` (`id`, `nama`) VALUES
@@ -6928,7 +7004,7 @@ INSERT INTO `vacancy_status` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `widget`
+-- Table structure for table `widget`
 --
 
 CREATE TABLE IF NOT EXISTS `widget` (
@@ -6936,20 +7012,24 @@ CREATE TABLE IF NOT EXISTS `widget` (
   `nama` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
   `content` longtext NOT NULL,
+  `is_html` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
--- Dumping data untuk tabel `widget`
+-- Dumping data for table `widget`
 --
 
-INSERT INTO `widget` (`id`, `nama`, `alias`, `content`) VALUES
-(1, 'About Dunia Karir', 'about_dunia_karir', '<h1>About Duniakarir.com</h1>\n<p>Dunia Karir adalah situ penyedia informasi lowongan kerja sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>\n<p>Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>\n<p><a class="btn btn-white" title="More info" href="#">More info</a></p>'),
-(2, 'Payment', 'payment', '<p><a class="discover" title="Discover" href="#">Discover</a> <a class="amex" title="Amex" href="#">Amex</a> <a class="american-express" title="American Express" href="#">American Express</a> <a class="visa" title="Visa" href="#">Visa</a> <a class="pay-pal" title="Pay Pal" href="#">Pay Pal</a> <a class="master-card" title="Master Card" href="#">Master Card</a></p>'),
-(3, 'Email Admin', 'email_admin', '<p>Herry &lt;herry@simetri.in&gt;</p>'),
-(4, 'Iphone', 'iphone', '<div class="app-ad">\n<h3>Download our app for iphone <br /><strong>for free</strong></h3>\n</div>'),
-(5, 'Create Account', 'create_account', '<h1>Create account</h1>\n<ul>\n<li>Access to 6000 + songs</li>\n<li>Ability to purchase songs</li>\n<li>Forums and Chat</li>\n<li>Sell your songs</li>\n</ul>'),
-(6, 'Social Link', 'social_link', '<p><a class="rss" title="RSS" href="#">RSS</a> <a class="flickr" title="Flickr" href="#">Flickr</a> <a class="facebook" title="Facebook" href="#">Flickr</a> <a class="google" title="Google" href="#">Google</a> <a class="last-fm" title="Last FM" href="#">Last FM</a> <a class="my-space" title="My Space" href="#">My Space</a> <a class="plant" title="Plant" href="#">Plant</a> <a class="twitter" title="Twitter" href="#">Twitter</a></p>');
+INSERT INTO `widget` (`id`, `nama`, `alias`, `content`, `is_html`) VALUES
+(1, 'About Dunia Karir', 'about_dunia_karir', '<h1>About Duniakarir.com</h1>\n<p>Dunia Karir adalah situ penyedia informasi lowongan kerja sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>\n<p>Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>\n<p><a class="btn btn-white" title="More info" href="#">More info</a></p>', 0),
+(2, 'Payment', 'payment', '<p><a class="discover" title="Discover" href="#">Discover</a> <a class="amex" title="Amex" href="#">Amex</a> <a class="american-express" title="American Express" href="#">American Express</a> <a class="visa" title="Visa" href="#">Visa</a> <a class="pay-pal" title="Pay Pal" href="#">Pay Pal</a> <a class="master-card" title="Master Card" href="#">Master Card</a></p>', 0),
+(3, 'Email Admin', 'email_admin', '<p>Herry &lt;her0satr@yahoo.com&gt;</p>', 0),
+(4, 'Iphone', 'iphone', '<div class="app-ad">\n<h3>Download our app for iphone <br /><strong>for freefdfdfdsfdsf</strong></h3>\n</div>', 0),
+(5, 'Create Account', 'create_account', '<h1>Create account</h1>\n<ul>\n<li>Access to 6000 + songs</li>\n<li>Ability to purchase songs</li>\n<li>Forums and Chat</li>\n<li>Sell your songs</li>\n</ul>', 0),
+(6, 'Social Link', 'social_link', '<p><a class="rss" title="RSS" href="#">RSS</a> <a class="flickr" title="Flickr" href="#">Flickr</a> <a class="facebook" title="Facebook" href="#">Flickr</a> <a class="google" title="Google" href="#">Google</a> <a class="last-fm" title="Last FM" href="#">Last FM</a> <a class="my-space" title="My Space" href="#">My Space</a> <a class="plant" title="Plant" href="#">Plant</a> <a class="twitter" title="Twitter" href="#">Twitter</a></p>', 0),
+(7, 'gf', 'gf', '<p>gdfgfd</p>', 0),
+(8, 'Default Resume', 'default_resume', '\nDear Sir/Madam,\n\nI wish to apply for the position above, as advertised on duniakari.com on [DD FF YYYY].\n\n[Please add your message here.]\n\nThank you.\n\nSincerely\n[Your Name]', 0),
+(9, 'Apply Vacancy', 'apply_vacancy', '<p>Dear Sir/Madam,</p>\n<p>Berikut informasi pemberitahuan adanya pelamar yang melamar lowongan yang telah anda kirimkan pada parapekerja.com.</p>\n<p>Terima Kasih</p>', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

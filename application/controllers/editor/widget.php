@@ -9,7 +9,7 @@ class widget extends EDITOR_Controller {
     }
 	
 	function grid() {
-		$_POST['column'] = array( 'nama' );
+		$_POST['column'] = array( 'id', 'nama' );
 		
 		$array = $this->Widget_model->get_array($_POST);
 		$count = $this->Widget_model->get_count();

@@ -11,11 +11,12 @@
 			<div class="row-fluid"><div class="span12"><div class="box"><div class="box-content nopadding">
 				<table id="cnt-seeker" class="table table-striped table-bordered">
 					<thead><tr>
+						<th>ID</th>
 						<th>No</th>
 						<th>First Name</th>
 						<th>Last Name</th>
 						<th>Email</th>
-						<th style="width: 75px;">&nbsp;</th>
+						<th>&nbsp;</th>
 					</tr></thead>
 					<tbody><tr><td class="dataTables_empty">Loading data from server</td></tr></tbody>
 				</table>
@@ -81,9 +82,9 @@
 		var dt = null;
 		
 		var param = {
-			id: 'cnt-seeker',
+			id: 'cnt-seeker', aaSorting: [[0, 'desc']],
 			source: web.host + 'editor/seeker/grid',
-			column: [ { }, { }, { }, { }, { bSortable: false, sClass: "center" } ],
+			column: [ { "bSearchable": false, "bVisible": false }, { }, { }, { }, { }, { bSortable: false, sClass: "center", sWidth: "10%" } ],
 			init: function() {
 				$('#cnt-seeker_length').prepend('<div style="float: left; width: 65px; padding: 2px 0 0 0;"><button class="btn btn-small btn-add">Tambah</button></div>');
 				$('#cnt-seeker_length .btn-add').click(function() {

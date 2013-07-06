@@ -1,18 +1,18 @@
 SEEKER - PUBLIC RESUME
-- Ada setting, jika ("Show my profile to public" == NO), maka tampilkan "tulisan Resume ini tidak tersedia untuk Public"
-- Ada setting, jika ("Sekarang saya telah bekerja" == YES), maka tampilkan "worked"
+cek => - Ada setting, jika ("Show my profile to public" == NO), maka tampilkan "tulisan Resume ini tidak tersedia untuk Public"
+cek => - Ada setting, jika ("Sekarang saya telah bekerja" == YES), maka tampilkan "worked"
 
 SEEKER - My JOB APPLY
-- Status ditable akan menjadi view ketika :
-	1. Pemalar mencari lowongan kemudian dia apply : statusnya akan seperti skr
+cek => - Status ditable akan menjadi view ketika :
+	1. Pemalar mencari lowongan kemudian dia apply : statusnya akan seperti skr (Open)
 	2. Kemudian Perusahaan akan lihat di COMPANY - DOWNLOAD, select lowongan yang terkait dan menemukan pelamar ini
 	3. Ketika Perusahaan melihat public profile dia, maka status nya menjadi viewed
 
 COMPANY - SEARCH
-- Search error
+cek => - Search error
 
 EDITOR
-- All table, semua yang terbaru ditampilkan diatas
+cek => - All table, semua yang terbaru ditampilkan diatas
 
 EDITOR - PELAMAR
 - Tambah fitur : Kirim Email, Disable Pelamar, View Public Profile

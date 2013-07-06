@@ -9,7 +9,7 @@ class article extends EDITOR_Controller {
     }
 	
 	function grid() {
-		$_POST['column'] = array( 'nama', 'subkategori_nama', 'article_status_nama', 'publish_date' );
+		$_POST['column'] = array( 'id', 'nama', 'subkategori_nama', 'article_status_nama', 'publish_date' );
 		
 		$array = $this->Article_model->get_array($_POST);
 		$count = $this->Article_model->get_count();

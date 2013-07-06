@@ -13,7 +13,9 @@ class download extends COMPANY_Controller {
 		unset($_POST['action']);
 		
 		$result = array();
-		if ($action == 'update_mail') {
+		if ($action == 'update_status') {
+			$this->Apply_model->update_status_view($_POST);
+		} else if ($action == 'update_mail') {
 			$param_update = array( 'id' => $_POST['id'], 'apply_status_id' => $_POST['apply_status_id'] );
 			$result = $this->Apply_model->update($param_update);
 		}
@@ -25,6 +27,9 @@ class download extends COMPANY_Controller {
 		preg_match('/([\d]+)$/i', $_SERVER['REQUEST_URI'], $match);
 		$seeker_no = (!empty($match[1])) ? $match[1] : '';
 		
-		$this->load->view( 'seeker/resume', array( 'seeker_no' => $seeker_no ) );
+		$seeker = $this->Seeker_model->get_by_id(array( 'seeker_no' => $seeker_no ));
+		$seeker = $this->Seeker_model->get_by_id(array( 'id' => $seeker['id'] ));
+		
+		$this->load->view( 'seeker/publish', array( 'seeker' => $seeker, 'is_company' => true ) );
 	}
 }

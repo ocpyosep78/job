@@ -22,11 +22,12 @@
 			<div class="row-fluid" id="grid-article"><div class="span12"><div class="box"><div class="box-content nopadding">
 				<table id="cnt-article" class="table table-striped table-bordered">
 					<thead><tr>
+						<th>ID</th>
 						<th>Nama</th>
 						<th>Sub Kategori</th>
 						<th>Status</th>
 						<th>Publish Date</th>
-						<th style="width: 75px;">&nbsp;</th>
+						<th>&nbsp;</th>
 					</tr></thead>
 					<tbody><tr><td class="dataTables_empty">Loading data from server</td></tr></tbody>
 				</table>
@@ -134,9 +135,9 @@
 		}
 		
 		var param = {
-			id: 'cnt-article',
+			id: 'cnt-article', aaSorting: [[0, 'desc']],
 			source: web.host + 'editor/article/grid',
-			column: [ { }, { }, { }, { }, { bSortable: false, sClass: "center" } ],
+			column: [ { "bSearchable": false, "bVisible": false }, { }, { }, { }, { }, { bSortable: false, sClass: "center", sWidth: "10%" } ],
 			init: function() {
 				$('#cnt-article_length').prepend('<div style="float: left; width: 65px; padding: 2px 0 0 0;"><button class="btn btn-small btn-add">Tambah</button></div>');
 				$('#cnt-article_length .btn-add').click(function() {

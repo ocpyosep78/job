@@ -78,6 +78,22 @@ class Seeker_Setting_model extends CI_Model {
 		return $TotalRecord;
     }
 	
+	function is_public($param = array()) {
+		$setting = $this->get_by_id(array( 'seeker_id' => $param['seeker_id'] ));
+		
+		$is_public = @$setting['is_public'];
+		$result = ($is_public == 1) ? true : false;
+		return $result;
+	}
+	
+	function is_work($param = array()) {
+		$setting = $this->get_by_id(array( 'seeker_id' => $param['seeker_id'] ));
+		
+		$is_work = @$setting['is_work'];
+		$result = ($is_work == 1) ? true : false;
+		return $result;
+	}
+	
     function delete($param) {
 		$delete_query  = "DELETE FROM ".SEEKER_SETTING." WHERE id = '".$param['id']."' LIMIT 1";
 		$delete_result = mysql_query($delete_query) or die(mysql_error());

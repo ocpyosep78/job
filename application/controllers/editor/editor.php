@@ -9,7 +9,7 @@ class editor extends EDITOR_Controller {
     }
 	
 	function grid() {
-		$_POST['column'] = array( 'nama', 'email' );
+		$_POST['column'] = array( 'id', 'nama', 'email' );
 		
 		$array = $this->Editor_model->get_array($_POST);
 		$count = $this->Editor_model->get_count();

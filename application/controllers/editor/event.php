@@ -9,7 +9,7 @@ class event extends EDITOR_Controller {
     }
 	
 	function grid() {
-		$_POST['column'] = array( 'nama', 'lokasi', 'waktu', 'publish_date' );
+		$_POST['column'] = array( 'id', 'nama', 'lokasi', 'waktu', 'publish_date' );
 		
 		$array = $this->Event_model->get_array($_POST);
 		$count = $this->Event_model->get_count();

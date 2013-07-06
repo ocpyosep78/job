@@ -1,6 +1,15 @@
 <?php
 	$is_pdf = (isset($is_pdf)) ? $is_pdf : false;
+	$is_company = (isset($is_company)) ? $is_company : false;
+	
 	$allow_update = (isset($allow_update)) ? $allow_update : false;
+	
+	$allow_view = false;
+	if ($allow_update) {
+		$allow_view = true;
+	} else if ($is_company) {
+		$allow_view = true;
+	}
 	
 	$array_pendidikan = $this->Seeker_Education_model->get_array(array( 'seeker_id' => $seeker['id'] ));
 	$array_language = $this->Seeker_Language_model->get_array(array( 'seeker_id' => $seeker['id'] ));
@@ -9,6 +18,16 @@
 	$array_reference = $this->Seeker_Reference_model->get_array(array( 'seeker_id' => $seeker['id'] ));
 	$seeker_addon = $this->Seeker_Addon_model->get_by_id(array( 'seeker_id' => $seeker['id'] ));
 	$seeker_summary = $this->Seeker_Summary_model->get_by_id(array( 'seeker_id' => $seeker['id'] ));
+	$is_public = $this->Seeker_Setting_model->is_public(array( 'seeker_id' => $seeker['id'] ));
+	$is_work = $this->Seeker_Setting_model->is_work(array( 'seeker_id' => $seeker['id'] ));
+	
+	if (!$is_pdf && !$allow_view && !$is_public) {
+		echo '<div style="text-align: center;">Resume ini tidak tersedia untuk Public</div>';
+		exit;
+	} else if (!$is_pdf && !$allow_view && $is_work) {
+		echo '<div style="text-align: center;">Pelamar ini sudah bekerja</div>';
+		exit;
+	}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">

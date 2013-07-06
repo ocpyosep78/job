@@ -28,6 +28,15 @@ class Apply_model extends CI_Model {
        
         return $result;
     }
+	
+	function update_status_view($param) {
+		$apply = $this->get_by_id(array( 'id' => $param['id'] ));
+		if ($apply['apply_status_id'] == APPLY_STATUS_OPEN) {
+			$param_apply['id'] = $apply['id'];
+			$param_apply['apply_status_id'] = APPLY_STATUS_VIEW;
+			$this->update($param_apply);
+		}
+	}
 
     function get_by_id($param) {
         $array = array();

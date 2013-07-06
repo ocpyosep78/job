@@ -8,6 +8,13 @@
 		'filter' => '[{"type":"numeric","comparison":"not","value":"' . APPLY_STATUS_REJECT . '","field":"Apply.apply_status_id"}]'
 	);
 	$array_apply = $this->Apply_model->get_array_seeker($param_apply);
+	
+	// update status apply
+	foreach ($array_apply as $key => $apply) {
+		if ($apply['apply_status_id'] == APPLY_STATUS_OPEN) {
+			$this->Apply_model->update_status_view(array( 'id' => $apply['id'] ));
+		}
+	}
 ?>
 
 <?php $this->load->view( 'panel/common/meta', array( 'title' => 'View Slide') ); ?>
