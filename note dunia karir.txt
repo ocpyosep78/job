@@ -1,0 +1,61 @@
+SEEKER - PUBLIC RESUME
+- Ada setting, jika ("Show my profile to public" == NO), maka tampilkan "tulisan Resume ini tidak tersedia untuk Public"
+- Ada setting, jika ("Sekarang saya telah bekerja" == YES), maka tampilkan "worked"
+
+SEEKER - My JOB APPLY
+- Status ditable akan menjadi view ketika :
+	1. Pemalar mencari lowongan kemudian dia apply : statusnya akan seperti skr
+	2. Kemudian Perusahaan akan lihat di COMPANY - DOWNLOAD, select lowongan yang terkait dan menemukan pelamar ini
+	3. Ketika Perusahaan melihat public profile dia, maka status nya menjadi viewed
+
+COMPANY - SEARCH
+- Search error
+
+EDITOR
+- All table, semua yang terbaru ditampilkan diatas
+
+EDITOR - PELAMAR
+- Tambah fitur : Kirim Email, Disable Pelamar, View Public Profile
+- Pelamar yang disable oleh admin tidak bisa login / lost password
+
+EDITOR - PERUSAHAAN
+- Tambah fitur : Kirim Email, Disable Perusahaan, View Company Profile
+- Company yang disable oleh admin tidak bisa login / lost password
+
+EDITOR - LOWONGAN
+- Column : Tambah end date
+- Tambah fitur : Kirim pesan ke email | dan edit lowongan, terutama untuk edit kategory lowongan
+
+EDITOR - MEMBERSHIP
+- Tambah Fitur Kirim Pesan
+- Untuk Approve / Cancel membership, tambahkan konfirmasi, seperti ketika ada record yang akan dihapus
+
+SUBSCRIBE - MAIL
+- Tambah Fitur bisa kirim via email, all company, all seeker, all company & seeker
+- kirim pakai html biasa aja
+
+WEBSITE
+- Perubahan link dari http://www.parapekerja.com/blog/akuntansi-keuangan jadi http://www.parapekerja.com/jobs/akuntansi-keuangan
+
+WIBSITE - HOME
+- Slide :
+	slide 1 : list company
+	slide 2 : list kategori
+- Slide diganti Show Hide
+
+WEBSITE - HALAMAN TAG
+- Tag Malang punya page di : http://www.parapekerja.com/tags/malang
+- isinya semua article / event yang punya tag Malang
+
+WEBSITE - RSS
+- Kategori
+- Sub Kategory
+- Company
+- Blog
+- Event
+
+WEBSITE - LOGIN PAGE
+- Jika user sudah login, maka akses ke login page tidak ada, tampilkan saja dashboard & logout di header
+
+SEEKER - EXAM
+- backup : Exam.png
