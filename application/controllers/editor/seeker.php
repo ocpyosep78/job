@@ -9,8 +9,12 @@ class seeker extends EDITOR_Controller {
     }
 	
 	function grid() {
-		$_POST['is_edit'] = 1;
 		$_POST['column'] = array( 'id', 'seeker_no', 'first_name', 'last_name', 'email' );
+		$_POST['is_custom']  = '<img class="button-cursor view" src="'.base_url('static/img/button_view.png').'"> ';
+		$_POST['is_custom'] .= '<img class="button-cursor mail" src="'.base_url('static/img/button_mail.png').'"> ';
+		$_POST['is_custom'] .= '<img class="button-cursor edit" src="'.base_url('static/img/button_edit.png').'"> ';
+		$_POST['is_custom'] .= '<img class="button-cursor delete" src="'.base_url('static/img/button_delete.png').'"> ';
+		$_POST['is_custom_disable'] = 1;
 		
 		$array = $this->Seeker_model->get_array($_POST);
 		$count = $this->Seeker_model->get_count();
@@ -31,6 +35,11 @@ class seeker extends EDITOR_Controller {
 			$result = $this->Seeker_model->update($_POST);
 		} else if ($action == 'delete') {
 			$result = $this->Seeker_model->delete($_POST);
+		} else if ($action == 'sent_mail') {
+			sent_mail($_POST);
+			
+			$result['status'] = true;
+			$result['message'] = 'Email berhasil terkirim';
 		}
 		
 		echo json_encode($result);

@@ -61,7 +61,7 @@ class Company_Membership_model extends CI_Model {
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS CompanyMembership.*, Company.nama company_nama,
+			SELECT SQL_CALC_FOUND_ROWS CompanyMembership.*, Company.nama company_nama, Company.email company_email,
 				Membership.post_count, Membership.date_count, Membership.price
 			FROM ".COMPANY_MEMBERSHIP." CompanyMembership
 			LEFT JOIN ".COMPANY." Company ON Company.id = CompanyMembership.company_id

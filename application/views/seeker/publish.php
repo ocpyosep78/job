@@ -1,5 +1,6 @@
 <?php
 	$is_pdf = (isset($is_pdf)) ? $is_pdf : false;
+	$is_login_editor = $this->Editor_model->is_login();
 	$is_company = (isset($is_company)) ? $is_company : false;
 	
 	$allow_update = (isset($allow_update)) ? $allow_update : false;
@@ -8,6 +9,8 @@
 	if ($allow_update) {
 		$allow_view = true;
 	} else if ($is_company) {
+		$allow_view = true;
+	} else if ($is_login_editor) {
 		$allow_view = true;
 	}
 	

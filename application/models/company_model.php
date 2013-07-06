@@ -7,7 +7,7 @@ class Company_model extends CI_Model {
         $this->field = array(
 			'id', 'kota_id', 'nama', 'phone', 'faximile', 'website', 'address', 'email', 'passwd', 'description', 'kodepos', 'sales', 'contact_name',
 			'contact_email', 'contact_no', 'logo', 'banner', 'google_map', 'industri_id', 'alias', 'reset', 'vacancy_count_left', 'membership_date',
-			'validation', 'is_active'
+			'validation', 'is_active', 'is_disable'
 		);
     }
 
@@ -93,7 +93,7 @@ class Company_model extends CI_Model {
 		";
         $select_result = mysql_query($select_query) or die(mysql_error());
 		while ( $row = mysql_fetch_assoc( $select_result ) ) {
-			$array[] = $this->sync($row, @$param['column']);
+			$array[] = $this->sync($row, $param);
 		}
 		
         return $array;
@@ -152,9 +152,15 @@ class Company_model extends CI_Model {
         return $result;
     }
 	
-	function sync($row, $column = array()) {
+	function sync($row, $param = array()) {
 		$row = StripArray($row, array('membership_date'));
-		$row['company_link'] = base_url($row['alias']);
+		
+		// company link
+		if (!empty($row['alias'])) {
+			$row['company_link'] = base_url($row['alias']);
+		} else {
+			$row['company_link'] = base_url('company/'.$row['id']);
+		}
 		
 		// logo
 		$row['logo_link'] = base_url('static/img/company.png');
@@ -168,8 +174,15 @@ class Company_model extends CI_Model {
 			$row['logo_banner'] = base_url('static/upload/'.$row['banner']);
 		}
 		
-		if (count($column) > 0) {
-			$row = dt_view($row, $column, array('is_edit' => 1));
+		if (count(@$param['column']) > 0) {
+			// add disable button
+			if (isset($param['is_custom_disable']) && isset($row['is_disable'])) {
+				$image = ($row['is_disable'] == 1) ? 'button_remove.png' : 'button_check.png';
+				$button = '<img class="button-cursor disable" src="'.base_url('static/img/'.$image).'">';
+				$param['is_custom'] = $button . $_POST['is_custom'];
+			}
+			
+			$row = dt_view_set($row, $param);
 		}
 		
 		return $row;

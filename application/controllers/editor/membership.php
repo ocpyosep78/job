@@ -10,6 +10,7 @@ class membership extends EDITOR_Controller {
 	
 	function grid() {
 		$_POST['column'] = array( 'id', 'date_request', 'company_nama', 'post_count', 'date_count', 'price', 'status' );
+		$_POST['is_custom']   = '<img class="button-cursor mail" src="'.base_url('static/img/button_mail.png').'"> ';
 		$_POST['is_pending']  = '<img class="button-cursor confirm" src="'.base_url('static/img/button_check.png').'"> ';
 		$_POST['is_pending'] .= '<img class="button-cursor delete" src="'.base_url('static/img/button_remove.png').'"> ';
 		
@@ -47,6 +48,11 @@ class membership extends EDITOR_Controller {
 			}
 			
 			$result = $this->Company_Membership_model->update($_POST);
+		} else if ($action == 'sent_mail') {
+			sent_mail($_POST);
+			
+			$result['status'] = true;
+			$result['message'] = 'Email berhasil terkirim';
 		}
 		
 		echo json_encode($result);

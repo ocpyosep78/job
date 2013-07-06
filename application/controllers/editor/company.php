@@ -10,6 +10,11 @@ class company extends EDITOR_Controller {
 	
 	function grid() {
 		$_POST['column'] = array( 'id', 'nama', 'phone', 'email', 'website' );
+		$_POST['is_custom']  = '<img class="button-cursor view" src="'.base_url('static/img/button_view.png').'"> ';
+		$_POST['is_custom'] .= '<img class="button-cursor mail" src="'.base_url('static/img/button_mail.png').'"> ';
+		$_POST['is_custom'] .= '<img class="button-cursor edit" src="'.base_url('static/img/button_edit.png').'"> ';
+		$_POST['is_custom'] .= '<img class="button-cursor delete" src="'.base_url('static/img/button_delete.png').'"> ';
+		$_POST['is_custom_disable'] = 1;
 		
 		$array = $this->Company_model->get_array($_POST);
 		$count = $this->Company_model->get_count();
@@ -30,6 +35,11 @@ class company extends EDITOR_Controller {
 			$result = $this->Company_model->update($_POST);
 		} else if ($action == 'delete') {
 			$result = $this->Company_model->delete($_POST);
+		} else if ($action == 'sent_mail') {
+			sent_mail($_POST);
+			
+			$result['status'] = true;
+			$result['message'] = 'Email berhasil terkirim';
 		}
 		
 		echo json_encode($result);

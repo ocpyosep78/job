@@ -48,14 +48,14 @@
 				</div>
 				<div class="control-group">
 					<label for="input-kategori_id" class="control-label">Kategori</label>
-					<div class="controls"><select name="kategori_id" id="input-propinsi_id" class="input-xxlarge">
+					<div class="controls"><select name="kategori_id" id="input-kategori_id" class="input-xxlarge">
 						<?php echo ShowOption(array( 'Array' => $array_kategori, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
 					</select></div>
 				</div>
 				<div class="control-group">
 					<label for="input-subkategori_id" class="control-label">Sub Kategori</label>
 					<div class="controls"><select name="subkategori_id" id="input-subkategori_id" class="input-xxlarge" data-rule-required="true">
-						<?php echo ShowOption(array( 'Array' => $array_article_status, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
+						<?php echo ShowOption(array( 'Array' => array(), 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
 					</select></div>
 				</div>
 				<div class="control-group">

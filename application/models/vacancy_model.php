@@ -99,6 +99,7 @@ class Vacancy_model extends CI_Model {
 			SELECT SQL_CALC_FOUND_ROWS
 				Vacancy.*,
 				Company.nama company_nama, Company.alias company_alias, Company.website company_website, Company.logo company_logo, Company.banner company_banner,
+				Company.email company_email,
 				Kota.id kota_id, Kota.nama kota_nama, Kota.propinsi_id, Industri.nama industri_nama, VacancyStatus.nama vacancy_status_name,
 				Kategori.id kategori_id, Kategori.nama kategori_nama, Subkategori.nama subkategori_nama, JenisPekerjaan.nama jenis_pekerjaan_nama,
 				CompanyKota.nama company_kota_nama, VacancyStatus.nama vacancy_status_nama

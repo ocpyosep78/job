@@ -23,10 +23,10 @@
 			</div></div></div></div>
 		</div>
 		
-		<div id="modal-seeker" class="modal modal-bigest hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div id="modal-seeker" class="modal modal-bigest hide fade" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h3 id="myModalLabel">Form Pelamar</h3>
+				<h3>Form Pelamar</h3>
 			</div>
 			<form class='form-horizontal form-validate' id="form-seeker">
 				<input type="hidden" name="id" value="0" />
@@ -68,11 +68,42 @@
 							<span class="help-block">Biarkan kosong jika tidak diperbaharui.</span>
 						</div>
 					</div>
+					<div class="control-group">
+						<label class="control-label">Disable</label>
+						<div class="controls"><input type="checkbox" name="is_disable" value="1" /></div>
+					</div>
 				</div>
 			</form>
 			<div class="modal-footer">
-				<button class="btn modal-close" data-dismiss="modal" aria-hidden="true">Close</button>
-				<button class="btn modal-submit btn-primary" data-dismiss="modal">Save changes</button>
+				<button class="btn modal-close" aria-hidden="true">Close</button>
+				<button class="btn modal-submit btn-primary">Save changes</button>
+			</div>
+		</div>
+		
+		<div id="modal-mail" class="modal modal-bigest hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3>Form Message</h3>
+			</div>
+			<form class='form-horizontal form-validate' id="form-mail">
+				<input type="hidden" name="action" value="sent_mail" />
+				<input type="hidden" name="to" value="" />
+				<input type="submit" class="btn-hidden" hidefocus="true" />
+				
+				<div class="modal-body">
+					<div class="control-group">
+						<label for="input-title" class="control-label">Judul</label>
+						<div class="controls"><input type="text" name="title" id="input-title" class="input-xxlarge" data-rule-required="true" maxlength="50" /></div>
+					</div>
+					<div class="control-group">
+						<label for="input-message" class="control-label">Pesan</label>
+						<div class="controls"><textarea name="message" id="input-message" class="span9 tinymce"></textarea></div>
+					</div>
+				</div>
+			</form>
+			<div class="modal-footer">
+				<button class="btn modal-close" aria-hidden="true">Close</button>
+				<button class="btn modal-submit btn-primary">Sent</button>
 			</div>
 		</div>
 	</div></div></div></div></div>
@@ -84,7 +115,7 @@
 		var param = {
 			id: 'cnt-seeker', aaSorting: [[0, 'desc']],
 			source: web.host + 'editor/seeker/grid',
-			column: [ { "bSearchable": false, "bVisible": false }, { }, { }, { }, { }, { bSortable: false, sClass: "center", sWidth: "10%" } ],
+			column: [ { "bSearchable": false, "bVisible": false }, { }, { }, { }, { }, { bSortable: false, sClass: "center", sWidth: "20%" } ],
 			init: function() {
 				$('#cnt-seeker_length').prepend('<div style="float: left; width: 65px; padding: 2px 0 0 0;"><button class="btn btn-small btn-add">Tambah</button></div>');
 				$('#cnt-seeker_length .btn-add').click(function() {
@@ -94,6 +125,35 @@
 				});
 			},
 			callback: function() {
+				$('#cnt-seeker .disable').click(function() {
+					var raw_record = $(this).siblings('.hide').text();
+					eval('var record = ' + raw_record);
+					
+					var param = { action: 'update', id: record.id, is_disable: (record.is_disable == 1) ? 0 : 1 };
+					Func.ajax({ url: web.host + 'editor/seeker/action', param: param, callback: function(result) {
+						Func.show_notice({ text: result.message });
+						if (result.status == 1) {
+							dt.reload();
+						}
+					} });
+				});
+				
+				$('#cnt-seeker .view').click(function() {
+					var raw_record = $(this).siblings('.hide').text();
+					eval('var record = ' + raw_record);
+					window.open(record.seeker_no_link);
+				});
+				
+				$('#cnt-seeker .mail').click(function() {
+					var raw_record = $(this).siblings('.hide').text();
+					eval('var record = ' + raw_record);
+					
+					$('#modal-mail [name="to"]').val(record.email);
+					$('#modal-mail [name="title"]').val('');
+					$('#modal-mail [name="message"]').val('');
+					$('#modal-mail').modal();
+				});
+				
 				$('#cnt-seeker .edit').click(function() {
 					var raw_record = $(this).siblings('.hide').text();
 					eval('var record = ' + raw_record);
@@ -107,6 +167,7 @@
 					$('#modal-seeker [name="tgl_lahir"]').val(Func.SwapDate(record.tgl_lahir));
 					$('#modal-seeker [name="address"]').val(record.address);
 					$('#modal-seeker [name="passwd"]').val('');
+					$('#modal-seeker [name="is_disable"]').prop('checked', (record.is_disable == 1));
 					$('#modal-seeker').modal();
 				});
 				
@@ -124,6 +185,7 @@
 		dt = Func.init_datatable(param);
 		
 		/*	Modal */
+		// form seeker
 		$('#modal-seeker .modal-footer .modal-close').click(function() { $('#modal-seeker').modal('hide'); });
 		$('#modal-seeker .modal-footer .modal-submit').click(function() { $('#modal-seeker').find('form').submit(); });
 		$('#modal-seeker form').submit(function() {
@@ -134,14 +196,32 @@
 			var param = Site.Form.GetValue('modal-seeker form');
 			param.action = 'update';
 			param.tgl_lahir = Func.SwapDate(param.tgl_lahir);
+			param.is_disable = ($('#modal-seeker [name="is_disable"]').is(":checked")) ? 1 : 0;
 			
 			Func.ajax({ url: web.host + 'editor/seeker/action', param: param, callback: function(result) {
+				Func.show_notice({ text: result.message });
 				if (result.status == 1) {
 					dt.reload();
 					$('#modal-seeker').modal('hide');
-					Func.show_notice({ text: result.message });
-				} else {
-					Func.show_notice({ text: result.message });
+				}
+			} });
+			
+			return false;
+		});
+		
+		// form message
+		$('#modal-mail .modal-footer .modal-close').click(function() { $('#modal-mail').modal('hide'); });
+		$('#modal-mail .modal-footer .modal-submit').click(function() { $('#modal-mail').find('form').submit(); });
+		$('#modal-mail form').submit(function() {
+			if (! $('#modal-mail form').valid()) {
+				return false;
+			}
+			
+			var param = Site.Form.GetValue('modal-mail form');
+			Func.ajax({ url: web.host + 'editor/seeker/action', param: param, callback: function(result) {
+				Func.show_notice({ text: result.message });
+				if (result.status == 1) {
+					$('#modal-mail').modal('hide');
 				}
 			} });
 			

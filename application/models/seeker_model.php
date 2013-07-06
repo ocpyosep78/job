@@ -7,7 +7,7 @@ class Seeker_model extends CI_Model {
         $this->field = array(
 			'id', 'kelamin_id', 'kota_id', 'marital_id', 'seeker_no', 'first_name', 'last_name', 'email', 'tempat_lahir', 'tgl_lahir', 'address', 'phone', 'hp',
 			'passwd', 'photo', 'last_login', 'last_update', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu_kandung', 'file_resume', 'alias', 'reset',
-			'validation', 'is_active'
+			'validation', 'is_active', 'is_disable'
 		);
     }
 
@@ -258,13 +258,14 @@ class Seeker_model extends CI_Model {
 			$row['file_resume_path'] = str_replace('\\', '/', $row['file_resume_path']);
 		}
 		
-		/*
-		if (count($column) > 0) {
-			$row = dt_view($row, $column, array('is_edit' => 1));
-		}
-		/* */
-		
 		if (count(@$param['column']) > 0) {
+			// add disable button
+			if (isset($param['is_custom_disable']) && isset($row['is_disable'])) {
+				$image = ($row['is_disable'] == 1) ? 'button_remove.png' : 'button_check.png';
+				$button = '<img class="button-cursor disable" src="'.base_url('static/img/'.$image).'">';
+				$param['is_custom'] = $button . $_POST['is_custom'];
+			}
+			
 			$row = dt_view_set($row, $param);
 		}
 		

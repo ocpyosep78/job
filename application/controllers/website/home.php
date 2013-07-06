@@ -133,6 +133,10 @@ class home extends CI_Controller {
 				$result['message'] = 'user anda tidak ditemukan.';
 				echo json_encode($result);
 				exit;
+			} else if (isset($user['is_disable']) && $user['is_disable'] == 1) {
+				$result['message'] = 'Maaf user anda sedang tidak aktif, silahkan menghubungi admin untuk mengaktifkan kembali.';
+				echo json_encode($result);
+				exit;
 			} else if (EncriptPassword($_POST['passwd']) != $user['passwd']) {
 				$result['message'] = 'Password tidak sama.';
 				echo json_encode($result);
@@ -152,6 +156,10 @@ class home extends CI_Controller {
 			if (count($user) == 0) {
 				$result['status'] = true;
 				$result['message'] = 'Email anda tidak terdaftar';
+				echo json_encode($result);
+				exit;
+			} else if (isset($user['is_disable']) && $user['is_disable'] == 1) {
+				$result['message'] = 'Maaf user anda sedang tidak aktif, silahkan menghubungi admin untuk mengaktifkan kembali.';
 				echo json_encode($result);
 				exit;
 			}
