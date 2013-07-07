@@ -42,19 +42,20 @@
 					</select>
 				</div>
 				<?php if (count($array_apply) > 0) { ?>
-				<div style="float: right; width: 200px; text-align: right;">
+				<div style="float: right; width: 350px; text-align: right;">
+					<a href="<?php echo base_url('company/vacancy_exam/index/'.$vacancy_id); ?>" class="btn btn-small btn-slide">Kirim Exan</a>
 					<a href="<?php echo base_url('company/slide/index/'.$vacancy_id); ?>" class="btn btn-small btn-slide">View Photo In Slide</a>
 				</div>
 				<?php } ?>
 				<div class="clear"></div>
 			</div>
 			
-			<div id="modal-message" class="modal modal-bigest hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div id="modal-interview" class="modal modal-bigest hide fade" tabindex="-1" role="dialog" aria-hidden="true">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h3 id="myModalLabel">Form </h3>
+					<h3>Form </h3>
 				</div>
-				<form class='form-horizontal form-validate' id="form-apply">
+				<form class='form-horizontal form-validate' id="form-interview">
 					<input type="hidden" name="id" value="0" />
 					<input type="hidden" name="apply_status_id" value="0" />
 					
@@ -70,8 +71,8 @@
 					</div>
 				</form>
 				<div class="modal-footer">
-					<button class="btn modal-close" data-dismiss="modal" aria-hidden="true">Close</button>
-					<button class="btn modal-submit btn-primary" data-dismiss="modal">Save changes</button>
+					<button class="btn modal-close" aria-hidden="true">Close</button>
+					<button class="btn modal-submit btn-primary">Save changes</button>
 				</div>
 			</div>
 			
@@ -88,6 +89,7 @@
 						<th>Kota</th>
 						<th>Status</th>
 						<th>Pengalaman</th>
+						<th>Status Lamaran</th>
 						<th>&nbsp;</th>
 					</tr></thead>
 					<tbody>
@@ -102,6 +104,7 @@
 								<td><?php echo $seeker['kota_nama']; ?></td>
 								<td><?php echo $seeker['marital_nama']; ?></td>
 								<td><?php echo $seeker['experience']; ?></td>
+								<td><?php echo $seeker['apply_status_nama']; ?></td>
 								<td style="min-width: 90px; text-align: center;">
 									<a href="<?php echo $seeker['seeker_link']; ?>" target="_blank" class="update_view">
 										<img src="<?php echo base_url('static/img/button_view.png'); ?>" class="button-cursor">
@@ -160,7 +163,7 @@
 			$('[name="id"]').val(record.id);
 			$('[name="nama"]').val('Berita Interview');
 			$('[name="apply_status_id"]').val(apply.APPLY_STATUS_INTERVIEW);
-			$('#modal-message').modal();
+			$('#modal-interview').modal();
 		});
 		$('.grid-apply .delete').click(function() {
 			row = $(this).parents('tr');
@@ -170,16 +173,18 @@
 			$('[name="id"]').val(record.id);
 			$('[name="nama"]').val('Berita Penolakan');
 			$('[name="apply_status_id"]').val(apply.APPLY_STATUS_REJECT);
-			$('#modal-message').modal();
+			$('#modal-interview').modal();
 		});
 		
 		// form
-		$('#form-apply').submit(function() {
-			if (! $('#form-apply').valid()) {
+		$('#modal-interview .modal-footer .modal-close').click(function() { $('#modal-interview').modal('hide'); });
+		$('#modal-interview .modal-footer .modal-submit').click(function() { $('#modal-interview').find('form').submit(); });
+		$('#modal-interview form').submit(function() {
+			if (! $('#form-interview').valid()) {
 				return false;
 			}
 			
-			var param = Site.Form.GetValue('form-apply');
+			var param = Site.Form.GetValue('form-interview');
 			param.action = 'update_mail';
 			
 			if (param.apply_status_id == apply.APPLY_STATUS_INTERVIEW) {
@@ -194,7 +199,7 @@
 			Func.ajax({ url: web.host + 'company/download/action', param: param, callback: function(result) {
 				Func.show_notice({ text: result.message });
 				if (result.status == 1) {
-					$('#modal-message').modal('hide');
+					window.location = window.location.href;
 				}
 			} });
 			

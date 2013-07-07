@@ -31,6 +31,12 @@
 			source: web.host + 'seeker/apply/grid',
 			column: [ { }, { }, { }, { }, { }, { bSortable: false, sClass: "center" } ],
 			callback: function() {
+				$('#cnt-apply .exam').click(function() {
+					var raw_record = $(this).siblings('.hide').text();
+					eval('var record = ' + raw_record);
+					window.location = web.host + 'seeker/exam/?id=' + record.id;
+				});
+				
 				$('#cnt-apply .delete').click(function() {
 					var raw_record = $(this).siblings('.hide').text();
 					eval('var record = ' + raw_record);

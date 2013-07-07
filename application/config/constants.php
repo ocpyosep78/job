@@ -24,6 +24,8 @@ define('APPLY_STATUS_VIEW',						5);
 define('ARTICLE_PUBLISH',						2);
 define('VACANCY_STATUS_APPROVE',				3);
 define('VACANCY_STATUS_CANCEL',					4);
+define('VACANCY_STATUS_EXAM',					6);
+define('VACANCY_STATUS_DONE',					7);
 
 define('APPLY',									'apply');
 define('APPLY_STATUS',							'apply_status');
@@ -36,6 +38,7 @@ define('COMPANY_POST',							'company_post');
 define('EDITOR',								'editor');
 define('EVENT',									'event');
 define('EVENT_TAG',								'event_tag');
+define('EXAM',									'exam');
 define('INDUSTRI',								'industri');
 define('JENIS_PEKERJAAN',						'jenis_pekerjaan');
 define('JENIS_SUBSCRIBE',						'jenis_subscribe');

@@ -78,6 +78,14 @@ if (! function_exists('ConvertToUnixTime')) {
 	}
 }
 
+if (! function_exists('GetUnixTime')) {
+    function GetUnixTime($Date) {
+        $ArrayDate = ConvertDateToArray($Date, true);
+        $Result = mktime($ArrayDate['Hour'], $ArrayDate['Minute'], $ArrayDate['Second'], $ArrayDate['Month'], $ArrayDate['Day'], $ArrayDate['Year']);
+        return $Result;
+    }
+}
+
 if (! function_exists('DateDiff')) {
 	function DateDiff($StringDate1, $StringDate2) {
 		if (strlen($StringDate1) < 10 || strlen($StringDate2) < 10) {

@@ -86,7 +86,7 @@ class Apply_model extends CI_Model {
 		";
         $select_result = mysql_query($select_query) or die(mysql_error());
 		while ( $row = mysql_fetch_assoc( $select_result ) ) {
-			$array[] = $this->sync($row, @$param['column']);
+			$array[] = $this->sync($row, $param);
 		}
 		
         return $array;
@@ -97,22 +97,24 @@ class Apply_model extends CI_Model {
 		
 		$string_vacancy = (empty($param['vacancy_id'])) ? '' : "AND Apply.vacancy_id = '".$param['vacancy_id']."'";
 		$string_delete = (isset($param['is_delete'])) ? "AND Apply.is_delete = '".$param['is_delete']."'" : '';
+		$string_apply_status = (empty($param['apply_status_id'])) ? '' : "AND Apply.apply_status_id = '".$param['apply_status_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'Seeker.seeker_no ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS Apply.*,
+			SELECT SQL_CALC_FOUND_ROWS Apply.*, ApplyStatus.nama apply_status_nama,
 				Seeker.seeker_no, Seeker.first_name, Seeker.last_name, Seeker.tgl_lahir, Seeker.photo,
 				SeekerSummary.score, Jenjang.nama jenjang_nama, SeekerSummary.school, Kota.nama kota_nama,
 				Marital.nama marital_nama, SeekerSummary.experience
 			FROM ".APPLY." Apply
+			LEFT JOIN ".APPLY_STATUS." ApplyStatus ON ApplyStatus.id = Apply.apply_status_id
 			LEFT JOIN ".SEEKER." Seeker ON Seeker.id = Apply.seeker_id
 			LEFT JOIN ".SEEKER_SUMMARY." SeekerSummary ON SeekerSummary.seeker_id = Seeker.id
 			LEFT JOIN ".JENJANG." Jenjang ON Jenjang.id = SeekerSummary.jenjang_id
 			LEFT JOIN ".KOTA." Kota ON Kota.id = Seeker.kota_id
 			LEFT JOIN ".MARITAL." Marital ON Marital.id = Seeker.marital_id
-			WHERE 1 $string_vacancy $string_delete $string_filter
+			WHERE 1 $string_vacancy $string_delete $string_apply_status $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";
@@ -143,7 +145,7 @@ class Apply_model extends CI_Model {
         return $result;
     }
 	
-	function sync($row, $column = array()) {
+	function sync($row, $param = array()) {
 		$row = StripArray($row);
 		
 		$row['full_name'] = '';
@@ -171,8 +173,12 @@ class Apply_model extends CI_Model {
 			$row['location'] = $row['propinsi_nama'].' - '.$row['kota_nama'];
 		}
 		
-		if (count($column) > 0) {
-			$row = dt_view($row, $column, array('is_delete' => 1));
+		if (count(@$param['column']) > 0) {
+			if ($row['apply_status_id'] == VACANCY_STATUS_EXAM) {
+				$param['is_custom'] = '<img class="button-cursor exam" src="'.base_url('static/img/button_quiz.jpg').'"> ' . $param['is_custom'];
+			}
+			
+			$row = dt_view_set($row, $param);
 		}
 		
 		return $row;
