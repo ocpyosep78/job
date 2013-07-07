@@ -100,8 +100,9 @@ class Article_Tag_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
+		$row['tag_link'] = base_url('tags/'.$row['tag_alias']);
 		$row['is_article'] = true;
-		$row['article_link'] = base_url('jobs/'.$row['article_alias']);
+		$row['article_link'] = base_url('blog/'.$row['article_alias']);
 		
 		if (!empty($row['article_photo'])) {
 			$row['article_photo_link'] = base_url('static/upload/'.$row['article_photo']);

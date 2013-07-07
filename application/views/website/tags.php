@@ -44,7 +44,10 @@
 				<div class="new-album-box">
 					<div style="padding-left: 15px;">&nbsp;</div>
 					<div class="inner" style="border-left: none; border-right: none;">
+						<?php if (!empty($array['article_photo_link'])) { ?>
 						<figure><img src="<?php echo $array['article_photo_link']; ?>" /></figure>
+						<?php } ?>
+						
 						<div class="details">
 							<h2 style="padding: 0 0 10px 0;"><a href="<?php echo $array['article_link']; ?>"><?php echo $array['article_nama']; ?></a></h2>
 							<div class="extra-field">

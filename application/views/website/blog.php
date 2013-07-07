@@ -7,6 +7,7 @@
 	$blog_page = base_url('blog');
 	$kategori = $this->Kategori_model->get_by_id( array( 'alias' => @$array_temp[0] ) );
 	$subkategori = $this->Subkategori_model->get_by_id( array( 'alias' => @$array_temp[1] ) );
+	$array_button = array( array( 'title' => 'RSS', 'link' => base_url('blog/rss') ) );
 	
 	// page
 	$page_item = 9;
@@ -55,7 +56,7 @@
 	<div class='container'><div class='row'>
 		<div class='span9 content'>
 			<div class='main-top span9'>
-				<?php $this->load->view( 'website/common/breadcrumb', array( 'array_breadcrumb' => $breadcrump, 'title' => 'Blog' ) ); ?>
+				<?php $this->load->view( 'website/common/breadcrumb', array( 'array_breadcrumb' => $breadcrump, 'array_button' => $array_button, 'title' => 'Blog' ) ); ?>
 				
 				<div class='span5 tags-container'>
 					<div class="overlay"></div>
@@ -70,7 +71,10 @@
 				<?php foreach ($array_article as $article) { ?>
 				<article class='span3-article'>
 					<div class='inner'>
+						<?php if (isset($article['photo_link'])) { ?>
 						<figure><img src="<?php echo $article['photo_link']; ?>" /></figure>
+						<?php } ?>
+						
 						<h2><a href='<?php echo $article['article_link']; ?>'><?php echo $article['nama']; ?></a></h2>
 						<p><?php echo $article['desc_short']; ?></p>
 					</div>

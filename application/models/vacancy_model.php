@@ -90,7 +90,10 @@ class Vacancy_model extends CI_Model {
 		$param['field_replace']['vacancy_status_name'] = 'VacancyStatus.nama';
 		
 		$string_company = (empty($param['company_id'])) ? '' : "AND Vacancy.company_id = '".$param['company_id']."'";
+		$string_kategori = (empty($param['kategori_id'])) ? '' : "AND Kategori.id = '".$param['kategori_id']."'";
+		$string_subkategori = (empty($param['subkategori_id'])) ? '' : "AND Subkategori.id = '".$param['subkategori_id']."'";
 		$string_publish_date = (empty($param['publish_date'])) ? '' : "AND Vacancy.publish_date <= '".$param['publish_date']."'";
+		$string_vacancy_status = (empty($param['vacancy_status_id'])) ? '' : "AND Vacancy.vacancy_status_id = '".$param['vacancy_status_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'Vacancy.close_date DESC');
 		$string_limit = GetStringLimit($param);
@@ -114,7 +117,7 @@ class Vacancy_model extends CI_Model {
 			LEFT JOIN ".JENJANG." Jenjang ON Jenjang.id = Vacancy.jenjang_id
 			LEFT JOIN ".JENIS_PEKERJAAN." JenisPekerjaan ON JenisPekerjaan.id = Vacancy.jenis_pekerjaan_id
 			LEFT JOIN ".PENGALAMAN." Pengalaman ON Pengalaman.id = Vacancy.pengalaman_id
-			WHERE 1 $string_company $string_publish_date $string_filter
+			WHERE 1 $string_company $string_kategori $string_subkategori $string_publish_date $string_vacancy_status $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";

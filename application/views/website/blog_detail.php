@@ -1,8 +1,6 @@
 <?php
 	// breadcrump
 	$breadcrump[] = array( 'title' => 'Index', 'link' => base_url() );
-	$breadcrump[] = array( 'title' => $article['kategori_nama'], 'link' => $article['kategori_link'] );
-	$breadcrump[] = array( 'title' => $article['subkategori_nama'], 'link' => $article['subkategori_link'] );
 	$breadcrump[] = array( 'title' => $article['nama'], 'link' => $article['article_link'] );
 	
 	$array_tag = $this->Article_Tag_model->get_array(array( 'article_id' => $article['id'] ));
@@ -26,7 +24,11 @@
 				
 				<div class="span9 news blog-article no-margin">
 					<h2><?php echo $article['nama']; ?></h2>
+					
+					<?php if (!empty($article['photo_link'])) { ?>
 					<figure><img src="<?php echo $article['photo_link']; ?>" alt="<?php echo $article['nama']; ?>" /></figure>
+					<?php } ?>
+					
 					<?php echo $article['article_desc_1']; ?>
 					<blockquote><?php echo $article['article_desc_2']; ?></blockquote>
 					<?php echo $article['article_desc_3']; ?>
@@ -36,7 +38,7 @@
 				<div class='article-details span9'>
 					<div class='tags no-margin'>
 						<?php foreach ($array_tag as $tag) { ?>
-						<a href="#"><span><?php echo $tag['tag_nama']; ?></span></a>
+						<a href="<?php echo $tag['tag_link']; ?>"><span><?php echo $tag['tag_nama']; ?></span></a>
 						<?php } ?>
 					</div>
 				</div>
@@ -47,7 +49,10 @@
 					<?php foreach ($array_article as $article) { ?>
 					<article class='span3-article'>
 						<div class='inner'>
+							<?php if (!empty($article['photo_link'])) { ?>
 							<figure><img src="<?php echo $article['photo_link']; ?>" /></figure>
+							<?php } ?>
+							
 							<h2><a href='<?php echo $article['article_link']; ?>'><?php echo $article['nama']; ?></a></h2>
 							<p><?php echo $article['desc_short']; ?></p>
 						</div>

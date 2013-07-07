@@ -4,22 +4,22 @@
 	$temp = preg_replace('/.+jobs\//i', '', $request_uri);
 	$array_temp = explode('/', $temp);
 	
-	$jobs_page = base_url('jobs');
 	$kategori = $this->Kategori_model->get_by_id( array( 'alias' => @$array_temp[0] ) );
 	$subkategori = $this->Subkategori_model->get_by_id( array( 'alias' => @$array_temp[1] ) );
 	
 	// page
-	$page_item = 9;
+	$page_jobs = base_url('jobs');
+	$page_item = 10;
 	$page_active = get_page();
 	
 	// breadcrump
-	$title = 'Blog';
+	$title = 'Jobs';
 	$array_tag = array();
 	$breadcrump[] = array( 'title' => 'Index', 'link' => base_url() );
 	$array_button = array( array( 'title' => 'RSS', 'link' => base_url('jobs/rss') ) );
 	
 	if (count($kategori) > 0) {
-		$jobs_page = $kategori['link'];
+		$page_jobs = $kategori['link'];
 		$title .= ' - '.$kategori['nama'];
 		$breadcrump[] = array( 'title' => $kategori['nama'], 'link' => $kategori['link'] );
 		$array_button = array( array( 'title' => 'RSS', 'link' => $kategori['link_rss'] ) );
@@ -28,7 +28,7 @@
 		$array_tag = $this->Kategori_Tag_model->get_array(array( 'kategori_id' => $kategori['id'] ));
 	}
 	if (count($kategori) > 0 && count($subkategori) > 0) {
-		$jobs_page = $subkategori['link'];
+		$page_jobs = $subkategori['link'];
 		$title .= ' - '.$subkategori['nama'];
 		$breadcrump[] = array( 'title' => $subkategori['nama'], 'link' => $subkategori['link'] );
 		$array_button = array( array( 'title' => 'RSS', 'link' => $subkategori['link_rss'] ) );
@@ -38,8 +38,8 @@
 	}
 	
 	// jobs
-	$param_article = array(
-		'article_status_id' => ARTICLE_PUBLISH,
+	$param_vacancy = array(
+		'vacancy_status_id' => VACANCY_STATUS_APPROVE,
 		'publish_date' => $this->config->item('current_datetime'),
 		'kategori_id' => @$kategori['id'],
 		'subkategori_id' => @$subkategori['id'],
@@ -47,9 +47,8 @@
 		'start' => ($page_active - 1) * $page_item,
 		'limit' => $page_item
 	);
-	$array_article = $this->Article_model->get_array($param_article);
-	$page_count = ceil($this->Article_model->get_count() / $page_item);
-	
+	$array_vacancy = $this->Vacancy_model->get_array($param_vacancy);
+	$page_count = ceil($this->Vacancy_model->get_count() / $page_item);
 ?>
 
 <?php $this->load->view( 'website/common/meta', array( 'title' => $title ) ); ?>
@@ -59,43 +58,49 @@
 	<div class='container'><div class='row'>
 		<div class='span9 content'>
 			<div class='main-top span9'>
-				<?php $this->load->view( 'website/common/breadcrumb', array( 'array_breadcrumb' => $breadcrump, 'array_button' => $array_button,  'title' => 'Blog' ) ); ?>
-				
-				<div class='span5 tags-container'>
-					<div class="overlay"></div>
-					<div class='tags'>
-						<?php foreach ($array_tag as $tag) { ?>
-						<a href="<?php echo $tag['tag_link']; ?>"><span><?php echo $tag['tag_nama']; ?></span></a>
-						<?php } ?>
+				<?php $this->load->view( 'website/common/breadcrumb', array( 'array_breadcrumb' => $breadcrump, 'array_button' => $array_button,  'title' => 'List Lowongan' ) ); ?>
+			</div>
+			
+			<?php if (count($array_vacancy) > 0) { ?>
+			<div class='new-albums list' style="width: 100%;">
+				<?php foreach ($array_vacancy as $vacancy) { ?>
+				<div class="new-album-box">
+					<div style="padding-left: 15px;"><?php echo $vacancy['kategori_nama'].' - '.$vacancy['subkategori_nama']; ?></div>
+					<div class="inner" style="border-left: none; border-right: none;">
+						<figure><img src="<?php echo $vacancy['company_logo_link']; ?>" /></figure>
+						<div class="details">
+							<h2><a href="<?php echo $vacancy['vacancy_link']; ?>"><?php echo $vacancy['nama']; ?></a></h2>
+							<p><?php echo $vacancy['company_nama'].' - '.$vacancy['company_kota_nama']; ?></p>
+							<div class="extra-field">
+								<ul>
+									<li id="m_fuel"><strong>Tipe Pekerjaan</strong> : <?php echo $vacancy['jenis_pekerjaan_nama']; ?></li>
+									<li id="m_fuel"><strong>Lokasi</strong> : <?php echo $vacancy['kota_nama']; ?></li>
+									<li id="m_fuel"><strong>Batas Waktu</strong> : <?php echo GetFormatDate($vacancy['close_date'], array( 'FormatDate' => 'd-m-Y' )); ?></li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class='span9 news no-margin'>
-				<?php foreach ($array_article as $article) { ?>
-				<article class='span3-article'>
-					<div class='inner'>
-						<?php if (!empty($article['photo_link'])) { ?>
-						<figure><img src="<?php echo $article['photo_link']; ?>" /></figure>
-						<?php } ?>
-						
-						<h2><a href='<?php echo $article['article_link']; ?>'><?php echo $article['nama']; ?></a></h2>
-						<p><?php echo $article['desc_short']; ?></p>
-					</div>
-				</article>
 				<?php } ?>
 			</div>
+			
 			<div class='standard-pagination'>
 				<ul>
 					<?php for ($i = -5; $i <= 5; $i++) { ?>
 						<?php $class = ($i == 0) ? 'active' : ''; ?>
 						<?php $page_counter = $page_active + $i; ?>
-						<?php $page_link = $jobs_page.'/page_'.$page_counter; ?>
+						<?php $page_link = $page_jobs.'/page_'.$page_counter; ?>
 						<?php if ($page_counter > 0 && $page_counter <= $page_count) { ?>
 						<li class='<?php echo $class; ?>'><a href='<?php echo $page_link; ?>' class='btn'><?php echo $page_counter; ?></a></li>
 						<?php } ?>
 					<?php } ?>
 				</ul>
 			</div>
+			<?php } else { ?>
+			<div class='new-albums list' style="width: 100%; padding: 25px 15px;">
+				Maaf, tidak ada hasil pencarian yang ditemukan.
+			</div>
+			<?php } ?>
 		</div>
 		<aside class='span3'>
 			<div class='inner'>

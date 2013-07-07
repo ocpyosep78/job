@@ -131,7 +131,7 @@ class Article_model extends CI_Model {
 	function sync($row, $column = array()) {
 		$row = StripArray($row, array('publish_date'));
 		$row['desc_short'] = GetLengthChar($row['article_desc_1'], 100, '');
-		$row['article_link'] = base_url('jobs/'.$row['alias']);
+		$row['article_link'] = base_url('blog/'.$row['alias']);
 		
 		if (!empty($row['photo'])) {
 			$row['photo_link'] = base_url('static/upload/'.$row['photo']);

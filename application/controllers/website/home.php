@@ -23,48 +23,26 @@ class home extends CI_Controller {
 			}
 			
 			if (method_exists($this, $segments[1])) {
-//			if (in_array($segments[1], array('blog', 'blog_detail', 'event', 'event_detail', 'company', 'listing', 'listing_detail', 'login', 'registrasi', 'search', 'ajax'))) {
 				$this->$segments[1]();
 			}
-			
-			// check company
-			$vacancy = array();
-			$company = $this->Company_model->get_by_id(array( 'alias' => $segments[1] ));
-			
-			// check vacancy
-			if (!empty($segments[2])) {
-				$temp = explode('_', $segments[2], 2);
-				$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $temp[0] ));
-			}
-			
-			// check rss
-			preg_match('/rss$/i', $_SERVER['REQUEST_URI'], $match);
-			$is_rss = (!empty($match[0])) ? true : false;
-			
-			if ($is_rss) {
-				$param_vacancy = array(
-					'company_id' => $company['id'],
-					'publish_date' => $this->config->item('current_datetime'),
-					'filter' => '[{"type":"numeric","comparison":"eq","value":"'.VACANCY_STATUS_APPROVE.'","field":"Vacancy.vacancy_status_id"}]',
-					'limit' => 20
-				);
-				$array_article = array();
-				$array_temp = $this->Vacancy_model->get_array($param_vacancy);
-				foreach ($array_temp as $item) {
-					$array_article[] = array( 'title' => $item['nama'], 'link' => $item['vacancy_link'], 'desc' => $item['content_short'] );
+			else {
+				// check company
+				$vacancy = array();
+				$company = $this->Company_model->get_by_id(array( 'alias' => $segments[1] ));
+				
+				// check vacancy
+				if (!empty($segments[2])) {
+					$temp = explode('_', $segments[2], 2);
+					$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $temp[0] ));
 				}
 				
-				$rss_param['link'] = $company['company_link_rss'];
-				$rss_param['title'] = 'Lowongan '.$company['nama'];
-				$rss_param['array_item'] = $array_article;
-				$rss_param['description'] = 'Lowongan '.$company['nama'];
-				$this->load->view( 'website/common/rss', $rss_param );
-			} else if (count($vacancy) > 0 && @$segments[3] == 'quick') {
-				$this->load->view( 'website/listing_quick', array( 'vacancy' => $vacancy ) );
-			} else if (count($vacancy) > 0) {
-				$this->load->view( 'website/listing_detail', array( 'vacancy' => $vacancy ) );
-			} else if (count($company) > 0) {
-				$this->load->view( 'website/company', array( 'company' => $company ));
+				if (count($vacancy) > 0 && @$segments[3] == 'quick') {
+					$this->load->view( 'website/listing_quick', array( 'vacancy' => $vacancy ) );
+				} else if (count($vacancy) > 0) {
+					$this->load->view( 'website/listing_detail', array( 'vacancy' => $vacancy ) );
+				} else if (count($company) > 0) {
+					$this->load->view( 'website/company', array( 'company' => $company ));
+				}
 			}
 		}
 		
@@ -74,9 +52,8 @@ class home extends CI_Controller {
 		};
     }
 	
-	function jobs() {
-		// check alias
-		preg_match('/jobs\/([a-z0-9\-\_]+)$/i', $_SERVER['REQUEST_URI'], $match);
+	function blog() {
+		preg_match('/blog\/([a-z0-9\-\_]+)$/i', $_SERVER['REQUEST_URI'], $match);
 		$alias = (empty($match[1])) ? '' : $match[1];
 		
 		// check rss
@@ -87,50 +64,28 @@ class home extends CI_Controller {
 		$article = $this->Article_model->get_by_id(array( 'alias' => $alias ));
 		
 		if ($is_rss) {
-			$request_uri = $_SERVER['REQUEST_URI'];
-			$request_uri = preg_replace('/\/rss$/i', '', $request_uri);
-			$temp = preg_replace('/.+jobs\/?/i', '', $request_uri);
-			$array_temp = explode('/', $temp);
-			
-			// check kategori
-			$kategori = $this->Kategori_model->get_by_id( array( 'alias' => @$array_temp[0] ) );
-			$subkategori = $this->Subkategori_model->get_by_id( array( 'alias' => @$array_temp[1] ) );
-			
-			$title = 'Dunia Karir - Jobs - RSS';
-			$base_link = base_url('jobs/rss');
-			if (count($kategori) > 0) {
-				$title = 'Dunia Karir - Jobs - '.$kategori['nama'].' - RSS';
-				$base_link = $kategori['link_rss'];
-			}
-			if (count($subkategori) > 0) {
-				$title = 'Dunia Karir - Jobs - '.$kategori['nama'].' - '.$subkategori['nama'].' - RSS';
-				$base_link = $subkategori['link_rss'];
-			}
-			
 			// collect item
-			$param_article = array(
+			$param_blog = array(
 				'article_status_id' => ARTICLE_PUBLISH,
 				'publish_date' => $this->config->item('current_datetime'),
-				'kategori_id' => @$kategori['id'],
-				'subkategori_id' => @$subkategori['id'],
 				'sort' => '[{"property":"publish_date","direction":"DESC"}]',
 				'limit' => 20
 			);
 			$array_article = array();
-			$array_temp = $this->Article_model->get_array($param_article);
+			$array_temp = $this->Article_model->get_array($param_blog);
 			foreach ($array_temp as $item) {
 				$array_article[] = array( 'title' => $item['nama'], 'link' => $item['article_link'], 'desc' => $item['desc_short'] );
 			}
 			
-			$rss_param['link'] = $base_link;
-			$rss_param['title'] = $title;
+			$rss_param['link'] = base_url('blog/rss');
+			$rss_param['title'] = 'Dunia Karir - Blog - RSS';
 			$rss_param['array_item'] = $array_article;
-			$rss_param['description'] = $title;
+			$rss_param['description'] = 'Dunia Karir - Blog - RSS';
 			$this->load->view( 'website/common/rss', $rss_param );
 		} else if (count($article) == 0) {
-			$this->load->view( 'website/jobs' );
+			$this->load->view( 'website/blog' );
 		} else {
-			$this->load->view( 'website/jobs_detail', array( 'article' => $article ) );
+			$this->load->view( 'website/blog_detail', array( 'article' => $article ) );
 		}
 	}
 	
@@ -172,6 +127,66 @@ class home extends CI_Controller {
 			$this->load->view( 'website/event' );
 		} else {
 			$this->load->view( 'website/event_detail', array( 'event' => $event ) );
+		}
+	}
+	
+	function jobs() {
+		// check alias
+		preg_match('/jobs\/([a-z0-9\-\_]+)$/i', $_SERVER['REQUEST_URI'], $match);
+		$alias = (empty($match[1])) ? '' : $match[1];
+		
+		// check rss
+		preg_match('/rss$/i', $_SERVER['REQUEST_URI'], $match);
+		$is_rss = (!empty($match[0])) ? true : false;
+		
+		// article
+		$article = $this->Article_model->get_by_id(array( 'alias' => $alias ));
+		
+		if ($is_rss) {
+			$request_uri = $_SERVER['REQUEST_URI'];
+			$request_uri = preg_replace('/\/rss$/i', '', $request_uri);
+			$temp = preg_replace('/.+jobs\/?/i', '', $request_uri);
+			$array_temp = explode('/', $temp);
+			
+			// check kategori
+			$kategori = $this->Kategori_model->get_by_id( array( 'alias' => @$array_temp[0] ) );
+			$subkategori = $this->Subkategori_model->get_by_id( array( 'alias' => @$array_temp[1] ) );
+			
+			$title = 'Dunia Karir - Jobs - RSS';
+			$base_link = base_url('jobs/rss');
+			if (count($kategori) > 0) {
+				$title = 'Dunia Karir - Jobs - '.$kategori['nama'].' - RSS';
+				$base_link = $kategori['link_rss'];
+			}
+			if (count($subkategori) > 0) {
+				$title = 'Dunia Karir - Jobs - '.$kategori['nama'].' - '.$subkategori['nama'].' - RSS';
+				$base_link = $subkategori['link_rss'];
+			}
+			
+			// collect item
+			$param_vacancy = array(
+				'vacancy_status_id' => VACANCY_STATUS_APPROVE,
+				'publish_date' => $this->config->item('current_datetime'),
+				'kategori_id' => @$kategori['id'],
+				'subkategori_id' => @$subkategori['id'],
+				'sort' => '[{"property":"publish_date","direction":"DESC"}]',
+				'limit' => 20
+			);
+			$array_article = array();
+			$array_temp = $this->Vacancy_model->get_array($param_vacancy);
+			foreach ($array_temp as $item) {
+				$array_article[] = array( 'title' => $item['nama'], 'link' => $item['vacancy_link'], 'desc' => $item['content_short'] );
+			}
+			
+			$rss_param['link'] = $base_link;
+			$rss_param['title'] = $title;
+			$rss_param['array_item'] = $array_article;
+			$rss_param['description'] = $title;
+			$this->load->view( 'website/common/rss', $rss_param );
+		} else if (count($article) == 0) {
+			$this->load->view( 'website/jobs' );
+		} else {
+			$this->load->view( 'website/jobs_detail', array( 'article' => $article ) );
 		}
 	}
 	

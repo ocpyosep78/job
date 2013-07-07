@@ -5,14 +5,16 @@
 	$array_slide1 = $this->Company_model->get_array($param_slide1);
 	
 	$param_slide2 = array(
-		'filter' => '[{"type":"numeric","comparison":"eq","value":"'.ARTICLE_PUBLISH.'","field":"Article.article_status_id "}]',
-		'sort' => '{"is_custom":"1","query":"RAND()"}', 'limit' => 20
+		'vacancy_status_id' => VACANCY_STATUS_APPROVE,
+		'publish_date' => $this->config->item('current_datetime'),
+		'sort' => '[{"property":"publish_date","direction":"DESC"}]',
+		'limit' => 20
 	);
-	$array_slide2 = $this->Article_model->get_array($param_slide2);
+	$array_slide2 = $this->Vacancy_model->get_array($param_slide2);
 	
 	$param_vacancy = array(
 		'filter' => '[{"type":"numeric","comparison":"eq","value":"'.VACANCY_STATUS_APPROVE.'","field":"Vacancy.vacancy_status_id"}]',
-		'sort' => '[{"property":"publish_date","direction":"DESC"}]', 'limit' => 15
+		'sort' => '[{"property":"publish_date","direction":"DESC"}]', 'limit' => 10
 	);
 	$array_vacancy = $this->Vacancy_model->get_array($param_vacancy);
 	
@@ -78,8 +80,8 @@
 		<li class="slide-item" style="display: none;">
 			<div class='span9'>
 				<?php for ($i = 0; $i < 18; $i++) { ?>
-				<?php if (empty($array_slide2[$i]['photo_link'])) { ?>
-				<a href="<?php echo $array_slide2[$i]['article_link']; ?>">
+				<?php if (empty($array_slide2[$i]['company_logo_link'])) { ?>
+				<a href="<?php echo $array_slide2[$i]['vacancy_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
 						<div class='text'>
@@ -88,10 +90,10 @@
 					</div>
 				</a>
 				<?php } else { ?>
-				<a href="<?php echo $array_slide2[$i]['article_link']; ?>">
+				<a href="<?php echo $array_slide2[$i]['vacancy_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
-						<img src="<?php echo $array_slide2[$i]['photo_link']; ?>" />
+						<img src="<?php echo $array_slide2[$i]['company_logo_link']; ?>" />
 					</div>
 				</a>
 				<?php } ?>
@@ -101,8 +103,8 @@
 				<?php $this->load->view( 'website/common/register' ); ?>
 				
 				<?php for ($i = 18; $i <= 19; $i++) { ?>
-				<?php if (empty($array_slide2[$i]['photo_link'])) { ?>
-				<a href="<?php echo $array_slide2[$i]['article_link']; ?>">
+				<?php if (empty($array_slide2[$i]['company_logo_link'])) { ?>
+				<a href="<?php echo $array_slide2[$i]['vacancy_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
 						<div class='text'>
@@ -111,10 +113,10 @@
 					</div>
 				</a>
 				<?php } else { ?>
-				<a href="<?php echo $array_slide2[$i]['article_link']; ?>">
+				<a href="<?php echo $array_slide2[$i]['vacancy_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
-						<img src="<?php echo $array_slide2[$i]['photo_link']; ?>" />
+						<img src="<?php echo $array_slide2[$i]['company_logo_link']; ?>" />
 					</div>
 				</a>
 				<?php } ?>

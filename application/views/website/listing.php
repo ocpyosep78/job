@@ -148,11 +148,9 @@
 								<ul>
 									<li id="m_tipe"><strong>Tipe Pekerjaan</strong> : <?php echo $vacancy['jenis_pekerjaan_nama']; ?></li>
 									<li id="m_fuel"><strong>Lokasi</strong> : <?php echo $vacancy['kota_nama']; ?></li>
+									<li id="m_fuel"><strong>Batas Waktu</strong> : <?php echo GetFormatDate($vacancy['close_date'], array( 'FormatDate' => 'd-m-Y' )); ?></li>
 								</ul>
 							</div>
-						</div>
-						<div class="options">
-							<div class="star-rating"><?php echo GetFormatDate($vacancy['close_date'], array( 'FormatDate' => 'd-m-Y' )); ?></div>
 						</div>
 					</div>
 				</div>
