@@ -47,16 +47,19 @@ class Event_Tag_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
+		$string_tag = (empty($param['tag_id'])) ? '' : "AND EventTag.tag_id = '".$param['tag_id']."'";
 		$string_event = (empty($param['event_id'])) ? '' : "AND EventTag.event_id = '".$param['event_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'tag_id ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS EventTag.*, Tag.nama tag_nama, Tag.alias tag_alias
+			SELECT SQL_CALC_FOUND_ROWS EventTag.*, Tag.nama tag_nama, Tag.alias tag_alias,
+				Event.nama event_nama, Event.alias event_alias, Event.photo event_photo, Event.lokasi event_lokasi, Event.waktu event_waktu
 			FROM ".EVENT_TAG." EventTag
 			LEFT JOIN ".TAG." Tag ON Tag.id = EventTag.tag_id
-			WHERE 1 $string_event $string_filter
+			LEFT JOIN ".EVENT." Event ON Event.id = EventTag.event_id
+			WHERE 1 $string_tag $string_event $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";
@@ -94,6 +97,12 @@ class Event_Tag_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
+		$row['is_event'] = true;
+		$row['event_link'] = base_url('event/'.$row['event_alias']);
+		
+		if (!empty($row['event_photo'])) {
+			$row['event_photo_link'] = base_url('static/upload/'.$row['event_photo']);
+		}
 		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));

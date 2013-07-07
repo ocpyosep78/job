@@ -131,17 +131,17 @@ class Article_model extends CI_Model {
 	function sync($row, $column = array()) {
 		$row = StripArray($row, array('publish_date'));
 		$row['desc_short'] = GetLengthChar($row['article_desc_1'], 100, '');
-		$row['article_link'] = base_url('blog/'.$row['alias']);
+		$row['article_link'] = base_url('jobs/'.$row['alias']);
 		
 		if (!empty($row['photo'])) {
 			$row['photo_link'] = base_url('static/upload/'.$row['photo']);
 		}
 		
 		if (!empty($row['kategori_alias'])) {
-			$row['kategori_link'] = base_url('blog/'.$row['kategori_alias']);
+			$row['kategori_link'] = base_url('jobs/'.$row['kategori_alias']);
 		}
 		if (!empty($row['kategori_alias']) && !empty($row['subkategori_alias'])) {
-			$row['subkategori_link'] = base_url('blog/'.$row['kategori_alias'].'/'.$row['subkategori_alias']);
+			$row['subkategori_link'] = base_url('jobs/'.$row['kategori_alias'].'/'.$row['subkategori_alias']);
 		}
 		
 		if (count($column) > 0) {
@@ -154,7 +154,7 @@ class Article_model extends CI_Model {
 	function resize_image($param) {
 		if (!empty($param['photo'])) {
 			$image_source = $this->config->item('base_path').'/static/upload/'.$param['photo'];
-			ImageResize($image_source, $image_source, 206, 127, 1);
+			ImageResize($image_source, $image_source, 143, 127, 1);
 		}
 	}
 }

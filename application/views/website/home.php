@@ -1,9 +1,14 @@
 <?php
-	$param_company = array(
-		'filter' => '[{"type":"numeric","comparison":"not","value":"","field":"Company.logo"}]',
-		'sort' => '{"is_custom":"1","query":"RAND()"}', 'limit' => 40
+	$param_slide1 = array(
+		'sort' => '{"is_custom":"1","query":"RAND()"}', 'limit' => 20
 	);
-	$array_company = $this->Company_model->get_array($param_company);
+	$array_slide1 = $this->Company_model->get_array($param_slide1);
+	
+	$param_slide2 = array(
+		'filter' => '[{"type":"numeric","comparison":"eq","value":"'.ARTICLE_PUBLISH.'","field":"Article.article_status_id "}]',
+		'sort' => '{"is_custom":"1","query":"RAND()"}', 'limit' => 20
+	);
+	$array_slide2 = $this->Article_model->get_array($param_slide2);
 	
 	$param_vacancy = array(
 		'filter' => '[{"type":"numeric","comparison":"eq","value":"'.VACANCY_STATUS_APPROVE.'","field":"Vacancy.vacancy_status_id"}]',
@@ -22,25 +27,25 @@
 <?php $this->load->view( 'website/common/header' ); ?>
 
 <div id='slider' class='hidden-phone'>
-	<div class='container'><div class='row'><div class='slider'><ul class='slides'>
-		<li>
+	<div class='container'><div class='row'><div class='slider'>
+	<ul class='slides'>
+		<li class="slide-item">
 			<div class='span9'>
-				<?php $is_text = false; ?>
 				<?php for ($i = 0; $i < 18; $i++) { ?>
-				<?php if ($is_text || ($i % 5) == 0) { ?>
-				<a href="<?php echo $array_company[$i]['company_link']; ?>">
+				<?php if (empty($array_slide1[$i]['logo_link'])) { ?>
+				<a href="<?php echo $array_slide1[$i]['company_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
 						<div class='text'>
-							<span class='artist'><?php echo $array_company[$i]['nama']; ?></span>
+							<span class='artist'><?php echo $array_slide1[$i]['nama']; ?></span>
 						</div>
 					</div>
 				</a>
 				<?php } else { ?>
-				<a href="<?php echo $array_company[$i]['company_link']; ?>">
+				<a href="<?php echo $array_slide1[$i]['company_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
-						<img src="<?php echo $array_company[$i]['logo_link']; ?>" />
+						<img src="<?php echo $array_slide1[$i]['logo_link']; ?>" />
 					</div>
 				</a>
 				<?php } ?>
@@ -49,38 +54,44 @@
 			<div class='slider-sidebar span3'>
 				<?php $this->load->view( 'website/common/register' ); ?>
 				
-				<a href="<?php echo $array_company[17]['company_link']; ?>">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo $array_company[18]['logo_link']; ?>' />
-					</div>
-				</a>
-				<a href="<?php echo $array_company[19]['company_link']; ?>">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src='<?php echo $array_company[19]['logo_link']; ?>' />
-					</div>
-				</a>
-			</div>
-		</li>
-		<li>
-			<div class='span9'>
-				<?php $is_text = false; ?>
-				<?php for ($i = 20; $i < 38; $i++) { ?>
-				<?php if ($is_text || ($i % 4) == 0) { ?>
-				<a href="<?php echo $array_company[$i]['company_link']; ?>">
+				<?php for ($i = 18; $i <= 19; $i++) { ?>
+				<?php if (empty($array_slide1[$i]['logo_link'])) { ?>
+				<a href="<?php echo $array_slide1[$i]['company_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
 						<div class='text'>
-							<span class='artist'><?php echo $array_company[$i]['nama']; ?></span>
+							<span class='artist'><?php echo $array_slide1[$i]['nama']; ?></span>
 						</div>
 					</div>
 				</a>
 				<?php } else { ?>
-				<a href="<?php echo $array_company[$i]['company_link']; ?>">
+				<a href="<?php echo $array_slide1[$i]['company_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
-						<img src="<?php echo $array_company[$i]['logo_link']; ?>" />
+						<img src="<?php echo $array_slide1[$i]['logo_link']; ?>" />
+					</div>
+				</a>
+				<?php } ?>
+				<?php } ?>
+			</div>
+		</li>
+		<li class="slide-item" style="display: none;">
+			<div class='span9'>
+				<?php for ($i = 0; $i < 18; $i++) { ?>
+				<?php if (empty($array_slide2[$i]['photo_link'])) { ?>
+				<a href="<?php echo $array_slide2[$i]['article_link']; ?>">
+					<div class='artwork'>
+						<div class='glow'></div>
+						<div class='text'>
+							<span class='artist'><?php echo $array_slide2[$i]['nama']; ?></span>
+						</div>
+					</div>
+				</a>
+				<?php } else { ?>
+				<a href="<?php echo $array_slide2[$i]['article_link']; ?>">
+					<div class='artwork'>
+						<div class='glow'></div>
+						<img src="<?php echo $array_slide2[$i]['photo_link']; ?>" />
 					</div>
 				</a>
 				<?php } ?>
@@ -88,22 +99,32 @@
 			</div>
 			<div class='slider-sidebar span3'>
 				<?php $this->load->view( 'website/common/register' ); ?>
-
-				<a href="#">
+				
+				<?php for ($i = 18; $i <= 19; $i++) { ?>
+				<?php if (empty($array_slide2[$i]['photo_link'])) { ?>
+				<a href="<?php echo $array_slide2[$i]['article_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
-						<img src='<?php echo $array_company[38]['logo_link']; ?>' />
+						<div class='text'>
+							<span class='artist'><?php echo $array_slide2[$i]['nama']; ?></span>
+						</div>
 					</div>
 				</a>
-				<a href="#">
+				<?php } else { ?>
+				<a href="<?php echo $array_slide2[$i]['article_link']; ?>">
 					<div class='artwork'>
 						<div class='glow'></div>
-						<img src='<?php echo $array_company[39]['logo_link']; ?>' />
+						<img src="<?php echo $array_slide2[$i]['photo_link']; ?>" />
 					</div>
 				</a>
+				<?php } ?>
+				<?php } ?>
 			</div>
 		</li>
-	</ul></div></div></div>
+	</ul>
+	
+	<ol class="flex-control-nav flex-control-paging"><li><a class="flex-active">1</a></li><li><a class="">2</a></li></ol>
+	</div></div></div>
 </div>
 
 <section id='main'>
@@ -124,7 +145,7 @@
 					
 					<?php if (count($array_article) > 0) { ?>
 					<figure><img src="<?php echo $array_article[0]['photo_link']; ?>" /></figure>
-					<h2><a href="#"><?php echo $array_article[0]['nama']; ?></a></h2>
+					<h2><a href="<?php echo $array_article[0]['article_link']; ?>"><?php echo $array_article[0]['nama']; ?></a></h2>
 					<p><?php echo $array_article[0]['desc_short']; ?></p>
 					<?php } ?>
 				</div>

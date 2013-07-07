@@ -89,7 +89,8 @@ class Kategori_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
-		$row['link'] = base_url('blog/'.$row['alias']);
+		$row['link'] = base_url('jobs/'.$row['alias']);
+		$row['link_rss'] = base_url('jobs/'.$row['alias'].'/rss');
 		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));

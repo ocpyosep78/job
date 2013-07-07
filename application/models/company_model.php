@@ -161,6 +161,7 @@ class Company_model extends CI_Model {
 		} else {
 			$row['company_link'] = base_url('company/'.$row['id']);
 		}
+		$row['company_link_rss'] = $row['company_link'].'/rss';
 		
 		// logo
 		$row['logo_link'] = base_url('static/img/company.png');

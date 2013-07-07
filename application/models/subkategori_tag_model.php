@@ -94,6 +94,7 @@ class Subkategori_Tag_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
+		$row['tag_link'] = base_url('tags/'.$row['tag_alias']);
 		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));

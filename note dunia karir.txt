@@ -35,27 +35,27 @@ cek => - Tambah Fitur bisa kirim via email, all company, all seeker, all company
 cek => - kirim pakai html biasa aja
 
 WEBSITE
-- Perubahan link dari http://www.parapekerja.com/blog/akuntansi-keuangan jadi http://www.parapekerja.com/jobs/akuntansi-keuangan
+cek => - Perubahan link dari http://www.parapekerja.com/blog/akuntansi-keuangan jadi http://www.parapekerja.com/jobs/akuntansi-keuangan
 
 WIBSITE - HOME
-- Slide :
+cek => - Slide :
 	slide 1 : list company
 	slide 2 : list kategori
-- Slide diganti Show Hide
+cek => - Slide diganti Show Hide
 
 WEBSITE - HALAMAN TAG
-- Tag Malang punya page di : http://www.parapekerja.com/tags/malang
-- isinya semua article / event yang punya tag Malang
+cek => - Tag Malang punya page di : http://www.parapekerja.com/tags/malang
+cek => - isinya semua article / event yang punya tag Malang
 
 WEBSITE - RSS
-- Kategori
-- Sub Kategory
+cek => - Kategori
+cek => - Sub Kategory
 - Company
-- Blog
-- Event
+cek => - Blog
+cek => - Event
 
 WEBSITE - LOGIN PAGE
-- Jika user sudah login, maka akses ke login page tidak ada, tampilkan saja dashboard & logout di header
+cek => - Jika user sudah login, maka akses ke login page tidak ada, tampilkan saja dashboard & logout di header
 
 SEEKER - EXAM
 cek => - backup : Exam.png
@@ -95,3 +95,23 @@ C:\Program Files\xampplite\htdocs\job\trunk\job_db.sql
 C:\Program Files\xampplite\htdocs\job\trunk\note dunia karir.txt
 C:\Program Files\xampplite\htdocs\job\trunk\static\js\common.js
 C:\Program Files\xampplite\htdocs\job\trunk\update.sql
+C:\Program Files\xampplite\htdocs\job\trunk\note dunia karir.txt
+C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\article.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\vacancy.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\models\company_model.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\subscribe\mail.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\seeker.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\membership.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\vacancy.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\views\seeker\publish.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\models\seeker_model.php
+C:\Program Files\xampplite\htdocs\job\trunk\static\theme\flat\css\bootstrap.css
+C:\Program Files\xampplite\htdocs\job\trunk\application\models\company_membership_model.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\models\vacancy_model.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\membership.php
+C:\Program Files\xampplite\htdocs\job\trunk\update.sql
+C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\company.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\website\home.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\views\subscribe\mail.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\seeker.php
+C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\company.php

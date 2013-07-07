@@ -2,6 +2,7 @@
 	// breadcrump
 	$breadcrump[] = array( 'title' => 'Index', 'link' => base_url() );
 	$breadcrump[] = array( 'title' => 'Events', 'link' => base_url('event') );
+	$array_button = array( array( 'title' => 'RSS', 'link' => base_url('event/rss') ) );
 	
 	// get user
 	$user = get_user();
@@ -45,7 +46,7 @@
 	<div class='container'><div class='row'>
 		<div class='span9 content'>
 			<div class='main-top span9'>
-				<?php $this->load->view( 'website/common/breadcrumb', array( 'array_breadcrumb' => $breadcrump, 'title' => 'Events' ) ); ?>
+				<?php $this->load->view( 'website/common/breadcrumb', array( 'array_breadcrumb' => $breadcrump, 'array_button' => $array_button, 'title' => 'Events' ) ); ?>
 			</div>
 			<div style="clear: both;"></div>
 			<div class="slide-message"></div>

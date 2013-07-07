@@ -695,6 +695,23 @@
         }
     }
     
+	if ( ! function_exists('GetPageFromArray')) {
+		function GetPageFromArray($Array, $PageStart, $PageEnd) {
+			$Counter = 0;
+			
+			$ArrayResult = array();
+			foreach ($Array as $Key => $Element) {
+				if ($Counter >= $PageStart && $Counter < $PageEnd) {
+					$ArrayResult[] = $Array[$Key];
+				}
+				
+				$Counter++;
+			}
+			
+			return $ArrayResult;
+		}
+	}
+	
     if (! function_exists('dt_view')) {
         function dt_view($row, $column, $param) {
             $param['is_edit'] = (isset($param['is_edit'])) ? $param['is_edit'] : 0;

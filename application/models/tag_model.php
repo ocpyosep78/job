@@ -89,9 +89,9 @@ class Tag_model extends CI_Model {
 	function get_name($value) {
 		$value = trim($value);
 		$value = strtolower($value);
-		$value = preg_replace('/[^0-9a-z]+/i', '_', $value);
-		$value = preg_replace('/^_/i', '', $value);
-		$value = preg_replace('/_$/i', '', $value);
+		$value = preg_replace('/[^0-9a-z]+/i', '-', $value);
+		$value = preg_replace('/^-/i', '', $value);
+		$value = preg_replace('/-$/i', '', $value);
 		
 		return $value;
 	}
@@ -108,6 +108,7 @@ class Tag_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
+		$row['tag_link'] = base_url('tags/'.$row['alias']);
 		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));

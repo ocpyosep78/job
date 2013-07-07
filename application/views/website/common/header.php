@@ -13,7 +13,7 @@
 				<nav>
 					<ul>
 						<li class="active"><a href="<?php echo base_url(); ?>" title="Home">Home</a> </li>
-						<li><a href="<?php echo base_url('blog'); ?>" title="Blog">Blog</a></li>
+						<li><a href="<?php echo base_url('jobs'); ?>" title="Blog">Blog</a></li>
 						<li><a href="<?php echo base_url('event'); ?>" title="Events"> Events </a> </li>
 					</ul>
 				</nav>

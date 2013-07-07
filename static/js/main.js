@@ -23,7 +23,17 @@ var mp3Pl = {
         });
 
         jQuery('input, textarea').placeholder();
-
+		
+		$('#slider .flex-control-paging li a').click(function() {
+			$('#slider .flex-control-paging li a').removeClass('flex-active');
+			$(this).addClass('flex-active');
+			
+			var slide_no = $(this).text() - 1;
+			console.log(slide_no)
+			$('#slider ul.slides .slide-item').hide();
+			$('#slider ul.slides .slide-item').eq(slide_no).show();
+		});
+		/*
         jQuery('.slider').flexslider({
             'controlNav': true,
             'directionNav' : false,
@@ -32,6 +42,7 @@ var mp3Pl = {
             "animationLoop": true,
             "slideshow" : false
         });
+		/*	*/
 		
 		
 		/*

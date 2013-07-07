@@ -1,5 +1,6 @@
 <?php
 	$array_breadcrumb = (isset($array_breadcrumb)) ? $array_breadcrumb : array();
+	$array_button = (isset($array_button)) ? $array_button : array();
 ?>
 <?php if (count($array_breadcrumb) > 0) { ?>
 	<div class='main-top span9'>
@@ -21,6 +22,16 @@
 						<?php } ?>
 					</ul>
 				</div>
+				
+				<?php if (count($array_button) > 0) { ?>
+				<div class='buttons'>
+					<div class="btn-group">
+						<?php foreach ($array_button as $button) { ?>
+						<a class="btn show-region" href="<?php echo $button['link']; ?>"><?php echo $button['title']; ?></a>
+						<?php } ?>
+					</div>
+				</div>
+				<?php } ?>
 			</div>
 			<?php if (!empty($sub_title)) { ?>
 			<h1><?php echo $sub_title; ?></h1>

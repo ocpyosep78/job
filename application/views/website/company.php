@@ -73,6 +73,7 @@
 					<a href="<?php echo $company['google_map']; ?>" target="_blank"><span class='price'>Lihat Peta</span></a>
 					<span class="cursor price btn-report">Laporkan</span>
 					<a title='Subscribe' class='cursor btn btn-blue buy-album'>Subscribe</a>
+					<a href="<?php echo $company['company_link_rss']; ?>" title='RSS' class='btn btn-blue buy-album' style="margin: 0 0 0 10px;">RSS</a>
 				</div>
 				
 				<p class='description'><?php echo $company['description']; ?></p>

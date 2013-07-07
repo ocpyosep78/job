@@ -47,16 +47,22 @@ class Article_Tag_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
+		$string_tag = (empty($param['tag_id'])) ? '' : "AND ArticleTag.tag_id = '".$param['tag_id']."'";
 		$string_article = (empty($param['article_id'])) ? '' : "AND ArticleTag.article_id = '".$param['article_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'tag_id ASC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS ArticleTag.*, Tag.nama tag_nama, Tag.alias tag_alias
+			SELECT SQL_CALC_FOUND_ROWS ArticleTag.*, Tag.nama tag_nama, Tag.alias tag_alias,
+				Article.nama article_nama, Article.alias article_alias, Article.photo article_photo,
+				Subkategori.nama subkategori_nama, Kategori.nama kategori_nama
 			FROM ".ARTICLE_TAG." ArticleTag
 			LEFT JOIN ".TAG." Tag ON Tag.id = ArticleTag.tag_id
-			WHERE 1 $string_article $string_filter
+			LEFT JOIN ".ARTICLE." Article ON Article.id = ArticleTag.article_id
+			LEFT JOIN ".SUBKATEGORI." Subkategori ON Subkategori.id = Article.subkategori_id
+			LEFT JOIN ".KATEGORI." Kategori ON Kategori.id = Subkategori.kategori_id
+			WHERE 1 $string_tag $string_article $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";
@@ -94,6 +100,12 @@ class Article_Tag_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
+		$row['is_article'] = true;
+		$row['article_link'] = base_url('jobs/'.$row['article_alias']);
+		
+		if (!empty($row['article_photo'])) {
+			$row['article_photo_link'] = base_url('static/upload/'.$row['article_photo']);
+		}
 		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));
