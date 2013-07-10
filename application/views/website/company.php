@@ -64,7 +64,7 @@
 			<div class='span9 no-margin album-article'>
 				<div class="hide subscribe-message" style="text-align: center; padding: 10px 0px 15px; font-size: 14px; color: rgb(255, 0, 0);"></div>
 				
-				<figure><img src="<?php echo $company['logo_link']; ?>" /></figure>
+				<figure><img src="<?php echo $company['logo_link']; ?>" style="max-width: 150px;" /></figure>
 				<div class='info-line'><span>Industry : </span> <?php echo @$company['industri_nama']; ?></div>
 				<div class='info-line'><span>Company Address : </span> <?php echo $company['address']; ?></div>
 				<div class='info-line'><span>City: </span> <?php echo @$company['kota_nama']; ?></div>

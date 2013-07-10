@@ -1289,6 +1289,7 @@ ul.slides li .span9 {
 #main .events article .inner {
   padding: 5px;
   border: solid 1px #f0f0f0;
+  min-height: 315px;
 }
 #main .events article figure {
   position: relative;

@@ -103,7 +103,10 @@
 						<div class="inner">
 							<div style="float:none; font-size: 20px; min-height: 40px;"><?php echo $event['nama']; ?></div>
 							<figure>
+								<?php if (!empty($event['photo_link'])) { ?>
 								<img src="<?php echo $event['photo_link']; ?>" />
+								<?php } ?>
+								
 								<figcaption><?php echo $event['photo_desc']; ?></figcaption>
 							</figure>
 							<div class="date">

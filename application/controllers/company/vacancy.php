@@ -16,7 +16,7 @@ class vacancy extends COMPANY_Controller {
 		$_POST['is_custom'] .= '<img class="button-cursor delete" src="'.base_url('static/img/button_delete.png').'"> ';
 		$_POST['company_id'] = $company['id'];
 		
-		$_POST['column'] = array( 'nama', 'vacancy_status_name', 'publish_date', 'close_date', 'total_view', 'total_seeker' );
+		$_POST['column'] = array( 'id', 'nama', 'vacancy_status_name', 'publish_date', 'close_date', 'total_view', 'total_seeker' );
 		
 		$array = $this->Vacancy_model->get_array($_POST);
 		$count = $this->Vacancy_model->get_count();

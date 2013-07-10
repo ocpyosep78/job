@@ -33,6 +33,7 @@
 			<div class="row-fluid" id="grid-vacancy"><div class="span12"><div class="box"><div class="box-content nopadding">
 				<table id="cnt-vacancy" class="table table-striped table-bordered">
 					<thead><tr>
+						<th>ID</th>
 						<th>Nama</th>
 						<th>Status</th>
 						<th>Publish Date</th>
@@ -166,9 +167,9 @@
 		}
 		
 		var param = {
-			id: 'cnt-vacancy',
+			id: 'cnt-vacancy', aaSorting: [[0, 'desc']],
 			source: web.host + 'company/vacancy/grid',
-			column: [ { }, { }, { sClass: 'center' }, { sClass: 'center' }, { sClass: 'center' }, { sClass: 'center' }, { bSortable: false, sClass: 'center' } ],
+			column: [ { "bSearchable": false, "bVisible": false }, { }, { }, { sClass: 'center' }, { sClass: 'center' }, { sClass: 'center' }, { sClass: 'center' }, { bSortable: false, sClass: 'center', sWidth: "10%"  } ],
 			init: function() {
 				$('#cnt-vacancy_length').prepend('<div style="float: left; width: 65px; padding: 2px 0 0 0;"><button class="btn btn-small btn-add">Tambah</button></div>');
 				$('#cnt-vacancy_length .btn-add').click(function() {

@@ -149,6 +149,7 @@
 					$('#form-article [name="subkategori_id"]').val('');
 					$('#form-article [name="article_status_id"]').val('');
 					$('#form-article [name="tag"]').importTags('');
+					$('.article-photo').attr('src', NO_IMAGE);
 					
 					page.show_editor();
 				});

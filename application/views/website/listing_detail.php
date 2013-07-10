@@ -40,7 +40,7 @@
 <td style="background: url('<?php echo base_url('static/img/job_sub_header.png'); ?>') top left repeat-y;">
 <p style="text-align: center; padding: 15px 0;">
 	<a href="<?php echo $vacancy['company_link']; ?>">
-		<img src="<?php echo $vacancy['company_logo_link']; ?>" />
+		<img src="<?php echo $vacancy['company_logo_link']; ?>" style="max-height: 125px;" />
 	</a>
 </p></td></tr></tbody></table>
 <table border="0" cellpadding="0" cellspacing="0" align="center" width="650">
