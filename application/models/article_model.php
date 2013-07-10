@@ -72,6 +72,7 @@ class Article_model extends CI_Model {
         $array = array();
 		
 		// overwrite field name
+		$param['field_replace']['id'] = 'Article.id';
 		$param['field_replace']['nama'] = 'Article.nama';
 		$param['field_replace']['subkategori_nama'] = 'Subkategori.nama';
 		$param['field_replace']['article_status_nama'] = 'ArticleStatus.nama';

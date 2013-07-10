@@ -110,7 +110,7 @@
 										<img src="<?php echo base_url('static/img/button_view.png'); ?>" class="button-cursor">
 									</a>
 									
-									<?php if (in_array($seeker['apply_status_id'], array(APPLY_STATUS_EMPTY, APPLY_STATUS_OPEN))) { ?>
+									<?php if (in_array($seeker['apply_status_id'], array(APPLY_STATUS_EMPTY, APPLY_STATUS_OPEN, APPLY_STATUS_VIEW))) { ?>
 										<img src="<?php echo base_url('static/img/button_interview.png'); ?>" class="button-cursor interview">
 										<img src="<?php echo base_url('static/img/button_remove.png'); ?>" class="button-cursor delete">
 									<?php } ?>

@@ -1,3 +1,8 @@
+<?php
+	preg_match('/([\w]+)\/[\w]+$/i', $_SERVER['REQUEST_URI'], $match);
+	$dir = (!empty($match[1])) ? $match[1] : '';
+?>
+
 <div id="left">
 	<?php if ($this->Seeker_model->is_login()) { ?>
 	<div class="subnav">
@@ -28,7 +33,8 @@
 		</ul>
 	</div>
 	<?php } else if ($this->Editor_model->is_login()) { ?>
-	<div class="subnav">
+	<?php $dir = (empty($dir)) ? 'editor' : $dir; ?>
+	<div class="subnav <?php echo ($dir == 'editor') ? '' : 'subnav-hidden'; ?>">
 		<div class="subnav-title">
 			<a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Administrator</span></a>
 		</div>
@@ -46,7 +52,7 @@
 			<li><a href="<?php echo base_url('editor/report'); ?>">Report</a></li>
 		</ul>
 	</div>
-	<div class="subnav subnav-hidden">
+	<div class="subnav <?php echo ($dir == 'master') ? '' : 'subnav-hidden'; ?>">
 		<div class="subnav-title">
 			<a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Master</span></a>
 		</div>
@@ -63,7 +69,7 @@
 			<li><a href="<?php echo base_url('master/kota'); ?>">Kota</a></li>
 		</ul>
 	</div>
-	<div class="subnav subnav-hidden">
+	<div class="subnav <?php echo ($dir == 'subscribe') ? '' : 'subnav-hidden'; ?>">
 		<div class="subnav-title">
 			<a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Subscribe</span></a>
 		</div>

@@ -32,7 +32,7 @@ class mail extends EDITOR_Controller {
 			$param['message'] = $_POST['content'];
 			foreach ($array_user as $user) {
 				$param['to'] = $user['email'];
-				sent_mail($_POST);
+				sent_mail($param);
 			}
 			
 			$result['status'] = true;

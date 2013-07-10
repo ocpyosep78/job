@@ -36,7 +36,7 @@
 				<?php if (count($array_tag) > 0) { ?>
 				<div class="tags span6 no-margin">
 					<?php foreach ($array_tag as $tag) { ?>
-					<a href="#"><span><?php echo $tag['tag_nama']; ?></span></a>
+					<a href="<?php echo $tag['tag_link']; ?>"><span><?php echo $tag['tag_nama']; ?></span></a>
 					<?php } ?>
 				</div>
 				<?php } ?>

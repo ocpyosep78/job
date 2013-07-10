@@ -50,6 +50,7 @@
 		<div style="padding: 25px 0 0 0;" class="cnt-upload hide">
 			<div style="padding: 0 0 10px 0;">Upload file anda setelah menyelesaikan soal ini</div>
 			<div><button class="btn btn-success btn-upload">Upload Soal</button></div>
+			<div class="cnt-return hide" style="padding: 30px 0 0 0;"><a href="<?php echo base_url('seeker/apply'); ?>" class="btn btn-success">Kembali ke Menu Apply</a></div>
 		</div>
 		<?php } ?>
 	</div>
@@ -60,6 +61,9 @@ exam_file = function(p) {
 	var exam_id = $('[name="exam_id"]').val();
 	Func.ajax({ url: web.host + 'seeker/exam/action', param: { action: 'upload-exam', exam_id: exam_id, exam_file : p.file_name }, callback: function(result) {
 		Func.show_notice({ text: result.message })
+		if (result.status == 1) {
+			$('.cnt-return').show();
+		}
 	} });
 }
 

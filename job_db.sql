@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 3.5.8
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 07, 2013 at 11:50 PM
--- Server version: 5.1.41
--- PHP Version: 5.3.1
+-- Generation Time: Jul 09, 2013 at 10:56 PM
+-- Server version: 5.1.70-cll
+-- PHP Version: 5.3.17
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,7 +17,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `job_db`
+-- Database: `shoperin_job`
 --
 
 -- --------------------------------------------------------
@@ -34,21 +35,24 @@ CREATE TABLE IF NOT EXISTS `apply` (
   `is_delete` int(11) NOT NULL,
   `addtional_info` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `apply`
 --
 
 INSERT INTO `apply` (`id`, `seeker_id`, `vacancy_id`, `apply_status_id`, `apply_date`, `is_delete`, `addtional_info`) VALUES
-(1, 1, 1, 0, '2013-06-06 10:17:28', 0, NULL),
+(1, 1, 1, 0, '2013-06-06 10:17:28', 1, NULL),
 (2, 6, 1, 1, '2013-06-21 11:44:27', 0, ''),
 (3, 6, 3, 1, '2013-06-21 11:44:31', 0, ''),
 (4, 6, 4, 1, '2013-06-21 11:44:33', 0, ''),
 (5, 6, 5, 1, '2013-06-21 11:46:38', 0, ''),
 (6, 10, 7, 1, '2013-06-21 10:28:32', 0, ''),
 (7, 10, 10, 1, '2013-06-21 22:58:43', 1, ''),
-(8, 10, 13, 1, '2013-06-22 00:53:21', 0, '');
+(8, 10, 13, 1, '2013-06-22 00:53:21', 0, ''),
+(10, 1, 33, 1, '2013-07-09 17:02:08', 1, ''),
+(11, 1, 38, 7, '2013-07-09 17:08:59', 0, ''),
+(12, 1, 39, 5, '2013-07-09 21:44:27', 0, '');
 
 -- --------------------------------------------------------
 
@@ -60,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `apply_status` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `apply_status`
@@ -70,7 +74,10 @@ INSERT INTO `apply_status` (`id`, `nama`) VALUES
 (1, 'Open'),
 (2, 'Interview'),
 (3, 'Accepted'),
-(4, 'Rejected');
+(4, 'Rejected'),
+(5, 'Viewed'),
+(6, 'Ikut Ujian'),
+(7, 'Done');
 
 -- --------------------------------------------------------
 
@@ -93,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `image_piracy` varchar(255) DEFAULT NULL,
   `publish_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `article`
@@ -119,7 +126,10 @@ INSERT INTO `article` (`id`, `editor_id`, `subkategori_id`, `article_status_id`,
 (17, 1, 2, 2, 'Ini Artikel Pertama Saya', 'ini_artikel_pertama_saya', '2013/06/13/20130613_191014_1325.png', 'asd', '<p>Description 1</p>', '<p>Description 2</p>', '<p>Description 3</p>', 'asd', '2013-06-10 18:10:06'),
 (18, 1, 1, 2, 'A Night At The Opera', 'a_night_at_the_opera', '', '', '<p>Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tem or incididunt ut labore et dolore mag aliqu. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo equat.</p>', '', '', '', '2013-06-11 00:00:00'),
 (19, 1, 2, 2, 'mr. Lorem ipsum sit dolor', 'mr_lorem_ipsum_sit_dolor', '2013/06/13/20130613_213213_7458.jpg', '', '<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>\n<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et accusamus et</p>', '<p>iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus</p>', '<p>omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum</p>', '', '2013-06-13 00:00:00'),
-(20, 2, 2, 2, 'tes tagfsdfds fsdfd fsddfsd fdfsd ', 'tes_tagfsdfds_fsdfd_fsddfsd_fdfsd', '2013/07/07/20130707_082403_6951.jpg', '', '<p>sdfdsf</p>', '<p>fsdfds</p>', '<p>fsdfsd</p>', 'fdfds', '2013-06-23 00:00:00');
+(20, 2, 2, 2, 'tes tagfsdfds fsdfd fsddfsd fdfsd ', 'tes_tagfsdfds_fsdfd_fsddfsd_fdfsd', '2013/07/07/20130707_082403_6951.jpg', '', '<p>sdfdsf</p>', '<p>fsdfds</p>', '<p>fsdfsd</p>', 'fdfds', '2013-06-23 00:00:00'),
+(21, 1, 8, 2, 'Tonga Kehilangan Bantuan Pariwisata Ribuan Dollar', 'tonga-kehilangan-bantuan-pariwisata-ribuan-dollar', '2013/07/09/20130709_221617_4968.jpg', '', '<p><span>Pemerintah Selandia Baru memutuskan menunda bantuan pariwisata senilai jutaan dolar untuk Tonga menyusul kekhawatiran terhadap keselamatan layanan penerbangan domestik di negara itu.</span><br /><br /><span>Akhir pekan lalu, Tonga menerima&nbsp; hibah pesawat&nbsp; Xian MA60 buatan China untuk maskapai domestik Real Tonga dari pemerintah China. Tapi pesawat itu&nbsp; dikenal sebagai pesawat dengan catatan standar keselamatan penerbangan terburuk di dunia.</span><br /><br /><span>Khawatir dengan penggunaan pesawat&nbsp; ini, pemerintah Selandia Baru memutuskan menunda bantuannya untuk sektor pariwisata di Tonga. Bahkan situs otoritas resmi Selandia Baru sudah menerbitakan larangan&nbsp; bepergian atau&nbsp;</span><em>travel warning.</em></p>', '', '', '', '2013-07-08 00:00:00'),
+(22, 1, 2, 2, 'Hotel Bintang Lima Disatroni Pencuri', 'hotel-bintang-lima-disatroni-pencuri', '2013/07/09/20130709_221536_1183.jpg', '', '<p><span>Jangan pernah beranggapan ada kepastian keamanan saat menginap di sebuah hotel bintang lima. Seorang pencuri mengelabui staf hotel dan membuka&nbsp;</span><em>safe deposit</em><span>&nbsp;milik tamu hotel. Uang dan barang senilai 50 ribu dollar Hongkong, setara Rp 64 juta, amblas.</span><br /><br /><span>Kini polisi berupaya melacak pencuri yang praktis tidak perlu bekerja keras meraup hasil curiannya. Kantor berita&nbsp;</span><em>AFP</em><span>, Selasa (9/7/2013), mengutip harian Hongkong,&nbsp;</span><em>South China Morning Post</em><span>&nbsp;</span><em>(SCMP)</em><span>, melaporkan seorang pegawai hotel Peninsula di tepian pelabuhan Hongkong didekati si pencuri yang meminta kunci cadangan, Minggu (7/7/2013) dini hari.</span><br /><br /><span>Saat itu, sepasang suami istri asal Perancis sedang tidur di kamarnya. Pada siang harinya, pasangan tersebut keluar kamar, dan si pencuri masuk ke kamar tersebut. Dari dalam kamar, si pencuri menghubungi petugas hotel, meminta bantuan membuka&nbsp;</span><em>safe deposit</em><span>, seakan dia pemiliknya.</span></p>', '', '', '', '2013-07-08 00:00:00'),
+(23, 1, 8, 2, 'Basuki: Minta Ganti Rugi Rp 3 Miliar? Enak Saja', 'basuki-minta-ganti-rugi-rp-3-miliar-enak-saja', '2013/07/09/20130709_221711_3273.jpg', '', '<p><span>Aksi blokade jalan akses masuk ke gedung SMP Negeri 289 di Jakarta Utara membuat Basuki Tjahaja Purnama geram. Wakil Gubernur DKI Jakarta tak terima jika ketua RW menuntut ganti rugi miliaran rupiah dengan memblokade jalan.</span><br /><br /><span>"Minta Rp 3 miliar,&nbsp;</span><em>emang</em><span>&nbsp;merampok kita? Enak saja," ujar pria yang akrab disapa Ahok itu di Balaikota DKI Jakarta, Senin (8/7/2013).</span><br /><br /><span>Basuki menegaskan, ia akan memeriksa dulu masalah di sekolah tersebut agar ditentukan langkah penyelesaiannya. Namun, ia memastikan infrastruktur pendidikan yang sudah dibangun tidak akan disia-siakan, dan pasti akan digunakan untuk kegiatan belajar mengajar.</span><br /><br /><span>Gubernur DKI Jakarta Joko Widodo juga memperhatikan masalah ini. Dia menyatakan akan memeriksa langsung masalah SMPN 289 tersebut ke lokasi.</span><br /><br /><span>"Itu tanahnya sudah jelas milik kita, kemudian ada yang klaim, dan aksesnya ditutup," ujar Jokowi.</span></p>', '', '', '', '2013-07-09 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -152,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `article_tag` (
   `article_id` int(10) unsigned DEFAULT NULL,
   `tag_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=114 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=131 ;
 
 --
 -- Dumping data for table `article_tag`
@@ -163,10 +173,19 @@ INSERT INTO `article_tag` (`id`, `article_id`, `tag_id`) VALUES
 (2, 3, 4),
 (11, 2, 27),
 (12, 2, 28),
-(108, 1, 26),
-(107, 1, 25),
+(130, 1, 26),
+(129, 1, 25),
 (113, 20, 36),
-(112, 20, 35);
+(112, 20, 35),
+(125, 21, 41),
+(124, 21, 40),
+(123, 21, 25),
+(122, 22, 43),
+(121, 22, 42),
+(120, 22, 25),
+(126, 23, 25),
+(127, 23, 44),
+(128, 23, 45);
 
 -- --------------------------------------------------------
 
@@ -182,11 +201,6 @@ CREATE TABLE IF NOT EXISTS `bahasa` (
   `tulis` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `bahasa`
---
-
 
 -- --------------------------------------------------------
 
@@ -229,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `company` (
 --
 
 INSERT INTO `company` (`id`, `kota_id`, `industri_id`, `nama`, `alias`, `phone`, `faximile`, `website`, `address`, `email`, `passwd`, `description`, `kodepos`, `sales`, `contact_name`, `contact_email`, `contact_no`, `logo`, `banner`, `google_map`, `reset`, `vacancy_count_left`, `membership_date`, `validation`, `is_active`, `is_disable`) VALUES
-(1, 1501, 1, 'PT Garuda Indonesa (Persero) Tbk', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'https://www.google.com/', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_105003_3676.png', '2013/06/21/20130621_102026_2025.png', 'http://goo.gl/maps/STM3U', '', 42, '2014-04-04', '', 1, 0),
+(1, 1501, 1, 'PT Garuda Indonesa (Persero) Tbk', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'https://www.google.com/', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_105003_3676.png', '2013/06/21/20130621_102026_2025.png', 'http://goo.gl/maps/STM3U', '', 40, '2014-04-04', '', 1, 0),
 (2, 1501, 1, 'PT Gudang Garam', 'PT-Gudang-Garam', '521477', 'A', 'B', 'Surabaya', 'her0satr1@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', 'Pabrik Garam', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_105750_6574.jpg', '2013/06/21/20130621_112319_6724.jpg', 'C', '', 0, '0000-00-00', '', 0, 0),
 (3, 1501, 1, 'CV Mitra Desain', 'CV-Mitra-Desain', '521477', 'A', 'B', 'Malang', 'her0satr2@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', 'Perusahaan Website', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_111130_8108.jpg', '2013/06/21/20130621_111135_4526.jpg', 'C', '', 0, '0000-00-00', '', 0, 0),
 (4, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '2013/06/12/20130612_200652_8583.png', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0, 0),
@@ -247,8 +261,8 @@ INSERT INTO `company` (`id`, `kota_id`, `industri_id`, `nama`, `alias`, `phone`,
 (16, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0, 0),
 (17, 1501, 1, 'PT Maju Terus 33', 'PT-Garuda-Indonesa-Persero-Tbk', '521477', 'A', 'B', '2', 'her0satr@yahoo.com', 'd0cccd72f00289035b8e25ff29100dee', '1', '62584', 'D', 'Saya', 'mail@mail.com', '0849358', '', '2013/06/12/20130612_200653_7503.jpg', 'C', '', 0, '0000-00-00', '', 0, 0),
 (74, 1560, 1, 'PT Baru Buka', 'PT-Baru-Buka', '521477', '', '', '', 'baru@baru.com', '', 'PT yang baru buka ini belum punya description', '62584', '', 'Saya', 'mail@mail.com', '0849358', '2013/06/21/20130621_113708_5653.jpg', '2013/06/21/20130621_113714_8267.jpg', '', '', 3, '2013-07-21', '', 0, 0),
-(75, 1592, 6, 'PT Arahan Mandiri', 'PT-Arahan-Mandiri', '081233743926', '443243', 'https://www.parapekerja.com', 'Perumah Griyashanta malang', 'ridwanamirsene@yahoo.com', '', 'perusahaan ini adalah perusahaan yang sedang berkembang dalam kehidupan', '35465', 'Ridwan Amir', 'Ridwan amir', 'ridwanamirsene@yahoo.com', '081233743926', '2013/06/21/20130621_224313_4849.jpg', '', '', '', 0, '2013-07-20', '', 1, 0),
-(76, 0, 0, 'Perusahaan Q', '', '', '', '', '', 'her0satr@gmail.com', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', '', 1, 0);
+(75, 1592, 6, 'PT Arahan Mandiri', 'PT-Arahan-Mandiri', '081233743926', '443243', 'https://www.parapekerja.com', 'Perumah Griyashanta malang', 'ridwanamirsene@yahoo.com', '1445aadcdc96a206381eba978e562360', 'perusahaan ini adalah perusahaan yang sedang berkembang dalam kehidupan', '35465', 'Ridwan Amir', 'Ridwan amir', 'ridwanamirsene@yahoo.com', '081233743926', '2013/06/21/20130621_224313_4849.jpg', '', '', '', 0, '2013-07-20', '', 1, 0),
+(76, 1655, 0, 'Perusahaan Q', 'Perusahaan-Q', '622514588', '622514588', '', '', 'her0satr@gmail.com', 'd0cccd72f00289035b8e25ff29100dee', '', '65482', '', 'Herry Satrio', 'her0satr@yahoo.com', '08563555402', '', '', '', '', 4, '2013-08-09', '', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -264,11 +278,6 @@ CREATE TABLE IF NOT EXISTS `company_info` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `company_info`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -282,7 +291,7 @@ CREATE TABLE IF NOT EXISTS `company_membership` (
   `date_request` datetime NOT NULL,
   `status` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `company_membership`
@@ -295,7 +304,9 @@ INSERT INTO `company_membership` (`id`, `company_id`, `membership_id`, `date_req
 (7, 1, 2, '2013-06-21 10:11:48', 'cancel'),
 (8, 1, 1, '2013-06-21 14:10:24', 'confirm'),
 (9, 75, 1, '2013-06-21 14:59:49', 'confirm'),
-(10, 75, 1, '2013-06-21 22:44:03', 'cancel');
+(10, 75, 1, '2013-06-21 22:44:03', 'cancel'),
+(11, 75, 3, '2013-07-09 11:51:49', 'pending'),
+(12, 76, 2, '2013-07-09 19:24:15', 'confirm');
 
 -- --------------------------------------------------------
 
@@ -359,7 +370,7 @@ CREATE TABLE IF NOT EXISTS `event` (
   `google_map` longtext,
   `publish_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `event`
@@ -372,7 +383,8 @@ INSERT INTO `event` (`id`, `editor_id`, `nama`, `alias`, `content`, `photo`, `ph
 (4, 1, 'Jobs fair khusus untuk Dept Kolektor', 'jobs_fair_khusus_untuk_dept_kolektor', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta<br /></span></p>', '2013/06/14/20130614_214335_2156.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-10-10 00:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2011-04-13 01:07:02'),
 (5, 1, 'Islamic Book Fair 2013 !', 'islamic_book_fair_2013_', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214343_2616.jpg', 'Merry Christmas party in coffee house!', 'Malang, Hall Ekonomi Brawijaya', '2013-10-10 00:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2011-04-13 01:07:02'),
 (6, 1, 'Pameran Lukisan semalang raya', 'pameran_lukisan_semalang_raya', '<p><span>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta</span></p>', '2013/06/14/20130614_214422_3421.jpg', 'Merry Christmas party in coffee house!', 'Malang', '2013-10-10 00:00:00', '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q=kota+malang&amp;ie=UTF8&amp;hl=en&amp;hq=&amp;hnear=Malang,+East+Java,+Indonesia&amp;t=m&amp;z=12&amp;iwloc=A&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>', '2011-04-13 01:07:02'),
-(7, 2, 'Event griyashanta', 'event_griyashanta', '<p>tes event property kota malang di griyashanta</p>', '2013/07/07/20130707_094229_4194.jpg', 'pameran property di griyashanta malang', 'Griyashanta Malang', '2013-10-10 00:00:00', 'http://maps.google.com/maps/myplaces?ll=-7.937006,112.62188&spn=0.085689,0.154324&ctz=-420&t=m&z=13\n', '2011-04-13 01:07:02');
+(7, 2, 'Event griyashanta', 'event-griyashanta', '<p><span>Perjalanan beberapa anggota galax13 bukan saja hanya ke Bromo. Beberapa hari sebelum ekspedisi 18 Januari dimulai yaitu pada 16 Januari 2013 udah ada anggota galax13 yang berdatangan di tempat berkumpul, kota Malang. Mereka adalah Renita Andriyaneu Soraya, Iis Napisah, dan Eka Angriani Putri Hasan. Untuk yang putra saya tidak tahu persis kapan mereka tiba di Malang. (putra yang ingin menyertakan data kedatangan di kota Malang, dipersilahkan :D)</span></p>', '2013/07/09/20130709_222239_3743.jpg', 'pameran property di griyashanta malang', 'Griyashanta Malang', '2013-10-10 00:00:00', 'http://maps.google.com/maps/myplaces?ll=-7.937006,112.62188&spn=0.085689,0.154324&ctz=-420&t=m&z=13\n', '2011-04-13 01:07:02'),
+(8, 2, 'tes tambah event malam puasa', 'tes-tambah-event-malam-puasa', '<p>dasdas</p>', '2013/07/09/20130709_124913_6183.png', 'das', 'dasdas', '2013-07-09 00:00:00', 'dasdasdas', '2013-07-10 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -385,7 +397,7 @@ CREATE TABLE IF NOT EXISTS `event_tag` (
   `event_id` int(11) NOT NULL,
   `tag_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `event_tag`
@@ -395,8 +407,33 @@ INSERT INTO `event_tag` (`id`, `event_id`, `tag_id`) VALUES
 (8, 1, 31),
 (7, 1, 30),
 (6, 1, 29),
-(14, 7, 36),
-(13, 7, 25);
+(19, 7, 36),
+(18, 7, 25),
+(15, 8, 37);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exam`
+--
+
+CREATE TABLE IF NOT EXISTS `exam` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `apply_id` int(11) NOT NULL,
+  `exam_time` varchar(50) NOT NULL,
+  `exam_time_end` datetime NOT NULL,
+  `exam_file` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `exam`
+--
+
+INSERT INTO `exam` (`id`, `apply_id`, `exam_time`, `exam_time_end`, `exam_file`, `email`, `status`) VALUES
+(1, 11, '1H', '2013-07-09 22:38:14', '2013/07/09/20130709_223332_3048.doc', 'her0satr@yahoo.com', 'Done');
 
 -- --------------------------------------------------------
 
@@ -4985,12 +5022,15 @@ CREATE TABLE IF NOT EXISTS `news` (
   `nama` varchar(255) NOT NULL,
   `content` longtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `news`
 --
 
+INSERT INTO `news` (`id`, `nama`, `content`) VALUES
+(1, 'Pelamar', '<p>wah anda hebat semua</p>'),
+(2, 'Perusahaan', '<p>Pengumuman untuk Para Perusahaan</p>');
 
 -- --------------------------------------------------------
 
@@ -5004,11 +5044,6 @@ CREATE TABLE IF NOT EXISTS `page` (
   `content` longtext,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `page`
---
-
 
 -- --------------------------------------------------------
 
@@ -6482,11 +6517,6 @@ CREATE TABLE IF NOT EXISTS `report` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
---
--- Dumping data for table `report`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -6530,11 +6560,11 @@ CREATE TABLE IF NOT EXISTS `seeker` (
 --
 
 INSERT INTO `seeker` (`id`, `kelamin_id`, `kota_id`, `marital_id`, `alias`, `seeker_no`, `first_name`, `last_name`, `email`, `tempat_lahir`, `tgl_lahir`, `address`, `phone`, `hp`, `passwd`, `photo`, `last_login`, `last_update`, `agama`, `kebangsaan`, `facebook`, `twitter`, `ibu_kandung`, `file_resume`, `reset`, `validation`, `is_active`, `is_disable`) VALUES
-(1, 1, 1322, 2, 'dfgdfgaaaa', '50124587', 'Anak', 'Baru', 'her0satr@yahoo.com', 'tempat lahir', '2000-06-04', 'address', '+62 6541 8974 64', '+62 654 86 465', 'd0cccd72f00289035b8e25ff29100dee', '2013/06/21/20130621_083318_6237.jpg', NULL, '2013-07-06 20:31:47', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu kandung', '2013/06/16/20130616_104449_1424.docx', '', '', 1, 0),
+(1, 1, 1322, 2, 'dfgdfgaaaa', '50124587', 'Anak', 'Baru', 'her0satr@yahoo.com', 'tempat lahir', '2000-06-04', 'address', '+62 6541 8974 64', '+62 654 86 465', 'd0cccd72f00289035b8e25ff29100dee', '2013/06/21/20130621_083318_6237.jpg', NULL, '2013-07-09 18:13:49', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu kandung', '2013/06/16/20130616_104449_1424.docx', '', '', 1, 0),
 (5, 0, 0, 0, '', '50124588', '', '', 'saya@mailc.com', '', '0000-00-00', '', '', '', '123456', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '', '', '', '', '', '', 0, 0),
 (6, 1, 1529, 1, 'pelamarbaru', '50124589', 'Pelamar', 'Baru', 'pelamar@baru.com', 'Malang', '2013-06-21', 'Malang', '521477', '65847', 'd0cccd72f00289035b8e25ff29100dee', '2013/06/21/20130621_113913_4793.jpg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Muslim', 'Indoensia', '-', '-', '', '2013/06/21/20130621_113906_2792.jpg', '', '', 0, 0),
 (9, 0, 0, 0, '', '50124590', '', '', 'say@mail.com', '', '0000-00-00', '', '', '', 'd0cccd72f00289035b8e25ff29100dee', '', '0000-00-00 00:00:00', '2013-07-06 20:03:52', '', '', '', '', '', '', '', '', 0, 0),
-(10, 1, 1592, 1, 'ridwanamir', '50124591', 'Ridwan', 'Amir', 'ridwanamirsene@yahoo.com', 'Nggawia', '1982-06-03', 'Jl Candi blok 2a no 401', '081233743926', '081233743926', '', '2013/06/21/20130621_095838_1414.png', '0000-00-00 00:00:00', '2013-07-06 20:31:48', 'Islam', 'Indonesia', 'ridwanamir', 'rid1amir', 'Aminah', '2013/06/21/20130621_100502_3944.pdf', '', '', 1, 0),
+(10, 1, 1592, 1, 'ridwanamir', '50124591', 'Ridwan', 'Amir', 'ridwanamirsene@yahoo.com', 'Nggawia', '1982-06-03', 'Jl Candi blok 2a no 401', '081233743926', '081233743926', '933902c6f005618c80b7760478a14cc1', '2013/06/21/20130621_095838_1414.png', '0000-00-00 00:00:00', '2013-07-09 11:49:29', 'Islam', 'Indonesia', 'ridwanamir', 'rid1amir', 'Aminah', '2013/06/21/20130621_100502_3944.pdf', '', '', 1, 0),
 (11, 0, 0, 0, '', '50124592', 'Saya Disable', '', 'her0satr22@yahoo.com', '', '0000-00-00', '', '', '', '', '', '0000-00-00 00:00:00', '2013-07-06 20:05:21', '', '', '', '', '', '', '', '', 0, 0);
 
 -- --------------------------------------------------------
@@ -6601,11 +6631,6 @@ CREATE TABLE IF NOT EXISTS `seeker_exp` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
---
--- Dumping data for table `seeker_exp`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -6663,11 +6688,6 @@ CREATE TABLE IF NOT EXISTS `seeker_reference` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `seeker_reference`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -6688,8 +6708,8 @@ CREATE TABLE IF NOT EXISTS `seeker_setting` (
 --
 
 INSERT INTO `seeker_setting` (`id`, `seeker_id`, `is_public`, `is_subscribe`, `is_work`) VALUES
-(1, 1, 0, 0, 0),
-(2, 10, 1, 0, 0);
+(1, 1, 1, 0, 0),
+(2, 10, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -6728,7 +6748,7 @@ CREATE TABLE IF NOT EXISTS `subkategori` (
   `nama` varchar(100) DEFAULT NULL,
   `alias` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `subkategori`
@@ -6739,7 +6759,9 @@ INSERT INTO `subkategori` (`id`, `kategori_id`, `nama`, `alias`) VALUES
 (2, 1, 'Daerah', 'daerah'),
 (3, 2, 'Film', 'film'),
 (4, 2, 'Musik', 'musik'),
-(6, 10, 'Akuntansi Umum/Pembi', 'akuntansi_umum_pembi');
+(6, 10, 'Akuntansi Umum/Pembi', 'akuntansi-umum-pembi'),
+(7, 5, 'Perbankan', 'perbankan'),
+(8, 7, 'Liputan', 'liputan');
 
 -- --------------------------------------------------------
 
@@ -6752,7 +6774,7 @@ CREATE TABLE IF NOT EXISTS `subkategori_tag` (
   `subkategori_id` int(10) DEFAULT NULL,
   `tag_id` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `subkategori_tag`
@@ -6767,7 +6789,10 @@ INSERT INTO `subkategori_tag` (`id`, `subkategori_id`, `tag_id`) VALUES
 (12, 4, 22),
 (13, 3, 23),
 (14, 3, 24),
-(15, 6, 33);
+(19, 6, 33),
+(16, 7, 38),
+(17, 7, 39),
+(18, 8, 25);
 
 -- --------------------------------------------------------
 
@@ -6834,7 +6859,7 @@ CREATE TABLE IF NOT EXISTS `tag` (
   `nama` varchar(100) DEFAULT NULL,
   `alias` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
 
 --
 -- Dumping data for table `tag`
@@ -6876,7 +6901,16 @@ INSERT INTO `tag` (`id`, `nama`, `alias`) VALUES
 (33, 'subtag', 'subtag'),
 (34, 'buku 1', 'buku_1'),
 (35, 'buku 1', 'buku-1'),
-(36, 'buku 2', 'buku-2');
+(36, 'buku 2', 'buku-2'),
+(37, 'dasdas', 'dasdas'),
+(38, 'bank', 'bank'),
+(39, 'syariah', 'syariah'),
+(40, 'Pesawat', 'pesawat'),
+(41, 'Bantuan', 'bantuan'),
+(42, 'Hotel', 'hotel'),
+(43, 'Pencuri', 'pencuri'),
+(44, 'Ibu Kota', 'ibu-kota'),
+(45, 'Jakarta', 'jakarta');
 
 -- --------------------------------------------------------
 
@@ -6909,49 +6943,51 @@ CREATE TABLE IF NOT EXISTS `vacancy` (
   `total_view` int(11) NOT NULL,
   `total_seeker` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `vacancy`
 --
 
 INSERT INTO `vacancy` (`id`, `company_id`, `subkategori_id`, `nama`, `position`, `vacancy_status_id`, `article_url`, `article_link`, `content_short`, `content`, `opsi_1`, `opsi_2`, `kota_id`, `jenjang_id`, `jenis_pekerjaan_id`, `pengalaman_id`, `gaji`, `publish_date`, `close_date`, `email_apply`, `email_quick`, `total_view`, `total_seeker`) VALUES
-(1, 1, 1, 'Lowongan Desainer', 'Arsitek,Driver', 3, 'URL Artikel', 'Link Artikel', '<p>Short Desc</p>', '<p>Detail</p>', 'Opsi 1', 'Opsi 2', 1536, 3, 1, 4, 5000000, '2013-06-12', '2013-06-23', 'mail11@mail.com', 'mail22@mail.com', 0, 0),
+(1, 1, 1, 'Lowongan Desainer', 'Arsitek,Driver', 3, 'URL Artikel', 'Link Artikel', '<p>Short Desc</p>', '<p>Detail</p>', 'Opsi 1', 'Opsi 2', 1536, 3, 1, 4, 5000000, '2013-06-12', '2013-06-23', 'mail11@mail.com', 'mail22@mail.com', 1, 0),
 (3, 1, 4, 'Lowongan Q', 'Desainer', 3, '', '', '<p><em><strong>Mohon cantumkan permohonan Gaji</strong></em></p>', '<p>Requirements:</p>\n<ul>\n<li>Candidate must possess at least a Diploma, Bachelor''s Degree, Engineering (Computer/Telecommunication), Science &amp; Technology or equivalent.</li>\n<li>Good knowledge of HTML, CSS, PHP, and My SQL.</li>\n<li>Good knowledge of JavaScript (specifically JQuery) and Ajax.</li>\n<li>Have good estetics &nbsp;and taste on graphical area.</li>\n<li>Familiar with Search engine optimization (SEO).</li>\n<li>Attached your latest portfolio.</li>\n<li>At least 1 year(s) of working experience in the related field is required for this position.</li>\n<li>Full-Time position(s) available.</li>\n</ul>', '', '', 1655, 0, 3, 0, 0, '2013-06-11', '2013-06-28', '1mail@mail.com', 'mail2@mail.com', 0, 0),
-(4, 1, 1, 'judul', 'Technician', 3, '', '', '<p>dibutuhkan </p>', '', '', '', 1592, 0, 0, 0, 0, '2013-07-01', '2013-07-31', 'email@gmail.com', '', 2, 0),
+(4, 1, 1, 'judul', 'Technician', 3, '', '', '<p>dibutuhkan </p>', '', '', '', 1592, 0, 0, 0, 0, '2013-07-01', '2013-07-31', 'email@gmail.com', '', 6, 0),
 (5, 1, 1, 'Lowongan Arsitek', 'Arsitek', 3, '', '', '<p>Dibutuhkan segera seorang Asitek untuk bekerja di Malang</p>', '', '', '', 1305, 2, 3, 1, 0, '2013-06-21', '2013-07-06', 'mail@mail.com', '', 0, 0),
 (6, 74, 2, 'Lowongan Pilot', 'Pilot', 2, '', '', '<p>Lowongan ini untuk pilot, silahkan melamar</p>', '', '', '', 1504, 2, 3, 3, 0, '2013-06-21', '2013-06-30', 'mail@mail.com', 'mail@mail.com', 0, 0),
 (7, 1, 3, 'tes perusahaan ridwan', 'Driver,Technician', 3, '', '', '<p>di cari oofice boy fdsfdsfdsfsdf</p>', '<p>fdsfdsfsd</p>', '', '', 1370, 3, 3, 1, 6565, '2013-06-21', '2013-06-22', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 1, 0),
 (8, 1, 2, 'Lowongan malam malam dan tutup tgl 23', 'Driver,Technician', 2, ' URL Artikel ini', 'Link Artikel ini', '<p>tes asdsadas</p>', '<p>asdasds</p>', '', '', 1592, 3, 2, 3, 200000, '2013-06-22', '2013-06-23', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 0, 0),
-(9, 1, 2, 'tes subscribe', 'Desainer', 3, 'fsdf', 'fsdf', '<p>fsdfds</p>', '<p>dfsdfds</p>', '', '', 1592, 7, 3, 3, 454, '2013-06-22', '2013-06-23', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 0, 0),
-(10, 75, 2, 'tes lowongan kerja pt arahan mandiri', 'Driver', 3, '', '', '<h2>Requirements</h2>\n<p>&nbsp;</p>\n<div id="jobreq-text">\n<ul>\n<li>Candidates must possess at least a Bachelor&rsquo;s Degree in Environmental Health and Safety or any relevant field.</li>\n<li>At least 2 years of working experiences in the related field is required for this position.</li>\n<li>Application should be Malaysian citizens or hold relevant residence status.</li>\n<li>Willing to work long hours.</li>\n<li>High degree of integrity, maturity, professionalism and loyalty.</li>\n<li>Strong leadership qualities and good interpersonal skills.</li>\n<li>Demonstrates commitment to working as part of the team.</li>\n<li>Generate ideas and solutions with some creativity and laterality of thought.</li>\n<li>Demonstrates a broader understanding of the business beyond a single function.</li>\n<li>Works to build or maintain friendly reciprocal and warm relationships or network of contacts with people who are or might someday be useful in achieving work related goals.</li>\n<li>Knowledge and understanding of ISO 9001:2000 requirements.</li>\n</ul>\n</div>', '', '', '', 1592, 3, 2, 4, 200000, '2014-03-28', '2014-03-31', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 1, 0),
+(9, 1, 2, 'tes subscribe', 'Desainer', 3, 'fsdf', 'fsdf', '<p>fsdfds</p>', '<p>dfsdfds</p>', '', '', 1592, 7, 3, 3, 454, '2013-06-22', '2013-06-23', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 3, 0),
+(10, 75, 2, 'tes lowongan kerja pt arahan mandiri', 'Driver', 3, '', '', '<h2>Requirements</h2>\n<p>&nbsp;</p>\n<div id="jobreq-text">\n<ul>\n<li>Candidates must possess at least a Bachelor&rsquo;s Degree in Environmental Health and Safety or any relevant field.</li>\n<li>At least 2 years of working experiences in the related field is required for this position.</li>\n<li>Application should be Malaysian citizens or hold relevant residence status.</li>\n<li>Willing to work long hours.</li>\n<li>High degree of integrity, maturity, professionalism and loyalty.</li>\n<li>Strong leadership qualities and good interpersonal skills.</li>\n<li>Demonstrates commitment to working as part of the team.</li>\n<li>Generate ideas and solutions with some creativity and laterality of thought.</li>\n<li>Demonstrates a broader understanding of the business beyond a single function.</li>\n<li>Works to build or maintain friendly reciprocal and warm relationships or network of contacts with people who are or might someday be useful in achieving work related goals.</li>\n<li>Knowledge and understanding of ISO 9001:2000 requirements.</li>\n</ul>\n</div>', '', '', '', 1592, 3, 2, 4, 200000, '2014-03-28', '2014-03-31', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 2, 0),
 (11, 75, 1, 'tes iklan kedua apakah bisa', 'Driver', 2, '', '', '<p>dfsdf</p>', '<p>fsd</p>', '', '', 1502, 3, 3, 3, 423423, '2014-03-28', '2014-03-30', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 0, 0),
-(12, 75, 2, 'tes ke tiga', 'Desainer', 3, '', '', '<p>fds</p>', '<p>dfsdf</p>', '', '', 1655, 5, 3, 2, 534543, '2014-03-28', '2014-03-24', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 0, 0),
+(12, 75, 2, 'tes ke tiga', 'Desainer', 3, '', '', '<p>fds</p>', '<p>dfsdf</p>', '', '', 1655, 5, 3, 2, 534543, '2014-03-28', '2014-03-24', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 1, 0),
 (13, 1, 3, 'tes apakah sudah di status open apa belum 22', 'Desainer', 3, '', '', '<p>fasddasd</p>', '<p>dasdsa</p>', '', '', 1619, 2, 3, 6, 12345, '2013-06-01', '2013-06-30', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 1, 0),
-(14, 1, 1, 'Lowongan Desainer', 'Arsitek,Driver', 3, 'URL Artikel', 'Link Artikel', '<p>Short Desc</p>', '<p>Detail</p>', 'Opsi 1', 'Opsi 2', 1536, 3, 1, 4, 5000000, '2013-06-12', '2013-06-23', 'mail11@mail.com', 'mail22@mail.com', 0, 0),
+(14, 1, 1, 'Lowongan Desainer', 'Arsitek,Driver', 3, 'URL Artikel', 'Link Artikel', '<p>Short Desc</p>', '<p>Detail</p>', 'Opsi 1', 'Opsi 2', 1536, 3, 1, 4, 5000000, '2013-06-12', '2013-06-23', 'mail11@mail.com', 'mail22@mail.com', 2, 0),
 (15, 1, 4, 'Lowongan Q', 'Desainer', 3, '', '', '<p><em><strong>Mohon cantumkan permohonan Gaji</strong></em></p>', '<p>Requirements:</p>\n<ul>\n<li>Candidate must possess at least a Diploma, Bachelor''s Degree, Engineering (Computer/Telecommunication), Science &amp; Technology or equivalent.</li>\n<li>Good knowledge of HTML, CSS, PHP, and My SQL.</li>\n<li>Good knowledge of JavaScript (specifically JQuery) and Ajax.</li>\n<li>Have good estetics &nbsp;and taste on graphical area.</li>\n<li>Familiar with Search engine optimization (SEO).</li>\n<li>Attached your latest portfolio.</li>\n<li>At least 1 year(s) of working experience in the related field is required for this position.</li>\n<li>Full-Time position(s) available.</li>\n</ul>', '', '', 1655, 0, 3, 0, 0, '2013-06-11', '2013-06-28', '1mail@mail.com', 'mail2@mail.com', 0, 0),
 (16, 1, 1, 'judul', 'Technician', 3, '', '', '<p>dibutuhkan </p>', '', '', '', 1592, 0, 0, 0, 0, '2013-07-01', '2013-07-31', 'email@gmail.com', '', 2, 0),
-(17, 1, 1, 'Lowongan Arsitek', 'Arsitek', 3, '', '', '<p>Dibutuhkan segera seorang Asitek untuk bekerja di Malang</p>', '', '', '', 1305, 2, 3, 1, 0, '2013-06-21', '2013-07-06', 'mail@mail.com', '', 0, 0),
+(17, 1, 1, 'Lowongan Arsitek', 'Arsitek', 3, '', '', '<p>Dibutuhkan segera seorang Asitek untuk bekerja di Malang</p>', '', '', '', 1305, 2, 3, 1, 0, '2013-06-21', '2013-07-06', 'mail@mail.com', '', 1, 0),
 (18, 74, 2, 'Lowongan Pilot', 'Pilot', 2, '', '', '<p>Lowongan ini untuk pilot, silahkan melamar</p>', '', '', '', 1504, 2, 3, 3, 0, '2013-06-21', '2013-06-30', 'mail@mail.com', 'mail@mail.com', 0, 0),
 (19, 1, 3, 'tes perusahaan ridwan', 'Driver,Technician', 3, '', '', '<p>di cari oofice boy fdsfdsfdsfsdf</p>', '<p>fdsfdsfsd</p>', '', '', 1370, 3, 3, 1, 6565, '2013-06-21', '2013-06-22', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 2, 0),
 (20, 1, 2, 'Lowongan malam malam dan tutup tgl 23', 'Driver,Technician', 2, ' URL Artikel ini', 'Link Artikel ini', '<p>tes asdsadas</p>', '<p>asdasds</p>', '', '', 1592, 3, 2, 3, 200000, '2013-06-22', '2013-06-23', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 0, 0),
 (21, 1, 2, 'tes subscribe', 'Desainer', 3, 'fsdf', 'fsdf', '<p>fsdfds</p>', '<p>dfsdfds</p>', '', '', 1592, 7, 3, 3, 454, '2013-06-22', '2013-06-23', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 0, 0),
-(22, 75, 2, 'tes lowongan kerja pt arahan mandiri', 'Driver', 3, '', '', '<h2>Requirements</h2>\n<p>&nbsp;</p>\n<div id="jobreq-text">\n<ul>\n<li>Candidates must possess at least a Bachelor&rsquo;s Degree in Environmental Health and Safety or any relevant field.</li>\n<li>At least 2 years of working experiences in the related field is required for this position.</li>\n<li>Application should be Malaysian citizens or hold relevant residence status.</li>\n<li>Willing to work long hours.</li>\n<li>High degree of integrity, maturity, professionalism and loyalty.</li>\n<li>Strong leadership qualities and good interpersonal skills.</li>\n<li>Demonstrates commitment to working as part of the team.</li>\n<li>Generate ideas and solutions with some creativity and laterality of thought.</li>\n<li>Demonstrates a broader understanding of the business beyond a single function.</li>\n<li>Works to build or maintain friendly reciprocal and warm relationships or network of contacts with people who are or might someday be useful in achieving work related goals.</li>\n<li>Knowledge and understanding of ISO 9001:2000 requirements.</li>\n</ul>\n</div>', '', '', '', 1592, 3, 2, 4, 200000, '2014-03-28', '2014-03-31', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 1, 0),
+(22, 75, 2, 'tes lowongan kerja pt arahan mandiri', 'Driver', 3, '', '', '<h2>Requirements</h2>\n<p>&nbsp;</p>\n<div id="jobreq-text">\n<ul>\n<li>Candidates must possess at least a Bachelor&rsquo;s Degree in Environmental Health and Safety or any relevant field.</li>\n<li>At least 2 years of working experiences in the related field is required for this position.</li>\n<li>Application should be Malaysian citizens or hold relevant residence status.</li>\n<li>Willing to work long hours.</li>\n<li>High degree of integrity, maturity, professionalism and loyalty.</li>\n<li>Strong leadership qualities and good interpersonal skills.</li>\n<li>Demonstrates commitment to working as part of the team.</li>\n<li>Generate ideas and solutions with some creativity and laterality of thought.</li>\n<li>Demonstrates a broader understanding of the business beyond a single function.</li>\n<li>Works to build or maintain friendly reciprocal and warm relationships or network of contacts with people who are or might someday be useful in achieving work related goals.</li>\n<li>Knowledge and understanding of ISO 9001:2000 requirements.</li>\n</ul>\n</div>', '', '', '', 1592, 3, 2, 4, 200000, '2014-03-28', '2014-03-31', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 4, 0),
 (23, 75, 1, 'tes iklan kedua apakah bisa', 'Driver', 2, '', '', '<p>dfsdf</p>', '<p>fsd</p>', '', '', 1502, 3, 3, 3, 423423, '2014-03-28', '2014-03-30', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 0, 0),
 (24, 75, 2, 'tes ke tiga', 'Desainer', 3, '', '', '<p>fds</p>', '<p>dfsdf</p>', '', '', 1655, 5, 3, 2, 534543, '2014-03-28', '2014-03-24', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 0, 0),
-(25, 1, 3, 'tes apakah sudah di status open apa belum 22', 'Desainer', 3, '', '', '<p>fasddasd</p>', '<p>dasdsa</p>', '', '', 1619, 2, 3, 6, 12345, '2013-06-01', '2013-06-30', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 2, 0),
-(26, 1, 1, 'Lowongan Desainer', 'Arsitek,Driver', 3, 'URL Artikel', 'Link Artikel', '<p>Short Desc</p>', '<p>Detail</p>', 'Opsi 1', 'Opsi 2', 1536, 3, 1, 4, 5000000, '2013-06-12', '2013-06-23', 'mail11@mail.com', 'mail22@mail.com', 0, 0),
+(25, 1, 3, 'tes apakah sudah di status open apa belum 22', 'Desainer', 3, '', '', '<p>fasddasd</p>', '<p>dasdsa</p>', '', '', 1619, 2, 3, 6, 12345, '2013-06-01', '2013-06-30', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 3, 0),
+(26, 1, 1, 'Lowongan Desainer', 'Arsitek,Driver', 3, 'URL Artikel', 'Link Artikel', '<p>Short Desc</p>', '<p>Detail</p>', 'Opsi 1', 'Opsi 2', 1536, 3, 1, 4, 5000000, '2013-06-12', '2013-06-23', 'mail11@mail.com', 'mail22@mail.com', 1, 0),
 (27, 1, 4, 'Lowongan Q', 'Desainer', 3, '', '', '<p><em><strong>Mohon cantumkan permohonan Gaji</strong></em></p>', '<p>Requirements:</p>\n<ul>\n<li>Candidate must possess at least a Diploma, Bachelor''s Degree, Engineering (Computer/Telecommunication), Science &amp; Technology or equivalent.</li>\n<li>Good knowledge of HTML, CSS, PHP, and My SQL.</li>\n<li>Good knowledge of JavaScript (specifically JQuery) and Ajax.</li>\n<li>Have good estetics &nbsp;and taste on graphical area.</li>\n<li>Familiar with Search engine optimization (SEO).</li>\n<li>Attached your latest portfolio.</li>\n<li>At least 1 year(s) of working experience in the related field is required for this position.</li>\n<li>Full-Time position(s) available.</li>\n</ul>', '', '', 1655, 0, 3, 0, 0, '2013-06-11', '2013-06-28', '1mail@mail.com', 'mail2@mail.com', 0, 0),
-(28, 1, 1, 'judul', 'Technician', 3, '', '', '<p>dibutuhkan </p>', '', '', '', 1592, 0, 0, 0, 0, '2013-07-01', '2013-07-31', 'email@gmail.com', '', 2, 0),
+(28, 1, 1, 'judul', 'Technician', 3, '', '', '<p>dibutuhkan </p>', '', '', '', 1592, 0, 0, 0, 0, '2013-07-01', '2013-07-31', 'email@gmail.com', '', 3, 0),
 (29, 1, 1, 'Lowongan Arsitek', 'Arsitek', 3, '', '', '<p>Dibutuhkan segera seorang Asitek untuk bekerja di Malang</p>', '', '', '', 1305, 2, 3, 1, 0, '2013-06-21', '2013-07-06', 'mail@mail.com', '', 0, 0),
 (30, 74, 2, 'Lowongan Pilot', 'Pilot', 2, '', '', '<p>Lowongan ini untuk pilot, silahkan melamar</p>', '', '', '', 1504, 2, 3, 3, 0, '2013-06-21', '2013-06-30', 'mail@mail.com', 'mail@mail.com', 0, 0),
 (31, 1, 3, 'tes perusahaan ridwan', 'Driver,Technician', 3, '', '', '<p>di cari oofice boy fdsfdsfdsfsdf</p>', '<p>fdsfdsfsd</p>', '', '', 1370, 3, 3, 1, 6565, '2013-06-21', '2013-06-22', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 1, 0),
 (32, 1, 2, 'Lowongan malam malam dan tutup tgl 23', 'Driver,Technician', 2, ' URL Artikel ini', 'Link Artikel ini', '<p>tes asdsadas</p>', '<p>asdasds</p>', '', '', 1592, 3, 2, 3, 200000, '2013-06-22', '2013-06-23', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 0, 0),
-(33, 1, 2, 'tes subscribe', 'Desainer', 3, 'fsdf', 'fsdf', '<p>fsdfds</p>', '<p>dfsdfds</p>', '', '', 1592, 7, 3, 3, 454, '2013-06-22', '2013-06-23', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 0, 0),
+(33, 1, 2, 'Lowongan Subscribe', 'Desainer', 3, 'fsdf', 'fsdf', '<p>fsdfds</p>', '<p>dfsdfds</p>', '', '', 1592, 7, 3, 3, 454, '2013-06-22', '2013-06-23', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 2, 2),
 (34, 75, 2, 'tes lowongan kerja pt arahan mandiri', 'Driver', 3, '', '', '<h2>Requirements</h2>\n<p>&nbsp;</p>\n<div id="jobreq-text">\n<ul>\n<li>Candidates must possess at least a Bachelor&rsquo;s Degree in Environmental Health and Safety or any relevant field.</li>\n<li>At least 2 years of working experiences in the related field is required for this position.</li>\n<li>Application should be Malaysian citizens or hold relevant residence status.</li>\n<li>Willing to work long hours.</li>\n<li>High degree of integrity, maturity, professionalism and loyalty.</li>\n<li>Strong leadership qualities and good interpersonal skills.</li>\n<li>Demonstrates commitment to working as part of the team.</li>\n<li>Generate ideas and solutions with some creativity and laterality of thought.</li>\n<li>Demonstrates a broader understanding of the business beyond a single function.</li>\n<li>Works to build or maintain friendly reciprocal and warm relationships or network of contacts with people who are or might someday be useful in achieving work related goals.</li>\n<li>Knowledge and understanding of ISO 9001:2000 requirements.</li>\n</ul>\n</div>', '', '', '', 1592, 3, 2, 4, 200000, '2014-03-28', '2014-03-31', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 1, 0),
 (35, 75, 1, 'tes iklan kedua apakah bisa', 'Driver', 2, '', '', '<p>dfsdf</p>', '<p>fsd</p>', '', '', 1502, 3, 3, 3, 423423, '2014-03-28', '2014-03-30', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 0, 0),
-(36, 75, 2, 'tes ke tiga', 'Desainer', 3, '', '', '<p>fds</p>', '<p>dfsdf</p>', '', '', 1655, 5, 3, 2, 534543, '2014-03-28', '2014-03-24', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 0, 0),
-(37, 1, 3, 'tes apakah sudah di status open apa belum 22', 'Desainer', 3, '', '', '<p>fasddasd</p>', '<p>dasdsa</p>', '', '', 1619, 2, 3, 6, 12345, '2013-06-01', '2013-06-30', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 1, 0);
+(36, 75, 7, 'tes ke tiga', 'Desainer', 3, '', '', '<p>fds</p>', '<p>dfsdf</p>', '', '', 1655, 5, 3, 2, 534543, '2013-03-28', '2013-03-24', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 3, 0),
+(37, 1, 3, 'tes apakah sudah di status open apa belum 22', 'Desainer', 3, '', '', '<p>fasddasd</p>', '<p>dasdsa</p>', '', '', 1619, 2, 3, 6, 12345, '2013-06-01', '2013-06-30', 'ridwanamirsene@yahoo.com', 'ridwanamirsene@yahoo.com', 1, 0),
+(38, 1, 6, 'Lowongan Front Office', '', 3, '', '', '', '<p>Requirements:</p>\n<ul style="list-style-type: circle;">\n<li>&nbsp;&nbsp;&nbsp; Pria, Usia Maksimal 30</li>\n<li>&nbsp;&nbsp;&nbsp; Pendidikan minimal SMA / SMK / Sederajat di bidang Perhotelan</li>\n<li>&nbsp;&nbsp;&nbsp; Berat Badan Proposional</li>\n<li>&nbsp;&nbsp;&nbsp; Bersedia bekerja secara shift</li>\n<li>&nbsp;&nbsp;&nbsp; Rajin, Cekatan, Disiplin, Jujur, Tanggung Jawab, Sehat jasmani dan rohani.</li>\n<li>&nbsp;&nbsp;&nbsp; Berdomisili di Sidoarjo dan sekitarnya</li>\n</ul>\n<p>&nbsp;</p>', '', '', 1547, 2, 3, 1, 0, '2013-07-09', '2013-07-24', 'her0satr@yahoo.com', 'her0satr@yahoo.com', 7, 1),
+(39, 1, 7, 'Lowongan Development Program', '', 3, '', '', '', '<p>KESEMPATAN UNTUK MENGIKUTI PELATIHAN MANAGEMENT DEVELOPMENT PROGRAM (MDP) III DENGAN KUALIFIKASI SEBAGAI BERIKUT : <br /><br />Kualifikasi : <br />1. Pendidikan min S1 untuk semua jurusan tapi diutamakan Jurusan Akuntansi <br />2. IPK min. 2.75 <br />3. Bersedia mengikuti pendidikan di Jakarta &amp; bersedia ditempatkan di seluruh cabang setelah selesai program <br />4. Usia max. 27 tahun, belum menikah <br />5. Bersedia mengikuti ikatan dinas selama 5 tahun</p>', '', '', 1654, 2, 3, 1, 0, '2013-07-09', '2013-07-31', 'her0satr@yahoo.com', 'her0satr@yahoo.com', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -6988,7 +7024,7 @@ CREATE TABLE IF NOT EXISTS `widget` (
   `content` longtext NOT NULL,
   `is_html` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `widget`
@@ -7001,7 +7037,8 @@ INSERT INTO `widget` (`id`, `nama`, `alias`, `content`, `is_html`) VALUES
 (4, 'Iphone', 'iphone', '<div class="app-ad">\n<h3>Download our app for iphone <br /><strong>for freefdfdfdsfdsf</strong></h3>\n</div>', 0),
 (5, 'Create Account', 'create_account', '<h1>Dunia Karir</h1>\n<ul>\n<li>Access to 6000 + songs</li>\n<li>Ability to purchase songs</li>\n<li>Forums and Chat</li>\n<li>Sell your songs</li>\n</ul>', 1),
 (6, 'Social Link', 'social_link', '<p><a class="rss" title="RSS" href="#">RSS</a> <a class="flickr" title="Flickr" href="#">Flickr</a> <a class="facebook" title="Facebook" href="#">Flickr</a> <a class="google" title="Google" href="#">Google</a> <a class="last-fm" title="Last FM" href="#">Last FM</a> <a class="my-space" title="My Space" href="#">My Space</a> <a class="plant" title="Plant" href="#">Plant</a> <a class="twitter" title="Twitter" href="#">Twitter</a></p>', 0),
-(7, 'gf', 'gf', '<p>gdfgfd</p>', 0);
+(7, 'gf', 'gf', '<p>gdfgfd</p>', 0),
+(8, 'Apply Vacancy', 'apply_vacancy', '<p>Dear Sir/Madam,</p>\n<p>Berikut informasi pemberitahuan adanya pelamar yang melamar lowongan yang telah anda kirimkan pada parapekerja.com.</p>\n<p>Terima Kasih</p>', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

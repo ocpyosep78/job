@@ -24,7 +24,8 @@ class exam extends SEEKER_Controller {
 			
 			$result = $this->Exam_model->get_by_id(array( 'id' => $_POST['exam_id'] ));
 			$result['status'] = 1;
-		} else if ($action == 'upload-exam') {
+		}
+		else if ($action == 'upload-exam') {
 			$exam = $this->Exam_model->get_by_id(array( 'id' => $_POST['exam_id'] ));
 			$apply = $this->Apply_model->get_by_id(array( 'id' => $exam['apply_id'] ));
 			$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $apply['vacancy_id'] ));
@@ -36,7 +37,7 @@ class exam extends SEEKER_Controller {
 			$end_time = GetUnixTime($exam['exam_time_end']);
 			$total_time = ($end_time + $total_time) - $current_time;
 			$is_over = ($total_time <= 0) ? true : false;
-			if ($is_over || true) {
+			if ($is_over) {
 				$result['message'] = 'Waktu ujian telah berakhir, anda tidak dapat melanjutkan.';
 				echo json_encode($result);
 				exit;
@@ -51,6 +52,7 @@ class exam extends SEEKER_Controller {
 			$param_apply['id'] = $exam['apply_id'];
 			$param_apply['apply_status_id'] = VACANCY_STATUS_DONE;
 			$result = $this->Apply_model->update($param_apply);
+			$result['status'] = 1;
 			
 			$file_exam = $this->config->item('base_path').'/static/upload/'.$_POST['exam_file'];
 			$MailParam = array(

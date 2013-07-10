@@ -1,12 +1,12 @@
 <?php
 	$array_mail[] = array( 'id' => 1, 'nama' => 'Manual' );
-	$array_mail[] = array( 'id' => 2, 'nama' => 'All Seeker' );
-	$array_mail[] = array( 'id' => 3, 'nama' => 'All Company' );
-	$array_mail[] = array( 'id' => 4, 'nama' => 'All Company & Seeker' );
+	$array_mail[] = array( 'id' => 2, 'nama' => 'Semua Pelamar' );
+	$array_mail[] = array( 'id' => 3, 'nama' => 'Semua Perusahaan' );
+	$array_mail[] = array( 'id' => 4, 'nama' => 'Semua Perusahaan & Pelamar' );
 ?>
 
 <?php $this->load->view( 'panel/common/meta', array( 'title' => 'Kirim Email' ) ); ?>
-<body data-layout="fixed">
+<body>
 <?php $this->load->view( 'panel/common/navigation' ); ?>
 
 <div class="container-fluid" id="content">

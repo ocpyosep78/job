@@ -98,6 +98,7 @@ class Event_Tag_model extends CI_Model {
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
 		$row['is_event'] = true;
+		$row['tag_link'] = base_url('tags/'.$row['tag_alias']);
 		$row['event_link'] = base_url('event/'.$row['event_alias']);
 		
 		if (!empty($row['event_photo'])) {

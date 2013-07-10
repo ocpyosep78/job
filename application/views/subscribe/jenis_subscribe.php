@@ -1,5 +1,5 @@
 <?php $this->load->view( 'panel/common/meta', array( 'title' => 'Jenis Subscribe' ) ); ?>
-<body data-layout="fixed">
+<body>
 <?php $this->load->view( 'panel/common/navigation' ); ?>
 
 <div class="container-fluid" id="content">

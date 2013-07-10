@@ -45,17 +45,17 @@ done => cek => - Slide diganti Show Hide
 
 WEBSITE - HALAMAN TAG
 done => cek => - Tag Malang punya page di : http://www.parapekerja.com/tags/malang
-cek => - isinya semua article / event yang punya tag Malang
+done => cek => - isinya semua article / event yang punya tag Malang
 
 WEBSITE - RSS
-cek => - Kategori
-cek => - Sub Kategory
-cek => - Company
-cek => - Blog
-cek => - Event
+done => cek => - Kategori
+done => cek => - Sub Kategory
+done => cek => - Company
+done => cek => - Blog
+done => cek => - Event
 
 WEBSITE - LOGIN PAGE
-cek => - Jika user sudah login, maka akses ke login page tidak ada, tampilkan saja dashboard & logout di header
+done => cek => - Jika user sudah login, maka akses ke login page tidak ada, tampilkan saja dashboard & logout di header
 
 SEEKER - EXAM
 cek => - backup : Exam.png
