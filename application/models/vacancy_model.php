@@ -85,14 +85,17 @@ class Vacancy_model extends CI_Model {
         $array = array();
 		
 		// overwrite field name
+		$param['field_replace']['id'] = 'Vacancy.id';
 		$param['field_replace']['nama'] = 'Vacancy.nama';
 		$param['field_replace']['position'] = 'Vacancy.position';
+		$param['field_replace']['company_nama'] = 'Company.nama';
 		$param['field_replace']['vacancy_status_name'] = 'VacancyStatus.nama';
+		$param['field_replace']['vacancy_status_nama'] = 'VacancyStatus.nama';
 		
 		$string_company = (empty($param['company_id'])) ? '' : "AND Vacancy.company_id = '".$param['company_id']."'";
 		$string_kategori = (empty($param['kategori_id'])) ? '' : "AND Kategori.id = '".$param['kategori_id']."'";
 		$string_subkategori = (empty($param['subkategori_id'])) ? '' : "AND Subkategori.id = '".$param['subkategori_id']."'";
-		$string_publish_date = (empty($param['publish_date'])) ? '' : "AND Vacancy.publish_date <= '".$param['publish_date']."'";
+		$string_publish_date = (empty($param['publish_date'])) ? '' : "AND Vacancy.publish_date <= DATE('".$param['publish_date']."')";
 		$string_vacancy_status = (empty($param['vacancy_status_id'])) ? '' : "AND Vacancy.vacancy_status_id = '".$param['vacancy_status_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'Vacancy.close_date DESC');

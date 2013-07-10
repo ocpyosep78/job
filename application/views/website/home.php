@@ -13,8 +13,10 @@
 	$array_slide2 = $this->Vacancy_model->get_array($param_slide2);
 	
 	$param_vacancy = array(
-		'filter' => '[{"type":"numeric","comparison":"eq","value":"'.VACANCY_STATUS_APPROVE.'","field":"Vacancy.vacancy_status_id"}]',
-		'sort' => '[{"property":"publish_date","direction":"DESC"}]', 'limit' => 10
+		'vacancy_status_id' => VACANCY_STATUS_APPROVE,
+		'publish_date' => $this->config->item('current_datetime'),
+		'sort' => '[{"property":"publish_date","direction":"DESC"}]',
+		'limit' => 10
 	);
 	$array_vacancy = $this->Vacancy_model->get_array($param_vacancy);
 	

@@ -24,6 +24,7 @@
 			
 			$message = 'Password anda berhasil direset, silahkan memeriksa email anda.';
 			$param['to'] = $user['email'];
+			$param['title'] = 'Reset Password';
 			$param['message']  = "Password anda berhasil direset, berikut informasi password baru anda : $passwd_new \n\n";
 			sent_mail($param);
 		}

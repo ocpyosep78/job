@@ -65,15 +65,15 @@
 				<div class="hide subscribe-message" style="text-align: center; padding: 10px 0px 15px; font-size: 14px; color: rgb(255, 0, 0);"></div>
 				
 				<figure><img src="<?php echo $company['logo_link']; ?>" /></figure>
-				<div class='info-line'><span>Industry : </span> <?php echo $company['industri_nama']; ?></div>
+				<div class='info-line'><span>Industry : </span> <?php echo @$company['industri_nama']; ?></div>
 				<div class='info-line'><span>Company Address : </span> <?php echo $company['address']; ?></div>
-				<div class='info-line'><span>City: </span> <?php echo $company['kota_nama']; ?></div>
+				<div class='info-line'><span>City: </span> <?php echo @$company['kota_nama']; ?></div>
 				<div class='info-line'><span>Sales: </span> <?php echo $company['sales']; ?></div>
 				<div class='buy'>
 					<a href="<?php echo $company['google_map']; ?>" target="_blank"><span class='price'>Lihat Peta</span></a>
 					<span class="cursor price btn-report">Laporkan</span>
 					<a title='Subscribe' class='cursor btn btn-blue buy-album'>Subscribe</a>
-					<a href="<?php echo $company['company_link_rss']; ?>" title='RSS' class='btn btn-blue buy-album' style="margin: 0 0 0 10px;">RSS</a>
+					<a href="<?php echo $company['company_link_rss']; ?>" title='RSS' class='btn btn-blue' style="margin: 0 0 0 10px;">RSS</a>
 				</div>
 				
 				<p class='description'><?php echo $company['description']; ?></p>

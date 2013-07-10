@@ -1,56 +1,56 @@
 SEEKER - PUBLIC RESUME
-cek => - Ada setting, jika ("Show my profile to public" == NO), maka tampilkan "tulisan Resume ini tidak tersedia untuk Public"
-cek => - Ada setting, jika ("Sekarang saya telah bekerja" == YES), maka tampilkan "worked"
+done => cek => - Ada setting, jika ("Show my profile to public" == NO), maka tampilkan "tulisan Resume ini tidak tersedia untuk Public"
+done => cek => - Ada setting, jika ("Sekarang saya telah bekerja" == YES), maka tampilkan "worked"
 
 SEEKER - My JOB APPLY
-cek => - Status ditable akan menjadi view ketika :
+done => cek => - Status ditable akan menjadi view ketika :
 	1. Pemalar mencari lowongan kemudian dia apply : statusnya akan seperti skr (Open)
 	2. Kemudian Perusahaan akan lihat di COMPANY - DOWNLOAD, select lowongan yang terkait dan menemukan pelamar ini
 	3. Ketika Perusahaan melihat public profile dia, maka status nya menjadi viewed
 
 COMPANY - SEARCH
-cek => - Search error
+done => cek => - Search error
 
 EDITOR
-cek => - All table, semua yang terbaru ditampilkan diatas
+done => cek => - All table, semua yang terbaru ditampilkan diatas
 
 EDITOR - PELAMAR
-cek => - Tambah fitur : Kirim Email, Disable Pelamar, View Public Profile
-cek => - Pelamar yang disable oleh admin tidak bisa login / lost password
+done => cek => - Tambah fitur : Kirim Email, Disable Pelamar, View Public Profile
+done => cek => - Pelamar yang disable oleh admin tidak bisa login / lost password
 
 EDITOR - PERUSAHAAN
-cek => - Tambah fitur : Kirim Email, Disable Perusahaan, View Company Profile
-cek => - Company yang disable oleh admin tidak bisa login / lost password
+done => cek => - Tambah fitur : Kirim Email, Disable Perusahaan, View Company Profile
+done => cek => - Company yang disable oleh admin tidak bisa login / lost password
 
 EDITOR - LOWONGAN
-cek => - Column : Tambah end date
-cek => - Tambah fitur : Kirim pesan ke email | dan edit lowongan, terutama untuk edit kategory lowongan
+done => cek => - Column : Tambah end date
+done => cek => - Tambah fitur : Kirim pesan ke email | dan edit lowongan, terutama untuk edit kategory lowongan
 
 EDITOR - MEMBERSHIP
-cek => - Tambah Fitur Kirim Pesan
-cek => - Untuk Approve / Cancel membership, tambahkan konfirmasi, seperti ketika ada record yang akan dihapus
+done => cek => - Tambah Fitur Kirim Pesan
+done => cek => - Untuk Approve / Cancel membership, tambahkan konfirmasi, seperti ketika ada record yang akan dihapus
 
 SUBSCRIBE - MAIL
-cek => - Tambah Fitur bisa kirim via email, all company, all seeker, all company & seeker
-cek => - kirim pakai html biasa aja
+done => cek => - Tambah Fitur bisa kirim via email, all company, all seeker, all company & seeker
+done => cek => - kirim pakai html biasa aja
 
 WEBSITE
-cek => - Perubahan link dari http://www.parapekerja.com/blog/akuntansi-keuangan jadi http://www.parapekerja.com/jobs/akuntansi-keuangan
+done => cek => - Perubahan link dari http://www.parapekerja.com/blog/akuntansi-keuangan jadi http://www.parapekerja.com/jobs/akuntansi-keuangan
 
 WIBSITE - HOME
-cek => - Slide :
+done => cek => - Slide :
 	slide 1 : list company
 	slide 2 : list kategori
-cek => - Slide diganti Show Hide
+done => cek => - Slide diganti Show Hide
 
 WEBSITE - HALAMAN TAG
-cek => - Tag Malang punya page di : http://www.parapekerja.com/tags/malang
+done => cek => - Tag Malang punya page di : http://www.parapekerja.com/tags/malang
 cek => - isinya semua article / event yang punya tag Malang
 
 WEBSITE - RSS
 cek => - Kategori
 cek => - Sub Kategory
-- Company
+cek => - Company
 cek => - Blog
 cek => - Event
 
@@ -59,59 +59,3 @@ cek => - Jika user sudah login, maka akses ke login page tidak ada, tampilkan sa
 
 SEEKER - EXAM
 cek => - backup : Exam.png
-
-
-
-
-----------------------------------------------------------------------------------------------------------------------------
-C:\Program Files\xampplite\htdocs\job
-C:\Program Files\xampplite\htdocs\job\trunk\application\config\constants.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\company\download.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\article.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\company.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\editor.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\event.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\membership.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\report.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\seeker.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\vacancy.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\widget.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\models\apply_model.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\models\seeker_model.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\models\seeker_setting_model.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\company\download.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\company\slide.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\article.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\company.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\editor.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\event.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\membership.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\report.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\seeker.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\vacancy.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\widget.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\seeker\publish.php
-C:\Program Files\xampplite\htdocs\job\trunk\job_db.sql
-C:\Program Files\xampplite\htdocs\job\trunk\note dunia karir.txt
-C:\Program Files\xampplite\htdocs\job\trunk\static\js\common.js
-C:\Program Files\xampplite\htdocs\job\trunk\update.sql
-C:\Program Files\xampplite\htdocs\job\trunk\note dunia karir.txt
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\article.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\vacancy.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\models\company_model.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\subscribe\mail.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\seeker.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\membership.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\vacancy.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\seeker\publish.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\models\seeker_model.php
-C:\Program Files\xampplite\htdocs\job\trunk\static\theme\flat\css\bootstrap.css
-C:\Program Files\xampplite\htdocs\job\trunk\application\models\company_membership_model.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\models\vacancy_model.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\membership.php
-C:\Program Files\xampplite\htdocs\job\trunk\update.sql
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\company.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\website\home.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\subscribe\mail.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\views\editor\seeker.php
-C:\Program Files\xampplite\htdocs\job\trunk\application\controllers\editor\company.php

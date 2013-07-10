@@ -1,11 +1,23 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+if (! function_exists('is_company_link')) {
+	function is_company_link() {
+		preg_match('/company\/(\d+)$/i', $_SERVER['REQUEST_URI'], $match);
+		$is_company_link = (isset($match[1]) && !empty($match[1])) ? true : false;
+		return $is_company_link;
+	}
+}
+
 $is_website = true;
 $url_arg = preg_replace('/(^\/|\/$)/i', '', @$_SERVER['argv'][0]);
 $array_arg = explode('/', $url_arg);
 if (count($array_arg) > 1) {
 	$key = $array_arg[0];
-	if (in_array($key, array('company', 'editor', 'panel', 'seeker', 'master', 'subscribe'))) {
+	$is_company_link = is_company_link();
+	
+	if ($is_company_link) {
+		$is_website = true;
+	} else if (in_array($key, array('company', 'editor', 'panel', 'seeker', 'master', 'subscribe'))) {
 		$is_website = false;
 	}
 }

@@ -49,6 +49,9 @@ class News_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
+		// overwrite field name
+		$param['field_replace']['content_title'] = 'News.content';
+		
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'nama ASC');
 		$string_limit = GetStringLimit($param);

@@ -53,6 +53,10 @@ class Kota_model extends CI_Model {
 		
 		$string_negara = (empty($param['negara_id'])) ? '' : "AND negara_id = '".$param['negara_id']."'";
 		$string_propinsi = (empty($param['propinsi_id'])) ? '' : "AND propinsi_id = '".$param['propinsi_id']."'";
+		if (empty($string_negara) && empty($string_propinsi)) {
+			return array();
+		}
+		
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'nama ASC');
 		$string_limit = GetStringLimit($param);

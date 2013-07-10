@@ -7,9 +7,21 @@ class home extends CI_Controller {
     
     function index() {
 		$segments = $this->uri->segments;
+		$is_company_link = is_company_link();
+		
+		if ($is_company_link) {
+			preg_match('/(\d+)$/i', $_SERVER['REQUEST_URI'], $macth);
+			$company_id = (isset($macth[1])) ? $macth[1] : 0;
+			if (empty($company_id)) {
+				$this->load->view( 'website/home' );
+			} else {
+				$company = $this->Company_model->get_by_id(array( 'id' => $company_id ));
+				$this->load->view( 'website/company', array( 'company' => $company ));
+			}
+		}
 		
 		// page
-		if (isset($segments[1]) && !empty($segments[1])) {
+		else if (isset($segments[1]) && !empty($segments[1])) {
 			// access admin page
 			if (in_array($segments[1], array('seeker', 'company', 'editor'))) {
 				if ($segments[1] == 'seeker') {
@@ -36,10 +48,32 @@ class home extends CI_Controller {
 					$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $temp[0] ));
 				}
 				
+				// check rss
+				preg_match('/rss$/i', $_SERVER['REQUEST_URI'], $match);
+				$is_rss = (!empty($match[0])) ? true : false;
+				
 				if (count($vacancy) > 0 && @$segments[3] == 'quick') {
 					$this->load->view( 'website/listing_quick', array( 'vacancy' => $vacancy ) );
 				} else if (count($vacancy) > 0) {
 					$this->load->view( 'website/listing_detail', array( 'vacancy' => $vacancy ) );
+				} else if (count($company) > 0 && $is_rss) {
+					// collect data
+					$param_vacancy['company_id'] = $company['id'];
+					$param_vacancy['publish_date'] = $this->config->item('current_datetime');
+					$param_vacancy['vacancy_status_id'] = VACANCY_STATUS_APPROVE;
+					$param_vacancy['sort'] = '[{"property":"id","direction":"DESC"}]';
+					$param_vacancy['limit'] = 25;
+					$array_vacancy = $this->Vacancy_model->get_array($param_vacancy);
+					$array_article = array();
+					foreach ($array_vacancy as $item) {
+						$array_article[] = array( 'title' => $item['nama'], 'link' => $item['vacancy_link'], 'desc' => $item['content'] );
+					}
+					
+					$rss_param['link'] = $company['company_link_rss'];
+					$rss_param['title'] = 'Dunia Karir - '.$company['nama'].' - RSS';
+					$rss_param['array_item'] = $array_article;
+					$rss_param['description'] = 'Dunia Karir - '.$company['nama'].' - RSS';
+					$this->load->view( 'website/common/rss', $rss_param );
 				} else if (count($company) > 0) {
 					$this->load->view( 'website/company', array( 'company' => $company ));
 				}
