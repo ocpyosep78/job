@@ -1,61 +1,434 @@
-SEEKER - PUBLIC RESUME
-done => cek => - Ada setting, jika ("Show my profile to public" == NO), maka tampilkan "tulisan Resume ini tidak tersedia untuk Public"
-done => cek => - Ada setting, jika ("Sekarang saya telah bekerja" == YES), maka tampilkan "worked"
+http://parapekerja.com/search/buku => error desain
 
-SEEKER - My JOB APPLY
-done => cek => - Status ditable akan menjadi view ketika :
-	1. Pemalar mencari lowongan kemudian dia apply : statusnya akan seperti skr (Open)
-	2. Kemudian Perusahaan akan lihat di COMPANY - DOWNLOAD, select lowongan yang terkait dan menemukan pelamar ini
-	3. Ketika Perusahaan melihat public profile dia, maka status nya menjadi viewed
+Show Recent Messages (F3)
 
-COMPANY - SEARCH
-done => cek => - Search error
+Ridwan Amir has signed back in. (2013-07-12 10:46 PM)
 
-EDITOR
-done => cek => - All table, semua yang terbaru ditampilkan diatas
+herry: siang mas
+Ridwan Amir: siang juga mas..
+herry: yuuk silahkan mas
+Ridwan Amir: http://parapekerja.com/resume/revisi.txt  
+Ridwan Amir: gimana...
+herry: sebentar saya baca
+Ridwan Amir: ok
+herry: yang ini dulu
+herry: URL seeker : 
+http://www.parapekerja.com/seeker/publish/index/50124591
+http://www.parapekerja.com/seeker/publish/index/ridwanamir
 
-EDITOR - PELAMAR
-done => cek => - Tambah fitur : Kirim Email, Disable Pelamar, View Public Profile
-done => cek => - Pelamar yang disable oleh admin tidak bisa login / lost password
+menjadi : http://www.parapekerja.com/seeker/50124591/ridwanamir  (nama kalo sama ada masalah nga)
+herry: itu bisa mas
+Ridwan Amir: ok...
+herry: lanjut yaa
+herry: resume : tampilkan baris yang pertama di isi berada pada baris paling bawah, (berurutan)
+Ridwan Amir: waktu entry resume.. yang pertama kali di isi itu berada pada urutan paling bawah..
+Ridwan Amir: jadi berurut..
+Ridwan Amir: kalo nga sperti itu tampilan pendidikan akan tidak urut..
+herry: ooo i see
+herry: ini yang table2 di resume itu yaa ?
+Ridwan Amir: betul..
+herry: Pendidikan, Keahlian / Ketrampilan, dll
+Ridwan Amir: semua tabel di esume
+herry: ok mas seep
+Ridwan Amir: Pendidikan : kalo di edit dia ilang, 
 
-EDITOR - PERUSAHAAN
-done => cek => - Tambah fitur : Kirim Email, Disable Perusahaan, View Company Profile
-done => cek => - Company yang disable oleh admin tidak bisa login / lost password
+Ridwan Amir: kl di edit jadi ilang..
+Ridwan Amir: kl di klik tombol edit
+herry: oiya
+herry: ntar saya cek lagi
+Ridwan Amir: ok..
+Ridwan Amir: yang bahasa : kalo di edit dia ilang, dan combo pasif dan aktif di ganti menjadi Good, Moderate, Poor
+Ridwan Amir: yg combo PASIF dan AKTIF itu di ganti Good, Moderate, Poor
+herry: ok mas seep
+Ridwan Amir: Pengalaman Kerja : itu bukan tambah tabel, tapi EDIT (karena disitu cukup opsi pilihan saja) dan tidak pelu gunakan tabel
+Ridwan Amir: tombolnya bukan untuk tambah.. tampi edit..
+Ridwan Amir: karena pengalaman kerja kl di klik tombol itu dia nambah..
+herry: dibuat seperti Info Tambahan gitu yaa ?
+Ridwan Amir: cukup edit..
+Ridwan Amir: ya betul..
+herry: ok mas
+herry: seep
+Ridwan Amir: tapi field form pengalam kerja tetap seperti itu ya..
+herry: ok mas
+Ridwan Amir: Info Tambahan : Field Memiliki kendaraan roda 2 di resume kok tidak di tampilkan
+ 
+Ridwan Amir: itu tinggal menampilkan field kendaraan di biodata online
+herry: iya
+Ridwan Amir: karena tidak tampil
+Ridwan Amir: Referensi : kok tidak bisa di entry
+herry: tinggal ditampilkan saja
+Ridwan Amir: betul
+Ridwan Amir: untuk referensi masih belum bisa di entry..
+herry: untuk referensi masih belum bisa di entry.. => ok mas, ini saya cek lagi nanti
+Ridwan Amir: ok
+Ridwan Amir: field centang
 
-EDITOR - LOWONGAN
-done => cek => - Column : Tambah end date
-done => cek => - Tambah fitur : Kirim pesan ke email | dan edit lowongan, terutama untuk edit kategory lowongan
+Declaration
 
-EDITOR - MEMBERSHIP
-done => cek => - Tambah Fitur Kirim Pesan
-done => cek => - Untuk Approve / Cancel membership, tambahkan konfirmasi, seperti ketika ada record yang akan dihapus
+I confirm that the information given in this application is true, accurate  and complete and I agree to the use of my information as detailed in the privacy statement.
 
-SUBSCRIBE - MAIL
-done => cek => - Tambah Fitur bisa kirim via email, all company, all seeker, all company & seeker
-done => cek => - kirim pakai html biasa aja
 
-WEBSITE
-done => cek => - Perubahan link dari http://www.parapekerja.com/blog/akuntansi-keuangan jadi http://www.parapekerja.com/jobs/akuntansi-keuangan
+Ridwan Amir: ini field centang..
+Ridwan Amir: untuk bukti bahwa info yang dia masukan itu benar adanya
+herry: i see
+herry: ini di taruh dimana mas ?
+Ridwan Amir: di resume bagian profile aja..
+Ridwan Amir: ato di mana saja bisa..
+Ridwan Amir: cuma di resume..
+herry: mungkin di edit resume mas
+herry: waktu pelamar mau save
+herry: di kasih ini
+Ridwan Amir: boleh..
+Ridwan Amir: itu juga nanti di perusahaan juga ya.
+herry: ok mas seep
+Ridwan Amir: ok lanjut :
+Ridwan Amir: http://www.parapekerja.com/company/vacancy   
+Ridwan Amir: - Tambahkan field "Jobs reff" max 15 karakter, harus diisi job reff itu kurang lebih namanya no lamaran
+Ridwan Amir: di add jobs vagancy..
+Ridwan Amir: tambah 
+Ridwan Amir: - Tambahkan field "Jobs reff" max 15 karakter, harus diisi job reff itu kurang lebih namanya no lamaran
+Ridwan Amir: gimana..
+herry: itu user yang ngisi / sistem mas enaknya ?
+Ridwan Amir: user aja yang isi..
+Ridwan Amir: karena bisa di sesuaikan sama kebtuhan mereka..
+herry: oh ok
+herry: tambah 1 inputan Jobs feff dibawahnya judul yaa ?
+herry: *Jobs reff
+Ridwan Amir: yupp..
+Ridwan Amir: dan tampilkan di sini juga http://www.parapekerja.com/PT-Arahan-Mandiri/44-testing-exam-bos
+Ridwan Amir: di halaman itu...
+Ridwan Amir: Jobs Reff :
+herry: ok mas
+Ridwan Amir: - Pendidikan dibuat multiple select
+Ridwan Amir: itu buat multiple select..
+herry: ok mas
+herry: seep
+Ridwan Amir: pake multiple select yang dulu itu ya..
+Ridwan Amir: mirip mltiple select Position dulu itu..
+herry: ok mas
+Ridwan Amir: - Closed Date = lihat batas berakhir membership, jika melewati batas membershi maka tampilkan pesan "Mohon masukan batas lamaran tidak melebihi dari status membership anda"
 
-WIBSITE - HOME
-done => cek => - Slide :
-	slide 1 : list company
-	slide 2 : list kategori
-done => cek => - Slide diganti Show Hide
+herry: seep
+herry: bisa 
+Ridwan Amir: dan liat kalo dia pasang ke belekang dari tanggal pasang..
+Ridwan Amir: ngerti maksunya..
+Ridwan Amir: dia pasang mundur dari tangal pasang..
+Ridwan Amir: misal hari ini tanggal pasang..
+herry: Closed Date nya ?
+Ridwan Amir: tapi end datenya dia pasang hari kami kemarin..
+Ridwan Amir: itu kan udah salah..
+herry: oh ok mas
+Ridwan Amir: harusnya ke depan
+herry: bisa ditambahkan validasi lagi nanti
+Ridwan Amir: betull..
+herry: oiya mas
+herry: soal waktu
+herry: time server nya mungkin perlu di update
+herry: http://parapekerja.com/time.php
+Ridwan Amir: betul.
+Ridwan Amir: nanti saya update time server karena masih lain waktunya..
+herry: ok mas seep
+herry: lanjut
+Ridwan Amir: http://www.parapekerja.com/company/download/index/44
+Ridwan Amir: itu opsi opsi Opsi : Copy, csv, excel, pdf itu tampilanya error coba liat 
+Ridwan Amir: tampilanya error..
+herry: kolom paling kanan itu yaa mas ?
+Ridwan Amir: betul..
+herry: oh ok mas
+herry: saya perbaiki saja itu
+Ridwan Amir: seep..
+Ridwan Amir: lanjut : subscribe kategori..
+Ridwan Amir: subscribe : itu di buat di menu subscibe di, buat sperti ini pilih kategori model multiple select, danmaksimal di seletct 5, jika ada update dari kategori yang dia pilih tersebut maka kirimkan subscribe ke email dia dengan format seperti berikut :
 
-WEBSITE - HALAMAN TAG
-done => cek => - Tag Malang punya page di : http://www.parapekerja.com/tags/malang
-done => cek => - isinya semua article / event yang punya tag Malang
+Judul
+Nama perusahan
+Lokasi
+Ridwan Amir: ini di seeker..
+herry: bentar
+herry: ndak ini dulu mas url searching ?
+herry: biar urut 
+Ridwan Amir: oo iya lupa..
+Ridwan Amir: hehehe
+herry: seep
+Ridwan Amir: subscribe : itu di buat di menu subscibe di, buat sperti ini pilih kategori model multiple select, danmaksimal di seletct 5, jika ada update dari kategori yang dia pilih tersebut maka kirimkan subscribe ke email dia dengan format seperti berikut :
 
-WEBSITE - RSS
-done => cek => - Kategori
-done => cek => - Sub Kategory
-done => cek => - Company
-done => cek => - Blog
-done => cek => - Event
+Judul
+Nama perusahan
+Lokasi
+Ridwan Amir: subscribe : itu di buat di menu subscibe di, buat sperti ini pilih kategori model multiple select, danmaksimal di seletct 5, jika ada update dari kategori yang dia pilih tersebut maka kirimkan subscribe ke email dia dengan format seperti berikut :
 
-WEBSITE - LOGIN PAGE
-done => cek => - Jika user sudah login, maka akses ke login page tidak ada, tampilkan saja dashboard & logout di header
+Judul
+Nama perusahan
+Lokasi
+Ridwan Amir: yang ini url searching : itu bisa nga menampilkan kata kunci, misal parapekerja.com/search/keyword
 
-SEEKER - EXAM
-cek => - backup : Exam.png
+Ridwan Amir: itu bisa pake format gitu nga..
+Ridwan Amir: karena berguna buat waktu update status di facebook..
+herry: sebentar
+herry: saya cek dulu
+herry: ok mas 
+herry: bisa
+Ridwan Amir: seep..
+Ridwan Amir: dan tampilkan keywor yang di cari di bagian atas daftar pencarian..
+Ridwan Amir: "hasil pencarian : kedyword"
+herry: ok mas
+Ridwan Amir: ok lanjut 
+herry: yups
+Ridwan Amir: subscribe : itu di buat di menu subscibe di, buat sperti ini pilih kategori model multiple select, danmaksimal di seletct 5, jika ada update dari kategori yang dia pilih tersebut maka kirimkan subscribe ke email dia dengan format seperti berikut :
+
+Judul
+Nama perusahan
+Lokasi
+Ridwan Amir: ngerti..
+herry: belum 
+herry: masih mencoba mengerti
+Ridwan Amir: di seeker..
+Ridwan Amir: buat combo multiple select kategori...
+Ridwan Amir: dan jika dia sudah select dan max lima kategori..
+Ridwan Amir: NANTI jika ada update content pada kategori tersebut...
+Ridwan Amir: maka akan terkirim secara otomatis subscribe ke email dia 
+Ridwan Amir: format seperti ini :
+Ridwan Amir: Judul
+Nama perusahan
+Lokasi
+herry: ooo boleh2 mas
+herry: ngerti skr
+herry: di seeker tambah 1 modul lagi aja
+herry: subscribe
+herry: disitu tempat update kategori nya
+Ridwan Amir: yup karena model seeker yang skarang itu masih manual..
+Ridwan Amir: dan itu jangan di hapus..
+Ridwan Amir: mungkin masih bisa saya custom nanti..
+Ridwan Amir: dengan keperluan saya..
+herry: ok mas
+Ridwan Amir: ok lanjut ke exam kemarin..
+herry: ok mas
+Ridwan Amir: http://parapekerja.com/resume/exam.png
+Start Photo Sharing
+Ridwan Amir: exam itu para pesertanya kadang nga tampil..
+Ridwan Amir: dan saya cuma sekali bisa..
+Ridwan Amir: dan jika model sperti itu akan ribet jika lebih dari 500 peserta..
+Ridwan Amir: exam.
+Ridwan Amir: mungkin di set dari opsi lebih mudah..
+herry: bentar mas
+Ridwan Amir: yup
+herry: exam itu para pesertanya kadang nga tampil.. => ini Pilih Peserta kadang ngak keluar ?
+Ridwan Amir: betul.
+herry: maksudnya pelamarnya ndak ada gitu ?
+Ridwan Amir: yang keluar cuma semua aja..
+Ridwan Amir: iya..
+herry: ooo yang kemarin cuma pelamar yang sampai interview saja yang ada disini
+Ridwan Amir: yang keluar cuma "semua" aja
+Ridwan Amir: dan saya coba pilih semua..
+Ridwan Amir: itu not work..
+Ridwan Amir: waktu saya submit..
+Ridwan Amir: mungkin yang interview ya intervew aja ya..
+Ridwan Amir: nga sampe exam..
+herry: tanya konsep mas
+herry: misal pean bikin lowongan
+Ridwan Amir: betul
+herry: trus saya lamar lowongan itu
+herry: trus pean itu bisa langsung kirim exam buat saya yaa ?
+Ridwan Amir: bisa..
+Ridwan Amir: itu munkin buka isi dari exam.
+Ridwan Amir: bisa juga cuma pertanyaan biasa yang harus di lengkapi..
+Ridwan Amir: jadi mungkin bisa di buat berdiri sendiri..
+Ridwan Amir: untuk "status Lamaran" cukup sampe interview.. (jika di klik send form interview)
+Ridwan Amir: DAN untuk exam berdiri sendiri..
+Ridwan Amir: di opsi tambahkan opsi exam..
+herry: oh ok mas
+herry: seep
+Ridwan Amir: dan tambahkan juga status kolom sendiri " status exam" 
+Ridwan Amir: ngerti.
+Ridwan Amir: untuk konsepnya..
+herry: ini di sini yaa ?
+herry: http://parapekerja.com/company/download/index/4
+Ridwan Amir: ya betull..
+Ridwan Amir: dan liat di sebelah view slide ada tambahan tombol send to all..
+Ridwan Amir: gimana..
+herry: sebentar mas
+herry: " view slide " ?
+Ridwan Amir: di gambar..
+herry: yups
+herry: ketemu mas
+Ridwan Amir: mungkin bisa di buat.. 
+Ridwan Amir: add exam untuk posisi tersebut..
+Ridwan Amir: dan di samping ada tombol send exam to all.
+Ridwan Amir: dan juga di tabel opsi tambahakn opsi exam..
+Ridwan Amir: biar mudah..
+Ridwan Amir: itu untuk USER EXPERIENCE aja..
+Ridwan Amir: gimana..
+herry:   dan di samping ada tombol send exam to all. => ini nanti kan juga link yang sama ke exam mas ?
+Ridwan Amir: itu link add exam..: maksunya soal di add dulu..
+Ridwan Amir: nah setelah di add kan tinggal di kirim kirim ke sapa aja..
+Ridwan Amir: mungkin gitu..
+Ridwan Amir: karena field http://parapekerja.com/resume/exam.png  disini itu dihilangkan..
+
+Start Photo Sharing
+herry: sebentar mas saya ada telp
+Ridwan Amir: ok.. hehehe..
+herry: di telp bos 
+herry: yuuk mas lanjut
+Ridwan Amir: heheh
+Ridwan Amir: oo gini saya jelaskan alur user experiance dari form ya
+Ridwan Amir: disitu ada tombol add exam...
+Ridwan Amir: formnya seperti ini..
+Ridwan Amir: untuk pilih peserta cukup
+Ridwan Amir: formnya seperti ini
+Ridwan Amir: http://parapekerja.com/resume/exam.png
+Start Photo Sharing
+Ridwan Amir: untuk combo pilih pelamar itu di hilangkan...
+Ridwan Amir: sampe disini ngerti..
+herry: ngerti mas
+Ridwan Amir: jika di submit berarti exam untuk posisi texting exam udah masuk ya..
+herry: iya, untuk posisi testing skr memiliki exam
+Ridwan Amir: untuk urusan pilih sapa saja yang akan exam, cukup dari opsi saja set tombol exam...
+Ridwan Amir: jika di tekan tombol exam di opsi baris ridwan maka ridwan akan ikut exam..
+herry: ooo i see
+Ridwan Amir: dan tombol send exam to all di samping add itu adalah..
+Ridwan Amir: kirim semua exam kepada member yang posisi testing..
+herry: ok mas
+Ridwan Amir: seepp..
+Ridwan Amir: dan tambhkan kolom status exam juga..
+Ridwan Amir: biar keliatan statusnya..
+herry: ok mas
+Ridwan Amir: DAN STATUS LAMARAN CUKUp sampe di interview..
+Ridwan Amir: konsep dan user experience dapat ya..
+herry: yups
+herry: wes ngerti mas
+herry: lanjut
+Ridwan Amir: seepp..
+Ridwan Amir: untuk bagian halaman exam..
+Ridwan Amir: cuma masalah waktu aja.. coba baca bagian bawah..
+herry: -7:-7:-4
+Ridwan Amir: betull 
+Ridwan Amir: itu nga tau exam jam timernya berapa lama..
+Ridwan Amir: kalo diset 1 jam
+Ridwan Amir: kalo udah 00:00:00 ITU tombol upload ilang
+Ridwan Amir: sperti itu
+herry: ok mas
+herry: saya cek lagi nanti
+Ridwan Amir: dan 1 lagi...
+Ridwan Amir: buatkan 1 halaman yang sama persis untuk sample..
+Ridwan Amir: saya kemarin gemetaran juga,, masuk halaman ini..
+Ridwan Amir: takut error... ato bermasalah..
+Ridwan Amir: halaman sama persis..
+Ridwan Amir: untuk sample..
+Ridwan Amir: oo yang ini biar saja aja mas, kayaknya saya bisa..
+Ridwan Amir: UNTUK EXAM dapat ya...
+herry: yups
+Ridwan Amir: yang terkhir membership..
+Ridwan Amir: buat sperti ini
+Ridwan Amir: http://parapekerja.com/resume/membership.png
+Start Photo Sharing
+Ridwan Amir: gimana..
+herry: yang kotak merah itu
+Ridwan Amir: itu hasil yang di pilih..
+Ridwan Amir: tampilkan di bagian bawah
+herry: misal saya klik 1 Year, itu langsung refresh yaa kotak merah nya ?
+Ridwan Amir: betul..
+Ridwan Amir: kurang lebih detail pesanan..
+Ridwan Amir: mirip itu..
+herry: ok mas bisa
+Ridwan Amir: jika udah di confirm sama admin kotak merah akan hilang..
+herry: nah itu saya yang beluh ngerti
+herry: misal saya company
+Ridwan Amir: iya
+herry: di membership
+herry: saya pilih 1 Month
+herry: lalu kotak merah itu keluar
+herry: kemudian saya save => ok
+herry: lalu ?
+Ridwan Amir: saya pilih 1 Month
+Ridwan Amir: muncul floating : yes or not
+Ridwan Amir: jika dia ok maka tampilkan kotak merah..
+Ridwan Amir: kl tanpa notifikasi apakah anda yakin dengan pilihan anda itu seenaknya di klik klik...
+Ridwan Amir: notifikasi itu mirip notifikasi delete.. trus muncul floating OK apa  NO..
+Ridwan Amir: yang floating itu ngerti,,
+herry: iya
+herry: biar user ndak sebarangan nge klik
+Ridwan Amir: yupp.
+Ridwan Amir: untuk alurnya gini..
+Ridwan Amir: pilih month..
+Ridwan Amir: eh disitu ada save ya..
+Ridwan Amir: atobuat gimana...
+herry: keknya saya sudah tau mas alur nya
+Ridwan Amir: tapi user nga sembarang klik, karena masuk ke admin
+Ridwan Amir: nah setelah dia ok baru muncul kotak merah
+herry: 1. User Pilih paket
+2. User klik Save
+3. Confirm pemilihan paket
+4. jika confirm = ya, muncul kotak merah itu sampai ada approvement dari admin
+Ridwan Amir: seep..
+herry: kotak merah akan muncul sampai admin melakukan konfirmasi
+Ridwan Amir: mantap..
+herry: seep
+Ridwan Amir: ok done..
+herry: ok mas
+Ridwan Amir: yang kecil kecil nanti saya sms..
+Ridwan Amir: aku tranfer 1 juta lagi ya..
+herry: boleh
+Ridwan Amir: oh iya ini kalo sukses mas masih dapat kok... hehehe..
+Ridwan Amir: bentar..
+herry: 
+herry: ini mas rek nya
+herry: Nomor Rekening : 1230379846
+Nama : HERRY SATRIO
+Ridwan Amir: ok sip mas..
+Ridwan Amir: A8ADA5BD-BDDF-067A-CABC-2765D7EB0F7A
+TUJUAN TRANSFER
+
+:
+1230379846
+NAMA
+
+:
+HERRY SATRIO
+JUMLAH
+
+:
+
+Rp. 1.000.000,00
+BERITA
+
+:
+-
+
+:
+-
+JENIS TRANSFER
+
+:
+TRANSFER SEKARANG
+herry: makasih mas 
+Ridwan Amir: makasih juga mas..
+herry: ntar saya sms klo udah ok revisinya
+Ridwan Amir: ok seep.. 
+Ridwan Amir: lanjut kerja mas..
+Ridwan Amir is typing...
+Ridwan Amir: terima kasih
+herry: ok mas
+herry: silahkan
+herry: sama2 mas 
+
+herry: makasih mas 
+Ridwan Amir: makasih juga mas..
+herry: ntar saya sms klo udah ok revisinya
+Ridwan Amir: ok seep.. 
+Ridwan Amir: lanjut kerja mas..
+Ridwan Amir: terima kasih
+herry: ok mas
+herry: silahkan
+herry: sama2 mas 
+Ridwan Amir: oh iya mas.. 
+Ridwan Amir: itu meber ship nanti di coba sendiri karena kayaknya not work..
+herry: ok mas
+herry: kemarin testing nya kurang keknya
+Ridwan Amir: dan 1 lagi.. meber yang free tidak bisa pake menu http://www.parapekerja.com/company/search
+Ridwan Amir: find resume..
+herry: i see
+Ridwan Amir: ngerti ya..
+Ridwan Amir: seep 
+Ridwan Amir is typing...
+Ridwan Amir: lanjut..
+herry: ok mas 
