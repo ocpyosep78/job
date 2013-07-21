@@ -1,32 +1,22 @@
 <?php
 	$apply_id = $_GET['id'];
+	$seeker = $this->Seeker_model->get_session();
 	$apply = $this->Apply_model->get_by_id(array( 'id' => $apply_id ));
+	$exam = $this->Exam_model->get_by_id(array( 'vacancy_id' => $apply['vacancy_id'] ));
 	$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $apply['vacancy_id'] ));
-	$exam = $this->Exam_model->get_by_id(array( 'apply_id' => $apply_id ));
-	$total_time = $this->Exam_model->get_total_time($exam['exam_time']);
-	
-	// is exam already start ?
-	$is_start = (empty($exam['exam_time_end'])) ? 0 : 1;
-	$is_over = false;
-	if ($is_start) {
-		$current_time = GetUnixTime($this->config->item('current_datetime'));
-		$end_time = GetUnixTime($exam['exam_time_end']);
-		
-		$total_time = ($end_time + $total_time) - $current_time;
-		$is_over = ($total_time <= 0) ? true : $is_over;
-	}
-	
-	// add download time
-	$total_time = $total_time + (3 * 60);
+	$is_start = $this->Seeker_Exam_model->is_start(array( 'vacancy_id' => $apply['vacancy_id'], 'seeker_id' => $seeker['id'] ));
+	$is_over = $this->Seeker_Exam_model->is_over(array( 'vacancy_id' => $apply['vacancy_id'], 'seeker_id' => $seeker['id'] ));
+	$time_left = $this->Seeker_Exam_model->get_time_left(array( 'vacancy_id' => $apply['vacancy_id'], 'seeker_id' => $seeker['id'] ));
 ?>
 
 <?php $this->load->view( 'panel/common/meta', array( 'title' => $vacancy['nama'] ) ); ?>
 <body style="background: #EFE4B0;">
 <div style="width: 800px; margin: 0 auto;">
 	<div class="hide">
-		<input type="hidden" name="total_time" value="<?php echo $total_time; ?>" />
+		<input type="hidden" name="time_left" value="<?php echo $time_left; ?>" />
 		<input type="hidden" name="exam_id" value="<?php echo $exam['id']; ?>" />
 		<input type="hidden" name="is_start" value="<?php echo $is_start; ?>" />
+		<div class="cnt-exam"><?php echo json_encode($exam); ?></div>
 		<iframe name="iframe_exam_file" src="<?php echo base_url('panel/upload?callback=exam_file&filetype=document'); ?>"></iframe>
 	</div>
 	
@@ -68,23 +58,33 @@ exam_file = function(p) {
 }
 
 $(document).ready(function() {
+	// exam
+	var exam_raw = $('.cnt-exam').text();
+	eval('exam = ' + exam_raw);
+	
 	function set_time() {
-		var total_time = $('[name="total_time"]').val();
-		var hour = Math.floor((total_time / 3600));
-		var minute = Math.floor(((total_time % 3600) / 60));
-		var second = total_time % 60;
+		var time_left = $('[name="time_left"]').val();
+		var hour = Math.floor((time_left / 3600));
+		var minute = Math.floor(((time_left % 3600) / 60));
+		var second = time_left % 60;
 		
 		// fix view
 		hour = hour.toString().strpad(2, '0', 'STR_PAD_LEFT');
 		minute = minute.toString().strpad(2, '0', 'STR_PAD_LEFT');
 		second = second.toString().strpad(2, '0', 'STR_PAD_LEFT');
 		var time_text = hour + ':' + minute + ':' + second;
-		$('.cnt-time').text(time_text);
+		
+		// set display
+		if (exam.exam_time == 0) {
+			$('.cnt-time').text('Bebas');
+		} else {
+			$('.cnt-time').text(time_text);
+		}
 	}
 	
 	function countdown() {
-		var total_time = $('[name="total_time"]').val() - 1;
-		$('[name="total_time"]').val(total_time);
+		var time_left = $('[name="time_left"]').val() - 1;
+		$('[name="time_left"]').val(time_left);
 		set_time();
 	}
 	

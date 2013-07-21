@@ -34,6 +34,8 @@ class Seeker_Exp_model extends CI_Model {
        
         if (isset($param['id'])) {
             $select_query  = "SELECT * FROM ".SEEKER_EXP." WHERE id = '".$param['id']."' LIMIT 1";
+        } else if (isset($param['seeker_id'])) {
+            $select_query  = "SELECT * FROM ".SEEKER_EXP." WHERE seeker_id = '".$param['seeker_id']."' LIMIT 1";
         } 
        
         $select_result = mysql_query($select_query) or die(mysql_error());

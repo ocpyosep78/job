@@ -190,7 +190,15 @@
 
 <?php if (!empty($seeker_addon['text_clean'])) { ?>
 <tr class="TRHeader"><td colspan="6" class="ResumeHdr" valign="top"><b>Info Tambahan</b></td></tr>
-<tr><td colspan="6" class="tdRight" valign="top"><?php echo $seeker_addon['content']; ?></td></tr>
+<tr><td colspan="6" class="tdRight" valign="top">
+	<?php echo $seeker_addon['content']; ?>
+	
+	<?php if ($seeker_addon['kendaraan'] == 1) { ?>
+	<div>Saya memiliki kendaraan roda 2</div>
+	<?php } else { ?>
+	<div>Saya tidak memiliki kendaraan roda 2</div>
+	<?php } ?>
+</td></tr>
 <tr><td colspan="6" valign="top">&nbsp;</td></tr>
 <?php } ?>
 

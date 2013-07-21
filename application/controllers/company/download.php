@@ -18,6 +18,17 @@ class download extends COMPANY_Controller {
 		} else if ($action == 'update_mail') {
 			$param_update = array( 'id' => $_POST['id'], 'apply_status_id' => $_POST['apply_status_id'] );
 			$result = $this->Apply_model->update($param_update);
+		} else if ($action == 'update_exam') {
+			$param_apply = array( 'id' => $_POST['apply_id'], 'exam_status_id' => EXAM_OPEN );
+			$result = $this->Apply_model->update($param_apply);
+		} else if ($action == 'update_exam_all') {
+			$array_apply = $this->Apply_model->get_array(array( 'vacancy_id' => $_POST['vacancy_id'] ));
+			foreach ($array_apply as $apply) {
+				if (empty($apply['exam_status_id'])) {
+					$param_apply = array( 'id' => $apply['id'], 'exam_status_id' => EXAM_OPEN );
+					$result = $this->Apply_model->update($param_apply);
+				}
+			}
 		}
 		
 		echo json_encode($result);

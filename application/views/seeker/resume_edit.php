@@ -146,6 +146,16 @@
 					</div>
 				</div>
 				
+				<div class="control-group">
+					<div class="controls" style="margin: 0; padding: 25px 0 0 0;">
+						<label class="checkbox">
+							<input type="checkbox" name="declaration" value="1" />
+							Declaration<br />
+							I confirm that the information given in this application is true, accurate  and complete and I agree to the use of my information as detailed in the privacy statement.
+						</label>
+					</div>
+				</div>
+				
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary save">Save changes</button>
 					<a href="<?php echo base_url('seeker/resume'); ?>" class="btn">Resume</a>
@@ -185,6 +195,8 @@
 	
 	$('#form-resume').submit(function() {
 		if (! $('#form-resume').valid()) {
+			return false;
+		} else if (! $('[name="declaration"]').is(":checked")) {
 			return false;
 		}
 		

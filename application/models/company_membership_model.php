@@ -56,8 +56,10 @@ class Company_Membership_model extends CI_Model {
     function get_array($param = array()) {
         $array = array();
 		
+		$string_company = (!empty($param['company_id'])) ? "AND CompanyMembership.company_id = '".$param['company_id']."'" : "";
+		$string_status = (!empty($param['status'])) ? "AND CompanyMembership.status = '".$param['status']."'" : "";
 		$string_filter = GetStringFilter($param, @$param['column']);
-		$string_sorting = GetStringSorting($param, @$param['column'], 'is_public ASC');
+		$string_sorting = GetStringSorting($param, @$param['column'], 'date_request DESC');
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
@@ -66,7 +68,7 @@ class Company_Membership_model extends CI_Model {
 			FROM ".COMPANY_MEMBERSHIP." CompanyMembership
 			LEFT JOIN ".COMPANY." Company ON Company.id = CompanyMembership.company_id
 			LEFT JOIN ".MEMBERSHIP." Membership ON Membership.id = CompanyMembership.membership_id
-			WHERE 1 $string_filter
+			WHERE 1 $string_company $string_status $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";
@@ -118,5 +120,36 @@ class Company_Membership_model extends CI_Model {
 		}
 		
 		return $row;
+	}
+	
+	function get_membership_request($param) {
+		$param_membership['company_id'] = $param['company_id'];
+		$param_membership['status'] = 'pending';
+		$param_membership['limit'] = 1;
+		$array_membership = $this->get_array($param_membership);
+		
+		$result = (count($array_membership) > 0) ? $array_membership[0] : array();
+		if (count($result) == 0) {
+			return array();
+		}
+		
+		// membership
+		$membership = $this->Company_model->get_membership_detail(array( 'id' => $param['company_id'] ));
+		
+		// add date
+		$current_date = $this->config->item('current_date');
+		$membership_date = (empty($membership['membership_date'])) ? $current_date : $membership['membership_date'];
+		if (ConvertToUnixTime($membership_date) < ConvertToUnixTime($current_date)) {
+			$membership_date = $current_date;
+		}
+		$result['membership_date'] = AddDate($membership_date, $result['date_count']);
+		$result['post_count'] = $result['post_count'] + $membership['vacancy_left'];
+		
+		return $result;
+	}
+	
+	function set_cancel($param) {
+		$update_query  = "UPDATE ".COMPANY_MEMBERSHIP." SET status = 'cancel' WHERE company_id = ".$param['company_id']." AND status = 'pending'";
+		$update_result = mysql_query($update_query) or die(mysql_error());
 	}
 }

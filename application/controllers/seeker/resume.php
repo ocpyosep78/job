@@ -17,23 +17,19 @@ class resume extends SEEKER_Controller {
 	function grid() {
 		$grid_name = $_POST['grid_name'];
 		if ($grid_name == 'seeker_expert') {
-			$_POST['column'] = array( 'content' );
+			$_POST['column'] = array( 'id', 'content' );
 			$array = $this->Seeker_Expert_model->get_array($_POST);
 			$count = $this->Seeker_Expert_model->get_count();
 		} else if ($grid_name == 'seeker_education') {
-			$_POST['column'] = array( 'jenjang_nama', 'nama_sekolah' );
+			$_POST['column'] = array( 'id', 'jenjang_nama', 'nama_sekolah' );
 			$array = $this->Seeker_Education_model->get_array($_POST);
 			$count = $this->Seeker_Education_model->get_count();
-		} else if ($grid_name == 'seeker_exp') {
-			$_POST['column'] = array( 'content' );
-			$array = $this->Seeker_Exp_model->get_array($_POST);
-			$count = $this->Seeker_Exp_model->get_count();
 		} else if ($grid_name == 'seeker_language') {
-			$_POST['column'] = array( 'nama', 'lisan', 'tulis' );
+			$_POST['column'] = array( 'id', 'nama', 'lisan', 'tulis' );
 			$array = $this->Seeker_Language_model->get_array($_POST);
 			$count = $this->Seeker_Language_model->get_count();
 		} else if ($grid_name == 'seeker_reference') {
-			$_POST['column'] = array( 'nama' );
+			$_POST['column'] = array( 'id', 'nama' );
 			$array = $this->Seeker_Reference_model->get_array($_POST);
 			$count = $this->Seeker_Reference_model->get_count();
 		}
@@ -74,10 +70,10 @@ class resume extends SEEKER_Controller {
 			$result = $this->Seeker_Education_model->delete($_POST);
 		}
 		
-		else if ($action == 'update_seeker_exp') {
+		else if ($action == 'get_seeker_exp') {
+			$result = $this->Seeker_Exp_model->get_by_id(array( 'seeker_id' => $_POST['seeker_id'] ));
+		} else if ($action == 'update_seeker_exp') {
 			$result = $this->Seeker_Exp_model->update($_POST);
-		} else if ($action == 'delete_seeker_exp') {
-			$result = $this->Seeker_Exp_model->delete($_POST);
 		}
 		
 		else if ($action == 'update_seeker_language') {

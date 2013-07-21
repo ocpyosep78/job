@@ -59,6 +59,10 @@
 					<div class="controls"><input type="text" name="nama" id="input-nama" class="input-xxlarge" data-rule-required="true" /></div>
 				</div>
 				<div class="control-group">
+					<label for="input-job_reff" class="control-label">Jobs reff</label>
+					<div class="controls"><input type="text" name="job_reff" id="input-job_reff" class="input-xxlarge" /></div>
+				</div>
+				<div class="control-group">
 					<label for="input-kategori_id" class="control-label">Kategori</label>
 					<div class="controls"><select name="kategori_id" id="input-propinsi_id" class="input-xxlarge">
 						<?php echo ShowOption(array( 'Array' => $array_kategori, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
@@ -94,7 +98,7 @@
 				</div>
 				<div class="control-group">
 					<label for="input-jenjang_id" class="control-label">Pendidikan</label>
-					<div class="controls"><select name="jenjang_id" id="input-jenjang_id" class="input-xxlarge">
+					<div class="controls"><select name="jenjang_id" id="input-jenjang_id" class="select2-me input-block-level" style="width: 550px;" multiple="multiple">
 						<?php echo ShowOption(array( 'Array' => $array_jenjang, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
 					</select></div>
 				</div>
@@ -176,6 +180,7 @@
 					$('#form-vacancy')[0].reset();
 					$('#form-vacancy [name="id"]').val(0);
 					$('#form-vacancy [name="company_id"]').val(company.id);
+					$('#form-vacancy [name="jenjang_id"]').val([]).select2();
 					$('#cnt-company-name').html(company.nama);
 					
 					page.show_editor();
@@ -198,10 +203,11 @@
 						$('#form-vacancy [name="kategori_id"]').val(record.kategori_id);
 						$('#form-vacancy [name="propinsi_id"]').val(record.propinsi_id);
 						$('#form-vacancy [name="vacancy_status_id"]').val(record.vacancy_status_id);
-						$('#form-vacancy [name="jenjang_id"]').val(record.jenjang_id);
+						$('#form-vacancy [name="jenjang_id"]').val(record.jenjang_id.split(',')).select2();
 						$('#form-vacancy [name="jenis_pekerjaan_id"]').val(record.jenis_pekerjaan_id);
 						$('#form-vacancy [name="pengalaman_id"]').val(record.pengalaman_id);
 						$('#form-vacancy [name="nama"]').val(record.nama);
+						$('#form-vacancy [name="job_reff"]').val(record.job_reff);
 						$('#form-vacancy [name="content"]').val(record.content);
 						$('#form-vacancy [name="gaji"]').val(record.gaji);
 						$('#form-vacancy [name="publish_date"]').val(Func.SwapDate(record.publish_date));
@@ -250,6 +256,7 @@
 			param.action = 'update';
 			param.publish_date = Func.SwapDate(param.publish_date);
 			param.close_date = Func.SwapDate(param.close_date);
+			param.jenjang_id = param.jenjang_id.join(',');
 			
 			Func.ajax({ url: web.host + 'company/vacancy/action', param: param, callback: function(result) {
 				Func.show_notice({ text: result.message });

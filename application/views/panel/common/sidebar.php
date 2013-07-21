@@ -14,10 +14,13 @@
 			<li><a href="<?php echo base_url('seeker/apply'); ?>">My Jobs Applied</a></li>
 			<li><a href="<?php echo base_url('seeker/lamaran'); ?>">Surat Lamaran</a></li>
 			<li><a href="<?php echo base_url('seeker/sent'); ?>">Kirim Lamaran</a></li>
+			<li><a href="<?php echo base_url('seeker/subscribe'); ?>">Subscribe</a></li>
 			<li><a href="<?php echo base_url('seeker/setting'); ?>">Setting</a></li>
 		</ul>
 	</div>
 	<?php } else if ($this->Company_model->is_login()) { ?>
+	<?php $company = $this->Company_model->get_session(); ?>
+	<?php $membership = $this->Company_model->get_membership_status($company); ?>
 	<div class="subnav">
 		<div class="subnav-title">
 			<a href="#" class='toggle-subnav'><i class="icon-angle-down"></i><span>Perusahaan</span></a>
@@ -26,7 +29,9 @@
 			<li><a href="<?php echo base_url('company/home'); ?>">Dashboard</a></li>
 			<li><a href="<?php echo base_url('company/post'); ?>">Create Page</a></li>
 			<li><a href="<?php echo base_url('company/vacancy'); ?>">Add Jobs Position</a></li>
+			<?php if ($membership) { ?>
 			<li><a href="<?php echo base_url('company/search'); ?>">Find Resume</a></li>
+			<?php } ?>
 			<li><a href="<?php echo base_url('company/download'); ?>">Download</a></li>
 			<li><a href="<?php echo base_url('company/profile'); ?>">Profile</a></li>
 			<li><a href="<?php echo base_url('company/membership'); ?>">Membership</a></li>

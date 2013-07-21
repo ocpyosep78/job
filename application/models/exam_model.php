@@ -4,9 +4,9 @@ class Exam_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array( 'id', 'apply_id', 'exam_time', 'exam_time_end', 'exam_file', 'email', 'status' );
+        $this->field = array( 'id', 'vacancy_id', 'exam_time', 'exam_file', 'email' );
     }
-
+	
     function update($param) {
         $result = array();
        
@@ -34,8 +34,8 @@ class Exam_model extends CI_Model {
        
         if (isset($param['id'])) {
             $select_query  = "SELECT * FROM ".EXAM." WHERE id = '".$param['id']."' LIMIT 1";
-        } else if (isset($param['apply_id'])) {
-            $select_query  = "SELECT * FROM ".EXAM." WHERE apply_id = '".$param['apply_id']."' LIMIT 1";
+        } else if (isset($param['vacancy_id'])) {
+            $select_query  = "SELECT * FROM ".EXAM." WHERE vacancy_id = '".$param['vacancy_id']."' LIMIT 1";
         }
        
         $select_result = mysql_query($select_query) or die(mysql_error());
@@ -106,5 +106,11 @@ class Exam_model extends CI_Model {
 		}
 		
 		return $row;
+	}
+	
+	function has_exam($param) {
+		$exam = $this->get_by_id(array( 'vacancy_id' => $param['vacancy_id'] ));
+		$has_exam = (count($exam) == 0) ? false : true;
+		return $has_exam;
 	}
 }

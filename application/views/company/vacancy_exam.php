@@ -5,17 +5,14 @@
 	// prepare data
 	$company = $this->Company_model->get_session();
 	$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $vacancy_id ));
+	$exam = $this->Exam_model->get_by_id(array( 'vacancy_id' => $vacancy_id ));
 	$array_time[] = array( 'nama' => 'Bebas', 'value' => '0' );
 	$array_time[] = array( 'nama' => '1 Jam', 'value' => '1H' );
 	$array_time[] = array( 'nama' => '2 Jam', 'value' => '2H' );
 	$array_time[] = array( 'nama' => '3 Jam', 'value' => '3H' );
 	
-	// seeker
-	$param_apply = array(
-		'vacancy_id' => $vacancy_id, 'is_delete' => 0, 'limit' => 1000,
-		'apply_status_id' => APPLY_STATUS_INTERVIEW
-	);
-	$array_apply = $this->Apply_model->get_array_seeker($param_apply);
+	// link
+	$link_apply = base_url('company/download/index/'.$vacancy_id);
 ?>
 
 <?php $this->load->view( 'panel/common/meta', array( 'title' => 'Exam' ) ); ?>
@@ -30,6 +27,7 @@
 		<div class="box-content">
 			<div class="hide">
 				<div class="cnt-vacancy"><?php echo json_encode($vacancy); ?></div>
+				<div class="cnt-exam"><?php echo json_encode($exam); ?></div>
 				<iframe name="iframe_exam_file" src="<?php echo base_url('panel/upload?callback=exam_file&filetype=document'); ?>"></iframe>
 			</div>
 			
@@ -42,12 +40,6 @@
 				<div class="control-group">
 					<label class="control-label">Vacancy</label>
 					<div class="controls"><label class="control-label" style="width: 400px;"><?php echo $vacancy['nama']; ?></label></div>
-				</div>
-				<div class="control-group">
-					<label for="input-nama" class="control-label">Pilih Peserta</label>
-					<div class="controls"><select name="apply_id" class="input-xlarge">
-						<?php echo ShowOption(array( 'Array' => $array_apply, 'ArrayID' => 'id', 'ArrayTitle' => 'full_name', 'OptAll' => true )); ?>
-					</select></div>
 				</div>
 				<div class="control-group">
 					<label for="input-subkategori_id" class="control-label">Waktu</label>
@@ -70,7 +62,7 @@
 				
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">Save changes</button>
-					<button type="button" class="btn form-close">Cancel</button>
+					<a href="<?php echo $link_apply; ?>" class="btn">Cancel</a>
 				</div>
 			</form>
 		</div>
@@ -87,6 +79,16 @@
 		// vacancy
 		var raw = $('.cnt-vacancy').text();
 		eval('var vacancy = ' + raw);
+		
+		// exam
+		var raw = $('.cnt-exam').text();
+		eval('var exam = ' + raw);
+		if (exam.id != null) {
+			$('[name="id"]').val(exam.id);
+			$('[name="email"]').val(exam.email);
+			$('[name="exam_time"]').val(exam.exam_time);
+			$('[name="exam_file"]').val(exam.exam_file);
+		}
 		
 		$('#form-exam').submit(function() {
 			if (! $('#form-exam').valid()) {

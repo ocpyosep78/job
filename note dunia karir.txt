@@ -1,30 +1,31 @@
 SEEKER & COMPANY
 
 Update Profile
-- Untuk update Profile (Seeker & Company) dibawahnya dikasih :
+cek => - Untuk update Profile (Seeker & Company) dibawahnya dikasih :
 
 Declaration
 
 I confirm that the information given in this application is true, accurate  and complete and I agree to the use of my information as detailed in the privacy statement.
 
 
+
 SEEKER
 
 Seeker CV
-- link nya diganti dengan :
-- http://www.parapekerja.com/seeker/50124591/ridwanamir
+cek => - link nya diganti dengan :
+cek => - http://www.parapekerja.com/seeker/50124591/ridwanamir
 
 Seeker Dashboard
-- Record yang pertama di isi muncul dibaris paling bawah, jadi record terbaru akan muncul diatas
-- Ada bug, ada record yang di edit jadi hilang record nya
-- CRUD Bahasa (combo pasif dan aktif di ganti menjadi Good, Moderate, Poor)
-- Pengalaman Kerja itu sama seperti : Info Tambahan, cukup edit saja tapi formnya tetap
-- Kendaraan ditampilkan di biodata & CV
-- Referensi tidak bisa CRUD 
+cek => - Record yang pertama di isi muncul dibaris paling bawah, jadi record terbaru akan muncul diatas
+cek => - Ada bug, ada record yang di edit jadi hilang record nya
+cek => - CRUD Bahasa (combo pasif dan aktif di ganti menjadi Good, Moderate, Poor)
+cek => - Pengalaman Kerja itu sama seperti : Info Tambahan, cukup edit saja tapi formnya tetap
+cek => - Kendaraan ditampilkan di biodata & CV
+cek => - Referensi tidak bisa CRUD 
 
 Seeker Subscribe
-- Seeker dapat berlangganan kategory (max 5)
-- ketika ada update dari kategori yang bersangkutan maka sistem akan kirim email dengan format :
+cek => - Seeker dapat berlangganan kategory (max 5)
+cek => - ketika ada update dari kategori yang bersangkutan maka sistem akan kirim email dengan format :
 	Judul
 	Nama perusahan
 	Lokasi
@@ -33,47 +34,47 @@ Seeker Subscribe
 COMPANY
 
 Company Vacancy
-- http://www.parapekerja.com/company/vacancy
-- tambah 1 inputan Jobs reff dibawahnya judul
-- Pendidikan Multiple Select sama seperti Position (DULU)
-- check Closed Date tidak boleh melebihi dari tanggal berakhirnya membership dia
-- check tidak boleh pasang lowongan yang Closed Date < Today
+cek => - http://www.parapekerja.com/company/vacancy
+cek => - tambah 1 inputan Jobs reff dibawahnya judul
+cek => - Pendidikan Multiple Select sama seperti Position (DULU)
+cek => - check Closed Date tidak boleh melebihi dari tanggal berakhirnya membership dia
+cek => - check tidak boleh pasang lowongan yang Closed Date < Today
 
 Company Download
-- http://parapekerja.com/company/download/index/44
-- hasil export jelek
+cek => - http://parapekerja.com/company/download/index/44
+cek => - hasil export jelek
 
 Company Exam
-- http://parapekerja.com/resume/exam.png
-- Exam untuk semua yang apply
-- di grid ada status exam & ada opsi allow exam
-- waktu kadang2 : -7:-7:-4
-- status interview lamaran cukup sampai interview saja
+cek => - http://parapekerja.com/resume/exam.png
+cek => - Exam untuk semua yang apply
+cek => - di grid ada status exam & ada opsi allow exam
+cek => - waktu kadang2 : -7:-7:-4
+cek => - status interview lamaran cukup sampai interview saja
 
 Company Membership
-- test ulang
-- http://parapekerja.com/resume/membership.png
-- ada info kotak merah itu
+cek => - test ulang
+cek => - http://parapekerja.com/resume/membership.png
+cek => - ada info kotak merah itu
 	1. User Pilih paket
 	2. User klik Save
 	3. Confirm pemilihan paket
 	4. jika confirm = ya, muncul kotak merah itu sampai ada approvement dari admin
 
 Company Search
-- http://www.parapekerja.com/company/search
-- hanya untuk membership saja (bukan free)
+cek => - http://www.parapekerja.com/company/search
+cek => - hanya untuk membership saja (bukan free)
 
 
 WEBSITE
 
 Website Pencarian
-- model url seperti http://parapekerja.com/search/buku
-- ukuran gambarnya di fix kan agar sama semua
+cek => - model url seperti http://parapekerja.com/search/buku
+cek => - ukuran gambarnya di fix kan agar sama semua
 
 Website Vacancy
-- http://www.parapekerja.com/PT-Arahan-Mandiri/44-testing-exam-bos
-- Tampilakn Jobs reff
+cek => - http://www.parapekerja.com/PT-Arahan-Mandiri/44-testing-exam-bos
+cek => - Tampilakn Jobs reff
 
 Website Search
-- link memakai seperti : parapekerja.com/search/keyword
-- dibagian atas tampilkan "hasil pencarian : kedyword"
+cek => - link memakai seperti : parapekerja.com/search/keyword
+cek => - dibagian atas tampilkan "hasil pencarian : kedyword"

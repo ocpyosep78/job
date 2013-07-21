@@ -14,6 +14,8 @@ class membership extends COMPANY_Controller {
 		
 		$result = array();
 		if ($action == 'update') {
+			$this->Company_Membership_model->set_cancel(array( 'company_id' => $_POST['company_id'] ));
+			
 			if (empty($_POST['id'])) {
 				$_POST['status'] = 'pending';
 				$_POST['date_request'] = $this->config->item('current_datetime');

@@ -31,6 +31,29 @@ class vacancy extends COMPANY_Controller {
 		
 		$result = array();
 		if ($action == 'update') {
+			if (isset($_POST['close_date'])) {
+				// membership
+				$param_membership['company_id'] = $_POST['company_id'];
+				$param_membership['close_date'] = $_POST['close_date'];
+				$is_on_membership = $this->Vacancy_model->is_on_membership($param_membership);
+				
+				// vacancy closed date validation
+				$current_unix_time = ConvertToUnixTime($this->config->item('current_date'));
+				$vacancy_unix_close = ConvertToUnixTime($_POST['close_date']);
+				
+				if (! $is_on_membership) {
+					$result['status'] = '0';
+					$result['message'] = 'Closed Date lebih besar dari tanggal berakhirnya membership anda.';
+					echo json_encode($result);
+					exit;
+				} else if ($vacancy_unix_close <= $current_unix_time) {
+					$result['status'] = '0';
+					$result['message'] = 'Closed Date harus lebih besar dari hari ini.';
+					echo json_encode($result);
+					exit;
+				}
+			}
+			
 			if (empty($_POST['id'])) {
 				// reduce vacancy count
 				$this->Company_model->vacancy_count_reduce(array( 'id' => $_POST['company_id'] ));

@@ -17,40 +17,53 @@ class exam extends SEEKER_Controller {
 		
 		$result = array( 'status' => 0 );
 		if ($action == 'take-exam') {
-			$param_exam['id'] = $_POST['exam_id'];
-			$param_exam['status '] = 'Download';
-			$param_exam['exam_time_end'] = $this->config->item('current_datetime');
-			$this->Exam_model->update($param_exam);
+			$seeker = $this->Seeker_model->get_session();
+			$exam = $this->Exam_model->get_by_id(array( 'id' => $_POST['exam_id'] ));
+			$apply = $this->Apply_model->get_by_id(array( 'vacancy_id' => $exam['vacancy_id'], 'seeker_id' => $seeker['id'] ));
 			
-			$result = $this->Exam_model->get_by_id(array( 'id' => $_POST['exam_id'] ));
+			$param_seeker_exam['vacancy_id'] = $exam['vacancy_id'];
+			$param_seeker_exam['seeker_id'] = $seeker['id'];
+			$seeker_exam = $this->Seeker_Exam_model->get_by_id($param_seeker_exam);
+			
+			if (count($seeker_exam) == 0) {
+				$param_insert['exam_id'] = $_POST['exam_id'];
+				$param_insert['seeker_id'] = $seeker['id'];
+				$param_insert['exam_start'] = $this->config->item('current_datetime');
+				$this->Seeker_Exam_model->update($param_insert);
+				
+				$param_apply['id'] = $apply['id'];
+				$param_apply['exam_status_id'] = EXAM_DOWNLOAD;
+				$result = $this->Apply_model->update($param_apply);
+			}
+			
+			$result['exam_file_link'] = $exam['exam_file_link'];
 			$result['status'] = 1;
 		}
 		else if ($action == 'upload-exam') {
+			$seeker = $this->Seeker_model->get_session();
 			$exam = $this->Exam_model->get_by_id(array( 'id' => $_POST['exam_id'] ));
-			$apply = $this->Apply_model->get_by_id(array( 'id' => $exam['apply_id'] ));
-			$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $apply['vacancy_id'] ));
-			$seeker = $this->Seeker_model->get_by_id(array( 'id' => $apply['seeker_id'] ));
+			$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $exam['vacancy_id'] ));
+			$apply = $this->Apply_model->get_by_id(array( 'vacancy_id' => $exam['vacancy_id'], 'seeker_id' => $seeker['id'] ));
 			
 			// check time
-			$total_time = $this->Exam_model->get_total_time($exam['exam_time']);
-			$current_time = GetUnixTime($this->config->item('current_datetime'));
-			$end_time = GetUnixTime($exam['exam_time_end']);
-			$total_time = ($end_time + $total_time) - $current_time;
-			$is_over = ($total_time <= 0) ? true : false;
+			$is_over = $this->Seeker_Exam_model->is_over(array( 'vacancy_id' => $exam['vacancy_id'], 'seeker_id' => $seeker['id'] ));
 			if ($is_over) {
 				$result['message'] = 'Waktu ujian telah berakhir, anda tidak dapat melanjutkan.';
 				echo json_encode($result);
 				exit;
 			}
 			
-			// update exam
-			$param_exam['id'] = $exam['id'];
-			$param_exam['status'] = 'Done';
-			$this->Exam_model->update($param_exam);
+			// seeker exam
+			$seeker_exam = $this->Seeker_Exam_model->get_by_id(array( 'vacancy_id' => $vacancy['id'], 'seeker_id' => $seeker['id'] ));
+			
+			// update seeker exam
+			$param_exam['id'] = $seeker_exam['id'];
+			$param_exam['exam_file'] = $_POST['exam_file'];
+			$this->Seeker_Exam_model->update($param_exam);
 			
 			// update apply
-			$param_apply['id'] = $exam['apply_id'];
-			$param_apply['apply_status_id'] = VACANCY_STATUS_DONE;
+			$param_apply['id'] = $apply['id'];
+			$param_apply['exam_status_id'] = EXAM_DONE;
 			$result = $this->Apply_model->update($param_apply);
 			$result['status'] = 1;
 			

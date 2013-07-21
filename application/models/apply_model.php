@@ -4,7 +4,7 @@ class Apply_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array('id', 'seeker_id', 'vacancy_id', 'apply_status_id', 'apply_date', 'is_delete', 'addtional_info');
+        $this->field = array('id', 'seeker_id', 'vacancy_id', 'exam_status_id', 'apply_status_id', 'apply_date', 'is_delete', 'addtional_info');
     }
 
     function update($param) {
@@ -73,8 +73,9 @@ class Apply_model extends CI_Model {
 		$select_query = "
 			SELECT SQL_CALC_FOUND_ROWS Apply.*,
 				Vacancy.nama vancancy_nama, Company.nama company_nama, Kota.nama kota_nama, Propinsi.nama propinsi_nama,
-				ApplyStatus.nama apply_status_name
+				ExamStatus.nama exam_status_nama, ApplyStatus.nama apply_status_name
 			FROM ".APPLY." Apply
+			LEFT JOIN ".EXAM_STATUS." ExamStatus ON ExamStatus.id = Apply.exam_status_id
 			LEFT JOIN ".APPLY_STATUS." ApplyStatus ON ApplyStatus.id = Apply.apply_status_id
 			LEFT JOIN ".VACANCY." Vacancy ON Vacancy.id = Apply.vacancy_id
 			LEFT JOIN ".COMPANY." Company ON Company.id = Vacancy.company_id
@@ -103,11 +104,12 @@ class Apply_model extends CI_Model {
 		$string_limit = GetStringLimit($param);
 		
 		$select_query = "
-			SELECT SQL_CALC_FOUND_ROWS Apply.*, ApplyStatus.nama apply_status_nama,
+			SELECT SQL_CALC_FOUND_ROWS Apply.*, ExamStatus.nama exam_status_nama, ApplyStatus.nama apply_status_nama,
 				Seeker.seeker_no, Seeker.first_name, Seeker.last_name, Seeker.tgl_lahir, Seeker.photo,
 				SeekerSummary.score, Jenjang.nama jenjang_nama, SeekerSummary.school, Kota.nama kota_nama,
 				Marital.nama marital_nama, SeekerSummary.experience
 			FROM ".APPLY." Apply
+			LEFT JOIN ".EXAM_STATUS." ExamStatus ON ExamStatus.id = Apply.exam_status_id
 			LEFT JOIN ".APPLY_STATUS." ApplyStatus ON ApplyStatus.id = Apply.apply_status_id
 			LEFT JOIN ".SEEKER." Seeker ON Seeker.id = Apply.seeker_id
 			LEFT JOIN ".SEEKER_SUMMARY." SeekerSummary ON SeekerSummary.seeker_id = Seeker.id
@@ -174,7 +176,7 @@ class Apply_model extends CI_Model {
 		}
 		
 		if (count(@$param['column']) > 0) {
-			if ($row['apply_status_id'] == VACANCY_STATUS_EXAM) {
+			if ($row['exam_status_id'] == EXAM_OPEN) {
 				$param['is_custom'] = '<img class="button-cursor exam" src="'.base_url('static/img/button_quiz.jpg').'"> ' . $param['is_custom'];
 			}
 			

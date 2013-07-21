@@ -19,10 +19,17 @@
 				</nav>
 			</div>
 			<div class="span3-header search-container">
-				<form action="<?php echo base_url('search'); ?>" method="post" class="search-form">
+				<form action="<?php echo base_url('search'); ?>" method="post" class="search-form" id="form-header">
 					<input type="text" name="keyword" placeholder="Search" value="<?php echo $keyword; ?>" />
 					<input type="submit" name="submit" value="Search" />
 				</form>
+				<script>
+					$('#form-header').submit(function() {
+						var name = Func.GetName($('#form-header [name="keyword"]').val());
+						var action = $('#form-header').attr('action') + '/' + name;
+						$('#form-header').attr('action', action);
+					});
+				</script>
 			</div>
 		</div>
 	</div>

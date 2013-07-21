@@ -5,7 +5,7 @@
 	$seeker_resume = $this->Seeker_model->get_resume(array( 'id' => $seeker['id'] ));
 	$seeker_summary = $this->Seeker_Summary_model->get_by_id(array( 'seeker_id' => $seeker['id'] ));
 	$array_jenjang = $this->Jenjang_model->get_array();
-	$array_bahasa = array( array( 'id' => 'Aktif', 'nama' => 'Aktif' ), array( 'id' => 'Pasif', 'nama' => 'Pasif' ) );
+	$array_bahasa = array( array( 'id' => 'Good', 'nama' => 'Good' ), array( 'id' => 'Moderate', 'nama' => 'Moderate' ), array( 'id' => 'Poor', 'nama' => 'Poor' ) );
 ?>
 
 <?php $this->load->view( 'panel/common/meta', array('title' => 'Biodata '.$seeker['full_name']) ); ?>
@@ -50,7 +50,7 @@
 				</form>
 				<div class="modal-footer">
 					<button class="btn modal-close" data-dismiss="modal" aria-hidden="true">Close</button>
-					<button class="btn modal-submit btn-primary" data-dismiss="modal">Save changes</button>
+					<button class="btn modal-submit btn-primary">Save changes</button>
 				</div>
 			</div>
 			
@@ -95,7 +95,7 @@
 				</form>
 				<div class="modal-footer">
 					<button class="btn modal-close" data-dismiss="modal" aria-hidden="true">Close</button>
-					<button class="btn modal-submit btn-primary" data-dismiss="modal">Save changes</button>
+					<button class="btn modal-submit btn-primary">Save changes</button>
 				</div>
 			</div>
 			
@@ -126,7 +126,7 @@
 				</form>
 				<div class="modal-footer">
 					<button class="btn modal-close" data-dismiss="modal" aria-hidden="true">Close</button>
-					<button class="btn modal-submit btn-primary" data-dismiss="modal">Save changes</button>
+					<button class="btn modal-submit btn-primary">Save changes</button>
 				</div>
 			</div>
 			
@@ -161,7 +161,7 @@
 				</form>
 				<div class="modal-footer">
 					<button class="btn modal-close" data-dismiss="modal" aria-hidden="true">Close</button>
-					<button class="btn modal-submit btn-primary" data-dismiss="modal">Save changes</button>
+					<button class="btn modal-submit btn-primary">Save changes</button>
 				</div>
 			</div>
 			
@@ -190,7 +190,7 @@
 				</form>
 				<div class="modal-footer">
 					<button class="btn modal-close" data-dismiss="modal" aria-hidden="true">Close</button>
-					<button class="btn modal-submit btn-primary" data-dismiss="modal">Save changes</button>
+					<button class="btn modal-submit btn-primary">Save changes</button>
 				</div>
 			</div>
 			
@@ -217,7 +217,7 @@
 				</form>
 				<div class="modal-footer">
 					<button class="btn modal-close" data-dismiss="modal" aria-hidden="true">Close</button>
-					<button class="btn modal-submit btn-primary" data-dismiss="modal">Save changes</button>
+					<button class="btn modal-submit btn-primary">Save changes</button>
 				</div>
 			</div>
 			
@@ -253,7 +253,7 @@
 				</form>
 				<div class="modal-footer">
 					<button class="btn modal-close" data-dismiss="modal" aria-hidden="true">Close</button>
-					<button class="btn modal-submit btn-primary" data-dismiss="modal">Save changes</button>
+					<button class="btn modal-submit btn-primary">Save changes</button>
 				</div>
 			</div>
 			
@@ -267,9 +267,7 @@
 				<div class="alert alert-info">
 					<div style="padding: 0 0 10px 0;">Status resume : <strong><?php echo $seeker_resume['message']; ?></strong></div>
 					<?php if ($seeker_resume['is_pass']) { ?>
-						<div>Link Resume Online Anda :</div>
-						<div>No Pelamar : <a href="<?php echo $seeker['seeker_no_link']; ?>"><?php echo $seeker['seeker_no_link']; ?></a></div>
-						<div>Nama Pelamar : <a href="<?php echo $seeker['seeker_link']; ?>"><?php echo $seeker['seeker_link']; ?></a></div>
+						<div>Link Resume Online Anda : <a href="<?php echo $seeker['seeker_no_link']; ?>"><?php echo $seeker['seeker_no_link']; ?></a></div>
 					<?php } ?>
 				</div>
 			</div>
@@ -396,6 +394,7 @@
 				<div class="box-content">
 					<table id="cnt-grid-education" class="table table-striped table-bordered">
 						<thead><tr>
+							<th>ID</th>
 							<th>Jenjang</th>
 							<th>Nama Sekolah</th>
 							<th style="width: 75px;">&nbsp;</th>
@@ -415,6 +414,7 @@
 				<div class="box-content">
 					<table id="cnt-grid-ahli" class="table table-striped table-bordered">
 						<thead><tr>
+							<th>ID</th>
 							<th>Nama Surat</th>
 							<th style="width: 75px;">&nbsp;</th>
 						</tr></thead>
@@ -433,6 +433,7 @@
 				<div class="box-content">
 					<table id="cnt-grid-language" class="table table-striped table-bordered">
 						<thead><tr>
+							<th>ID</th>
 							<th>Nama</th>
 							<th>Lisan</th>
 							<th>Tulis</th>
@@ -450,15 +451,7 @@
 						<a class="btn cursor btn-mini btn-modal-exp" rel="tooltip" data-original-title="Tambah Pengalaman Kerja"><i class="icon-edit"></i></a>
 					</div>
 				</div>
-				<div class="box-content">
-					<table id="cnt-grid-exp" class="table table-striped table-bordered">
-						<thead><tr>
-							<th>Keterangan</th>
-							<th style="width: 75px;">&nbsp;</th>
-						</tr></thead>
-						<tbody><tr><td class="dataTables_empty">Loading data from server</td></tr></tbody>
-					</table>
-				</div>
+				<div class="box-content" id="cnt-exp">&nbsp;</div>
 			</div>
 			
 			<div class="box box-color box-bordered teal">
@@ -481,6 +474,7 @@
 				<div class="box-content">
 					<table id="cnt-grid-reference" class="table table-striped table-bordered">
 						<thead><tr>
+							<th>ID</th>
 							<th>Nama</th>
 							<th style="width: 75px;">&nbsp;</th>
 						</tr></thead>
@@ -630,9 +624,9 @@ $( document ).ready(function() {
 		ahli: function() {
 			var ahli_dt = null;
 			var ahli_param = {
-				id: 'cnt-grid-ahli',
+				id: 'cnt-grid-ahli', aaSorting: [[0, 'desc']],
 				source: web.host + 'seeker/resume/grid',
-				column: [ { }, { bSortable: false, sClass: "center" } ],
+				column: [ { "bSearchable": false, "bVisible": false }, { }, { bSortable: false, sClass: "center" } ],
 				fnServerParams: function ( aoData ) {
 					aoData.push( { "name": "grid_name", "value": "seeker_expert" }, { "name": "seeker_id", "value": seeker.id } );
 				},
@@ -642,6 +636,7 @@ $( document ).ready(function() {
 						eval('var record = ' + raw_record);
 						
 						$('#modal-ahli [name="id"]').val(record.id);
+						$('#modal-ahli [name="seeker_id"]').val(seeker.id);
 						$('#modal-ahli [name="content"]').val(record.content);
 						$('#modal-ahli').modal();
 					});
@@ -687,9 +682,9 @@ $( document ).ready(function() {
 		education: function() {
 			var dt = null;
 			var param = {
-				id: 'cnt-grid-education',
+				id: 'cnt-grid-education', aaSorting: [[0, 'desc']],
 				source: web.host + 'seeker/resume/grid',
-				column: [ { }, { }, { bSortable: false, sClass: "center" } ],
+				column: [ { "bSearchable": false, "bVisible": false }, { }, { }, { bSortable: false, sClass: "center" } ],
 				fnServerParams: function ( aoData ) {
 					aoData.push( { "name": "grid_name", "value": "seeker_education" }, { "name": "seeker_id", "value": seeker.id } );
 				},
@@ -699,6 +694,7 @@ $( document ).ready(function() {
 						eval('var record = ' + raw_record);
 						
 						$('#modal-education [name="id"]').val(record.id);
+						$('#modal-education [name="seeker_id"]').val(seeker.id);
 						$('#modal-education [name="jenjang_id"]').val(record.jenjang_id);
 						$('#modal-education [name="score"]').val(record.score);
 						$('#modal-education [name="bidang_studi"]').val(record.bidang_studi);
@@ -749,48 +745,25 @@ $( document ).ready(function() {
 			});
 		},
 		exp: function() {
-			var dt = null;
-			var param = {
-				id: 'cnt-grid-exp',
-				source: web.host + 'seeker/resume/grid',
-				column: [ { }, { bSortable: false, sClass: "center" } ],
-				fnServerParams: function ( aoData ) {
-					aoData.push( { "name": "grid_name", "value": "seeker_exp" }, { "name": "seeker_id", "value": seeker.id } );
-				},
-				callback: function() {
-					$('#cnt-grid-exp .edit').click(function() {
-						var raw_record = $(this).siblings('.hide').text();
-						eval('var record = ' + raw_record);
-						
-						// set valid data
-						if (Func.InArray(record.exp_level, [1, 2])) {
-							record.content = '';
-						}
-						
-						$('#modal-exp [name="id"]').val(record.id);
-						$('#modal-exp [name="content"]').val(record.content);
-						$('#modal-exp [name="exp_level"][value="' + record.exp_level + '"]').attr('checked', 'checked');
-						$('#modal-exp').modal();
-					});
-					
-					$('#cnt-grid-exp .delete').click(function() {
-						var raw_record = $(this).siblings('.hide').text();
-						eval('var record = ' + raw_record);
-						
-						Func.confirm_delete({
-							data: { action: 'delete_seeker_exp', id: record.id },
-							url: web.host + 'seeker/resume/action', callback: function() { dt.reload(); }
-						});
-					});
-				}
-			}
-			dt = Func.init_datatable(param);
+			// set content
+			Func.ajax({ url: web.host + 'seeker/resume/action', param: { action: 'get_seeker_exp', seeker_id: seeker.id }, callback: function(record) {
+				$('#cnt-exp').html(record.content);
+			} });
+			
+			// modal
 			$('.btn-modal-exp').click(function() {
-				$('#modal-exp form')[0].reset()
-				$('#modal-exp [name="id"]').val(0);
-				$('#modal-exp [name="seeker_id"]').val(seeker.id);
-				$('#modal-exp [name="exp_level"][value="1"]').attr('checked', false);
-				$('#modal-exp').modal();
+				Func.ajax({ url: web.host + 'seeker/resume/action', param: { action: 'get_seeker_exp', seeker_id: seeker.id }, callback: function(record) {
+					// set valid data
+					if (Func.InArray(record.exp_level, [1, 2])) {
+						record.content = '';
+					}
+					
+					$('#modal-exp [name="id"]').val(record.id);
+					$('#modal-exp [name="seeker_id"]').val(seeker.id);
+					$('#modal-exp [name="content"]').val(record.content);
+					$('#modal-exp [name="exp_level"][value="' + record.exp_level + '"]').attr('checked', 'checked');
+					$('#modal-exp').modal();
+				} });
 			});
 			$('#modal-exp .modal-footer .modal-close').click(function() { $('#modal-exp').modal('hide'); });
 			$('#modal-exp .modal-footer .modal-submit').click(function() { $('#modal-exp').find('form').submit(); });
@@ -809,7 +782,7 @@ $( document ).ready(function() {
 				Func.ajax({ url: web.host + 'seeker/resume/action', param: param, callback: function(result) {
 					Func.show_notice({ text: result.message });
 					if (result.status == 1) {
-						dt.reload();
+						$('#cnt-exp').html(param.content);
 						$('#modal-exp').modal('hide');
 					}
 				} });
@@ -820,9 +793,9 @@ $( document ).ready(function() {
 		language: function() {
 			var dt = null;
 			var param = {
-				id: 'cnt-grid-language',
+				id: 'cnt-grid-language', aaSorting: [[0, 'desc']],
 				source: web.host + 'seeker/resume/grid',
-				column: [ { }, { }, { }, { bSortable: false, sClass: "center" } ],
+				column: [ { "bSearchable": false, "bVisible": false }, { }, { }, { }, { bSortable: false, sClass: "center" } ],
 				fnServerParams: function ( aoData ) {
 					aoData.push( { "name": "grid_name", "value": "seeker_language" }, { "name": "seeker_id", "value": seeker.id } );
 				},
@@ -832,6 +805,7 @@ $( document ).ready(function() {
 						eval('var record = ' + raw_record);
 						
 						$('#modal-language [name="id"]').val(record.id);
+						$('#modal-language [name="seeker_id"]').val(seeker.id);
 						$('#modal-language [name="nama"]').val(record.nama);
 						$('#modal-language [name="lisan"]').val(record.lisan);
 						$('#modal-language [name="tulis"]').val(record.tulis);
@@ -915,9 +889,9 @@ $( document ).ready(function() {
 		reference: function() {
 			var dt = null;
 			var param = {
-				id: 'cnt-grid-reference',
+				id: 'cnt-grid-reference', aaSorting: [[0, 'desc']],
 				source: web.host + 'seeker/resume/grid',
-				column: [ { }, { bSortable: false, sClass: "center" } ],
+				column: [ { "bSearchable": false, "bVisible": false }, { }, { bSortable: false, sClass: "center" } ],
 				fnServerParams: function ( aoData ) {
 					aoData.push( { "name": "grid_name", "value": "seeker_reference" }, { "name": "seeker_id", "value": seeker.id } );
 				},
@@ -927,6 +901,7 @@ $( document ).ready(function() {
 						eval('var record = ' + raw_record);
 						
 						$('#modal-reference [name="id"]').val(record.id);
+						$('#modal-reference [name="seeker_id"]').val(seeker.id);
 						$('#modal-reference [name="nama"]').val(record.nama);
 						$('#modal-reference [name="content"]').val(record.content);
 						$('#modal-reference').modal();

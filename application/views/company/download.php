@@ -3,6 +3,7 @@
 	$vacancy_id = (empty($match[1])) ? 0 : $match[1];
 	
 	$company = $this->Company_model->get_session();
+	$has_exam = $this->Exam_model->has_exam(array( 'vacancy_id' => $vacancy_id ));
 	$array_vacancy = $this->Vacancy_model->get_array(array( 'company_id' => $company['id'] ));
 	$array_apply_status = array( 'APPLY_STATUS_INTERVIEW' => APPLY_STATUS_INTERVIEW, 'APPLY_STATUS_REJECT' => APPLY_STATUS_REJECT, 'APPLY_STATUS_VIEW' => APPLY_STATUS_VIEW );
 	
@@ -43,8 +44,9 @@
 				</div>
 				<?php if (count($array_apply) > 0) { ?>
 				<div style="float: right; width: 350px; text-align: right;">
-					<a href="<?php echo base_url('company/vacancy_exam/index/'.$vacancy_id); ?>" class="btn btn-small btn-slide">Kirim Exan</a>
-					<a href="<?php echo base_url('company/slide/index/'.$vacancy_id); ?>" class="btn btn-small btn-slide">View Photo In Slide</a>
+					<a href="<?php echo base_url('company/vacancy_exam/index/'.$vacancy_id); ?>" class="btn btn-small">Exam</a>
+					<a class="btn btn-small submit-exam" data-vacancy_id="<?php echo $vacancy_id; ?>">Sent Exam to all</a>
+					<a href="<?php echo base_url('company/slide/index/'.$vacancy_id); ?>" class="btn btn-small">View Photo In Slide</a>
 				</div>
 				<?php } ?>
 				<div class="clear"></div>
@@ -89,6 +91,7 @@
 						<th>Kota</th>
 						<th>Status</th>
 						<th>Pengalaman</th>
+						<th>Status Exam</th>
 						<th>Status Lamaran</th>
 						<th>&nbsp;</th>
 					</tr></thead>
@@ -104,18 +107,21 @@
 								<td><?php echo $seeker['kota_nama']; ?></td>
 								<td><?php echo $seeker['marital_nama']; ?></td>
 								<td><?php echo $seeker['experience']; ?></td>
+								<td><?php echo $seeker['exam_status_nama']; ?></td>
 								<td><?php echo $seeker['apply_status_nama']; ?></td>
 								<td style="min-width: 90px; text-align: center;">
-									<a href="<?php echo $seeker['seeker_link']; ?>" target="_blank" class="update_view">
+									<a href="<?php echo $seeker['seeker_link']; ?>" target="_blank" class="update_view" data-id="<?php echo $seeker['id'];?>">
 										<img src="<?php echo base_url('static/img/button_view.png'); ?>" class="button-cursor">
 									</a>
 									
-									<?php if (in_array($seeker['apply_status_id'], array(APPLY_STATUS_EMPTY, APPLY_STATUS_OPEN, APPLY_STATUS_VIEW))) { ?>
-										<img src="<?php echo base_url('static/img/button_interview.png'); ?>" class="button-cursor interview">
-										<img src="<?php echo base_url('static/img/button_remove.png'); ?>" class="button-cursor delete">
+									<?php if ($has_exam && empty($seeker['exam_status_id'])) { ?>
+										<img src="<?php echo base_url('static/img/button_quiz.jpg'); ?>" class="button-cursor add_quiz" data-id="<?php echo $seeker['id'];?>" />
 									<?php } ?>
 									
-									<span class="hide"><?php echo json_encode($seeker); ?></span>
+									<?php if (in_array($seeker['apply_status_id'], array(APPLY_STATUS_EMPTY, APPLY_STATUS_OPEN, APPLY_STATUS_VIEW))) { ?>
+										<img src="<?php echo base_url('static/img/button_interview.png'); ?>" class="button-cursor interview" data-id="<?php echo $seeker['id'];?>" />
+										<img src="<?php echo base_url('static/img/button_remove.png'); ?>" class="button-cursor delete" data-id="<?php echo $seeker['id'];?>" />
+									<?php } ?>
 								</td>
 							</tr>
 						<?php } ?>
@@ -141,36 +147,41 @@
 		// page variable
 		var row = null;
 		
+		// form
 		$('.select-position').chosen({ disable_search_threshold: 9999999 }).change(function() {
 			var link_redirect = web.host + 'company/download/index/' + $(this).val();
 			window.location = link_redirect;
 		});
+		$('.submit-exam').click(function() {
+			var param = { action: 'update_exam_all', vacancy_id: $(this).data('vacancy_id') }
+			Func.ajax({ url: web.host + 'company/download/action', param: param, callback: function(result) {
+				if (result.status == 1) {
+					window.location.reload();
+				}
+			} });
+		});
 		
 		// grid
 		$('.grid-apply .update_view').click(function() {
-			row = $(this).parents('tr');
-			var raw_record = row.find('span.hide').text();
-			eval('var record = ' + raw_record);
-			
-			var param = { action: 'update_status', id: record.id }
+			var param = { action: 'update_status', id: $(this).data('id') }
 			Func.ajax({ url: web.host + 'company/download/action', param: param, callback: function(result) { } });
 		});
+		$('.grid-apply .add_quiz').click(function() {
+			var param = { action: 'update_exam', apply_id: $(this).data('id') }
+			Func.ajax({ url: web.host + 'company/download/action', param: param, callback: function(result) {
+				if (result.status == 1) {
+					window.location.reload();
+				}
+			} });
+		});
 		$('.grid-apply .interview').click(function() {
-			row = $(this).parents('tr');
-			var raw_record = row.find('span.hide').text();
-			eval('var record = ' + raw_record);
-			
-			$('[name="id"]').val(record.id);
+			$('[name="id"]').val($(this).data('id'));
 			$('[name="nama"]').val('Berita Interview');
 			$('[name="apply_status_id"]').val(apply.APPLY_STATUS_INTERVIEW);
 			$('#modal-interview').modal();
 		});
 		$('.grid-apply .delete').click(function() {
-			row = $(this).parents('tr');
-			var raw_record = row.find('span.hide').text();
-			eval('var record = ' + raw_record);
-			
-			$('[name="id"]').val(record.id);
+			$('[name="id"]').val($(this).data('id'));
 			$('[name="nama"]').val('Berita Penolakan');
 			$('[name="apply_status_id"]').val(apply.APPLY_STATUS_REJECT);
 			$('#modal-interview').modal();

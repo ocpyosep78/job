@@ -6,8 +6,13 @@
 		$is_search = true;
 	}
 	
+	// url keyword
+	preg_match('/search\/([\w\-]+)/i', $_SERVER['REQUEST_URI'], $match);
+	$raw_keyword = (!empty($match[1])) ? $match[1] : '';
+	$raw_keyword = str_replace('-', ' ', $raw_keyword);
+	
 	// set data
-	$keyword = (!empty($_POST['keyword'])) ? $_POST['keyword'] : '';
+	$keyword = (!empty($_POST['keyword'])) ? $_POST['keyword'] : $raw_keyword;
 	$array_propinsi = $this->Propinsi_model->get_array(array( 'negara_id' => NEGARA_INDONESIA_ID ));
 	$array_position = $this->Position_model->get_array(array( 'limit' => 250 ));
 	$array_jenjang = $this->Jenjang_model->get_array();
@@ -22,14 +27,16 @@
 	$_POST['keyword_category'] = (empty($_POST['keyword_category'])) ? 0 : $_POST['keyword_category'];
 	
 	// set search param
-	if (!empty($_POST['keyword']) && isset($_POST['keyword_category'])) {
+	if (!empty($keyword) && isset($_POST['keyword_category'])) {
 		if ($_POST['keyword_category'] == 0) {
-			$filter[] = array( 'type' => 'custom', 'field' => "(Vacancy.nama LIKE '%".$_POST['keyword']."%' OR Company.nama LIKE '%".$_POST['keyword']."%')" );
+			$filter[] = array( 'type' => 'custom', 'field' => "(Vacancy.nama LIKE '%".$keyword."%' OR Company.nama LIKE '%".$keyword."%')" );
 		} else if ($_POST['keyword_category'] == 1) {
-			$filter[] = array( 'type' => 'string', 'value' => $_POST['keyword'], 'field' => 'Vacancy.nama' );
+			$filter[] = array( 'type' => 'string', 'value' => $keyword, 'field' => 'Vacancy.nama' );
 		} else if ($_POST['keyword_category'] == 2) {
-			$filter[] = array( 'type' => 'string', 'value' => $_POST['keyword'], 'field' => 'Company.nama' );
+			$filter[] = array( 'type' => 'string', 'value' => $keyword, 'field' => 'Company.nama' );
 		}
+	} else if (!empty($keyword)) {
+		$filter[] = array( 'type' => 'custom', 'field' => "(Vacancy.nama LIKE '%".$keyword."%' OR Company.nama LIKE '%".$keyword."%')" );
 	}
 	if (!empty($_POST['propinsi_id'])) {
 		$filter[] = array( 'type' => 'numeric', 'comparison' => 'eq', 'value' => $_POST['propinsi_id'], 'field' => 'Kota.propinsi_id' );
@@ -93,7 +100,7 @@
 				</div>
 			</div>
 			
-			<div id="advance-search" class="hide"><form method="post">
+			<div id="advance-search" class="hide"><form action="<?php echo base_url('search'); ?>" method="post">
 				<input type="hidden" name="page_no" value="1" />
 				
 				<div><strong>Kata Kunci</strong> - Sebuah kata atau frase yang sesuai dengan lowongan yang sesuai</div>
@@ -133,6 +140,13 @@
 				</div>
 				<div style="padding: 0 50px 25px 0; text-align: right;"><input type="submit" class="btn" value="Cari Lowongan" /></div>
 			</form></div>
+			<script>
+				$('#advance-search form').submit(function() {
+					var name = Func.GetName($('#advance-search [name="keyword"]').val());
+					var action = $('#advance-search form').attr('action') + '/' + name;
+					$('#advance-search form').attr('action', action);
+				});
+			</script>
 			
 			<?php if (count($array_vacancy) > 0) { ?>
 			<div class='new-albums list' style="width: 100%;">
@@ -140,7 +154,7 @@
 				<div class="new-album-box">
 					<div style="padding-left: 15px;"><?php echo $vacancy['kategori_nama'].' - '.$vacancy['subkategori_nama']; ?></div>
 					<div class="inner" style="border-left: none; border-right: none;">
-						<figure><img src="<?php echo $vacancy['company_logo_link']; ?>" /></figure>
+						<figure><img src="<?php echo $vacancy['company_logo_link']; ?>" style="width: 100px; height: 100px;" /></figure>
 						<div class="details">
 							<h2><a href="<?php echo $vacancy['vacancy_link']; ?>"><?php echo $vacancy['nama']; ?></a></h2>
 							<p><?php echo $vacancy['company_nama'].' - '.$vacancy['company_kota_nama']; ?></p>

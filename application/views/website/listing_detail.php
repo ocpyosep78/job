@@ -47,11 +47,12 @@
 <tbody><tr><td style="background: url('<?php echo base_url('static/img/creative_2_01_04.png'); ?>') top left repeat-y; padding-top: 10px;" align="center">
 	<img src="<?php echo $vacancy['company_banner_link']; ?>" style="width: 650px; height: 186px;" alt="banner" />
 </td></tr><tr><td style="background: url('<?php echo base_url('static/img/creative_2_01_04.png'); ?>') top left repeat-y;" align="center"><table cellpadding="10" cellspacing="0" align="center" width="600"><tbody><tr><td class="comURL">
-<p style="text-align: center;">
-	<a href="<?php echo $vacancy['company_link']; ?>" style="text-decoration: none; font-size: 22px; font-weight: bold; color: #FFFFFF;">
-		<?php echo $vacancy['company_nama']; ?>
-	</a>
-</p>
+<div style="color: #FFFFFF; text-align: center; font-size: 12px;">
+	<div style="text-decoration: none; font-size: 22px; font-weight: bold;">
+		<a href="<?php echo $vacancy['company_link']; ?>" style="color: #FFFFFF;"><?php echo $vacancy['company_nama']; ?></a>
+	</div>
+	<div><?php echo $vacancy['job_reff']; ?></div>
+</div>
 </td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" align="center" width="600"><tbody><tr><td align="left"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left"><p align="justify"><font color="#FFFFFF" face="Arial" size="2"></font></p><div><font color="#FFFFFF" face="Arial" size="2">
 	<div>Kami adalah perusahaan yang bergerak di bidang <?php echo $vacancy['industri_nama']; ?>, saat ini kami sedang berkembang dengan pesat dan membutuhkan Anda sebagai profesional untuk maju berkembang bersama kami, sebagai :</div>
 	<div>&nbsp;</div>

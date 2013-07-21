@@ -17,7 +17,10 @@ if (count($array_arg) > 1) {
 	
 	if ($is_company_link) {
 		$is_website = true;
-	} else if (in_array($key, array('company', 'editor', 'panel', 'seeker', 'master', 'subscribe'))) {
+	} else if (in_array($key, array('seeker'))) {
+		$is_website = false;
+		$route['seeker/(:num)/(:any)'] = "seeker/publish";
+	} else if (in_array($key, array('company', 'editor', 'panel', 'master', 'subscribe'))) {
 		$is_website = false;
 	}
 }

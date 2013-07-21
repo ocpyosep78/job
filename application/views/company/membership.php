@@ -1,7 +1,9 @@
 <?php
 	$company = $this->Company_model->get_session();
+	$company = $this->Company_model->get_by_id(array( 'id' => $company['id'] ));
 	$is_member = $this->Company_model->get_membership_status(array( 'id' => $company['id'] ));
 	$array_membership = $this->Membership_model->get_array();
+	$membership_request = $this->Company_Membership_model->get_membership_request(array( 'company_id' => $company['id'] ));
 ?>
 
 <?php $this->load->view( 'panel/common/meta', array( 'title' => 'Membership' ) ); ?>
@@ -57,6 +59,18 @@
 					</div>
 				</form>
 			</div></div></div></div>
+			
+			<?php if (count($membership_request) > 0) { ?>
+			<div class="row-fluid" style="border: 1px solid red;"><div style="padding: 0 25px;">
+				<h3>Invoice :</h3>
+				<div style="padding: 0 0 10px 0; border-bottom: 1px solid #CCCCCC;">Menunggu pembayaran dari anda (disini tampilkan widget invoice)</div>
+				<div style="padding: 15px 0;">
+					<div>Berlaku sampai : <?php echo GetFormatDate($membership_request['membership_date'], array( 'FormatDate' => 'd-m-Y' )); ?></div>
+					<div>Jumlah Posting maksimal : <?php echo $membership_request['post_count']; ?></div>
+					<div>Harga : <?php echo $membership_request['price']; ?></div>
+				</div>
+			</div></div>
+			<?php } ?>
 		</div>
 	</div></div></div></div></div>
 </div>
@@ -73,9 +87,16 @@
 			return false;
 		}
 		
-		Func.ajax({ url: web.host + 'company/membership/action', param: param, callback: function(result) {
-			Func.show_notice({ text: result.message });
-		} });
+		bootbox.confirm("Confirm Membership, apa anda yakin ?", function(result) {
+			if (! result) {
+				return;
+			}
+			
+			Func.ajax({ url: web.host + 'company/membership/action', param: param, callback: function(result) {
+				Func.show_notice({ text: result.message });
+				setTimeout(function(){ window.location.reload(); }, 3000);
+			} });
+		});
 		
 		return false;
 	});
