@@ -126,6 +126,7 @@ class Seeker_Subscribe_model extends CI_Model {
 		$param_email['message']  = "Judul : ".$vacancy['nama']."<br />";
 		$param_email['message'] .= "Nama perusahan : ".$vacancy['company_nama']."<br />";
 		$param_email['message'] .= "Lokasi : ".$vacancy['kota_nama']."<br />";
+		$param_email['message'] .= "Link : <a href=".$vacancy['vacancy_link'].">".$vacancy['vacancy_link']."</a>";
 		
 		// sent mail
 		foreach ($array_subscribe as $seeker) {

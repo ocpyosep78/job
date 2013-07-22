@@ -175,12 +175,14 @@
 			} });
 		});
 		$('.grid-apply .interview').click(function() {
+			row = $(this).parents('tr');
 			$('[name="id"]').val($(this).data('id'));
 			$('[name="nama"]').val('Berita Interview');
 			$('[name="apply_status_id"]').val(apply.APPLY_STATUS_INTERVIEW);
 			$('#modal-interview').modal();
 		});
 		$('.grid-apply .delete').click(function() {
+			row = $(this).parents('tr');
 			$('[name="id"]').val($(this).data('id'));
 			$('[name="nama"]').val('Berita Penolakan');
 			$('[name="apply_status_id"]').val(apply.APPLY_STATUS_REJECT);

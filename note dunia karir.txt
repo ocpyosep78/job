@@ -1,7 +1,7 @@
 SEEKER & COMPANY
 
 Update Profile
-cek => - Untuk update Profile (Seeker & Company) dibawahnya dikasih :
+ok => cek => - Untuk update Profile (Seeker & Company) dibawahnya dikasih :
 
 Declaration
 
@@ -12,20 +12,20 @@ I confirm that the information given in this application is true, accurate  and 
 SEEKER
 
 Seeker CV
-cek => - link nya diganti dengan :
-cek => - http://www.parapekerja.com/seeker/50124591/ridwanamir
+ok => cek => - link nya diganti dengan :
+ok => cek => - http://www.parapekerja.com/seeker/50124591/ridwanamir
 
 Seeker Dashboard
-cek => - Record yang pertama di isi muncul dibaris paling bawah, jadi record terbaru akan muncul diatas
-cek => - Ada bug, ada record yang di edit jadi hilang record nya
-cek => - CRUD Bahasa (combo pasif dan aktif di ganti menjadi Good, Moderate, Poor)
-cek => - Pengalaman Kerja itu sama seperti : Info Tambahan, cukup edit saja tapi formnya tetap
-cek => - Kendaraan ditampilkan di biodata & CV
-cek => - Referensi tidak bisa CRUD 
+ok => cek => - Record yang pertama di isi muncul dibaris paling bawah, jadi record terbaru akan muncul diatas
+ok => cek => - Ada bug, ada record yang di edit jadi hilang record nya
+ok => cek => - CRUD Bahasa (combo pasif dan aktif di ganti menjadi Good, Moderate, Poor)
+ok => cek => - Pengalaman Kerja itu sama seperti : Info Tambahan, cukup edit saja tapi formnya tetap
+ok => cek => - Kendaraan ditampilkan di biodata & CV
+ok => cek => - Referensi tidak bisa CRUD 
 
 Seeker Subscribe
-cek => - Seeker dapat berlangganan kategory (max 5)
-cek => - ketika ada update dari kategori yang bersangkutan maka sistem akan kirim email dengan format :
+ok => cek => - Seeker dapat berlangganan kategory (max 5)
+ok => cek => - ketika ada update dari kategori yang bersangkutan maka sistem akan kirim email dengan format :
 	Judul
 	Nama perusahan
 	Lokasi
@@ -34,15 +34,15 @@ cek => - ketika ada update dari kategori yang bersangkutan maka sistem akan kiri
 COMPANY
 
 Company Vacancy
-cek => - http://www.parapekerja.com/company/vacancy
-cek => - tambah 1 inputan Jobs reff dibawahnya judul
-cek => - Pendidikan Multiple Select sama seperti Position (DULU)
-cek => - check Closed Date tidak boleh melebihi dari tanggal berakhirnya membership dia
-cek => - check tidak boleh pasang lowongan yang Closed Date < Today
+ok => cek => - http://www.parapekerja.com/company/vacancy
+ok => cek => - tambah 1 inputan Jobs reff dibawahnya judul
+ok => cek => - Pendidikan Multiple Select sama seperti Position (DULU)
+ok => cek => - check Closed Date tidak boleh melebihi dari tanggal berakhirnya membership dia
+ok => cek => - check tidak boleh pasang lowongan yang Closed Date < Today
 
 Company Download
-cek => - http://parapekerja.com/company/download/index/44
-cek => - hasil export jelek
+ok => cek => - http://parapekerja.com/company/download/index/44
+ok => cek => - hasil export jelek
 
 Company Exam
 cek => - http://parapekerja.com/resume/exam.png

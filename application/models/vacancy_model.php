@@ -167,7 +167,7 @@ class Vacancy_model extends CI_Model {
 		if (isset($row['vacancy_status_id']) && $row['vacancy_status_id'] == VACANCY_STATUS_APPROVE) {
 			if (isset($param['is_edit'])) {
 				unset($param['is_edit']);
-				$param['is_custom'] = '&nbsp;';
+				$param['is_custom'] = '<img class="button-cursor view" src="'.base_url('static/img/button_view.png').'">';
 			}
 		}
 		
