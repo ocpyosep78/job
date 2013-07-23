@@ -45,36 +45,36 @@ ok => cek => - http://parapekerja.com/company/download/index/44
 ok => cek => - hasil export jelek
 
 Company Exam
-cek => - http://parapekerja.com/resume/exam.png
-cek => - Exam untuk semua yang apply
-cek => - di grid ada status exam & ada opsi allow exam
-cek => - waktu kadang2 : -7:-7:-4
-cek => - status interview lamaran cukup sampai interview saja
+ok => cek => - http://parapekerja.com/resume/exam.png
+ok => cek => - Exam untuk semua yang apply
+ok => cek => - di grid ada status exam & ada opsi allow exam
+ok => cek => - waktu kadang2 : -7:-7:-4
+ok => cek => - status interview lamaran cukup sampai interview saja
 
 Company Membership
-cek => - test ulang
-cek => - http://parapekerja.com/resume/membership.png
-cek => - ada info kotak merah itu
+ok => cek => - test ulang
+ok => cek => - http://parapekerja.com/resume/membership.png
+ok => cek => - ada info kotak merah itu
 	1. User Pilih paket
 	2. User klik Save
 	3. Confirm pemilihan paket
 	4. jika confirm = ya, muncul kotak merah itu sampai ada approvement dari admin
 
 Company Search
-cek => - http://www.parapekerja.com/company/search
-cek => - hanya untuk membership saja (bukan free)
+ok => cek => - http://www.parapekerja.com/company/search
+ok => cek => - hanya untuk membership saja (bukan free)
 
 
 WEBSITE
 
 Website Pencarian
-cek => - model url seperti http://parapekerja.com/search/buku
-cek => - ukuran gambarnya di fix kan agar sama semua
+ok => cek => - model url seperti http://parapekerja.com/search/buku
+ok => cek => - ukuran gambarnya di fix kan agar sama semua
 
 Website Vacancy
-cek => - http://www.parapekerja.com/PT-Arahan-Mandiri/44-testing-exam-bos
-cek => - Tampilakn Jobs reff
+ok => cek => - http://www.parapekerja.com/PT-Arahan-Mandiri/44-testing-exam-bos
+ok => cek => - Tampilakn Jobs reff
 
 Website Search
-cek => - link memakai seperti : parapekerja.com/search/keyword
-cek => - dibagian atas tampilkan "hasil pencarian : kedyword"
+ok => cek => - link memakai seperti : parapekerja.com/search/keyword
+ok => cek => - dibagian atas tampilkan "hasil pencarian : kedyword"

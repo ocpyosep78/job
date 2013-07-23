@@ -95,6 +95,9 @@ $(document).ready(function() {
 	$('.btn-download').click(function() {
 		var exam_id = $('[name="exam_id"]').val();
 		Func.ajax({ url: web.host + 'seeker/exam/action', param: { action: 'take-exam', exam_id: exam_id }, callback: function(result) {
+			// start countdown
+			setInterval(function(){countdown()}, 1000);
+			
 			$('.cnt-upload').show();
 			window.open(result.exam_file_link);
 		} });
