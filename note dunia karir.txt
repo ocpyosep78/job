@@ -1,80 +1,145 @@
-SEEKER & COMPANY
-
-Update Profile
-ok => cek => - Untuk update Profile (Seeker & Company) dibawahnya dikasih :
-
-Declaration
-
-I confirm that the information given in this application is true, accurate  and complete and I agree to the use of my information as detailed in the privacy statement.
-
-
-
 SEEKER
 
-Seeker CV
-ok => cek => - link nya diganti dengan :
-ok => cek => - http://www.parapekerja.com/seeker/50124591/ridwanamir
+Resume Edit
+- http://www.parapekerja.com/seeker/resume/edit
+- Address = max : 300 karakter
+- Home Phone Number = 13 karakter dan only angka saja
+- Mobile Number = 13 karakter dan only angka saja
+- Tempat Lahir = max : 30 karakter
+- Religion = kasih combo
+- Tempat Pendidikan = max 60 karakter
+- Tempat Kerja = max 60 karakter
 
-Seeker Dashboard
-ok => cek => - Record yang pertama di isi muncul dibaris paling bawah, jadi record terbaru akan muncul diatas
-ok => cek => - Ada bug, ada record yang di edit jadi hilang record nya
-ok => cek => - CRUD Bahasa (combo pasif dan aktif di ganti menjadi Good, Moderate, Poor)
-ok => cek => - Pengalaman Kerja itu sama seperti : Info Tambahan, cukup edit saja tapi formnya tetap
-ok => cek => - Kendaraan ditampilkan di biodata & CV
-ok => cek => - Referensi tidak bisa CRUD 
+Resume Online
+- Gender = belum tampil di resume online
+- Citizenship = belum tampil di resume online
 
-Seeker Subscribe
-ok => cek => - Seeker dapat berlangganan kategory (max 5)
-ok => cek => - ketika ada update dari kategori yang bersangkutan maka sistem akan kirim email dengan format :
-	Judul
-	Nama perusahan
-	Lokasi
+Apply
+- Kasih status exam
+
+Form Rangkuman Profile
+- Nilai / IPK Terakhir = max 5 karakter dan angka saja
+
+Kirim Lamaran
+- Cover Letter di menu kirim lamaran dan surat lamaran max 5000 karakter
+
 
 
 COMPANY
 
-Company Vacancy
-ok => cek => - http://www.parapekerja.com/company/vacancy
-ok => cek => - tambah 1 inputan Jobs reff dibawahnya judul
-ok => cek => - Pendidikan Multiple Select sama seperti Position (DULU)
-ok => cek => - check Closed Date tidak boleh melebihi dari tanggal berakhirnya membership dia
-ok => cek => - check tidak boleh pasang lowongan yang Closed Date < Today
+Vacancy
+- ada input submit application : (Email / Link)
+- By Email seperti skr
+- By Link : user akan memasukkan link form nya
+- contoh liat : https://www.glassdoor.com/partners/post-a-job/postJob_input.htm
 
-Company Download
-ok => cek => - http://parapekerja.com/company/download/index/44
-ok => cek => - hasil export jelek
+Exam
+- Ketika seeker diundang exam, maka akan kirim notice :
+----------------------------------------------------------------------
+Kepada Ridwan Amir
 
-Company Exam
-ok => cek => - http://parapekerja.com/resume/exam.png
-ok => cek => - Exam untuk semua yang apply
-ok => cek => - di grid ada status exam & ada opsi allow exam
-ok => cek => - waktu kadang2 : -7:-7:-4
-ok => cek => - status interview lamaran cukup sampai interview saja
+Ini adalah notifikasi pemberitahuan, bahwa anda di undang untuk mengikuti exam online di PT Arahan Mandiri, silahkan lihat dashboard anda segera..
 
-Company Membership
-ok => cek => - test ulang
-ok => cek => - http://parapekerja.com/resume/membership.png
-ok => cek => - ada info kotak merah itu
-	1. User Pilih paket
-	2. User klik Save
-	3. Confirm pemilihan paket
-	4. jika confirm = ya, muncul kotak merah itu sampai ada approvement dari admin
+Login : parapekerja.com/login
 
-Company Search
-ok => cek => - http://www.parapekerja.com/company/search
-ok => cek => - hanya untuk membership saja (bukan free)
+Terima Kasih
+----------------------------------------------------------------------
+- link untuk exam di seeker tetap ada
+- upload jawaban hanya bisa 1 x
+- send exam to all.. yang sudah di send nga perlu di send lagi..
+- Format notifikasi jawaban
+----------------------------------------------------------------------
+Jawaban - Ridwan Amir - [no pelamar] - office boy
+Lamaran kerja : [no pelamar] - Ridwan Amir - Office boy
+----------------------------------------------------------------------
+
+
+EDITOR
+
+Article
+- judul article dan event = max 60 karakter
+
+Event
+- judul article dan event = max 60 karakter
+
+Category
+- kategori dan sub kategori = max 40 karakter
+
+Sub Category
+- kategori dan sub kategori = max 40 karakter
+
+Industri
+- Industri = max 40 karakter
+
+Jenis Pekerjaan
+- Jenis Pekerjaan = max 40 karakter
+
+Jenjang
+- Jenjang = max 40 karakter
+
+Posisi
+- Posisi = max 40 karakter
+
+Propinsi
+- Propinsi = max 40 karakter
+
+Kota
+- Kota = max 40 karakter
+
+
+ALL
+- Email : duniakarir.com di ganti menjadi di bawah ini
+- from : parapekerja.com / no-reply@parapekerja.com
 
 
 WEBSITE
 
-Website Pencarian
-ok => cek => - model url seperti http://parapekerja.com/search/buku
-ok => cek => - ukuran gambarnya di fix kan agar sama semua
+Vacancy
+- http://www.parapekerja.com/PT-Arahan-Mandiri/36-tes-ke-tiga
+- Tampilkan 1 per 1 field berikut ini di bagian atas tombol apply: (nanti saya rapikan)
+- Kategori > subkategori
+- Status = karena kemungkinan apakah lowongan tersebut udah expired apa belum, kalo udah lewat end date kasih tulisan EXPIRED
+- Lokasi Kerja > Kota
+- Pendidikan 
+- Tipe Pekerjaan
+- Pengalaman
+- Gaji yang di tawarkan = di form pengisian jika tidak di isi kasih tulisan "Dapat dirundingkan"
+- Belum support sent by link / email
+- By link mengharuskan user untuk menjadi member (ketika tombol apply ditekan akan ngecek : by url / email, klo url akan di redirect tapi jika belum login : "Silahkan Login Untuk Melamar")
 
-Website Vacancy
-ok => cek => - http://www.parapekerja.com/PT-Arahan-Mandiri/44-testing-exam-bos
-ok => cek => - Tampilakn Jobs reff
+Quick Apply
+- http://www.parapekerja.com/PT-Garuda-Indonesa-Persero-Tbk/50-Lowongan-PT-AGRO-MANDIRI-SEMESTA-PLANTATION/quick
+- Ada error
 
-Website Search
-ok => cek => - link memakai seperti : parapekerja.com/search/keyword
-ok => cek => - dibagian atas tampilkan "hasil pencarian : kedyword"
+Subscribe
+- subscriber di kirim 1 kali dalam 1 hari.. tidak pada saat update langsung terkirim
+- pengiriman bisa via cron / trigger di admin
+- maksimal 10 lowongan saja yang dikirim
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
