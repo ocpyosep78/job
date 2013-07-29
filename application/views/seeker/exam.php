@@ -36,7 +36,12 @@
 		</div>
 		<div style="clear: both;"></div>
 		
-		<?php if (! $is_over) { ?>
+		<?php if ($apply['exam_status_id'] == EXAM_DONE) { ?>
+		<div style="padding: 25px 0 0 0;" class="cnt-upload hide">
+			<div style="padding: 0 0 10px 0;">File jawaban anda sudah berhasil dikirim.</div>
+			<div class="cnt-return" style="padding: 30px 0 0 0;"><a href="<?php echo base_url('seeker/apply'); ?>" class="btn btn-success">Kembali ke Menu Apply</a></div>
+		</div>
+		<?php } else if (! $is_over) { ?>
 		<div style="padding: 25px 0 0 0;" class="cnt-upload hide">
 			<div style="padding: 0 0 10px 0;">Upload file anda setelah menyelesaikan soal ini</div>
 			<div><button class="btn btn-success btn-upload">Upload Soal</button></div>
@@ -64,6 +69,11 @@ $(document).ready(function() {
 	
 	function set_time() {
 		var time_left = $('[name="time_left"]').val();
+		if (time_left < 0) {
+			$('.cnt-time').text('Waktu sudah habis');
+			return;
+		}
+		
 		var hour = Math.floor((time_left / 3600));
 		var minute = Math.floor(((time_left % 3600) / 60));
 		var second = time_left % 60;

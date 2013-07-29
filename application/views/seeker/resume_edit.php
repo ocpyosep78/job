@@ -4,6 +4,7 @@
 	$array_propinsi = $this->Propinsi_model->get_array(array('negara_id' => NEGARA_INDONESIA_ID));
 	$array_kelamin = $this->Kelamin_model->get_array();
 	$array_marital = $this->Marital_model->get_array();
+	$array_region = $this->Region_model->get_array();
 ?>
 
 <?php $this->load->view( 'panel/common/meta', array( 'title' => 'Edit Resume' ) ); ?>
@@ -40,7 +41,7 @@
 				<div class="control-group">
 					<label for="address" class="control-label">Address</label>
 					<div class="controls">
-						<textarea name="address" id="address" class="input-block-level"></textarea>
+						<textarea name="address" id="address" class="input-block-level" maxlength="300"></textarea>
 					</div>
 				</div>
 				<div class="control-group">
@@ -58,15 +59,15 @@
 				<div class="control-group">
 					<label for="phone" class="control-label">Home Phone Number</label>
 					<div class="controls">
-						<input type="text" name="phone" id="phone" class="input-xlarge">
-						<span class="help-block">example: +62 21 5678910</span>
+						<input type="text" name="phone" id="phone" class="input-xlarge alphanumericplus" maxlength="13">
+						<span class="help-block">example: +6265418974</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label for="hp" class="control-label">Mobile Number</label>
 					<div class="controls">
-						<input type="text" name="hp" id="hp" class="input-xlarge">
-						<span class="help-block">example: +62 21 5678910</span>
+						<input type="text" name="hp" id="hp" class="input-xlarge alphanumericplus" maxlength="13">
+						<span class="help-block">example: 06265418974</span>
 					</div>
 				</div>
 				<div class="control-group">
@@ -78,7 +79,7 @@
 				<div class="control-group">
 					<label for="tempat_lahir" class="control-label">Tempat Lahir</label>
 					<div class="controls">
-						<input type="text" name="tempat_lahir" id="tempat_lahir" class="input-xlarge" />
+						<input type="text" name="tempat_lahir" id="tempat_lahir" class="input-xlarge" maxlength="30" />
 					</div>
 				</div>
 				<div class="control-group">
@@ -96,10 +97,9 @@
 				</div>
 				<div class="control-group">
 					<label for="agama" class="control-label">Religion</label>
-					<div class="controls">
-						<input type="text" name="agama" id="agama" class="input-xlarge">
-						<span class="help-block">Enter you religion / Masukkan agama anda</span>
-					</div>
+					<div class="controls"><select name="agama" id="agama" class='input-xlarge'>
+						<?php echo ShowOption(array( 'Array' => $array_region, 'ArrayID' => 'value', 'ArrayTitle' => 'value' )); ?>
+					</select></div>
 				</div>
 				<div class="control-group">
 					<label for="marital_id" class="control-label">Marital Status</label>

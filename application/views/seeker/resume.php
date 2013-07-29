@@ -233,7 +233,7 @@
 					<div class="modal-body">
 						<div class="control-group">
 							<label for="input-score" class="control-label">Nilai / IPK Terakhir</label>
-							<div class="controls"><input type="text" name="score" id="input-score" class="input-xlarge" data-rule-required="true" /></div>
+							<div class="controls"><input type="text" name="score" id="input-score" class="input-xlarge" data-rule-required="true" maxlength="5" /></div>
 						</div>
 						<div class="control-group">
 							<label for="input-jenjang_id" class="control-label">Pendidikan Terakhir</label>
@@ -243,11 +243,11 @@
 						</div>
 						<div class="control-group">
 							<label for="input-school" class="control-label">Tempat Pendidikan</label>
-							<div class="controls"><input type="text" name="school" id="input-school" class="input-xlarge" data-rule-required="true" /></div>
+							<div class="controls"><input type="text" name="school" id="input-school" class="input-xlarge" data-rule-required="true" maxlength="60" /></div>
 						</div>
 						<div class="control-group">
 							<label for="input-experience" class="control-label">Tempat Kerja</label>
-							<div class="controls"><input type="text" name="experience" id="input-experience" class="input-xlarge" data-rule-required="true" /></div>
+							<div class="controls"><input type="text" name="experience" id="input-experience" class="input-xlarge" data-rule-required="true" maxlength="60" /></div>
 						</div>
 					</div>
 				</form>

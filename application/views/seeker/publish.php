@@ -108,6 +108,14 @@
 					<td valign="top">:</td>
 					<td class="tdRight" valign="top"><?php echo $seeker['agama']; ?></td></tr>
 				<tr>
+					<td valign="top" width="25%">Jenis Kelamin</td>
+					<td valign="top">:</td>
+					<td class="tdRight" valign="top"><?php echo $seeker['kelamin_nama']; ?></td></tr>
+				<tr>
+					<td valign="top" width="25%">Citizenship</td>
+					<td valign="top">:</td>
+					<td class="tdRight" valign="top"><?php echo $seeker['kebangsaan']; ?></td></tr>
+				<tr>
 					<td valign="top" width="25%">Status</td>
 					<td valign="top">:</td>
 					<td class="tdRight" valign="top"><?php echo $seeker['marital_nama']; ?></td></tr>			

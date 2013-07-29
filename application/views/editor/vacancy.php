@@ -49,7 +49,7 @@
 				</div>
 				<div class="control-group">
 					<label for="input-nama" class="control-label">Judul</label>
-					<div class="controls"><input type="text" name="nama" id="input-nama" class="input-xxlarge" data-rule-required="true" /></div>
+					<div class="controls"><input type="text" name="nama" id="input-nama" class="input-xxlarge" data-rule-required="true" maxlength="60" /></div>
 				</div>
 				<div class="control-group">
 					<label for="input-job_reff" class="control-label">Jobs reff</label>

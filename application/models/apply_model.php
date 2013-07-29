@@ -176,7 +176,7 @@ class Apply_model extends CI_Model {
 		}
 		
 		if (count(@$param['column']) > 0) {
-			if ($row['exam_status_id'] == EXAM_OPEN) {
+			if (!empty($row['exam_status_id'])) {
 				$param['is_custom'] = '<img class="button-cursor exam" src="'.base_url('static/img/button_quiz.jpg').'"> ' . $param['is_custom'];
 			}
 			

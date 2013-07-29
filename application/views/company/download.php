@@ -157,6 +157,8 @@
 			Func.ajax({ url: web.host + 'company/download/action', param: param, callback: function(result) {
 				if (result.status == 1) {
 					window.location.reload();
+				} else {
+					Func.show_notice({ text: result.message });
 				}
 			} });
 		});

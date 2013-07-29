@@ -12,8 +12,12 @@
 	$array_pengalaman = $this->Pengalaman_model->get_array();
 	$array_vacancy_status = $this->Vacancy_Status_model->get_array(array( 'is_company' => 1 ));
 	$array_jenis_pekerjaan = $this->Jenis_Pekerjaan_model->get_array();
+	$array_vacancy_submit_via = $this->Vacancy_Submit_Via_model->get_array();
 	$array_kategori = $this->Kategori_model->get_array(array( 'limit' => 100 ));
 	$array_propinsi = $this->Propinsi_model->get_array(array('negara_id' => NEGARA_INDONESIA_ID));
+	
+	$array_page['VACANCY_SUBMIT_VIA_EMAIL'] = VACANCY_SUBMIT_VIA_EMAIL;
+	$array_page['VACANCY_SUBMIT_VIA_LINK'] = VACANCY_SUBMIT_VIA_LINK;
 ?>
 
 <?php $this->load->view( 'panel/common/meta', array( 'title' => 'Vacancy' ) ); ?>
@@ -28,6 +32,7 @@
 		<div class="box-content">
 			<div class="hide">
 				<div class="cnt-company"><?php echo json_encode($company); ?></div>
+				<div class="cnt-submit-via"><?php echo json_encode($array_page); ?></div>
 			</div>
 			
 			<div class="row-fluid" id="grid-vacancy"><div class="span12"><div class="box"><div class="box-content nopadding">
@@ -126,17 +131,33 @@
 					<label for="input-close_date" class="control-label">Closed Date</label>
 					<div class="controls"><input type="text" name="close_date" id="input-close_date" class="input-medium datepick" data-rule-required="true" /></div>
 				</div>
+				<div class="control-group">
+					<label class="control-label">Submit via</label>
+					<div class="controls"><select name="vacancy_submit_via" class="input-xlarge" data-rule-required="true">
+						<?php echo ShowOption(array( 'Array' => $array_vacancy_submit_via, 'ArrayID' => 'id', 'ArrayTitle' => 'text' )); ?>
+					</select></div>
+				</div>
 				
-				<div class="box box-color box-bordered teal">
+				<div class="box box-color box-bordered teal cnt-email">
 					<div class="box-title"><h3><i class="icon-file"></i> Set Email Penerima</h3></div>
 					<div class="box-content">
 						<div class="control-group">
 							<label for="input-email_apply" class="control-label">Email Apply</label>
-							<div class="controls"><input type="text" name="email_apply" id="input-email_apply" class="input-xlarge" data-rule-required="true" data-rule-email="true" /></div>
+							<div class="controls"><input type="text" name="email_apply" id="input-email_apply" class="input-xlarge" data-rule-email="true" /></div>
 						</div>
 						<div class="control-group">
 							<label for="input-email_quick" class="control-label">Email Quick Applay</label>
 							<div class="controls"><input type="text" name="email_quick" id="input-email_quick" class="input-xlarge" data-rule-email="true" /></div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="box box-color box-bordered teal cnt-link">
+					<div class="box-title"><h3><i class="icon-file"></i> Set Link Lamaran</h3></div>
+					<div class="box-content">
+						<div class="control-group">
+							<label class="control-label">Link Address</label>
+							<div class="controls"><input type="text" name="link_apply" class="input-xxlarge" /></div>
 						</div>
 					</div>
 				</div>
@@ -170,6 +191,10 @@
 			}
 		}
 		
+		// vacancy submit via
+		var raw_submit_via = $('.cnt-submit-via').text();
+		eval('var submit_via = ' + raw_submit_via);
+		
 		var param = {
 			id: 'cnt-vacancy', aaSorting: [[0, 'desc']],
 			source: web.host + 'company/vacancy/grid',
@@ -183,6 +208,7 @@
 					$('#form-vacancy [name="jenjang_id"]').val([]).select2();
 					$('#cnt-company-name').html(company.nama);
 					
+					$('[name="vacancy_submit_via"]').change();
 					page.show_editor();
 				});
 			},
@@ -212,9 +238,12 @@
 						$('#form-vacancy [name="gaji"]').val(record.gaji);
 						$('#form-vacancy [name="publish_date"]').val(Func.SwapDate(record.publish_date));
 						$('#form-vacancy [name="close_date"]').val(Func.SwapDate(record.close_date));
+						$('#form-vacancy [name="vacancy_submit_via"]').val(record.vacancy_submit_via);
+						$('#form-vacancy [name="link_apply"]').val(record.link_apply);
 						$('#form-vacancy [name="email_apply"]').val(record.email_apply);
 						$('#form-vacancy [name="email_quick"]').val(record.email_quick);
 						
+						$('[name="vacancy_submit_via"]').change();
 						combo.kota({ propinsi_id: record.propinsi_id, target: $('[name="kota_id"]'), callback: function() { $('[name="kota_id"]').val(record.kota_id); } });
 						combo.subkategori({ kategori_id: record.kategori_id, target: $('[name="subkategori_id"]'), callback: function() { $('[name="subkategori_id"]').val(record.subkategori_id); } });
 					} });
@@ -241,6 +270,17 @@
 		$('[name="propinsi_id"]').change(function() {
 			combo.kota({ propinsi_id: $('[name="propinsi_id"]').val(), target: $('[name="kota_id"]') })
 		});
+		$('[name="vacancy_submit_via"]').change(function() {
+			$('.cnt-email').hide();
+			$('.cnt-link').hide();
+			var value = $(this).val();
+			
+			if (value == submit_via.VACANCY_SUBMIT_VIA_EMAIL) {
+				$('.cnt-email').show();
+			} else if (value == submit_via.VACANCY_SUBMIT_VIA_LINK) {
+				$('.cnt-link').show();
+			}
+		});
 		
 		/*	Modal */
 		$('#form-vacancy .form-close').click(function() {
@@ -248,11 +288,19 @@
 			$("html, body").animate({ scrollTop: 0 }, "slow");
 		});
 		$('#form-vacancy').submit(function() {
+			var param = Site.Form.GetValue('form-vacancy');
+			
 			if (! $('#form-vacancy').valid()) {
+				return false;
+			} else if (param.vacancy_submit_via == submit_via.VACANCY_SUBMIT_VIA_EMAIL && param.email_apply.length == 0) {
+				Func.show_notice({ text: 'Harap mengisi Email Apply' });
+				return false;
+			} else if (param.vacancy_submit_via == submit_via.VACANCY_SUBMIT_VIA_LINK && param.link_apply.length == 0) {
+				Func.show_notice({ text: 'Harap mengisi Link Address' });
 				return false;
 			}
 			
-			var param = Site.Form.GetValue('form-vacancy');
+			// validation value
 			param.action = 'update';
 			param.publish_date = Func.SwapDate(param.publish_date);
 			param.close_date = Func.SwapDate(param.close_date);

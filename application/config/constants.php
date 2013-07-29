@@ -29,6 +29,8 @@ define('VACANCY_STATUS_APPROVE',				3);
 define('VACANCY_STATUS_CANCEL',					4);
 define('VACANCY_STATUS_EXAM',					6);
 define('VACANCY_STATUS_DONE',					7);
+define('VACANCY_SUBMIT_VIA_EMAIL',				1);
+define('VACANCY_SUBMIT_VIA_LINK',				2);
 
 define('APPLY',									'apply');
 define('APPLY_STATUS',							'apply_status');

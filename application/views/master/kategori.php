@@ -33,7 +33,7 @@
 				<div class="modal-body">
 					<div class="control-group">
 						<label for="input-nama" class="control-label">Nama</label>
-						<div class="controls"><input type="text" name="nama" id="input-nama" class="input-xlarge" data-rule-required="true" maxlength="20" /></div>
+						<div class="controls"><input type="text" name="nama" id="input-nama" class="input-xlarge" data-rule-required="true" maxlength="40" /></div>
 					</div>
 					<div class="control-group">
 						<label for="input-alias" class="control-label">Alias</label>

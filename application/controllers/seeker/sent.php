@@ -43,8 +43,8 @@ class sent extends SEEKER_Controller {
 			$content = $this->load->view( 'seeker/email/lamaran', array( 'seeker' => $seeker, 'content' => $param['content'] ), true );
 			$MailParam = array(
 				'EmailTo' => $param['to'],
-				'EmailFrom' => 'no-reply@duniakarir.com',
-				'EmailFromName' => 'Dunia Karir',
+				'EmailFrom' => 'no-reply@parapekerja.com',
+				'EmailFromName' => 'Para Pekerja',
 				'EmailSubject' => $param['subject'],
 				'EmailBody' => $content,
 				'Attachment' => $attach

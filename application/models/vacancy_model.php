@@ -7,7 +7,7 @@ class Vacancy_model extends CI_Model {
         $this->field = array(
 			'id', 'company_id', 'subkategori_id', 'nama', 'position', 'vacancy_status_id', 'article_url', 'article_link', 'content_short',
 			'content', 'opsi_1', 'opsi_2', 'kota_id', 'jenjang_id', 'jenis_pekerjaan_id', 'pengalaman_id', 'gaji', 'publish_date', 'close_date',
-			'email_apply', 'email_quick', 'total_view', 'total_seeker', 'job_reff'
+			'email_apply', 'email_quick', 'total_view', 'total_seeker', 'job_reff', 'vacancy_submit_via', 'link_apply'
 		);
     }
 

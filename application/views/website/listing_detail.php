@@ -56,8 +56,7 @@
 </td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" align="center" width="600"><tbody><tr><td align="left"><table cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td align="left"><p align="justify"><font color="#FFFFFF" face="Arial" size="2"></font></p><div><font color="#FFFFFF" face="Arial" size="2">
 	<div>Kami adalah perusahaan yang bergerak di bidang <?php echo $vacancy['industri_nama']; ?>, saat ini kami sedang berkembang dengan pesat dan membutuhkan Anda sebagai profesional untuk maju berkembang bersama kami, sebagai :</div>
 	<div>&nbsp;</div>
-</font></div><font color="#FFFFFF" face="Arial" size="2">
-</font>
+</font></div>
 
 <div style="text-align: center; color: #FFFFFF;">
 	<div style="font-size: 24px; font-weight: bold;"><?php echo $vacancy['nama']; ?></div>
@@ -81,6 +80,19 @@
 <table border="0" cellpadding="0" cellspacing="0" align="center" width="600"><tbody><tr><td>
 <table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody>
 	<tr><td>
+		<div class="cnt-info">
+			<?php echo $vacancy['kategori_nama'].' ' .$vacancy['subkategori_nama']; ?>
+<!--
+- Status = karena kemungkinan apakah lowongan tersebut udah expired apa belum, kalo udah lewat end date kasih tulisan EXPIRED
+- Lokasi Kerja > Kota
+- Pendidikan 
+- Tipe Pekerjaan
+- Pengalaman
+- Gaji yang di tawarkan = di form pengisian jika tidak di isi kasih tulisan "Dapat dirundingkan"
+- Belum support sent by link / email
+- By link mengharuskan user untuk menjadi member (ketika tombol apply ditekan akan ngecek : by url / email, klo url akan di redirect tapi jika belum login : "Silahkan Login Untuk Melamar")
+-->
+		</div>
 		<div class="cnt-apply" style="padding: 30px 0 30px 0; text-align: center;">
 			<?php if ($is_apply) { ?>
 			Anda sudah melamar lowongan ini.

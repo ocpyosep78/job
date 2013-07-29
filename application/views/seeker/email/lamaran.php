@@ -1,4 +1,5 @@
 <?php
+	$widget = $this->Widget_model->get_by_id(array( 'alias' => 'seeker-sent-mail' ));
 	$summary = $this->Seeker_Summary_model->get_by_id(array( 'seeker_id' => $seeker['id'] ));
 ?>
 
@@ -33,5 +34,8 @@
 			</div>
 			<div>Profile : <a style="color: #00A2E8; text-decoration: none;" href="<?php echo $seeker['seeker_link']; ?>"><?php echo $seeker['seeker_link']; ?></a></div>
 		</div>
+		<?php if (!empty($widget['content'])) { ?>
+		<div style="border-top: 1px solid #CCCCCC; margin: 15px 0 0 0; padding: 0 0 15px 0; color: #00A2E8;"><?php echo $widget['content']; ?></div>
+		<?php } ?>
 	</div>
 </div>

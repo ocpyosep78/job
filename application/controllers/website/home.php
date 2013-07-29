@@ -390,8 +390,8 @@ class home extends CI_Controller {
 			// Sent Email
 			$MailParam = array(
 				'EmailTo' => $vacancy['email_apply'],
-				'EmailFrom' => 'no-reply@duniakarir.com',
-				'EmailFromName' => 'Dunia Karir',
+				'EmailFrom' => 'no-reply@parapekerja.com',
+				'EmailFromName' => 'Para Pekerja',
 				'EmailSubject' => $vacancy['nama'],
 				'EmailBody' => $content,
 				'Attachment' => $attach
@@ -432,8 +432,8 @@ class home extends CI_Controller {
 			// Sent Email
 			$MailParam = array(
 				'EmailTo' => $vacancy['email_apply'],
-				'EmailFrom' => 'no-reply@duniakarir.com',
-				'EmailFromName' => 'Dunia Karir',
+				'EmailFrom' => 'no-reply@parapekerja.com',
+				'EmailFromName' => 'Para Pekerja',
 				'EmailSubject' => $vacancy['nama'],
 				'EmailBody' => $content,
 				'Attachment' => $attach

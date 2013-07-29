@@ -14,7 +14,8 @@
 					<th>Company</th>
 					<th>Location</th>
 					<th>Time</th>
-					<th>Status</th>
+					<th>Status Apply</th>
+					<th>Status Exam</th>
 					<th style="width: 75px;">&nbsp;</th>
 				</tr></thead>
 				<tbody><tr><td class="dataTables_empty">Loading data from server</td></tr></tbody>
@@ -29,7 +30,7 @@
 		var param = {
 			id: 'cnt-apply',
 			source: web.host + 'seeker/apply/grid',
-			column: [ { }, { }, { }, { }, { }, { bSortable: false, sClass: "center" } ],
+			column: [ { }, { }, { }, { }, { }, { }, { bSortable: false, sClass: "center" } ],
 			callback: function() {
 				$('#cnt-apply .exam').click(function() {
 					var raw_record = $(this).siblings('.hide').text();

@@ -40,11 +40,11 @@
 				
 				<div class="control-group">
 					<label for="input-nama" class="control-label">Judul</label>
-					<div class="controls"><input type="text" name="nama" id="input-nama" class="input-xxlarge" data-rule-required="true" maxlength="50" /></div>
+					<div class="controls"><input type="text" name="nama" id="input-nama" class="input-xxlarge" data-rule-required="true" maxlength="60" /></div>
 				</div>
 				<div class="control-group">
 					<label for="input-alias" class="control-label">Alias</label>
-					<div class="controls"><input type="text" name="alias" id="input-alias" class="input-xxlarge" data-rule-required="true" maxlength="50" readonly="readonly" /></div>
+					<div class="controls"><input type="text" name="alias" id="input-alias" class="input-xxlarge" data-rule-required="true" maxlength="60" readonly="readonly" /></div>
 				</div>
 				<div class="control-group">
 					<label for="input-kategori_id" class="control-label">Kategori</label>

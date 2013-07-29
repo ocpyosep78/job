@@ -70,10 +70,12 @@ class exam extends SEEKER_Controller {
 			$file_exam = $this->config->item('base_path').'/static/upload/'.$_POST['exam_file'];
 			$MailParam = array(
 				'EmailTo' => $exam['email'],
-				'EmailFrom' => 'no-reply@duniakarir.com',
-				'EmailFromName' => 'Dunia Karir',
+				'EmailFrom' => 'no-reply@parapekerja.com',
+				'EmailFromName' => 'Para Pekerja',
 				'EmailSubject' => $vacancy['nama'],
-				'EmailBody' => 'Berikut hasil ujian dari '.$seeker['full_name'].' pada '.$this->config->item('current_datetime'),
+				'EmailBody' =>
+					'Jawaban - '.$seeker['full_name'].' - '.$seeker['seeker_no'].' - '.$vacancy['nama']."<br />\n".
+					'Lamaran kerja : '.$seeker['seeker_no'].' - '.$seeker['full_name'].' - '.$vacancy['nama'],
 				'Attachment' => array( $file_exam )
 			);
 			SmtpMailer($MailParam);

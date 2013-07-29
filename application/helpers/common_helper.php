@@ -813,7 +813,7 @@
 		function sent_mail($param) {
 			$headers  = 'MIME-Version: 1.0' . "\r\n";
 			$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-			$headers .= 'From: Dunia Karir <noreply@duniakarir.com>' . "\r\n";
+			$headers .= 'From: Para Pekerja <noreply@parapekerja.com>' . "\r\n";
 			@mail($param['to'], $param['title'], $param['message'], $headers);
 			
 			/*

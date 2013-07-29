@@ -19,12 +19,29 @@ class download extends COMPANY_Controller {
 			$param_update = array( 'id' => $_POST['id'], 'apply_status_id' => $_POST['apply_status_id'] );
 			$result = $this->Apply_model->update($param_update);
 		} else if ($action == 'update_exam') {
+			$apply = $this->Apply_model->get_by_id(array( 'id' => $_POST['apply_id'] ));
+			$seeker = $this->Seeker_model->get_by_id(array( 'id' => $apply['seeker_id'] ));
+			
+			$param_mail['to'] = $seeker['email'];
+			$param_mail['title'] = 'Pembertahuan Exam';
+			$param_mail['message'] = $this->load->view( 'company/exam_notice', array( 'apply' => $apply ), true );
+			sent_mail($param_mail);
+			
 			$param_apply = array( 'id' => $_POST['apply_id'], 'exam_status_id' => EXAM_OPEN );
 			$result = $this->Apply_model->update($param_apply);
 		} else if ($action == 'update_exam_all') {
+			$result['status'] = 0;
+			$result['message'] = 'Tidak ada pelamar baru yang dapat didaftarkan.';
+			
 			$array_apply = $this->Apply_model->get_array(array( 'vacancy_id' => $_POST['vacancy_id'] ));
 			foreach ($array_apply as $apply) {
 				if (empty($apply['exam_status_id'])) {
+					$seeker = $this->Seeker_model->get_by_id(array( 'id' => $apply['seeker_id']));
+					$param_mail['to'] = $seeker['email'];
+					$param_mail['title'] = 'Pembertahuan Exam';
+					$param_mail['message'] = $this->load->view( 'company/exam_notice', array( 'apply' => $apply ), true );
+					sent_mail($param_mail);
+					
 					$param_apply = array( 'id' => $apply['id'], 'exam_status_id' => EXAM_OPEN );
 					$result = $this->Apply_model->update($param_apply);
 				}

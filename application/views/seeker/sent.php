@@ -38,7 +38,12 @@
 					<div class="controls"><textarea name="content" id="input-content1" class="tinymce span9" style="height: 350px; width: 700px;"></textarea></div>
 				</div>
 				<div class="control-group" style="margin-bottom: 0px;">
-					<div class="controls"><label for="nama_perusahaan" class="control-label" style="width: 700px;">Yang kan di kirim : (attachment)</label></div>
+					<div class="controls">
+						<label for="nama_perusahaan" class="control-label" style="width: 700px;">
+							Yang kan di kirim : (attachment)
+							<div style="float: right;" class="count-left">0 karakter</div>
+						</label>
+					</div>
 				</div>
 				<div class="control-group">
 					<div class="controls">
@@ -61,15 +66,26 @@
 	</div></div></div></div></div>
 </div>
 <script>
+	setInterval(function() { $('#input-content1').change(); }, 1000);
+	$('#input-content1').change(function() {
+		var value = $(this).val();
+		$('.count-left').text(value.length + ' karakter');
+	});
+	
 	$('#form-mail').submit(function() {
-		if (! $('#form-mail').valid()) {
-			return false;
-		}
+		$('#input-content1').change();
 		
 		var param = Site.Form.GetValue('form-mail');
 		param.action = 'sent_mail';
 		param.with_resume = ($('[name="with_resume"]').is(":checked")) ? 1 : 0;
 		param.with_photo = ($('[name="with_photo"]').is(":checked")) ? 1 : 0;
+		
+		if (! $('#form-mail').valid()) {
+			return false;
+		} else if (param.content.length > 5000) {
+			Func.show_notice({ text: 'Cover Letter maksimum berisi 5000 karakter.' });
+			return false;
+		}
 		
 		var with_letter = ($('[name="with_letter"]').is(":checked")) ? 1 : 0;
 		delete param.with_letter;
