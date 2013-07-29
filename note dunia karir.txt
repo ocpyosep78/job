@@ -22,6 +22,7 @@ Form Rangkuman Profile
 
 Kirim Lamaran
 - Cover Letter di menu kirim lamaran dan surat lamaran max 5000 karakter
+- difooter ditambahkan widget
 
 
 
@@ -106,6 +107,9 @@ Vacancy
 - Gaji yang di tawarkan = di form pengisian jika tidak di isi kasih tulisan "Dapat dirundingkan"
 - Belum support sent by link / email
 - By link mengharuskan user untuk menjadi member (ketika tombol apply ditekan akan ngecek : by url / email, klo url akan di redirect tapi jika belum login : "Silahkan Login Untuk Melamar")
+
+Vacancy
+- Link 'jobs' diganti dengan 'path'
 
 Quick Apply
 - http://www.parapekerja.com/PT-Garuda-Indonesa-Persero-Tbk/50-Lowongan-PT-AGRO-MANDIRI-SEMESTA-PLANTATION/quick
