@@ -6,7 +6,7 @@
 	$content = file_get_contents('http://www.duniadb.com/_temp/sample.html');
 	$MailParam = array(
 		'EmailTo' => 'her0satr@gmail.com',
-		'EmailFrom' => 'no-reply@parapekerja.com',
+		'EmailFrom' => 'noreply@parapekerja.com',
 		'EmailFromName' => 'Para Pekerja',
 		'EmailSubject' => 'Test Cooe',
 		'EmailBody' => $content,

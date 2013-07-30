@@ -1,24 +1,24 @@
 SEEKER
 
 Resume
-cek => - Nilai / IPK Terakhir = max 5 karakter dan angka saja
-cek => - Tempat Pendidikan = max 60 karakter
-cek => - Tempat Kerja = max 60 karakter
+ok => cek => - Nilai / IPK Terakhir = max 5 karakter dan angka saja
+ok => cek => - Tempat Pendidikan = max 60 karakter
+ok => cek => - Tempat Kerja = max 60 karakter
 
 Resume Edit
-cek => - http://www.parapekerja.com/seeker/resume/edit
-cek => - Address = max : 300 karakter
-cek => - Home Phone Number = 13 karakter dan only angka saja
-cek => - Mobile Number = 13 karakter dan only angka saja
-cek => - Tempat Lahir = max : 30 karakter
-cek => - Religion = kasih combo
+ok => cek => - http://www.parapekerja.com/seeker/resume/edit
+ok => cek => - Address = max : 300 karakter
+ok => cek => - Home Phone Number = 13 karakter dan only angka saja
+ok => cek => - Mobile Number = 13 karakter dan only angka saja
+ok => cek => - Tempat Lahir = max : 30 karakter
+ok => cek => - Religion = kasih combo
 
 Resume Online
-cek => - Gender = belum tampil di resume online
-cek => - Citizenship = belum tampil di resume online
+ok => cek => - Gender = belum tampil di resume online
+ok => cek => - Citizenship = belum tampil di resume online
 
 Apply
-cek => - Kasih status exam
+ok => cek => - Kasih status exam
 
 Kirim Lamaran
 cek => - Cover Letter di menu kirim lamaran dan surat lamaran max 5000 karakter
@@ -90,7 +90,7 @@ cek => - Kota = max 40 karakter
 
 ALL
 cek => - Email : duniakarir.com di ganti menjadi di bawah ini
-cek => - from : parapekerja.com / no-reply@parapekerja.com
+cek => - from : parapekerja.com / noreply@parapekerja.com
 
 
 WEBSITE
@@ -123,46 +123,6 @@ cek => - maksimal 10 lowongan saja yang dikirim
 
 
 
-
-application/config/autoload.php
-application/config/constants.php
-application/controllers/company/download.php
-application/controllers/seeker/apply.php
-application/controllers/seeker/exam.php
-application/controllers/seeker/sent.php
-application/controllers/website/home.php
-application/helpers/common_helper.php
-application/libraries/phpmailer/test.php
-application/models/apply_model.php
-application/models/region_model.php
-application/models/vacancy_model.php
-application/models/vacancy_submit_via_model.php
-application/views/company/download.php
-application/views/company/exam_notice.php
-application/views/company/vacancy.php
-application/views/editor/article.php
-application/views/editor/event.php
-application/views/editor/vacancy.php
-application/views/master/industri.php
-application/views/master/jenis_pekerjaan.php
-application/views/master/jenjang.php
-application/views/master/kategori.php
-application/views/master/kota.php
-application/views/master/position.php
-application/views/master/propinsi.php
-application/views/master/subkategori.php
-application/views/seeker/apply.php
-application/views/seeker/email/lamaran.php
-application/views/seeker/exam.php
-application/views/seeker/publish.php
-application/views/seeker/resume.php
-application/views/seeker/resume_edit.php
-application/views/seeker/sent.php
-application/views/website/listing_detail.php
-note dunia karir.txt
-static/theme/flat/js/plugins/validation/additional-methods.min.js
-static/upload/2013
-update.sql
 
 
 
