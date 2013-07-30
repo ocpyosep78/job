@@ -1,6 +1,6 @@
 <?php
 	$array_jenjang = $this->Jenjang_model->get_array();
-	$default_resume = $this->Widget_model->get_by_id(array( 'alias' => 'default_resume' ));
+	$default_resume = $this->Widget_model->get_by_id(array( 'alias' => 'default-resume' ));
 	
 	$string_date = GetFormatDate($vacancy['publish_date'], array( 'FormatDate' => "d F Y" ));
 	$default_resume['content'] = str_replace('[DD FF YYYY]', $string_date, $default_resume['content']);

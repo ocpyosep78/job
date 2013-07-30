@@ -98,38 +98,28 @@ WEBSITE
 Vacancy
 - http://www.parapekerja.com/PT-Arahan-Mandiri/36-tes-ke-tiga
 - Tampilkan 1 per 1 field berikut ini di bagian atas tombol apply: (nanti saya rapikan)
-- Kategori > subkategori
-- Status = karena kemungkinan apakah lowongan tersebut udah expired apa belum, kalo udah lewat end date kasih tulisan EXPIRED
-- Lokasi Kerja > Kota
-- Pendidikan 
-- Tipe Pekerjaan
-- Pengalaman
-- Gaji yang di tawarkan = di form pengisian jika tidak di isi kasih tulisan "Dapat dirundingkan"
-- Belum support sent by link / email
-- By link mengharuskan user untuk menjadi member (ketika tombol apply ditekan akan ngecek : by url / email, klo url akan di redirect tapi jika belum login : "Silahkan Login Untuk Melamar")
+cek => - Kategori > subkategori
+cek => - Status = karena kemungkinan apakah lowongan tersebut udah expired apa belum, kalo udah lewat end date kasih tulisan EXPIRED
+cek => - Lokasi Kerja > Kota
+cek => - Pendidikan 
+cek => - Tipe Pekerjaan
+cek => - Pengalaman
+cek => - Gaji yang di tawarkan = di form pengisian jika tidak di isi kasih tulisan "Dapat dirundingkan"
+cek => - Belum support sent by link / email
+cek => - By link mengharuskan user untuk menjadi member (ketika tombol apply ditekan akan ngecek : by url / email, klo url akan di redirect tapi jika belum login : "Silahkan Login Untuk Melamar")
 
 Vacancy
-- Link 'jobs' diganti dengan 'path'
+cek => - Link 'jobs' diganti dengan 'path'
 
 Quick Apply
-- http://www.parapekerja.com/PT-Garuda-Indonesa-Persero-Tbk/50-Lowongan-PT-AGRO-MANDIRI-SEMESTA-PLANTATION/quick
-- Ada error
+cek => - http://www.parapekerja.com/PT-Garuda-Indonesa-Persero-Tbk/50-Lowongan-PT-AGRO-MANDIRI-SEMESTA-PLANTATION/quick
+cek => - Ada error
 
 Subscribe
-- subscriber di kirim 1 kali dalam 1 hari.. tidak pada saat update langsung terkirim
-- pengiriman bisa via cron / trigger di admin
-- maksimal 10 lowongan saja yang dikirim
-
-
-
-
-
-
-
-
-
-
-
+cek => - subscriber di kirim 1 kali dalam 1 hari.. tidak pada saat update langsung terkirim
+cek => - pengiriman bisa via cron / trigger di admin
+cek => - link cron : http://localhost:8666/job/trunk/cron/sent_mail
+cek => - maksimal 10 lowongan saja yang dikirim
 
 
 

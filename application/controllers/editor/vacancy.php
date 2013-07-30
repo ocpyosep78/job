@@ -30,11 +30,6 @@ class vacancy extends EDITOR_Controller {
 		$result = array();
 		if ($action == 'update') {
 			$result = $this->Vacancy_model->update($_POST);
-			
-			// sent seeker subscribe
-			if ($_POST['vacancy_status_id'] == VACANCY_STATUS_APPROVE) {
-				$this->Seeker_Subscribe_model->sent_mail(array( 'vacancy_id' => $_POST['id'] ));
-			}
 		} else if ($action == 'get_by_id') {
 			$result = $this->Vacancy_model->get_by_id(array( 'id' => $_POST['id'] ));
 		} else if ($action == 'sent_mail') {

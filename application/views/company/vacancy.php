@@ -69,7 +69,7 @@
 				</div>
 				<div class="control-group">
 					<label for="input-kategori_id" class="control-label">Kategori</label>
-					<div class="controls"><select name="kategori_id" id="input-propinsi_id" class="input-xxlarge">
+					<div class="controls"><select name="kategori_id" id="input-kategori_id" class="input-xxlarge">
 						<?php echo ShowOption(array( 'Array' => $array_kategori, 'ArrayID' => 'id', 'ArrayTitle' => 'nama' )); ?>
 					</select></div>
 				</div>

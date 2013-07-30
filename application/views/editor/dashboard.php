@@ -28,7 +28,23 @@
 				<li class="satblue long"><a href="<?php echo base_url('editor/vacancy'); ?>"><span><i class="icon-home"></i> <?php echo $count['vacancy']; ?></span><span class="name">Lowongan</span></a></li>
 			</ul>
 		</div></div></div>
+		
+		<?php $this->load->view( 'panel/common/modul_name', array( 'name' => 'Kategori Subscribe', 'class' => 'icon-reorder' ) ); ?>
+		<div class="box-content"><div class="row-fluid"><div class="span12">
+			<button class="btn btn-primary">Submit Subscribe</button>
+		</div></div></div>
 	</div></div></div></div></div>
 </div>
+
+<script>
+$(document).ready(function() {
+	$('.btn-primary').click(function() {
+		Func.ajax({ url: web.host + 'editor/home/action', param: { action: 'sent_subscribe' }, callback: function(result) {
+			Func.show_notice({ text: result.message });
+		} });
+	});
+});
+</script>
+
 </body>
 </html>

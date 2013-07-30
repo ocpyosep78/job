@@ -20,7 +20,7 @@ if (count($array_arg) > 1) {
 	} else if (in_array($key, array('seeker'))) {
 		$is_website = false;
 		$route['seeker/(:num)/(:any)'] = "seeker/publish";
-	} else if (in_array($key, array('company', 'editor', 'panel', 'master', 'subscribe'))) {
+	} else if (in_array($key, array('company', 'editor', 'panel', 'master', 'subscribe', 'cron'))) {
 		$is_website = false;
 	}
 }

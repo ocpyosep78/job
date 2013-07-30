@@ -1,14 +1,14 @@
 <?php
 	$request_uri = $_SERVER['REQUEST_URI'];
 	$request_uri = preg_replace('/\/page_[0-9]+$/i', '', $request_uri);
-	$temp = preg_replace('/.+jobs\//i', '', $request_uri);
+	$temp = preg_replace('/.+path\//i', '', $request_uri);
 	$array_temp = explode('/', $temp);
 	
 	$kategori = $this->Kategori_model->get_by_id( array( 'alias' => @$array_temp[0] ) );
 	$subkategori = $this->Subkategori_model->get_by_id( array( 'alias' => @$array_temp[1] ) );
 	
 	// page
-	$page_jobs = base_url('jobs');
+	$page_jobs = base_url('path');
 	$page_item = 10;
 	$page_active = get_page();
 	
@@ -16,7 +16,7 @@
 	$title = 'Jobs';
 	$array_tag = array();
 	$breadcrump[] = array( 'title' => 'Index', 'link' => base_url() );
-	$array_button = array( array( 'title' => 'RSS', 'link' => base_url('jobs/rss') ) );
+	$array_button = array( array( 'title' => 'RSS', 'link' => base_url('path/rss') ) );
 	
 	if (count($kategori) > 0) {
 		$page_jobs = $kategori['link'];

@@ -111,8 +111,8 @@ class Subkategori_model extends CI_Model {
 	
 	function sync($row, $column = array()) {
 		$row = StripArray($row);
-		$row['link'] = base_url('jobs/'.$row['kategori_alias'].'/'.$row['alias']);
-		$row['link_rss'] = base_url('jobs/'.$row['kategori_alias'].'/'.$row['alias'].'/rss');
+		$row['link'] = base_url('path/'.$row['kategori_alias'].'/'.$row['alias']);
+		$row['link_rss'] = base_url('path/'.$row['kategori_alias'].'/'.$row['alias'].'/rss');
 		
 		if (count($column) > 0) {
 			$row = dt_view($row, $column, array('is_edit' => 1));

@@ -55,9 +55,9 @@ class Vacancy_model extends CI_Model {
         if (isset($param['id'])) {
             $select_query  = "
 				SELECT Vacancy.*,
-					Kategori.id kategori_id, Kota.id kota_id, Kota.propinsi_id, Industri.nama industri_nama, Kota.nama kota_nama,
+					Kategori.id kategori_id, Kota.id kota_id, Kota.propinsi_id, Industri.nama industri_nama, Kota.nama kota_nama, Propinsi.nama propinsi_nama,
 					Company.nama company_nama, Company.alias company_alias, Company.website company_website, Company.logo company_logo, Company.banner company_banner,
-					Kategori.nama kategori_nama, Subkategori.nama subkategori_nama
+					Kategori.nama kategori_nama, Subkategori.nama subkategori_nama, JenisPekerjaan.nama jenis_pekerjaan_nama, Pengalaman.nama pengalaman_nama
 				FROM ".VACANCY." Vacancy
 				LEFT JOIN ".COMPANY." Company ON Company.id = Vacancy.company_id
 				LEFT JOIN ".INDUSTRI." Industri ON Industri.id = Company.industri_id
@@ -65,6 +65,7 @@ class Vacancy_model extends CI_Model {
 				LEFT JOIN ".KATEGORI." Kategori ON Kategori.id = Subkategori.kategori_id
 				LEFT JOIN ".VACANCY_STATUS." VacancyStatus ON VacancyStatus.id = Vacancy.vacancy_status_id
 				LEFT JOIN ".KOTA." Kota ON Kota.id = Vacancy.kota_id
+				LEFT JOIN ".PROPINSI." Propinsi ON Propinsi.id = Kota.propinsi_id
 				LEFT JOIN ".JENJANG." Jenjang ON Jenjang.id = Vacancy.jenjang_id
 				LEFT JOIN ".JENIS_PEKERJAAN." JenisPekerjaan ON JenisPekerjaan.id = Vacancy.jenis_pekerjaan_id
 				LEFT JOIN ".PENGALAMAN." Pengalaman ON Pengalaman.id = Vacancy.pengalaman_id
@@ -96,6 +97,7 @@ class Vacancy_model extends CI_Model {
 		$string_kategori = (empty($param['kategori_id'])) ? '' : "AND Kategori.id = '".$param['kategori_id']."'";
 		$string_subkategori = (empty($param['subkategori_id'])) ? '' : "AND Subkategori.id = '".$param['subkategori_id']."'";
 		$string_publish_date = (empty($param['publish_date'])) ? '' : "AND Vacancy.publish_date <= DATE('".$param['publish_date']."')";
+		$string_publish_date_same = (empty($param['publish_date_same'])) ? '' : "AND DATE(Vacancy.publish_date) = DATE('".$param['publish_date_same']."')";
 		$string_vacancy_status = (empty($param['vacancy_status_id'])) ? '' : "AND Vacancy.vacancy_status_id = '".$param['vacancy_status_id']."'";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'Vacancy.close_date DESC');
@@ -120,7 +122,7 @@ class Vacancy_model extends CI_Model {
 			LEFT JOIN ".JENJANG." Jenjang ON Jenjang.id = Vacancy.jenjang_id
 			LEFT JOIN ".JENIS_PEKERJAAN." JenisPekerjaan ON JenisPekerjaan.id = Vacancy.jenis_pekerjaan_id
 			LEFT JOIN ".PENGALAMAN." Pengalaman ON Pengalaman.id = Vacancy.pengalaman_id
-			WHERE 1 $string_company $string_kategori $string_subkategori $string_publish_date $string_vacancy_status $string_filter
+			WHERE 1 $string_company $string_kategori $string_subkategori $string_publish_date $string_publish_date_same $string_vacancy_status $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";
@@ -149,6 +151,33 @@ class Vacancy_model extends CI_Model {
 		
 		return $TotalRecord;
     }
+	
+	function get_jenjang($param = array()) {
+        $array = array();
+		$vacancy = $this->get_by_id($param);
+		
+		$select_query  = "
+			SELECT Jenjang.*
+			FROM ".JENJANG." Jenjang
+			WHERE Jenjang.id IN (".$vacancy['jenjang_id'].")
+		";
+        $select_result = mysql_query($select_query) or die(mysql_error());
+        while (false !== $row = mysql_fetch_assoc($select_result)) {
+            $array[] = $row;
+        }
+		
+        return $array;
+	}
+	
+	function get_string_jenjang($param = array()) {
+		$result = '';
+		$array = $this->get_jenjang($param);
+		foreach ($array as $jenjang) {
+			$result .= (empty($result)) ? $jenjang['nama'] : ', '.$jenjang['nama'];
+		}
+		
+		return $result;
+	}
 	
     function delete($param) {
 		$delete_query  = "DELETE FROM ".VACANCY." WHERE id = '".$param['id']."' LIMIT 1";
@@ -202,5 +231,16 @@ class Vacancy_model extends CI_Model {
 		
 		$result = ($unix_closed_date > $unix_membership) ? false : true;
 		return $result;
+	}
+	
+	function is_expired($param) {
+		$vacancy = $this->get_by_id($param);
+		
+		$current_time = GetUnixTime($this->config->item('current_datetime'));
+		$close_date = GetUnixTime($vacancy['close_date']);
+		
+		$is_expired = ($current_time > $close_date) ? true : false;
+		
+		return $is_expired;
 	}
 }

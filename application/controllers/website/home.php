@@ -164,9 +164,9 @@ class home extends CI_Controller {
 		}
 	}
 	
-	function jobs() {
+	function path() {
 		// check alias
-		preg_match('/jobs\/([a-z0-9\-\_]+)$/i', $_SERVER['REQUEST_URI'], $match);
+		preg_match('/path\/([a-z0-9\-\_]+)$/i', $_SERVER['REQUEST_URI'], $match);
 		$alias = (empty($match[1])) ? '' : $match[1];
 		
 		// check rss
@@ -179,7 +179,7 @@ class home extends CI_Controller {
 		if ($is_rss) {
 			$request_uri = $_SERVER['REQUEST_URI'];
 			$request_uri = preg_replace('/\/rss$/i', '', $request_uri);
-			$temp = preg_replace('/.+jobs\/?/i', '', $request_uri);
+			$temp = preg_replace('/.+path\/?/i', '', $request_uri);
 			$array_temp = explode('/', $temp);
 			
 			// check kategori
@@ -187,7 +187,7 @@ class home extends CI_Controller {
 			$subkategori = $this->Subkategori_model->get_by_id( array( 'alias' => @$array_temp[1] ) );
 			
 			$title = 'Dunia Karir - Jobs - RSS';
-			$base_link = base_url('jobs/rss');
+			$base_link = base_url('path/rss');
 			if (count($kategori) > 0) {
 				$title = 'Dunia Karir - Jobs - '.$kategori['nama'].' - RSS';
 				$base_link = $kategori['link_rss'];
@@ -418,6 +418,13 @@ class home extends CI_Controller {
 		else if ($action == 'apply') {
 			$seeker = $this->Seeker_model->get_session();
 			$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $_POST['vacancy_id'] ));
+			
+			if ($vacancy['vacancy_submit_via'] == VACANCY_SUBMIT_VIA_LINK) {
+				$result['redirect'] = true;
+				$result['redirect_link'] = $vacancy['link_apply'];
+				echo json_encode($result);
+				exit;
+			}
 			
 			// set data
 			$_POST['seeker_id'] = $seeker['id'];

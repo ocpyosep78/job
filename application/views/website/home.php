@@ -35,27 +35,25 @@
 	<ul class='slides'>
 		<li class="slide-item">
 			<div class='span9'>
-				<?php for ($i = 0; $i < 18; $i++) { ?>
-				<?php if (empty($array_slide1[$i]['logo_link'])) { ?>
-				<a href="<?php echo $array_slide1[$i]['company_link']; ?>">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<div class='text'>
-							<span class='artist'><?php echo $array_slide1[$i]['nama']; ?></span>
-						</div>
-					</div>
-				</a>
-				<?php } else { ?>
-				<a href="<?php echo $array_slide1[$i]['company_link']; ?>">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src="<?php echo $array_slide1[$i]['logo_link']; ?>" />
-					</div>
-				</a>
-				<?php } ?>
-				<?php } ?>
+
+			<br/>
+	<div id="content">
+  <h1>Over 225 million professionals use Parapekerja to exchange information, ideas and opportunities</h1>
+    <ul>
+      <li id="reconnect">Stay informed about your contacts and industry</li>
+      <li id="answers">Find the people &amp; knowledge you need to achieve your goals</li>
+      <li id="power">Control your professional identity online</li>
+    </ul>
+  </div>		
+			
+			
+			
+			
+			
+			
 			</div>
 			<div class='slider-sidebar span3'>
+			
 				<?php $this->load->view( 'website/common/register' ); ?>
 				
 				<?php for ($i = 18; $i <= 19; $i++) { ?>
@@ -70,6 +68,7 @@
 				</a>
 				<?php } else { ?>
 				<a href="<?php echo $array_slide1[$i]['company_link']; ?>">
+					
 					<div class='artwork'>
 						<div class='glow'></div>
 						<img src="<?php echo $array_slide1[$i]['logo_link']; ?>" />
@@ -79,58 +78,13 @@
 				<?php } ?>
 			</div>
 		</li>
-		<li class="slide-item" style="display: none;">
-			<div class='span9'>
-				<?php for ($i = 0; $i < 18; $i++) { ?>
-				<?php if (empty($array_slide2[$i]['company_logo_link'])) { ?>
-				<a href="<?php echo $array_slide2[$i]['vacancy_link']; ?>">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<div class='text'>
-							<span class='artist'><?php echo $array_slide2[$i]['nama']; ?></span>
-						</div>
-					</div>
-				</a>
-				<?php } else { ?>
-				<a href="<?php echo $array_slide2[$i]['vacancy_link']; ?>">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src="<?php echo $array_slide2[$i]['company_logo_link']; ?>" />
-					</div>
-				</a>
-				<?php } ?>
-				<?php } ?>
-			</div>
-			<div class='slider-sidebar span3'>
-				<?php $this->load->view( 'website/common/register' ); ?>
-				
-				<?php for ($i = 18; $i <= 19; $i++) { ?>
-				<?php if (empty($array_slide2[$i]['company_logo_link'])) { ?>
-				<a href="<?php echo $array_slide2[$i]['vacancy_link']; ?>">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<div class='text'>
-							<span class='artist'><?php echo $array_slide2[$i]['nama']; ?></span>
-						</div>
-					</div>
-				</a>
-				<?php } else { ?>
-				<a href="<?php echo $array_slide2[$i]['vacancy_link']; ?>">
-					<div class='artwork'>
-						<div class='glow'></div>
-						<img src="<?php echo $array_slide2[$i]['company_logo_link']; ?>" />
-					</div>
-				</a>
-				<?php } ?>
-				<?php } ?>
-			</div>
-		</li>
+		
 	</ul>
 	
-	<ol class="flex-control-nav flex-control-paging"><li><a class="flex-active">1</a></li><li><a class="">2</a></li></ol>
+
 	</div></div></div>
 </div>
-
+<!--
 <section id='main'>
 	<div class='container'>
 		<div class='row'>
@@ -144,12 +98,12 @@
 					<a href="<?php echo base_url('listing'); ?>" class='btn btn-main'>Lihat Semua</a>
 				</div>
 				<div class='weekly-features span3'>
-					<h1>Artikel Dunia Kerja </h1>
+					<h1>Artikel Parapekerja </h1>
 					<hr />
 					
 					<?php if (count($array_article) > 0) { ?>
-					<figure><img src="<?php echo $array_article[0]['photo_link']; ?>" /></figure>
-					<h2><a href="<?php echo $array_article[0]['article_link']; ?>"><?php echo $array_article[0]['nama']; ?></a></h2>
+					<figure><a href="<?php echo $array_article[0]['article_link']; ?>"><img src="<?php echo $array_article[0]['photo_link']; ?>" /></a></figure>
+					<h2><a href="<?php echo $array_article[0]['article_link']; ?>" title="<?php echo $array_article[0]['nama']; ?>"><?php echo $array_article[0]['nama']; ?></a></h2>
 					<p><?php echo $array_article[0]['desc_short']; ?></p>
 					<?php } ?>
 				</div>
@@ -162,5 +116,7 @@
 		</div>
 	</div>
 </section>
+
+-->
 
 <?php $this->load->view( 'website/common/footer' ); ?>
