@@ -70,7 +70,7 @@ class exam extends SEEKER_Controller {
 			$file_exam = $this->config->item('base_path').'/static/upload/'.$_POST['exam_file'];
 			$MailParam = array(
 				'EmailTo' => $exam['email'],
-				'EmailFrom' => 'noreply@parapekerja.com',
+				'EmailFrom' => 'no-reply@duniakarir.com',
 				'EmailFromName' => 'Para Pekerja',
 				'EmailSubject' => $vacancy['nama'],
 				'EmailBody' =>

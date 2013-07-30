@@ -67,7 +67,7 @@
 				<div class="new-album-box">
 					<div style="padding-left: 15px;"><?php echo $vacancy['kategori_nama'].' - '.$vacancy['subkategori_nama']; ?></div>
 					<div class="inner" style="border-left: none; border-right: none;">
-						<figure><img src="<?php echo $vacancy['company_logo_link']; ?>" /></figure>
+						<figure><img src="<?php echo $vacancy['company_logo_link']; ?>" style="width: 100px; height: 100px;" /></figure>
 						<div class="details">
 							<h2><a href="<?php echo $vacancy['vacancy_link']; ?>"><?php echo $vacancy['nama']; ?></a></h2>
 							<p><?php echo $vacancy['company_nama'].' - '.$vacancy['company_kota_nama']; ?></p>

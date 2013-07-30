@@ -1,41 +1,41 @@
 SEEKER
 
 Resume
-ok => cek => - Nilai / IPK Terakhir = max 5 karakter dan angka saja
-ok => cek => - Tempat Pendidikan = max 60 karakter
-ok => cek => - Tempat Kerja = max 60 karakter
+- Nilai / IPK Terakhir = max 5 karakter dan angka saja
+- Tempat Pendidikan = max 60 karakter
+- Tempat Kerja = max 60 karakter
 
 Resume Edit
-ok => cek => - http://www.parapekerja.com/seeker/resume/edit
-ok => cek => - Address = max : 300 karakter
-ok => cek => - Home Phone Number = 13 karakter dan only angka saja
-ok => cek => - Mobile Number = 13 karakter dan only angka saja
-ok => cek => - Tempat Lahir = max : 30 karakter
-ok => cek => - Religion = kasih combo
+- http://www.parapekerja.com/seeker/resume/edit
+- Address = max : 300 karakter
+- Home Phone Number = 13 karakter dan only angka saja
+- Mobile Number = 13 karakter dan only angka saja
+- Tempat Lahir = max : 30 karakter
+- Religion = kasih combo
 
 Resume Online
-ok => cek => - Gender = belum tampil di resume online
-ok => cek => - Citizenship = belum tampil di resume online
+- Gender = belum tampil di resume online
+- Citizenship = belum tampil di resume online
 
 Apply
-ok => cek => - Kasih status exam
+- Kasih status exam
 
 Kirim Lamaran
-cek => - Cover Letter di menu kirim lamaran dan surat lamaran max 5000 karakter
-cek => - difooter ditambahkan widget
+- Cover Letter di menu kirim lamaran dan surat lamaran max 5000 karakter
+- difooter ditambahkan widget
 
 
 
 COMPANY
 
 Vacancy
-cek => - ada input submit application : (Email / Link)
-cek => - By Email seperti skr
-cek => - By Link : user akan memasukkan link form nya
-cek => - contoh liat : https://www.glassdoor.com/partners/post-a-job/postJob_input.htm
+- ada input submit application : (Email / Link)
+- By Email seperti skr
+- By Link : user akan memasukkan link form nya
+- contoh liat : https://www.glassdoor.com/partners/post-a-job/postJob_input.htm
 
 Exam
-cek => - Ketika seeker diundang exam, maka akan kirim notice :
+- Ketika seeker diundang exam, maka akan kirim notice :
 ----------------------------------------------------------------------
 Kepada Ridwan Amir
 
@@ -45,10 +45,10 @@ Login : parapekerja.com/login
 
 Terima Kasih
 ----------------------------------------------------------------------
-cek => - send exam to all.. yang sudah di send nga perlu di send lagi..
-cek => - link untuk exam di seeker tetap ada
-cek => - upload jawaban hanya bisa 1 x
-cek => - Format notifikasi jawaban
+- send exam to all.. yang sudah di send nga perlu di send lagi..
+- link untuk exam di seeker tetap ada
+- upload jawaban hanya bisa 1 x
+- Format notifikasi jawaban
 ----------------------------------------------------------------------
 Jawaban - Ridwan Amir - [no pelamar] - office boy
 Lamaran kerja : [no pelamar] - Ridwan Amir - Office boy
@@ -58,39 +58,40 @@ Lamaran kerja : [no pelamar] - Ridwan Amir - Office boy
 EDITOR
 
 Article
-cek => - judul article dan event = max 60 karakter
+- judul article dan event = max 60 karakter
 
 Event
-cek => - judul article dan event = max 60 karakter
+- judul article dan event = max 60 karakter
 
 Category
-cek => - kategori dan sub kategori = max 40 karakter
+- kategori dan sub kategori = max 40 karakter
 
 Sub Category
-cek => - kategori dan sub kategori = max 40 karakter
+- kategori dan sub kategori = max 40 karakter
 
 Industri
-cek => - Industri = max 40 karakter
+- Industri = max 40 karakter
 
 Jenis Pekerjaan
-cek => - Jenis Pekerjaan = max 40 karakter
+- Jenis Pekerjaan = max 40 karakter
 
 Jenjang
-cek => - Jenjang = max 40 karakter
+- Jenjang = max 40 karakter
 
 Posisi
-cek => - Posisi = max 40 karakter
+- Posisi = max 40 karakter
 
 Propinsi
-cek => - Propinsi = max 40 karakter
+- Propinsi = max 40 karakter
 
 Kota
-cek => - Kota = max 40 karakter
+- Kota = max 40 karakter
 
 
 ALL
-cek => - Email : duniakarir.com di ganti menjadi di bawah ini
-cek => - from : parapekerja.com / noreply@parapekerja.com
+- Email : duniakarir.com di ganti menjadi di bawah ini
+- from : parapekerja.com / no-reply@parapekerja.com
+- ini bermasalah karena domain parapekerja.com (no-reply@parapekerja.com) untuk verified email nya tidak valid, jadi php tidak bisa kirim
 
 
 WEBSITE
@@ -98,35 +99,28 @@ WEBSITE
 Vacancy
 - http://www.parapekerja.com/PT-Arahan-Mandiri/36-tes-ke-tiga
 - Tampilkan 1 per 1 field berikut ini di bagian atas tombol apply: (nanti saya rapikan)
-cek => - Kategori > subkategori
-cek => - Status = karena kemungkinan apakah lowongan tersebut udah expired apa belum, kalo udah lewat end date kasih tulisan EXPIRED
-cek => - Lokasi Kerja > Kota
-cek => - Pendidikan 
-cek => - Tipe Pekerjaan
-cek => - Pengalaman
-cek => - Gaji yang di tawarkan = di form pengisian jika tidak di isi kasih tulisan "Dapat dirundingkan"
-cek => - Belum support sent by link / email
-cek => - By link mengharuskan user untuk menjadi member (ketika tombol apply ditekan akan ngecek : by url / email, klo url akan di redirect tapi jika belum login : "Silahkan Login Untuk Melamar")
+- Kategori > subkategori
+- Status = karena kemungkinan apakah lowongan tersebut udah expired apa belum, kalo udah lewat end date kasih tulisan EXPIRED
+- Lokasi Kerja > Kota
+- Pendidikan 
+- Tipe Pekerjaan
+- Pengalaman
+- Gaji yang di tawarkan = di form pengisian jika tidak di isi kasih tulisan "Dapat dirundingkan"
+- Belum support sent by link / email
+- By link mengharuskan user untuk menjadi member (ketika tombol apply ditekan akan ngecek : by url / email, klo url akan di redirect tapi jika belum login : "Silahkan Login Untuk Melamar")
 
 Vacancy
-cek => - Link 'jobs' diganti dengan 'path'
+- Link 'jobs' diganti dengan 'path'
 
 Quick Apply
-cek => - http://www.parapekerja.com/PT-Garuda-Indonesa-Persero-Tbk/50-Lowongan-PT-AGRO-MANDIRI-SEMESTA-PLANTATION/quick
-cek => - Ada error
+- http://www.parapekerja.com/PT-Garuda-Indonesa-Persero-Tbk/50-Lowongan-PT-AGRO-MANDIRI-SEMESTA-PLANTATION/quick
+- Ada error
 
 Subscribe
-cek => - subscriber di kirim 1 kali dalam 1 hari.. tidak pada saat update langsung terkirim
-cek => - pengiriman bisa via cron / trigger di admin
-cek => - link cron : http://localhost:8666/job/trunk/cron/sent_mail
-cek => - maksimal 10 lowongan saja yang dikirim
-
-
-
-
-
-
-
+- subscriber di kirim 1 kali dalam 1 hari.. tidak pada saat update langsung terkirim
+- pengiriman bisa via cron / trigger di admin
+- link cron : http://www.parapekerja.com/cron/sent_mail atau bisa manual dari dashboard untuk login admin (http://parapekerja.com/editor/home => tombol "Submit Subscribe")
+- maksimal 10 lowongan saja yang dikirim
 
 
 
