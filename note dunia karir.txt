@@ -1,132 +1,21 @@
-SEEKER
+RSS Utama
+- link : www.parapekerja.com/rss => isinya list job saja
 
-Resume
-- Nilai / IPK Terakhir = max 5 karakter dan angka saja
-- Tempat Pendidikan = max 60 karakter
-- Tempat Kerja = max 60 karakter
+Tampilan List Sub Category
+- link : http://www.parapekerja.com/path/ [ category ] 
+- isinya sub category dari category yang bersangkutan
 
-Resume Edit
-- http://www.parapekerja.com/seeker/resume/edit
-- Address = max : 300 karakter
-- Home Phone Number = 13 karakter dan only angka saja
-- Mobile Number = 13 karakter dan only angka saja
-- Tempat Lahir = max : 30 karakter
-- Religion = kasih combo
+Buat 1 Page isinya All Region
+- jika di klik nanti ke halaman search sesuai region yang bersangkutan
 
-Resume Online
-- Gender = belum tampil di resume online
-- Citizenship = belum tampil di resume online
+Website Index
+- Jika sudah login tampilkan halaman yang di comment (home)
 
-Apply
-- Kasih status exam
+Listing
+- link : http://www.parapekerja.com/listing
+- ada bug : klik bengkulu lalu klik semua propinsi
 
-Kirim Lamaran
-- Cover Letter di menu kirim lamaran dan surat lamaran max 5000 karakter
-- difooter ditambahkan widget
-
-
-
-COMPANY
-
-Vacancy
-- ada input submit application : (Email / Link)
-- By Email seperti skr
-- By Link : user akan memasukkan link form nya
-- contoh liat : https://www.glassdoor.com/partners/post-a-job/postJob_input.htm
-
-Exam
-- Ketika seeker diundang exam, maka akan kirim notice :
-----------------------------------------------------------------------
-Kepada Ridwan Amir
-
-Ini adalah notifikasi pemberitahuan, bahwa anda di undang untuk mengikuti exam online di PT Arahan Mandiri, silahkan lihat dashboard anda segera..
-
-Login : parapekerja.com/login
-
-Terima Kasih
-----------------------------------------------------------------------
-- send exam to all.. yang sudah di send nga perlu di send lagi..
-- link untuk exam di seeker tetap ada
-- upload jawaban hanya bisa 1 x
-- Format notifikasi jawaban
-----------------------------------------------------------------------
-Jawaban - Ridwan Amir - [no pelamar] - office boy
-Lamaran kerja : [no pelamar] - Ridwan Amir - Office boy
-----------------------------------------------------------------------
-
-
-EDITOR
-
-Article
-- judul article dan event = max 60 karakter
-
-Event
-- judul article dan event = max 60 karakter
-
-Category
-- kategori dan sub kategori = max 40 karakter
-
-Sub Category
-- kategori dan sub kategori = max 40 karakter
-
-Industri
-- Industri = max 40 karakter
-
-Jenis Pekerjaan
-- Jenis Pekerjaan = max 40 karakter
-
-Jenjang
-- Jenjang = max 40 karakter
-
-Posisi
-- Posisi = max 40 karakter
-
-Propinsi
-- Propinsi = max 40 karakter
-
-Kota
-- Kota = max 40 karakter
-
-
-ALL
-- Email : duniakarir.com di ganti menjadi di bawah ini
-- from : parapekerja.com / no-reply@parapekerja.com
-- ini bermasalah karena domain parapekerja.com (no-reply@parapekerja.com) untuk verified email nya tidak valid, jadi php tidak bisa kirim
-
-
-WEBSITE
-
-Vacancy
-- http://www.parapekerja.com/PT-Arahan-Mandiri/36-tes-ke-tiga
-- Tampilkan 1 per 1 field berikut ini di bagian atas tombol apply: (nanti saya rapikan)
-- Kategori > subkategori
-- Status = karena kemungkinan apakah lowongan tersebut udah expired apa belum, kalo udah lewat end date kasih tulisan EXPIRED
-- Lokasi Kerja > Kota
-- Pendidikan 
-- Tipe Pekerjaan
-- Pengalaman
-- Gaji yang di tawarkan = di form pengisian jika tidak di isi kasih tulisan "Dapat dirundingkan"
-- Belum support sent by link / email
-- By link mengharuskan user untuk menjadi member (ketika tombol apply ditekan akan ngecek : by url / email, klo url akan di redirect tapi jika belum login : "Silahkan Login Untuk Melamar")
-
-Vacancy
-- Link 'jobs' diganti dengan 'path'
-
-Quick Apply
-- http://www.parapekerja.com/PT-Garuda-Indonesa-Persero-Tbk/50-Lowongan-PT-AGRO-MANDIRI-SEMESTA-PLANTATION/quick
-- Ada error
-
-Subscribe
-- subscriber di kirim 1 kali dalam 1 hari.. tidak pada saat update langsung terkirim
-- pengiriman bisa via cron / trigger di admin
-- link cron : http://www.parapekerja.com/cron/sent_mail atau bisa manual dari dashboard untuk login admin (http://parapekerja.com/editor/home => tombol "Submit Subscribe")
-- maksimal 10 lowongan saja yang dikirim
-
-
-
-
-
-
-
-
-
+Buat aplikasi kirim email
+- link : http://duniadb.com/_temp/mail 
+- form untuk kirim email
+- actionnya sent saja
