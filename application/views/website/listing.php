@@ -215,7 +215,12 @@ $('.show-search').click(function() {
 // form
 $('.cnt-option .item a').click(function() {
 	var raw = $(this).find('.hide').text();
-	eval('var propinsi = ' + raw);
+	if (raw == '') {
+		var propinsi = { id: 0 };
+	} else {
+		eval('var propinsi = ' + raw);
+	}
+	
 	$('[name="propinsi_id"]').val(propinsi.id);
 	$('#advance-search form').submit();
 });

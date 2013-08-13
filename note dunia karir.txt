@@ -1,19 +1,19 @@
 RSS Utama
-- link : www.parapekerja.com/rss => isinya list job saja
+cek => - link : www.parapekerja.com/rss => isinya list job saja
 
 Tampilan List Sub Category
-- link : http://www.parapekerja.com/path/ [ category ] 
-- isinya sub category dari category yang bersangkutan
+cek => - link : http://www.parapekerja.com/path/ [ category ] 
+cek => - isinya sub category dari category yang bersangkutan
 
 Buat 1 Page isinya All Region
-- jika di klik nanti ke halaman search sesuai region yang bersangkutan
+cek => - jika di klik nanti ke halaman search sesuai region yang bersangkutan
 
 Website Index
-- Jika sudah login tampilkan halaman yang di comment (home)
+cek => - Jika sudah login tampilkan halaman yang di comment (home)
 
 Listing
-- link : http://www.parapekerja.com/listing
-- ada bug : klik bengkulu lalu klik semua propinsi
+cek => - link : http://www.parapekerja.com/listing
+cek => - ada bug : klik bengkulu lalu klik semua propinsi
 
 Buat aplikasi kirim email
 - link : http://duniadb.com/_temp/mail 

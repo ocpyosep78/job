@@ -56,23 +56,32 @@ class home extends CI_Controller {
 					$this->load->view( 'website/listing_quick', array( 'vacancy' => $vacancy ) );
 				} else if (count($vacancy) > 0) {
 					$this->load->view( 'website/listing_detail', array( 'vacancy' => $vacancy ) );
-				} else if (count($company) > 0 && $is_rss) {
+				} else if ($is_rss) {
 					// collect data
-					$param_vacancy['company_id'] = $company['id'];
 					$param_vacancy['publish_date'] = $this->config->item('current_datetime');
 					$param_vacancy['vacancy_status_id'] = VACANCY_STATUS_APPROVE;
 					$param_vacancy['sort'] = '[{"property":"id","direction":"DESC"}]';
 					$param_vacancy['limit'] = 25;
+					if (count($company) > 0) {
+						$param_vacancy['company_id'] = $company['id'];
+					}
 					$array_vacancy = $this->Vacancy_model->get_array($param_vacancy);
 					$array_article = array();
 					foreach ($array_vacancy as $item) {
 						$array_article[] = array( 'title' => $item['nama'], 'link' => $item['vacancy_link'], 'desc' => $item['content'] );
 					}
 					
-					$rss_param['link'] = $company['company_link_rss'];
-					$rss_param['title'] = 'Dunia Karir - '.$company['nama'].' - RSS';
-					$rss_param['array_item'] = $array_article;
-					$rss_param['description'] = 'Dunia Karir - '.$company['nama'].' - RSS';
+					if (count($company) > 0) {
+						$rss_param['link'] = $company['company_link_rss'];
+						$rss_param['title'] = 'Dunia Karir - '.$company['nama'].' - RSS';
+						$rss_param['array_item'] = $array_article;
+						$rss_param['description'] = 'Dunia Karir - '.$company['nama'].' - RSS';
+					} else {
+						$rss_param['link'] = base_url('rss');
+						$rss_param['title'] = 'Dunia Karir - RSS';
+						$rss_param['array_item'] = $array_article;
+						$rss_param['description'] = 'Dunia Karir - RSS';
+					}
 					$this->load->view( 'website/common/rss', $rss_param );
 				} else if (count($company) > 0) {
 					$this->load->view( 'website/company', array( 'company' => $company ));
@@ -242,6 +251,10 @@ class home extends CI_Controller {
 	
 	function tags() {
 		$this->load->view( 'website/tags' );
+	}
+	
+	function region() {
+		$this->load->view( 'website/region' );
 	}
 	
 	function ajax() {

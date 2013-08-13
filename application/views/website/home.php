@@ -1,4 +1,7 @@
 <?php
+	$seeker_login = $this->Seeker_model->is_login();
+	$company_login = $this->Company_model->is_login();
+	
 	$param_slide1 = array(
 		'sort' => '{"is_custom":"1","query":"RAND()"}', 'limit' => 20
 	);
@@ -34,26 +37,17 @@
 	<div class='container'><div class='row'><div class='slider'>
 	<ul class='slides'>
 		<li class="slide-item">
-			<div class='span9'>
-
-			<br/>
-	<div id="content">
-  <h1>Over 225 million professionals use Parapekerja to exchange information, ideas and opportunities</h1>
-    <ul>
-      <li id="reconnect">Stay informed about your contacts and industry</li>
-      <li id="answers">Find the people &amp; knowledge you need to achieve your goals</li>
-      <li id="power">Control your professional identity online</li>
-    </ul>
-  </div>		
-			
-			
-			
-			
-			
-			
+			<div class='span9'><br/>
+				<div id="content">
+					<h1>Over 225 million professionals use Parapekerja to exchange information, ideas and opportunities</h1>
+					<ul>
+						<li id="reconnect">Stay informed about your contacts and industry</li>
+						<li id="answers">Find the people &amp; knowledge you need to achieve your goals</li>
+						<li id="power">Control your professional identity online</li>
+					</ul>
+				</div>
 			</div>
 			<div class='slider-sidebar span3'>
-			
 				<?php $this->load->view( 'website/common/register' ); ?>
 				
 				<?php for ($i = 18; $i <= 19; $i++) { ?>
@@ -78,13 +72,11 @@
 				<?php } ?>
 			</div>
 		</li>
-		
 	</ul>
-	
-
 	</div></div></div>
 </div>
-<!--
+
+<?php if ($seeker_login || $company_login) { ?>
 <section id='main'>
 	<div class='container'>
 		<div class='row'>
@@ -116,7 +108,6 @@
 		</div>
 	</div>
 </section>
-
--->
+<?php } ?>
 
 <?php $this->load->view( 'website/common/footer' ); ?>
