@@ -18,7 +18,7 @@
 $PortAddress = ($_SERVER['SERVER_PORT'] != 80) ? ':8666' : '';
 
 if ($_SERVER['SERVER_NAME'] == 'localhost') {
-	$config['base_url']		= 'http://localhost'.$PortAddress.'/job/trunk';
+	$config['base_url']		= 'http://localhost'.$PortAddress.'/parapekerja/trunk';
 	$config['base_path']	= realpath(dirname(__FILE__) . '/../..');
 } else if ($_SERVER['SERVER_NAME'] == 'parapekerja.com') {
 	$config['base_url']		= 'http://parapekerja.com';
