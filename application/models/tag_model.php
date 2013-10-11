@@ -96,6 +96,70 @@ class Tag_model extends CI_Model {
 		return $value;
 	}
 	
+	function get_popular() {
+		$array_tag = array();
+		$limit_date = date("Y-m-d", strtotime("-2 month"));
+		
+		// get from article
+		$select_query = "
+			SELECT tag_id, COUNT(*) total
+			FROM ".ARTICLE." Article
+			LEFT JOIN ".ARTICLE_TAG." ArticleTag ON Article.id = ArticleTag.article_id
+			WHERE Article.publish_date >= DATE('$limit_date')
+			GROUP BY tag_id
+			LIMIT 0,10
+		";
+        $select_result = mysql_query($select_query) or die(mysql_error());
+		while ( $row = mysql_fetch_assoc( $select_result ) ) {
+			$array_tag[$row['tag_id']] = $row['total'];
+		}
+		
+		// get from event
+		$select_query = "
+			SELECT tag_id, COUNT(*) total
+			FROM ".EVENT." Event
+			LEFT JOIN ".EVENT_TAG." EventTag ON Event.id = EventTag.event_id
+			WHERE Event.publish_date >= DATE('$limit_date')
+			GROUP BY tag_id
+			LIMIT 0,10
+		";
+        $select_result = mysql_query($select_query) or die(mysql_error());
+		while ( $row = mysql_fetch_assoc( $select_result ) ) {
+			if (isset($array_tag[$row['tag_id']])) {
+				$array_tag[$row['tag_id']] += $row['total'];
+			} else {
+				$array_tag[$row['tag_id']] = $row['total'];
+			}
+		}
+		
+		
+		// get id popular tag
+		arsort($array_tag);
+		$array_filter = array();
+		foreach ($array_tag as $key => $value) {
+			$array_filter[] = $key;
+			
+			if (count($array_filter) >= 10) {
+				break;
+			}
+		}
+		
+		// get real popular tag
+		$result = array();
+		$select_query = "
+			SELECT *
+			FROM ".TAG." Tag
+			WHERE id IN (".implode(',', $array_filter).")
+			LIMIT 0,10
+		";
+        $select_result = mysql_query($select_query) or die(mysql_error());
+		while ( $row = mysql_fetch_assoc( $select_result ) ) {
+			$result[] = $this->sync($row);
+		}
+		
+		return $result;
+	}
+	
     function delete($param) {
 		$delete_query  = "DELETE FROM ".TAG." WHERE id = '".$param['id']."' LIMIT 1";
 		$delete_result = mysql_query($delete_query) or die(mysql_error());

@@ -7,7 +7,7 @@ class Company_model extends CI_Model {
         $this->field = array(
 			'id', 'kota_id', 'nama', 'phone', 'faximile', 'website', 'address', 'email', 'passwd', 'description', 'kodepos', 'sales', 'contact_name',
 			'contact_email', 'contact_no', 'logo', 'banner', 'google_map', 'industri_id', 'alias', 'reset', 'vacancy_count_left', 'membership_date',
-			'validation', 'is_active', 'is_disable'
+			'validation', 'is_active', 'is_disable', 'code_random'
 		);
     }
 
@@ -67,8 +67,10 @@ class Company_model extends CI_Model {
             $select_query  = "SELECT * FROM ".COMPANY." WHERE reset = '".$param['reset']."' LIMIT 1";
         } else if (isset($param['validation'])) {
             $select_query  = "SELECT * FROM ".COMPANY." WHERE validation = '".$param['validation']."' LIMIT 1";
+        } else if (isset($param['code_random'])) {
+            $select_query  = "SELECT * FROM ".COMPANY." WHERE code_random = '".$param['code_random']."' LIMIT 1";
         }
-       
+		
         $select_result = mysql_query($select_query) or die(mysql_error());
         if (false !== $row = mysql_fetch_assoc($select_result)) {
             $array = $this->sync($row);
@@ -206,6 +208,21 @@ class Company_model extends CI_Model {
 		$param_update['id'] = $company['id'];
 		$param_update['vacancy_count_left'] = $company['vacancy_count_left'] - 1;
 		$this->update($param_update);
+	}
+	
+	function get_code_random() {
+		// length is 10 and all is digit
+		$code_random_temp = rand(10000,99999).rand(10000,99999);
+		$company = $this->get_by_id(array( 'code_random' => $code_random_temp ));
+		
+		$result = '';
+		if (count($company) == 0) {
+			$result = $code_random_temp;
+		} else {
+			$result = $this->get_code_random();
+		}
+		
+		return $result;
 	}
 	
 	/*	Region Company Session */

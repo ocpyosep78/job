@@ -7,7 +7,7 @@ class Seeker_model extends CI_Model {
         $this->field = array(
 			'id', 'kelamin_id', 'kota_id', 'marital_id', 'seeker_no', 'first_name', 'last_name', 'email', 'tempat_lahir', 'tgl_lahir', 'address', 'phone', 'hp',
 			'passwd', 'photo', 'last_login', 'last_update', 'agama', 'kebangsaan', 'facebook', 'twitter', 'ibu_kandung', 'file_resume', 'alias', 'reset',
-			'validation', 'is_active', 'is_disable'
+			'validation', 'is_active', 'is_disable', 'about_me'
 		);
     }
 

@@ -115,47 +115,58 @@ class Seeker_Subscribe_model extends CI_Model {
 	}
 	
 	function sent_mail() {
+		$array_mail = array();
+		
+		// array vacancy
 		$param_vacancy['vacancy_status_id'] = VACANCY_STATUS_APPROVE;
 		$param_vacancy['publish_date_same'] = $this->config->item('current_datetime');
 		$param_vacancy['limit'] = 1000;
 		$array_vacancy = $this->Vacancy_model->get_array($param_vacancy);
 		
-		// make format base on category
-		$array_category = array();
-		foreach ($array_vacancy as $vacancy) {
-			unset($vacancy['content']);
-			unset($vacancy['content_short']);
-			$array_category[$vacancy['subkategori_id']][] = $vacancy;
+		// array subscribe
+		$param_subscribe['limit'] = 10000;
+		$array_subscribe = $this->get_array($param_subscribe);
+		
+		// array mail
+		$array_mail = array();
+		foreach ($array_subscribe as $key) {
+			if (!isset($array_mail[$key['email']])) {
+				$array_mail[$key['email']] = array( 'counter' => 0, 'message' => '' );
+			}
+			
+			$array_mail[$key['email']]['subkategori_id'][] = $key['subkategori_id'];
 		}
 		
-		// sent mail each category
-		foreach ($array_category as $subkategori_id => $temp) {
-			// generate content
-			$param_email['title'] = 'Jobs Subscribe';
-			$param_email['message']  = "";
-			foreach ($temp as $key => $vacancy) {
-				$param_email['message'] .= "<br />";
-				$param_email['message'] .= "Judul : ".$vacancy['nama']."<br />";
-				$param_email['message'] .= "Nama perusahan : ".$vacancy['company_nama']."<br />";
-				$param_email['message'] .= "Lokasi : ".$vacancy['kota_nama']."<br />";
-				$param_email['message'] .= "Link : <a href=".$vacancy['vacancy_link'].">".$vacancy['vacancy_link']."</a>";
-				$param_email['message'] .= "<br />";
-				
-				if ($key >= 9) {
-					break;
+		// insert vacancy to each email
+		foreach ($array_vacancy as $vacancy) {
+			$message  = "<br />";
+			$message .= "Judul : ".$vacancy['nama']."<br />";
+			$message .= "Nama perusahan : ".$vacancy['company_nama']."<br />";
+			$message .= "Lokasi : ".$vacancy['kota_nama']."<br />";
+//			$message .= "Subkategori : ".$vacancy['subkategori_nama']."<br />";
+			$message .= "Link : <a href=".$vacancy['vacancy_link'].">".$vacancy['vacancy_link']."</a>";
+			$message .= "<br />";
+			
+			foreach ($array_mail as $email => $seeker) {
+				if (in_array($vacancy['subkategori_id'], $seeker['subkategori_id']) && $array_mail[$email]['counter'] <= 10) {
+					$array_mail[$email]['message'] .= $message;
+					$array_mail[$email]['counter']++;
 				}
 			}
-			
-			// collect subscriber
-			$param_subscribe['subkategori_id'] = $vacancy['subkategori_id'];
-			$param_subscribe['limit'] = 1000;
-			$array_subscribe = $this->get_array($param_subscribe);
-			
-			// sent mail
-			foreach ($array_subscribe as $seeker) {
-				$param_email['to'] = $seeker['email'];
-				sent_mail($param_email);
-			}
 		}
+		
+		// sent mail
+		foreach ($array_mail as $email => $seeker) {
+			if (empty($seeker['counter'])) {
+				continue;
+			}
+			
+			$param_email['to'] = $email;
+			$param_email['title'] = 'Jobs Subscribe';
+			$param_email['message'] = $seeker['message'];
+			sent_mail($param_email);
+		}
+		
+		return array( 'status' => true, 'message' => 'Email berhasil ' );
 	}
 }

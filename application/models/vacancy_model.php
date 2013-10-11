@@ -6,7 +6,7 @@ class Vacancy_model extends CI_Model {
 		
         $this->field = array(
 			'id', 'company_id', 'subkategori_id', 'nama', 'position', 'vacancy_status_id', 'article_url', 'article_link', 'content_short',
-			'content', 'opsi_1', 'opsi_2', 'kota_id', 'jenjang_id', 'jenis_pekerjaan_id', 'pengalaman_id', 'gaji', 'publish_date', 'close_date',
+			'invitation', 'content', 'opsi_1', 'opsi_2', 'kota_id', 'jenjang_id', 'jenis_pekerjaan_id', 'pengalaman_id', 'gaji', 'publish_date', 'close_date',
 			'email_apply', 'email_quick', 'total_view', 'total_seeker', 'job_reff', 'vacancy_submit_via', 'link_apply'
 		);
     }
@@ -99,6 +99,7 @@ class Vacancy_model extends CI_Model {
 		$string_publish_date = (empty($param['publish_date'])) ? '' : "AND Vacancy.publish_date <= DATE('".$param['publish_date']."')";
 		$string_publish_date_same = (empty($param['publish_date_same'])) ? '' : "AND DATE(Vacancy.publish_date) = DATE('".$param['publish_date_same']."')";
 		$string_vacancy_status = (empty($param['vacancy_status_id'])) ? '' : "AND Vacancy.vacancy_status_id = '".$param['vacancy_status_id']."'";
+		$string_close_date = (empty($param['close_date'])) ? '' : "AND Vacancy.close_date > DATE('".$param['close_date']."')";
 		$string_filter = GetStringFilter($param, @$param['column']);
 		$string_sorting = GetStringSorting($param, @$param['column'], 'Vacancy.close_date DESC');
 		$string_limit = GetStringLimit($param);
@@ -122,7 +123,7 @@ class Vacancy_model extends CI_Model {
 			LEFT JOIN ".JENJANG." Jenjang ON Jenjang.id = Vacancy.jenjang_id
 			LEFT JOIN ".JENIS_PEKERJAAN." JenisPekerjaan ON JenisPekerjaan.id = Vacancy.jenis_pekerjaan_id
 			LEFT JOIN ".PENGALAMAN." Pengalaman ON Pengalaman.id = Vacancy.pengalaman_id
-			WHERE 1 $string_company $string_kategori $string_subkategori $string_publish_date $string_publish_date_same $string_vacancy_status $string_filter
+			WHERE 1 $string_company $string_kategori $string_subkategori $string_publish_date $string_publish_date_same $string_vacancy_status $string_close_date $string_filter
 			ORDER BY $string_sorting
 			LIMIT $string_limit
 		";
