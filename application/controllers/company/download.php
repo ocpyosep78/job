@@ -58,6 +58,6 @@ class download extends COMPANY_Controller {
 		$seeker = $this->Seeker_model->get_by_id(array( 'seeker_no' => $seeker_no ));
 		$seeker = $this->Seeker_model->get_by_id(array( 'id' => $seeker['id'] ));
 		
-		$this->load->view( 'seeker/publish', array( 'seeker' => $seeker, 'is_company' => true ) );
+		$this->load->view( 'seeker/publish_company', array( 'seeker' => $seeker, 'is_company' => true ) );
 	}
 }

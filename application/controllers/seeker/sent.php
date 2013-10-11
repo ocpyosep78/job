@@ -40,11 +40,11 @@ class sent extends SEEKER_Controller {
 			}
 			
 			// Sent Email
-			$content = $this->load->view( 'seeker/email/lamaran', array( 'seeker' => $seeker, 'content' => $param['content'] ), true );
+			$content = $this->load->view( 'seeker/email/lamaran', array( 'seeker' => $seeker, 'content' => nl2br($param['content']) ), true );
 			$MailParam = array(
 				'EmailTo' => $param['to'],
-				'EmailFrom' => 'no-reply@duniakarir.com',
-				'EmailFromName' => 'Para Pekerja',
+				'EmailFrom' => 'no-reply@parapekerja.com',
+				'EmailFromName' => 'ParaPekerja.com',
 				'EmailSubject' => $param['subject'],
 				'EmailBody' => $content,
 				'Attachment' => $attach
