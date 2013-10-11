@@ -52,6 +52,9 @@ class home extends CI_Controller {
 				preg_match('/rss$/i', $_SERVER['REQUEST_URI'], $match);
 				$is_rss = (!empty($match[0])) ? true : false;
 				
+				// page static from widget
+				$widget = $this->Widget_model->get_by_id( array( 'alias' => $segments[1] ) );
+				
 				if (count($vacancy) > 0 && @$segments[3] == 'quick') {
 					$this->load->view( 'website/listing_quick', array( 'vacancy' => $vacancy ) );
 				} else if (count($vacancy) > 0) {
@@ -85,6 +88,8 @@ class home extends CI_Controller {
 					$this->load->view( 'website/common/rss', $rss_param );
 				} else if (count($company) > 0) {
 					$this->load->view( 'website/company', array( 'company' => $company ));
+				} else if (count($widget) > 0) {
+					$this->load->view( 'website/page_widget', array( 'widget' => $widget ));
 				}
 			}
 		}
@@ -96,7 +101,7 @@ class home extends CI_Controller {
     }
 	
 	function blog() {
-		preg_match('/blog\/([a-z0-9\-\_]+)$/i', $_SERVER['REQUEST_URI'], $match);
+		preg_match('/blog\/([a-z0-9\-\_]+)(\/overview)*$/i', $_SERVER['REQUEST_URI'], $match);
 		$alias = (empty($match[1])) ? '' : $match[1];
 		
 		// check rss
@@ -281,6 +286,7 @@ class home extends CI_Controller {
 				$model_name = 'Company_model';
 				$link = base_url('company/home');
 			} else if ($action == 'login_editor') {
+				$type = 'editor';
 				$model_name = 'Editor_model';
 				$link = base_url('editor/home');
 			}
@@ -303,6 +309,19 @@ class home extends CI_Controller {
 				$result['message'] = 'Password tidak sama.';
 				echo json_encode($result);
 				exit;
+			}
+			
+			// addition code
+			if ($type == 'company') {
+				if (empty($user['code_random'])) {
+					$code_random = $this->Company_model->get_code_random();
+					$update_param['id'] = $user['id'];
+					$update_param['code_random'] = $code_random;
+					$this->Company_model->update($update_param);
+					
+					// reload information
+					$user = $this->$model_name->get_by_id(array('email' => $_POST['email']));
+				}
 			}
 			
 			$this->$model_name->set_session($user);
@@ -403,8 +422,8 @@ class home extends CI_Controller {
 			// Sent Email
 			$MailParam = array(
 				'EmailTo' => $vacancy['email_apply'],
-				'EmailFrom' => 'no-reply@duniakarir.com',
-				'EmailFromName' => 'Para Pekerja',
+				'EmailFrom' => 'no-reply@parapekerja.com',
+				'EmailFromName' => 'Parapekerja.com',
 				'EmailSubject' => $vacancy['nama'],
 				'EmailBody' => $content,
 				'Attachment' => $attach
@@ -452,8 +471,8 @@ class home extends CI_Controller {
 			// Sent Email
 			$MailParam = array(
 				'EmailTo' => $vacancy['email_apply'],
-				'EmailFrom' => 'no-reply@duniakarir.com',
-				'EmailFromName' => 'Para Pekerja',
+				'EmailFrom' => 'no-reply@parapekerja.com',
+				'EmailFromName' => 'Parapekerja.com',
 				'EmailSubject' => $vacancy['nama'],
 				'EmailBody' => $content,
 				'Attachment' => $attach
