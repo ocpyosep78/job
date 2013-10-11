@@ -1,72 +1,74 @@
 ----------------------------------------------------------------------------------------------------------------------------------------------
 COMMON
 
-Table View
-- Jika halamanan diperkecil seukuran table, menu (Seeker, Company dll) tidak tampil
-- reff : http://www.eakroko.de/flat/
+check => Table View
+check => - Jika halamanan diperkecil seukuran table, menu (Seeker, Company dll) tidak tampil
+check => - reff : http://www.eakroko.de/flat/
 ----------------------------------------------------------------------------------------------------------------------------------------------
 SEEKER
 
-Seeker - Kirim Lamaran
-- link : http://parapekerja.com/seeker/sent
-- textareanya dibuat textarea biasa dan tidak support html lagi
+check => Seeker - Kirim Lamaran
+check => - link : http://parapekerja.com/seeker/sent
+check => - textareanya dibuat textarea biasa dan tidak support html lagi
 
-Seeker : Curiculum Vitae
-- link : http://parapekerja.com/seeker/50124591/ridwanamir
-- Bagian : Pengalaman Kerja
-- seharusnya sama dengan preview di tampilan saya entry data (support multi line)
-- link akses kesini ada 2 (via dashboard seeker & company setelah apply), untuk company tetap dan untuk dashboard buat 1 halaman lagi karena nanti akan dipasang css beda
+check => Seeker : Curiculum Vitae
+check => - link : http://parapekerja.com/seeker/50124591/ridwanamir
+check => - Bagian : Pengalaman Kerja
+check => - seharusnya sama dengan preview di tampilan saya entry data (support multi line)
+check => - link akses kesini ada 2 (via dashboard seeker & company setelah apply), untuk company tetap dan untuk dashboard buat 1 halaman lagi karena nanti akan dipasang css beda
 
-Seeker - Edit Resume
-- link : http://parapekerja.com/seeker/resume/edit
-- tambahkan field about me (tentang saya) max 50 karakter
+check => Seeker - Edit Resume
+check => - link : http://parapekerja.com/seeker/resume/edit
+check => - tambahkan field about me (tentang saya) max 50 karakter
 ----------------------------------------------------------------------------------------------------------------------------------------------
 COMPANY
 
-Company - Vacancy
-- link - http://parapekerja.com/company/vacancy
-- tambahkan 1 text area biasa di bawah field status, buat nulis kata kata undangan "kami mengundang anda untuk bekerja di perusahan kami dengan posisi seperti di bawah ini: "
-- property : text area biasa, max 100 karakter
+check => Company - Vacancy
+check => - link - http://parapekerja.com/company/vacancy
+check => - tambahkan 1 text area biasa di bawah field status, buat nulis kata kata undangan "kami mengundang anda untuk bekerja di perusahan kami dengan posisi seperti di bawah ini: "
+check => - property : text area biasa, max 100 karakter
 
-Company - Profile
-- dikasih no random untuk id perusahaan tsb
+check => Company - Profile
+check => - dikasih no random untuk id perusahaan tsb
 ----------------------------------------------------------------------------------------------------------------------------------------------
 WEBSITE
 
-Register Seeker
-- link : http://parapekerja.com/registrasi
-- ada validasi email karena banyak yang pakai nama
-- input tambah (nama depan, nama belakang)
+check => Register Seeker
+check => - link : http://parapekerja.com/registrasi
+check => - ada validasi email karena banyak yang pakai nama
+check => - input tambah (nama depan, nama belakang)
 
-Register Company
-- link : http://parapekerja.com/registrasi/company
-- ada validasi email karena banyak yang pakai nama
-- input tambah (Company Name,  Contact Name,  Mobile Number (Contact Person))
+check => Register Company
+check => - link : http://parapekerja.com/registrasi/company
+check => - ada validasi email karena banyak yang pakai nama
+check => - input tambah (Company Name,  Contact Name,  Mobile Number (Contact Person))
 
-Website - Listing
-- link : http://parapekerja.com/listing
-- vacancy yang expire jangan tampil
-- termasuk yang dipencarian
+note : Halaman Login juga terpisah karena scriptnya jadi satu
 
-Website - Blog
-- link : http://www.parapekerja.com/blog
-- tampilkan popular tag dalam sebulan sebanyak 10 di sebelah kanan
-- Ridwan Amir: di bagian bawah login itu tampilkan list tag..
-- Ridwan Amir: Popular tag this month..
+check => Website - Listing
+check => - link : http://parapekerja.com/listing
+check => - vacancy yang expire jangan tampil
+check => - termasuk yang dipencarian
 
-Website - Overview
-- link : http://www.parapekerja.com/blog/bagaimana-cara-memulai-usaha-modal-kecil
-- link hasil : http://www.parapekerja.com/blog/bagaimana-cara-memulai-usaha-modal-kecil/overview
-- konsepnya sama seperti duniadb dulu
-- Ridwan Amir: kl di tahniah seperti ini <?php } else if ($Article['ViewMode'] == 'career') { ?>
+check => Website - Blog
+check => - link : http://www.parapekerja.com/blog
+check => - tampilkan popular tag dalam sebulan sebanyak 10 di sebelah kanan
+check => - Ridwan Amir: di bagian bawah login itu tampilkan list tag..
+check => - Ridwan Amir: Popular tag this month..
+
+check => Website - Overview
+check => - link : http://www.parapekerja.com/blog/bagaimana-cara-memulai-usaha-modal-kecil
+check => - link hasil : http://www.parapekerja.com/blog/bagaimana-cara-memulai-usaha-modal-kecil/overview
+check => - konsepnya sama seperti duniadb dulu
+check => - Ridwan Amir: kl di tahniah seperti ini <?php } else if ($Article['ViewMode'] == 'career') { ?>
 ----------------------------------------------------------------------------------------------------------------------------------------------
 ADMINISTRATOR
 
-Subscribe Lowongan per Kategori
-- pengiriman 1 x untuk semua category karena yang skr jika seeker berlangganan 3 category maka dia mendapat 3 email yang seharusnya dikumpulkan dalam 1 category
+check => Subscribe Lowongan per Kategori
+check => - pengiriman 1 x untuk semua category karena yang skr jika seeker berlangganan 3 category maka dia mendapat 3 email yang seharusnya dikumpulkan dalam 1 category
 
-Admin - Widget
-- link : http://parapekerja.com/editor/widget
-- ditambahkan ada support page seperti : (home / about / privacy police / terms / disclaimer / tips aman / bantuan / hubungi kami)
-- nanti linknya : http://parapekerja.com/about
+check => Admin - Widget
+check => - link : http://parapekerja.com/editor/widget
+check => - ditambahkan ada support page seperti : (home / about / privacy police / terms / disclaimer / tips aman / bantuan / hubungi kami)
+check => - nanti linknya : http://parapekerja.com/about
 ----------------------------------------------------------------------------------------------------------------------------------------------
