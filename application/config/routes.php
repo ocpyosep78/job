@@ -8,8 +8,17 @@ if (! function_exists('is_company_link')) {
 	}
 }
 
+// get parameter link
 $is_website = true;
-$url_arg = preg_replace('/(^\/|\/$)/i', '', @$_SERVER['argv'][0]);
+$string_link = '';
+if (isset($_SERVER['argv']) && isset($_SERVER['argv'][0])) {
+	$string_link = $_SERVER['argv'][0];
+} else if (isset($_SERVER['REDIRECT_QUERY_STRING'])) {
+	$string_link = $_SERVER['REDIRECT_QUERY_STRING'];
+}
+
+// process
+$url_arg = preg_replace('/(^\/|\/$)/i', '', $string_link);
 $array_arg = explode('/', $url_arg);
 if (count($array_arg) > 1) {
 	$key = $array_arg[0];
