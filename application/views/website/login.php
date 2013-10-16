@@ -154,6 +154,11 @@
 						</fieldset>
 					</form>
 				</div>
+				<div class="clear"></div>
+				
+				<div class="actions" style="text-align: center;">
+					<a href="<?php echo base_url('login/company'); ?>" title="Sign in" class="sign-in btn btn-main">Sign In as Perusahaan</a>
+				</div>
 				<?php } else if ($page_type == 'company') { ?>
 				<div class="cnt-block">
 					<form class="cnt-form" id="form-company" data-ajaxpost="ajax/company">
@@ -204,8 +209,12 @@
 						</fieldset>
 					</form>
 				</div>
-				<?php } ?>
 				<div class="clear"></div>
+				
+				<div class="actions" style="text-align: center;">
+					<a href="<?php echo base_url('login'); ?>" title="Sign in" class="sign-in btn btn-main">Sign In as Pencari Kerja</a>
+				</div>
+				<?php } ?>
 			</div>
 		</div>
 

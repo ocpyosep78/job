@@ -59,7 +59,7 @@
 				<button class="btn modal-submit btn-primary">Save changes</button>
 			</div>
 		</div>
-	</div></div></div></div></div>
+	</div></div></div></div></div> 
 </div>
 <script>
 	$(document).ready(function() {
@@ -133,6 +133,6 @@
 			return false;
 		});
 	});
-</script>
+</script> 
 </body>
 </html>

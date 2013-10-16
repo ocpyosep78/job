@@ -43,10 +43,12 @@
 </head>
 <body>
 
+<!-- application/views/seeker/publish_seeker.php -->
+
 <?php if ($allow_update) { ?>
 <div id="subNavWrap">
 	<div id="subNav">
-		<h1>Resume Saya</h1>
+		<h1>Resume Saya - Seeker</h1>
 		<h2><a href="<?php echo base_url('seeker/resume'); ?>">Perbarui Resume</a></h2>
 		<h2>|<a class="activeLink">Pratinjau Resume</a></h2>
 		<h2>|<a href="<?php echo $seeker['seeker_no_pdf']; ?>">Simpan Resume Sebagai Pdf (.pdf)</a></h2>
@@ -191,7 +193,9 @@
 <tr>
 	<td valign="top" width="23%">Tingkat Pengalaman</td>
 	<td valign="top">:</td>
-	<td colspan="4" valign="top"><?php echo strip_tags($exp['content']); ?></td></tr>
+	<td colspan="4" valign="top">&nbsp;</td></tr>
+<tr>
+	<td colspan="6" valign="top"><?php echo $exp['content']; ?></td></tr>
 <?php } ?>
 <tr><td colspan="6" valign="top">&nbsp;</td></tr>
 <?php } ?>
