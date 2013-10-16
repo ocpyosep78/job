@@ -46,7 +46,6 @@
 	);
 	$array_article = $this->Article_model->get_array($param_article);
 	$page_count = ceil($this->Article_model->get_count() / $page_item);
-	
 ?>
 
 <?php $this->load->view( 'website/common/meta', array( 'title' => $title ) ); ?>
@@ -76,7 +75,8 @@
 						<?php } ?>
 						
 						<h2><a href='<?php echo $article['article_link']; ?>'><?php echo $article['nama']; ?></a></h2>
-						<p><?php echo $article['desc_short']; ?></p>
+						  <p><?php echo $article['desc_short']; ?></p> 
+ 
 					</div>
 				</article>
 				<?php } ?>
@@ -97,7 +97,8 @@
 		<aside class='span3'>
 			<div class='inner'>
 				<?php $this->load->view( 'website/common/register' ); ?>
-				<?php $this->load->view( 'website/common/category_list' ); ?>
+				<?php $this->load->view( 'website/common/site_banner' ); ?>
+				<?php $this->load->view( 'website/common/popular_tag' ); ?>
 				<div class='cart'></div>
 			</div>
 		</aside>

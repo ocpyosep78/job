@@ -53,6 +53,7 @@
 	
 	$filter[] = array( 'type' => 'numeric', 'comparison' => 'eq', 'value' => VACANCY_STATUS_APPROVE, 'field' => 'Vacancy.vacancy_status_id' );
 	$param_vacancy = array(
+		'close_date' => $this->config->item('current_date'),
 		'publish_date' => $this->config->item('current_datetime'),
 		'filter' => json_encode($filter),
 		'start' => ($page_active - 1) * $page_item,

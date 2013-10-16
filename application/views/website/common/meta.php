@@ -21,5 +21,6 @@
 	<script type="text/javascript" src="<?php echo base_url('static/js/jquery.placeholder.min.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('static/js/bootstrap.calendar.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('static/js/jquery.countdown.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('static/js/jquery.validate.min.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('static/js/common.js'); ?>"></script>
 </head>

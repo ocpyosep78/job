@@ -1,4 +1,7 @@
 <?php
+	preg_match('/(login|registrasi)\/(seeker|company)$/i', $_SERVER['REQUEST_URI'], $match);
+	$page_type = (!empty($match[2])) ? $match[2] : 'seeker';
+	
 	$array_breadcrumb = array( array( 'title' => 'Index', 'link' => base_url() ), array( 'title' => 'Login' ) );
 	
 	$message = '';
@@ -103,6 +106,7 @@
 			<div class='span9 news blog-article no-margin' style="padding: 0 0 100px 0;">
 				<div class="hide center message-login" style="text-align: center; padding: 10px 0 15px 0; font-size: 14px; color: #FF0000;"><?php echo $message; ?></div>
 				
+				<?php if ($page_type == 'seeker') { ?>
 				<div class="cnt-block">
 					<form class="cnt-form" id="form-seeker" data-ajaxpost="ajax/seeker">
 						<input type="hidden" name="action" value="login_seeker" />
@@ -135,8 +139,14 @@
 						<input type="hidden" name="action" value="register_seeker" />
 						<h1>PENCARI KERJA</h1>
 						<fieldset class="inputs">
+							Email
 							<input class="user" type="text" placeholder="Email" name="email" required>
+							Password
 							<input class="pass" type="password" placeholder="Password" name="passwd" required>
+							First Name
+							<input class="user" type="text" placeholder="First Name" name="first_name" required>
+							Last Name
+							<input class="user" type="text" placeholder="Last Name" name="last_name" required>
 						</fieldset>
 						<fieldset class="actions">
 							<input type="submit" class="btn-submit" value="Register">
@@ -144,6 +154,7 @@
 						</fieldset>
 					</form>
 				</div>
+				<?php } else if ($page_type == 'company') { ?>
 				<div class="cnt-block">
 					<form class="cnt-form" id="form-company" data-ajaxpost="ajax/company">
 						<input type="hidden" name="action" value="login_company" />
@@ -176,8 +187,16 @@
 						<input type="hidden" name="action" value="register_company" />
 						<h1>PERUSAHAAN</h1>
 						<fieldset class="inputs">
+							Email
 							<input class="user" type="text" placeholder="Email" name="email" required>
+							Password
 							<input class="pass" type="password" placeholder="Password" name="passwd" required>
+							Company Name
+							<input class="pass" type="text" placeholder="Company Name" name="nama" required>
+							Contact Name
+							<input class="pass" type="text" placeholder="Contact Name" name="contact_name" required>
+							Mobile Number
+							<input class="pass" type="text" placeholder="Mobile Number" name="contact_no" required>
 						</fieldset>
 						<fieldset class="actions">
 							<input type="submit" class="btn-submit" value="Register">
@@ -185,6 +204,7 @@
 						</fieldset>
 					</form>
 				</div>
+				<?php } ?>
 				<div class="clear"></div>
 			</div>
 		</div>
@@ -199,7 +219,7 @@
 </section>
 
 <script>
-$('#form-seeker, #form-company').submit(function() {
+$('#form-seeker, #form-company').submit(function(event) {
 	$('.message-login').hide();
 	var form_id = $(this).attr('id');
 	var param = Site.Form.GetValue(form_id);
@@ -225,7 +245,13 @@ $('#form-seeker-forget, #form-company-forget').submit(function() {
 	
 	return false;
 });
-$('#form-seeker-register, #form-company-register').submit(function() {
+$('#form-seeker-register, #form-company-register').submit(function(event) {
+	event.preventDefault();
+	var form_id = $(this).attr('id');
+	if (! $('#' + form_id).valid()) {
+		return false;
+	}
+	
 	$('.message-login').hide();
 	var form_id = $(this).attr('id');
 	var param = Site.Form.GetValue(form_id);
@@ -254,10 +280,28 @@ if ($('.message-login').text().length > 0) {
 	$('.message-login').slideDown();
 }
 
+// add validation
+$('#form-seeker-register').validate({
+	rules: {
+		email: { required: true, email: true },
+		passwd: { required: true },
+		first_name: { required: true },
+		last_name: { required: true }
+	}
+});
+$('#form-company-register').validate({
+	rules: {
+		email: { required: true, email: true },
+		passwd: { required: true },
+		nama: { required: true },
+		contact_name: { required: true },
+		contact_no: { required: true }
+	}
+});
+
 var link = window.location.href;
 var temp = link.match('registrasi');
 if (temp != null && temp[0] == 'registrasi') {
-	console.log(10)
 	$('.show-register').eq(0).click();
 	$('.show-register').eq(2).click();
 }

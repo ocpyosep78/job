@@ -28,6 +28,10 @@
 					<div class="box-title"><h3><i class="icon-file"></i> Company Login Details</h3></div>
 					<div class="box-content">
 						<div class="control-group">
+							<label class="control-label">Random ID</label>
+							<div class="controls"><input type="text" name="code_random" class="input-xlarge" readonly="readonly" /></div>
+						</div>
+						<div class="control-group">
 							<label for="input-email" class="control-label">Email Address</label>
 							<div class="controls"><input type="text" name="email" id="input-email" class="input-xlarge" data-rule-required="true" data-rule-email="true" data-rule-samevalue="true" data-classname="email" /></div>
 						</div>
@@ -174,6 +178,7 @@
 	$('[name="faximile"]').val(company.faximile);
 	$('[name="website"]').val(company.website);
 	$('[name="address"]').val(company.address);
+	$('[name="code_random"]').val(company.code_random);
 	$('[name="email"]').val(company.email);
 	$('[name="email_check"]').val(company.email);
 	$('[name="description"]').val(company.description);
@@ -206,6 +211,7 @@
 		var param = Site.Form.GetValue('form-company');
 		param.action = 'update';
 		param.update_session = 1;
+		delete param.code_random;
 		Func.ajax({ url: web.host + 'company/profile/action', param: param, callback: function(result) {
 			Func.show_notice({ text: result.message });
 		} });

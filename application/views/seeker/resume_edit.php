@@ -113,6 +113,12 @@
 						<input type="text" name="ibu_kandung" id="ibu_kandung" class="input-xlarge" />
 					</div>
 				</div>
+				<div class="control-group">
+					<label for="about_me" class="control-label">Tentang Saya</label>
+					<div class="controls">
+						<input type="text" name="about_me" id="about_me" class="input-xxlarge" maxlength="50" />
+					</div>
+				</div>
 				
 				<div class="box box-color box-bordered teal">
 					<div class="box-title">
@@ -182,6 +188,7 @@
 	$('[name="agama"]').val(seeker.agama);
 	$('[name="marital_id"]').val(seeker.marital_id);
 	$('[name="ibu_kandung"]').val(seeker.ibu_kandung);
+	$('[name="about_me"]').val(seeker.about_me);
 	$('[name="facebook"]').val(seeker.facebook);
 	$('[name="twitter"]').val(seeker.twitter);
 	

@@ -35,7 +35,7 @@
 				</div>
 				<div class="control-group">
 					<label for="nama_perusahaan" class="control-label">Cover Letter</label>
-					<div class="controls"><textarea name="content" id="input-content1" class="tinymce span9" style="height: 350px; width: 700px;"></textarea></div>
+					<div class="controls"><textarea name="content" id="input-content1" class="span9" style="height: 350px; width: 700px;"></textarea></div>
 				</div>
 				<div class="control-group" style="margin-bottom: 0px;">
 					<div class="controls">

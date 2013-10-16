@@ -1,4 +1,8 @@
 <?php
+	// get view type
+	preg_match('/(overview)/i', $_SERVER['REQUEST_URI'], $match);
+	$view_type = (!empty($match[1])) ? $match[1] : 'normal';
+	
 	// breadcrump
 	$breadcrump[] = array( 'title' => 'Index', 'link' => base_url() );
 	$breadcrump[] = array( 'title' => $article['nama'], 'link' => $article['article_link'] );
@@ -27,6 +31,10 @@
 					
 					<?php if (!empty($article['photo_link'])) { ?>
 					<figure><img src="<?php echo $article['photo_link']; ?>" alt="<?php echo $article['nama']; ?>" /></figure>
+					<?php } ?>
+					
+					<?php if ($view_type == 'overview') { ?>
+					<h2>Ini Halaman Overview, Tambahkan apa yang ada suka disini</h2>
 					<?php } ?>
 					
 					<?php echo $article['article_desc_1']; ?>

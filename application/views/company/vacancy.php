@@ -86,6 +86,10 @@
 					</select></div>
 				</div>
 				<div class="control-group">
+					<label for="input-invitation" class="control-label">Kata Undangan</label>
+					<div class="controls"><textarea name="invitation" id="input-invitation" style="height: 40px;" class="input-xxlarge" maxlength="100"></textarea></div>
+				</div>
+				<div class="control-group">
 					<label for="input-content1" class="control-label">Detail</label>
 					<div class="controls"><textarea name="content" id="input-content1" class="tinymce" style="height: 300px;"></textarea></div>
 				</div>
@@ -234,6 +238,7 @@
 						$('#form-vacancy [name="pengalaman_id"]').val(record.pengalaman_id);
 						$('#form-vacancy [name="nama"]').val(record.nama);
 						$('#form-vacancy [name="job_reff"]').val(record.job_reff);
+						$('#form-vacancy [name="invitation"]').val(record.invitation);
 						$('#form-vacancy [name="content"]').val(record.content);
 						$('#form-vacancy [name="gaji"]').val(record.gaji);
 						$('#form-vacancy [name="publish_date"]').val(Func.SwapDate(record.publish_date));
