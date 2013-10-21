@@ -1,74 +1,23 @@
-----------------------------------------------------------------------------------------------------------------------------------------------
-COMMON
+link : http://www.parapekerja.com/PT-Arahan-Mandiri
+- pencarian tidak jalan
+- lowongan yang sudah expire tidak ditampilkan
 
-check => Table View
-check => - Jika halamanan diperkecil seukuran table, menu (Seeker, Company dll) tidak tampil
-check => - reff : http://www.eakroko.de/flat/
-----------------------------------------------------------------------------------------------------------------------------------------------
-SEEKER
+link : http://parapekerja.com/blog
+- yang dimunculkan tag dari blog saja (event tidak ikut)
 
-check => Seeker - Kirim Lamaran
-check => - link : http://parapekerja.com/seeker/sent
-check => - textareanya dibuat textarea biasa dan tidak support html lagi
+link : http://www.parapekerja.com/tags
+- bermasalah
 
-check => Seeker : Curiculum Vitae
-check => - link : http://parapekerja.com/seeker/50124591/ridwanamir
-check => - Bagian : Pengalaman Kerja
-check => - seharusnya sama dengan preview di tampilan saya entry data (support multi line)
-check => - link akses kesini ada 2 (via dashboard seeker & company setelah apply), untuk company tetap dan untuk dashboard buat 1 halaman lagi karena nanti akan dipasang css beda
+link : http://parapekerja.com/static/upload/2013/08/
+- nanti ditutup
 
-check => Seeker - Edit Resume
-check => - link : http://parapekerja.com/seeker/resume/edit
-check => - tambahkan field about me (tentang saya) max 50 karakter
-----------------------------------------------------------------------------------------------------------------------------------------------
-COMPANY
+link : http://www.parapekerja.com/PT-Arahan-Mandiri/69-lowongan-baru-yang-kemarin-masih-di-kirim-apa-nda
+- klo di klik apply, harus di cek apakah resumenya sudah lengkap ?
+- tampilkan no perusahaan
 
-check => Company - Vacancy
-check => - link - http://parapekerja.com/company/vacancy
-check => - tambahkan 1 text area biasa di bawah field status, buat nulis kata kata undangan "kami mengundang anda untuk bekerja di perusahan kami dengan posisi seperti di bawah ini: "
-check => - property : text area biasa, max 100 karakter
+link : http://parapekerja.com/profile/ridwanamir
+- buat 1 halaman seperti http://parapekerja.com/seeker/50124591/ridwanamir
+- ini view sendiri
 
-check => Company - Profile
-check => - dikasih no random untuk id perusahaan tsb
-----------------------------------------------------------------------------------------------------------------------------------------------
-WEBSITE
-
-check => Register Seeker
-check => - link : http://parapekerja.com/registrasi
-check => - ada validasi email karena banyak yang pakai nama
-check => - input tambah (nama depan, nama belakang)
-
-check => Register Company
-check => - link : http://parapekerja.com/registrasi/company
-check => - ada validasi email karena banyak yang pakai nama
-check => - input tambah (Company Name,  Contact Name,  Mobile Number (Contact Person))
-
-note : Halaman Login juga terpisah karena scriptnya jadi satu
-
-check => Website - Listing
-check => - link : http://parapekerja.com/listing
-check => - vacancy yang expire jangan tampil
-check => - termasuk yang dipencarian
-
-check => Website - Blog
-check => - link : http://www.parapekerja.com/blog
-check => - tampilkan popular tag dalam sebulan sebanyak 10 di sebelah kanan
-check => - Ridwan Amir: di bagian bawah login itu tampilkan list tag..
-check => - Ridwan Amir: Popular tag this month..
-
-check => Website - Overview
-check => - link : http://www.parapekerja.com/blog/bagaimana-cara-memulai-usaha-modal-kecil
-check => - link hasil : http://www.parapekerja.com/blog/bagaimana-cara-memulai-usaha-modal-kecil/overview
-check => - konsepnya sama seperti duniadb dulu
-check => - Ridwan Amir: kl di tahniah seperti ini <?php } else if ($Article['ViewMode'] == 'career') { ?>
-----------------------------------------------------------------------------------------------------------------------------------------------
-ADMINISTRATOR
-
-check => Subscribe Lowongan per Kategori
-check => - pengiriman 1 x untuk semua category karena yang skr jika seeker berlangganan 3 category maka dia mendapat 3 email yang seharusnya dikumpulkan dalam 1 category
-
-check => Admin - Widget
-check => - link : http://parapekerja.com/editor/widget
-check => - ditambahkan ada support page seperti : (home / about / privacy police / terms / disclaimer / tips aman / bantuan / hubungi kami)
-check => - nanti linknya : http://parapekerja.com/about
-----------------------------------------------------------------------------------------------------------------------------------------------
+link : http://parapekerja.com/
+- tambahkan random member yang linknya mengarah ke halaman profile (yang baru)
