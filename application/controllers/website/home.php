@@ -262,6 +262,16 @@ class home extends CI_Controller {
 		$this->load->view( 'website/region' );
 	}
 	
+	function profile() {
+		preg_match('/profile\/([a-z0-9]+)/i', $_SERVER['REQUEST_URI'], $match);
+		if (empty($match[1])) {
+			exit;
+		}
+		
+		$seeker_alias = $match[1];
+		$this->load->view( 'website/profile', array( 'seeker_alias' => $seeker_alias ) );
+	}
+	
 	function ajax() {
 		$this->load->library('phpmailer');
 		
@@ -450,6 +460,15 @@ class home extends CI_Controller {
 		else if ($action == 'apply') {
 			$seeker = $this->Seeker_model->get_session();
 			$vacancy = $this->Vacancy_model->get_by_id(array( 'id' => $_POST['vacancy_id'] ));
+			
+			// having resume ?
+			$having_resume = $this->Seeker_model->get_resume($seeker);
+			if (! $having_resume['is_pass']) {
+				$result['status'] = false;
+				$result['message'] = 'Silahkan memperbaharui biodata Anda sebelum melamar.';
+				echo json_encode($result);
+				exit;
+			}
 			
 			if ($vacancy['vacancy_submit_via'] == VACANCY_SUBMIT_VIA_LINK) {
 				$result['redirect'] = true;

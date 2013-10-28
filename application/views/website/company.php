@@ -20,6 +20,7 @@
 	$breadcrump[] = array( 'title' => $company['nama'], 'link' => $company['company_link'] );
 	
 	$param_vacancy = array(
+		'close_date' => $this->config->item('current_date'),
 		'company_id' => $company['id'],
 		'publish_date' => $this->config->item('current_datetime'),
 		'filter' => '[{"type":"numeric","comparison":"eq","value":"'.VACANCY_STATUS_APPROVE.'","field":"Vacancy.vacancy_status_id"}]',
@@ -69,16 +70,22 @@
 				<div class='info-line'><span>Company Address : </span> <?php echo $company['address']; ?></div>
 				<div class='info-line'><span>City: </span> <?php echo @$company['kota_nama']; ?></div>
 				<div class='info-line'><span>Sales: </span> <?php echo $company['sales']; ?></div>
-				<div class='buy'>
-					<a href="<?php echo $company['google_map']; ?>" target="_blank"><span class='price'>Lihat Peta</span></a>
-					<span class="cursor price btn-report">Laporkan</span>
-					<a title='Subscribe' class='cursor btn btn-blue buy-album'>Subscribe</a>
-					<a href="<?php echo $company['company_link_rss']; ?>" title='RSS' class='btn btn-blue' style="margin: 0 0 0 10px;">RSS</a>
-				</div>
 				
+		 
+
 				<p class='description'><?php echo $company['description']; ?></p>
 			</div>
+
+ 
+
 			<div class='span9 album-files no-margin'>
+	<div style='float:right;margin-top:12px;font-size:15px;'>
+					<a href="<?php echo $company['google_map']; ?>" target="_blank"><span class='price'>Lihat Peta</span></a>
+				<!--	<span class="cursor btn-report">Laporkan</span> -->
+					<a title='Subscribe' class='cursor btn-report'>Laporkan</a>
+					<a title='Subscribe' class='cursor buy-album'>Subscribe</a>
+					<a href="<?php echo $company['company_link_rss']; ?>" title='RSS' class='btn btn-blue' style="margin: 0 0 0 10px;">RSS</a>
+	</div>
 				<h1>Lowongan Yang Tersedia</h1>
 				<hr />
 				
@@ -89,7 +96,7 @@
 				<?php } ?>
 				<div class="jp-audio custom"><a href="<?php echo $vacancy['vacancy_link']; ?>"><?php echo $vacancy['nama']; ?></a></div>
 				<?php } ?>
-			</div>
+			</div> <br/><br/>
 		</div>
 		
 		<aside class='span3'>
@@ -113,7 +120,7 @@ $(document).ready( function() {
 	}
 	
 	// form report
-	$('[name="submit"]').click(function() {
+	$('#popup_box [name="submit"]').click(function() {
 		var param = { action: 'report', email: user.email, company_id: $('[name="company_id"]').val(), content: $('[name="content"]').val() };
 		if (param.content.length == 0) {
 			alert('Harap mengisi report Anda pada Textbox');

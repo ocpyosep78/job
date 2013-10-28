@@ -19,7 +19,7 @@
 		'vacancy_status_id' => VACANCY_STATUS_APPROVE,
 		'publish_date' => $this->config->item('current_datetime'),
 		'sort' => '[{"property":"publish_date","direction":"DESC"}]',
-		'limit' => 10
+		'limit' => 2
 	);
 	$array_vacancy = $this->Vacancy_model->get_array($param_vacancy);
 	
@@ -28,6 +28,9 @@
 		'sort' => '[{"property":"publish_date","direction":"DESC"}]', 'limit' => 1
 	);
 	$array_article = $this->Article_model->get_array($param_article);
+	
+	$param_seeker = array( 'is_active' => 1, 'with_alias' => 1, 'sort' => '{"is_custom":"1","query":"RAND()"}', 'limit' => 5 );
+	$array_seeker = $this->Seeker_model->get_array($param_seeker);
 ?>
 
 <?php $this->load->view( 'website/common/meta' ); ?>
@@ -50,7 +53,7 @@
 			<div class='slider-sidebar span3'>
 				<?php $this->load->view( 'website/common/register' ); ?>
 				
-				<?php for ($i = 18; $i <= 19; $i++) { ?>
+				<?php for ($i = 1; $i <= 2; $i++) { ?>
 				<?php if (empty($array_slide1[$i]['logo_link'])) { ?>
 				<a href="<?php echo $array_slide1[$i]['company_link']; ?>">
 					<div class='artwork'>
@@ -75,7 +78,102 @@
 	</ul>
 	</div></div></div>
 </div>
-
+<!-- YANG DI TAMBAHIN FOTO PROFILE YANG INI 
+<div style="background-color:#fff">
+	<div class='container'><div class='row'> 
+	<ul class='slides'>
+		<li class="slide-item">
+			<div class='span9'><br/>
+			<div style="border-bottom: 1px inset rgb(187, 51, 0); margin-bottom: 20px; padding: 5px 5px 5px 30px;">
+			Baru Bergabung</div>
+				<div class="span9">
+				 
+				 
+                               
+                                    <a href="#">
+                                        <div class="artwork">
+                                            <div class="glow"></div>
+                                            <img alt="" src="img/artwork03.png">
+                                        </div>
+                                    </a>
+									
+									 <a href="#">
+                                        <div class="artwork">
+                                            <div class="glow"></div>
+                                            <img alt="" src="img/artwork03.png">
+                                        </div>
+                                    </a>
+									
+									 <a href="#">
+                                        <div class="artwork">
+                                            <div class="glow"></div>
+                                            <img alt="" src="img/artwork03.png">
+                                        </div>
+                                    </a>
+									
+									 <a href="#">
+                                        <div class="artwork">
+                                            <div class="glow"></div>
+                                            <img alt="" src="img/artwork03.png">
+                                        </div>
+                                    </a>
+									
+									 <a href="#">
+                                        <div class="artwork">
+                                            <div class="glow"></div>
+                                            <img alt="" src="img/artwork03.png">
+                                        </div>
+                                    </a>
+									
+									 <a href="#">
+                                        <div class="artwork">
+                                            <div class="glow"></div>
+                                            <img alt="" src="img/artwork03.png">
+                                        </div>
+                                    </a>
+									
+									 <a href="#">
+                                        <div class="artwork">
+                                            <div class="glow"></div>
+                                            <img alt="" src="img/artwork03.png">
+                                        </div>
+                                    </a>
+                                   
+								     <a href="#">
+                                        <div class="artwork">
+                                            <div class="glow"></div>
+                                            <img alt="" src="img/artwork03.png">
+                                        </div>
+                                    </a>
+									
+									  <a href="#">
+                                        <div class="artwork">
+                                            <div class="glow"></div>
+                                            <img alt="" src="img/artwork03.png">
+                                        </div>
+                                    </a>
+									
+									  <a href="#">
+                                        <div class="artwork">
+                                            <div class="glow"></div>
+                                            <img alt="" src="img/artwork03.png">
+                                        </div>
+                                    </a>
+                                
+                                
+                                   
+                                   </div>
+			</div>
+				
+			<div class='slider-sidebar span3'>
+			<div style="border-bottom: 1px inset rgb(187, 51, 0); margin-bottom: 20px; padding: 5px 5px 5px 30px; margin-top: 20px;">
+			biarin saja</div>
+			</div>
+		</li>
+	</ul>
+	 </div></div>
+</div>
+-->
 <?php if ($seeker_login || $company_login) { ?>
 <section id='main'>
 	<div class='container'>
@@ -88,6 +186,16 @@
 						<div class="jp-audio custom"><a href="<?php echo $vacancy['vacancy_link']; ?>"><?php echo $vacancy['nama']; ?></a></div>
 					<?php } ?>
 					<a href="<?php echo base_url('listing'); ?>" class='btn btn-main'>Lihat Semua</a>
+					
+					<h1>Random Member</h1>
+					<hr />
+					<?php foreach ($array_seeker as $key => $row) { ?>
+						<?php if (empty($row['full_name'])) { ?>
+							<?php continue; ?>
+						<?php } ?>
+						
+						<div class="jp-audio custom"><a href="<?php echo $row['profile_link']; ?>"><?php echo $row['full_name']; ?></a></div>
+					<?php } ?>
 				</div>
 				<div class='weekly-features span3'>
 					<h1>Artikel Parapekerja </h1>

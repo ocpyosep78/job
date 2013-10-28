@@ -238,6 +238,7 @@ class Seeker_model extends CI_Model {
 		$row['seeker_link'] = base_url();
 		if (!empty($row['alias'])) {
 			$row['seeker_link'] = base_url('seeker/publish/index/'.$row['alias']);
+			$row['profile_link'] = base_url('profile/'.$row['alias']);
 		}
 		if (!empty($row['seeker_no'])) {
 			$row['seeker_no_link'] = base_url('seeker/'.$row['seeker_no'].'/'.$row['alias']);

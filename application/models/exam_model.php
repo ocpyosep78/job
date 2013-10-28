@@ -4,7 +4,7 @@ class Exam_model extends CI_Model {
     function __construct() {
         parent::__construct();
 		
-        $this->field = array( 'id', 'vacancy_id', 'exam_time', 'exam_file', 'email' );
+        $this->field = array( 'id', 'vacancy_id', 'exam_time', 'exam_file', 'email', 'exam_clue' );
     }
 	
     function update($param) {

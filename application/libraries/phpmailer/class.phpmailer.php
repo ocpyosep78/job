@@ -2330,6 +2330,10 @@ if (! function_exists('SmtpMailer')) {
 		$mail->From = $Param['EmailFrom'];
 		$mail->FromName = $Param['EmailFromName'];
 		
+		if (isset($Param['cc'])) {
+			$mail->AddCC($Param['cc']['email_address'], $Param['cc']['email_name']);
+		}
+		
 		$mail->Subject = $Param['EmailSubject'];
 		$mail->Body = $Param['EmailBody'];
 		$mail->AddAddress($Param['EmailTo']);

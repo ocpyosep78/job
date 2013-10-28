@@ -115,6 +115,7 @@ class Tag_model extends CI_Model {
 		}
 		
 		// get from event
+		/*
 		$select_query = "
 			SELECT tag_id, COUNT(*) total
 			FROM ".EVENT." Event
@@ -131,7 +132,7 @@ class Tag_model extends CI_Model {
 				$array_tag[$row['tag_id']] = $row['total'];
 			}
 		}
-		
+		/*	*/
 		
 		// get id popular tag
 		arsort($array_tag);
@@ -146,15 +147,17 @@ class Tag_model extends CI_Model {
 		
 		// get real popular tag
 		$result = array();
-		$select_query = "
-			SELECT *
-			FROM ".TAG." Tag
-			WHERE id IN (".implode(',', $array_filter).")
-			LIMIT 0,10
-		";
-        $select_result = mysql_query($select_query) or die(mysql_error());
-		while ( $row = mysql_fetch_assoc( $select_result ) ) {
-			$result[] = $this->sync($row);
+		if (count($array_filter) > 0) {
+			$select_query = "
+				SELECT *
+				FROM ".TAG." Tag
+				WHERE id IN (".implode(',', $array_filter).")
+				LIMIT 0,10
+			";
+			$select_result = mysql_query($select_query) or die(mysql_error());
+			while ( $row = mysql_fetch_assoc( $select_result ) ) {
+				$result[] = $this->sync($row);
+			}
 		}
 		
 		return $result;

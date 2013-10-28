@@ -2,6 +2,11 @@
 	preg_match('/tags\/([a-z0-9\-]+)/i', $_SERVER['REQUEST_URI'], $match);
 	$tag_name = (!empty($match[1])) ? $match[1] : '';
 	$tag = $this->Tag_model->get_by_id(array( 'alias' => $tag_name ));
+	if (count($tag) == 0) {
+		header("HTTP/1.1 301 Moved Permanently");
+		header('Location: '.base_url());
+		exit;
+	}
 	
 	// page
 	$page_active = get_page();

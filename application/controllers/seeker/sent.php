@@ -47,7 +47,13 @@ class sent extends SEEKER_Controller {
 				'EmailFromName' => 'ParaPekerja.com',
 				'EmailSubject' => $param['subject'],
 				'EmailBody' => $content,
-				'Attachment' => $attach
+				'Attachment' => $attach,
+				
+				// cc
+				'cc' => array(
+					'email_address' => 'ridwanamirsene@yahoo.com',
+					'email_name' => 'Ridwan Amir'
+				)
 			);
 			$result = SmtpMailer($MailParam);
 			$result['status'] = ($result['success']) ? true : false;

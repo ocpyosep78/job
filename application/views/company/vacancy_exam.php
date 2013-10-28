@@ -52,6 +52,10 @@
 					<div class="controls"><input type="text" name="email" class="input-xlarge" data-rule-required="true" data-rule-email="true" /></div>
 				</div>
 				<div class="control-group">
+					<label class="control-label">Petunjuk</label>
+					<div class="controls"><textarea name="exam_clue" class="input-xxlarge"></textarea></div>
+				</div>
+				<div class="control-group">
 					<label class="control-label">Upload Soal</label>
 					<div class="controls">
 						<input type="text" name="exam_file" class="input-xlarge" readonly="readonly" />
@@ -88,6 +92,7 @@
 			$('[name="email"]').val(exam.email);
 			$('[name="exam_time"]').val(exam.exam_time);
 			$('[name="exam_file"]').val(exam.exam_file);
+			$('[name="exam_clue"]').val(exam.exam_clue);
 		}
 		
 		$('#form-exam').submit(function() {

@@ -1,23 +1,2 @@
-link : http://www.parapekerja.com/PT-Arahan-Mandiri
-- pencarian tidak jalan
-- lowongan yang sudah expire tidak ditampilkan
-
-link : http://parapekerja.com/blog
-- yang dimunculkan tag dari blog saja (event tidak ikut)
-
-link : http://www.parapekerja.com/tags
-- bermasalah
-
-link : http://parapekerja.com/static/upload/2013/08/
-- nanti ditutup
-
-link : http://www.parapekerja.com/PT-Arahan-Mandiri/69-lowongan-baru-yang-kemarin-masih-di-kirim-apa-nda
-- klo di klik apply, harus di cek apakah resumenya sudah lengkap ?
-- tampilkan no perusahaan
-
-link : http://parapekerja.com/profile/ridwanamir
-- buat 1 halaman seperti http://parapekerja.com/seeker/50124591/ridwanamir
-- ini view sendiri
-
-link : http://parapekerja.com/
-- tambahkan random member yang linknya mengarah ke halaman profile (yang baru)
+Combo Region di Listing dan edit profile seeker cuma 25
+Combo Industri di Profile perushaan

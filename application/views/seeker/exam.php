@@ -1,3 +1,5 @@
+
+
 <?php
 	$apply_id = $_GET['id'];
 	$seeker = $this->Seeker_model->get_session();
@@ -19,11 +21,21 @@
 		<div class="cnt-exam"><?php echo json_encode($exam); ?></div>
 		<iframe name="iframe_exam_file" src="<?php echo base_url('panel/upload?callback=exam_file&filetype=document'); ?>"></iframe>
 	</div>
-	
+	<br/>
 	<div style="padding: 0 0 6px 0; text-align: center;">Anda Berada di halaman ujian untuk lowongan <?php echo $vacancy['nama']; ?></div>
 	<div style="padding: 0 0 15px 0; text-align: center;">Sebelum mengikuti Ujian ini, Pastikan komputer yang anda gunakan tersedia program Office</div>
+	
+	<?php if (!empty($exam['exam_clue'])) { ?>
+	<div style="padding: 10px 0; text-align: center;">
+		<div>Petunjuk</div>
+		<div><?php echo nl2br($exam['exam_clue']); ?></div>
+	</div>
+	<?php } ?>
+	
 	<div style="padding: 0 0 6px 0;">Waktu ujian akan dimulai setelah anda tekan tombol Download Soal, dan proses download tidak akan di hitung, yaitu selama 3 menit.</div>
+<!--
 	<div style="padding: 0 0 25px 0;">Sebelum anda melakukan test ujian ini, kami sarankan anda melihat terlebih dahulu video ujian pada youtube ini, dan pastikan koneksi internet anda stabil</div>
+-->
 	<div style="padding: 0 0 6px 0;">Untuk memulai silahkan klik Link Download soal berikut ini, dan selamat mengerjakan</div>
 	<div style="padding: 30px 0 0 0; text-align: center;">
 		<div style="float: left; width: 50%;">
